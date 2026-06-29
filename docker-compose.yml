@@ -1,0 +1,41 @@
+services:
+
+  # ── API GraphRAG ──────────────────────────────────────────────────────────
+  rag-api:
+    build:
+      context: ./rag-api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data:ro
+      - chroma_data:/app/chroma_db
+    env_file:
+      - ./rag-api/.env
+    environment:
+      - TTL_PATH=/app/data/forest_kg.ttl
+      - TABLE3_PATH=/app/data/table3.csv
+      - CRITERIA_PATH=/app/data/criteria.csv
+      - CHROMA_PATH=/app/chroma_db
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
+
+  # ── Frontend graph-viz ────────────────────────────────────────────────────
+  graph-viz:
+    build:
+      context: .
+      dockerfile: graph-viz/Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      rag-api:
+        condition: service_healthy
+    environment:
+      - VITE_API_URL=http://localhost:8000
+
+volumes:
+  chroma_data:
