@@ -301,9 +301,9 @@ python tasks.py index
 | `data/definitions_clean.csv` | CSV | Définitions structurées extraites |
 
 **Vocabulaires RDF utilisés :**
-- [SKOS](https://www.w3.org/TR/skos-reference/) — structure conceptuelle
-- [DCTERMS](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/) — métadonnées (pays, année, organisation, source)
-- [QUDT](http://qudt.org) — critères techniques (surface minimale, taux de couverture…)
+- [SKOS](https://www.w3.org/TR/skos-reference/) - structure conceptuelle
+- [DCTERMS](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/) - métadonnées (pays, année, organisation, source)
+- [QUDT](http://qudt.org) - critères techniques (surface minimale, taux de couverture…)
 
 ---
 
