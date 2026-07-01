@@ -305,7 +305,7 @@ def get_top_concepts():
     gs = get_graph_store()
     results = gs.query_sparql("""
 SELECT ?uri ?label WHERE {
-    ?uri skos:topConceptOf ex:ForestDefinitionsScheme ;
+    ?uri skos:topConceptOf ex:ForestScheme ;
          skos:prefLabel ?label .
     FILTER(LANG(?label) = 'en')
 }
