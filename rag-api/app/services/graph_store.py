@@ -13,6 +13,18 @@ from app.core.settings import settings
 
 EX = Namespace(settings.base_uri)
 
+# Mots vides à ignorer lors de l'extraction de mots-clés pour la recherche
+# SPARQL par mots-clés (interrogatifs, articles, auxiliaires — FR/EN).
+_STOPWORDS = {
+    "what", "which", "who", "whom", "whose", "when", "where", "why", "how",
+    "does", "did", "do", "is", "are", "was", "were", "the", "and", "for",
+    "use", "used", "with", "from", "that", "this", "these", "those",
+    "have", "has", "had", "can", "could", "would", "should", "will",
+    "shall", "about", "into", "under", "over", "you", "your", "please",
+    "quel", "quelle", "quels", "quelles", "quoi", "comment", "pourquoi",
+    "est", "sont", "les", "des", "une", "un", "pour", "dans", "avec",
+}
+
 
 class GraphStore:
     """Wrapper autour du graphe RDF/SKOS en mémoire."""
@@ -51,7 +63,16 @@ class GraphStore:
         concept : si fourni, filtre sur le top-concept parent (ex: 'forest')
         scope   : si fourni, filtre sur dct:spatial (ex: 'International')
         """
-        keywords = [w.lower() for w in re.findall(r"\b[a-zA-Z]{3,}\b", query)][:5]
+        # Les 5 premiers mots dans l'ordre de la phrase sont souvent des mots
+        # interrogatifs/vides ("What ... does Germany use ..." -> what, does,
+        # use passaient devant "Germany"). On filtre les stopwords et on
+        # priorise les mots les plus longs (donc les plus discriminants,
+        # typiquement les noms propres et termes techniques).
+        raw_words = [w.lower() for w in re.findall(r"\b[a-zA-Z]{3,}\b", query)]
+        candidates = [w for w in raw_words if w not in _STOPWORDS]
+        if not candidates:
+            candidates = raw_words
+        keywords = sorted(candidates, key=len, reverse=True)[:8]
         if not keywords:
             return []
 
@@ -74,13 +95,26 @@ class GraphStore:
         if scope:
             scope_filter = f'FILTER(!BOUND(?country) || CONTAINS(LCASE(STR(?country)), "{scope.lower()}"))'
 
-        # Filtre organisation (dct:creator) — plus précis que le scope pour FAO/UNFCCC/IPCC
+        # Filtre organisation — dct:creator est un champ texte pollué par des
+        # résidus de parsing du tableau source (ex: "&", "?", "10 degrees C")
+        # et ne contient pas forcément le nom de l'org demandée (ex: les
+        # concepts UNFCCC ont dct:creator="KP", pas "UNFCCC"). Le graphe a en
+        # revanche de vraies collections propres ex:Org_UNFCCC, ex:Org_FAO...
+        # avec skos:member correctement peuplé (cf. kg-builder/skos_builder.py
+        # ORG_COLLECTIONS) : on filtre d'abord dessus, et on retombe sur
+        # dct:creator seulement pour les organisations sans collection dédiée.
         org_filter = ""
+        org_membership = ""
         if org:
-            org_filter = f'FILTER(!BOUND(?org) || CONTAINS(LCASE(STR(?org)), "{org.lower()}"))'
+            org_key = re.sub(r"[^A-Za-z]", "", org)
+            org_membership = f'OPTIONAL {{ ex:Org_{org_key} skos:member ?uri . BIND(true AS ?orgMember) }}'
+            org_filter = (
+                'FILTER(BOUND(?orgMember) || !BOUND(?org) || '
+                f'CONTAINS(LCASE(STR(?org)), "{org.lower()}"))'
+            )
 
         sparql = f"""
-SELECT DISTINCT ?uri ?label ?def ?country ?year ?scope ?org WHERE {{
+SELECT DISTINCT ?uri ?label ?def ?country ?year ?scope ?org ?orgMember WHERE {{
     ?uri a skos:Concept ;
          skos:definition ?def .
     OPTIONAL {{ ?uri skos:prefLabel ?label   . FILTER(LANG(?label) IN ('en', 'fr', '')) }}
@@ -88,12 +122,18 @@ SELECT DISTINCT ?uri ?label ?def ?country ?year ?scope ?org WHERE {{
     OPTIONAL {{ ?uri dct:date       ?year    . }}
     OPTIONAL {{ ?uri skos:scopeNote ?scope   . }}
     OPTIONAL {{ ?uri dct:creator    ?org     . }}
+    {org_membership}
     {concept_filter}
     FILTER ({kw_filter})
     {scope_filter}
     {org_filter}
-}} LIMIT {top_k * 4}
+}} LIMIT {max(top_k * 30, 500)}
 """
+        # LIMIT large : le graphe est petit (~3400 concepts en mémoire, requête
+        # <1s même sans borne). Un LIMIT serré ici coupait les lignes AVANT le
+        # scoring Python ci-dessous, dans l'ordre d'itération arbitraire du
+        # graphe — donc les vrais meilleurs matches pouvaient être perdus avant
+        # même d'être évalués (même défaut que search_continent_thresholds).
         results = self.query_sparql(sparql)
 
         # Scoring : mots-clés + bonus si concept/scope correspondent
@@ -103,7 +143,8 @@ SELECT DISTINCT ?uri ?label ?def ?country ?year ?scope ?org WHERE {{
             score = sum(1 for kw in keywords if kw in text) / len(keywords)
             if concept and concept.lower() in text: score += 0.2
             if scope   and scope.lower()   in text: score += 0.1
-            if org     and org.lower()     in f"{r.get('org','')}".lower(): score += 0.4
+            if org and (r.get("orgMember") or org.lower() in f"{r.get('org','')}".lower()):
+                score += 0.4
             scored.append({**r, "sparql_score": round(min(score, 1.0), 3)})
 
         # Dédoublonnage par URI
@@ -298,9 +339,17 @@ SELECT ?label WHERE {{
         return [r["label"] for r in rows]
 
     def search_continent_thresholds(
-        self, continent: str, top_k: int = 20
+        self, continent: str, top_k: int = 60
     ) -> list[dict]:
-        """Cherche les definitions avec seuils pour tous les pays d'un continent."""
+        """Cherche les definitions avec seuils pour tous les pays d'un continent.
+
+        Un continent peut compter jusqu'à ~46 pays (Afrique) : top_k doit donc
+        couvrir le continent entier, sinon des pays valides sont tronqués avant
+        même d'être vus. Les concepts sont aussi triés par "richesse" (nombre de
+        seuils numériques renseignés) pour que les vraies définitions nationales
+        (minAreaHa/minCrownCoverPct) passent devant les concepts sans seuil
+        (Afforestation, Tree, Woodland...) qui matchent le même pays par texte.
+        """
         continent_key = continent.strip().replace(" ", "")
         sparql = f"""
 SELECT DISTINCT ?uri ?label ?def ?countryName ?year
@@ -317,27 +366,37 @@ SELECT DISTINCT ?uri ?label ?def ?countryName ?year
     OPTIONAL {{ ?uri ex:minAreaHa ?minArea . }}
     OPTIONAL {{ ?uri ex:minCrownCoverPct ?minCrown . }}
     OPTIONAL {{ ?uri ex:minTreeHeightM ?minHeight . }}
-}} LIMIT {top_k * 4}
+}} LIMIT {top_k * 8}
 """
         rows = self.query_sparql(sparql)
-        results = []
-        seen = set()
+
+        def _richness(r: dict) -> int:
+            return sum(1 for k in ("minArea", "minCrown", "minHeight") if r.get(k))
+
+        # Un seul concept par pays : le plus riche en seuils numériques.
+        best_by_country: dict[str, dict] = {}
         for r in rows:
-            uri = r["uri"]
-            if uri in seen:
+            country = r.get("countryName", "")
+            if not country:
                 continue
-            seen.add(uri)
+            if country not in best_by_country or _richness(r) > _richness(best_by_country[country]):
+                best_by_country[country] = r
+
+        results = []
+        for country, r in sorted(best_by_country.items(), key=lambda kv: -_richness(kv[1])):
             results.append({
-                "uri":     uri,
+                "uri":     r["uri"],
                 "label":   r.get("label", ""),
                 "def":     r.get("def", ""),
                 "text":    r.get("def", ""),
-                "country": r.get("countryName", ""),
+                "country": country,
                 "year":    r.get("year", ""),
                 "scope":   "National",
                 "org":     "",
-                "sparql_score": 0.5,
+                "sparql_score": min(_richness(r) / 3.0, 1.0),
+                "minArea":  r.get("minArea"),
                 "minCrown": r.get("minCrown"),
+                "minHeight": r.get("minHeight"),
             })
             if len(results) >= top_k:
                 break
@@ -355,7 +414,7 @@ SELECT DISTINCT ?uri ?label ?def ?countryName ?year
             "with_thresholds":  "SELECT (COUNT(DISTINCT ?c) AS ?n) WHERE { ?c ex:minAreaHa ?v . }",
             "agrovoc_aligned":  "SELECT (COUNT(?c) AS ?n) WHERE { ?c skos:exactMatch ?a . FILTER(STRSTARTS(STR(?a),'http://aims.fao.org')) }",
             "countries_count":  "SELECT (COUNT(DISTINCT ?p) AS ?n) WHERE { ?c dct:spatial ?p . }",
-            "unfccc_concepts":  "SELECT (COUNT(?c) AS ?n) WHERE { ex:UNFCCC skos:member ?c . }",
+            "unfccc_concepts":  "SELECT (COUNT(?c) AS ?n) WHERE { ex:Org_UNFCCC skos:member ?c . }",
         }
         for key, q in queries.items():
             try:
