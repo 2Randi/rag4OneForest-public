@@ -371,14 +371,10 @@ class SKOSBuilder:
 
     def _resolve_country_uri(self, country_raw: str) -> URIRef | None:
         """
-        Résout un nom de pays en concept ex:Country_ISO3 (le crée si besoin,
-        avec rattachement à sa collection continent) et retourne son URI.
-
-        dct:spatial doit pointer vers ce concept plutôt que porter le nom du
-        pays en texte libre : ça transforme les recherches par pays/continent
-        d'un CONTAINS(texte) fragile en une jointure exacte sur le graphe,
-        cohérent avec ex:Continent_X skos:member ex:Country_ISO3 qui existe
-        déjà. Retourne None si country_raw est vide/absent.
+        Résout un nom de pays en concept ex:Country_ISO3 (le crée si besoin)
+        et renvoie son URI. dct:spatial pointe vers ce concept au lieu de
+        porter le nom en texte libre, comme ça les recherches par pays sont
+        exactes au lieu de faire un CONTAINS fragile. None si vide.
         """
         import pycountry
 

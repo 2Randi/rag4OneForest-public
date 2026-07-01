@@ -6,7 +6,7 @@ import urllib.parse
 from contextlib import asynccontextmanager
 
 import structlog
-from fastapi import FastAPI, HTTPException, BackgroundTasks
+from fastapi import FastAPI, HTTPException, BackgroundTasks, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 
@@ -230,7 +230,10 @@ def query_rag(req: QueryRequest):
 
 
 @app.get("/api/query/stream")
-def query_rag_stream(query: str, top_k: int = 6):
+def query_rag_stream(
+    query: str = Query(..., min_length=3, max_length=1000),
+    top_k: int = Query(6, ge=1, le=20),
+):
     """Requête RAG en streaming Server-Sent Events (SSE)."""
     try:
         gs        = get_graph_store()
@@ -281,7 +284,7 @@ def sparql_query(req: SPARQLRequest):
         raise HTTPException(status_code=400, detail=f"Erreur SPARQL : {e}")
 
 
-@app.get("/api/graph/concept/{uri_encoded}")
+@app.get("/api/graph/concept/{uri_encoded:path}")
 def get_concept(uri_encoded: str):
     """Détail complet d'un concept SKOS par son URI (encodé URL)."""
     uri = urllib.parse.unquote(uri_encoded)

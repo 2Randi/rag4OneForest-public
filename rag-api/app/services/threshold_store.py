@@ -19,12 +19,9 @@ def _normalise(s: str) -> str:
     return re.sub(r"[^a-z0-9]", " ", s.lower()).strip()
 
 
-# Patterns pour detecter un continent dans une requete. La clé correspond au
-# nom de collection ex:Continent_<clé> dans le graphe RDF (GraphStore) : la
-# liste des pays par continent n'est plus dupliquée ici en dur — elle vient
-# toujours du graphe, seule source de vérité, pour éviter que les deux
-# divergent (ex: 52 pays "Afrique" ici vs 46 dans le graphe, constaté avant
-# ce correctif).
+# clé = nom de collection ex:Continent_<clé> dans le graphe. La liste des
+# pays par continent n'est plus codée en dur ici, on va la chercher dans le
+# graphe direct (avant ça divergeait: 52 pays "Afrique" ici vs 46 dans le graphe)
 CONTINENT_PATTERNS: list[tuple[str, str]] = [
     (r'\bafrica\w*\b', 'Africa'),
     (r'\beurope\w*\b', 'Europe'),
@@ -48,9 +45,7 @@ class ThresholdStore:
         csv_path: str | Path | None = None,
         graph_store: GraphStore | None = None,
     ):
-        # Résolu paresseusement (pas d'appel à get_graph_store() si aucune
-        # requête sur un continent n'est jamais faite).
-        self._graph_store = graph_store
+        self._graph_store = graph_store  # chargé seulement si besoin de résoudre un continent
         path = Path(csv_path or settings.table3_path)
         self._rows: list[dict[str, Any]] = []
         self._index: dict[str, list[dict]] = {}   # pays normalisé → lignes
@@ -118,8 +113,7 @@ class ThresholdStore:
         q = _normalise(query)
         found: list[str] = []
 
-        # D'abord chercher un continent — la liste des pays vient toujours du
-        # graphe (seule source de vérité), pas d'une copie codée en dur ici.
+        # d'abord chercher un continent, la liste des pays vient du graphe
         for pattern, continent_key in CONTINENT_PATTERNS:
             if re.search(pattern, query, re.IGNORECASE):
                 try:

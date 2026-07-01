@@ -236,8 +236,7 @@ class HybridRetriever:
                     min_crown = float(crown_match.group(1))
                     continent_docs = [d for d in continent_docs
                                       if d.get("minCrown") and float(d["minCrown"]) >= min_crown]
-                # dict.fromkeys pour dédupliquer sans perdre le tri par richesse
-                # de search_continent_thresholds (un set() mélange l'ordre).
+                # dict.fromkeys dédupe sans perdre l'ordre (un set() mélange tout)
                 countries_ctx = list(dict.fromkeys(d["country"] for d in continent_docs))
             else:
                 countries_ctx = list(self._ts.extract_countries_from_query(query))
@@ -251,9 +250,7 @@ class HybridRetriever:
             already_uris = {doc["metadata"].get("uri") for doc in merged}
             threshold_docs: list[dict] = []
 
-            # Un continent peut compter jusqu'à ~46 pays (Afrique) : une
-            # question d'énumération ("which countries...", "how many...")
-            # a besoin de la couverture complète, pas d'un top 10 arbitraire.
+            # pas de limite à 10 si continent (l'Afrique a 46 pays à couvrir)
             country_limit = len(countries_ctx) if continent else 10
             for country in countries_ctx[:country_limit]:
                 kg_docs = self._gs.search_country_thresholds(country, top_k=3)

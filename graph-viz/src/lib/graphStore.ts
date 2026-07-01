@@ -178,6 +178,7 @@ export class GraphStore {
       definitions: string[]
       scopeNotes: string[]
       country: string | null
+      countryUri: string | null
       year: string | null
       creator: string | null
       sources: string[]
@@ -196,6 +197,7 @@ export class GraphStore {
           definitions: [],
           scopeNotes: [],
           country: null,
+          countryUri: null,
           year: null,
           creator: null,
           sources: [],
@@ -241,6 +243,13 @@ export class GraphStore {
         // ensure target node exists
         getOrCreate(object.value)
       }
+
+      // dct:spatial pointe vers un pays maintenant, plus du texte direct.
+      // on résout le prefLabel plus tard, une fois tous les quads lus
+      if (object.termType === 'NamedNode' && predicate === P.spatial) {
+        raw.countryUri = object.value
+        getOrCreate(object.value)
+      }
     }
 
     // Identify top concepts: those with skos:topConceptOf or skos:Concept that
@@ -275,6 +284,9 @@ export class GraphStore {
 
       const topConceptUri = broadMatchToTop.get(uri) ?? null
 
+      const country = raw.country ??
+        (raw.countryUri ? raws.get(raw.countryUri)?.prefLabels.find(l => l) ?? null : null)
+
       this.concepts.set(uri, {
         uri,
         label,
@@ -286,7 +298,7 @@ export class GraphStore {
         altLabels: raw.altLabels,
         definitions: raw.definitions,
         scopeNotes: raw.scopeNotes,
-        country: raw.country,
+        country,
         year: raw.year,
         creator: raw.creator,
         sources: raw.sources,

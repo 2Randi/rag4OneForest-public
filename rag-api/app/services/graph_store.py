@@ -13,8 +13,17 @@ from app.core.settings import settings
 
 EX = Namespace(settings.base_uri)
 
-# Mots vides à ignorer lors de l'extraction de mots-clés pour la recherche
-# SPARQL par mots-clés (interrogatifs, articles, auxiliaires — FR/EN).
+
+def _sparql_escape(s: str) -> str:
+    """
+    Echappe une valeur avant de la mettre dans un littéral SPARQL "...".
+    Sinon un guillemet dans la valeur casse le littéral et permet d'injecter
+    du SPARQL (testé, ça marche vraiment).
+    """
+    return s.replace("\\", "\\\\").replace('"', '\\"')
+
+
+# mots vides à virer avant de chercher des mots-clés dans la requête
 _STOPWORDS = {
     "what", "which", "who", "whom", "whose", "when", "where", "why", "how",
     "does", "did", "do", "is", "are", "was", "were", "the", "and", "for",
@@ -44,10 +53,9 @@ class GraphStore:
     ) -> list[dict[str, Any]]:
         """
         Exécute une requête SPARQL SELECT et retourne les résultats.
-        bindings : valeurs à lier à des variables (ex: {"uri": URIRef(...)})
-        au lieu de les interpoler dans le texte de la requête — évite qu'une
-        valeur contenant des caractères spéciaux SPARQL (>, ", {, }...) ne
-        casse ou ne détourne la requête.
+        bindings : valeurs à lier à des variables (ex: {"uri": URIRef(...)}),
+        évite d'interpoler dans le texte et de casser la requête si la
+        valeur contient des caractères spéciaux (>, ", {, }...).
         """
         full_query = settings.sparql_prefixes + sparql
         rows = []
@@ -71,11 +79,9 @@ class GraphStore:
         concept : si fourni, filtre sur le top-concept parent (ex: 'forest')
         scope   : si fourni, filtre sur dct:spatial (ex: 'International')
         """
-        # Les 5 premiers mots dans l'ordre de la phrase sont souvent des mots
-        # interrogatifs/vides ("What ... does Germany use ..." -> what, does,
-        # use passaient devant "Germany"). On filtre les stopwords et on
-        # priorise les mots les plus longs (donc les plus discriminants,
-        # typiquement les noms propres et termes techniques).
+        # avant : on prenait les 5 premiers mots de la phrase, souvent des
+        # mots vides genre "what does". Maintenant on vire les stopwords et
+        # on garde les mots les plus longs (plus susceptibles d'être utiles)
         raw_words = [w.lower() for w in re.findall(r"\b[a-zA-Z]{3,}\b", query)]
         candidates = [w for w in raw_words if w not in _STOPWORDS]
         if not candidates:
@@ -95,25 +101,17 @@ class GraphStore:
         if concept:
             concept_filter = (
                 f'OPTIONAL {{ ?uri skos:broadMatch ?tc . }}\n'
-                f'    FILTER(!BOUND(?tc) || CONTAINS(LCASE(STR(?tc)), "{concept.lower()}"))'
+                f'    FILTER(!BOUND(?tc) || CONTAINS(LCASE(STR(?tc)), "{_sparql_escape(concept.lower())}"))'
             )
 
-        # Filtre scope (International/National/Local, via skos:scopeNote) —
-        # testait par erreur ?country (dct:spatial) au lieu de ?scope, donc
-        # ne filtrait jamais rien puisqu'aucun nom de pays ne contient les
-        # mots "international"/"national"/"local".
+        # avant ça testait ?country au lieu de ?scope, donc ça filtrait rien du tout
         scope_filter = ""
         if scope:
-            scope_filter = f'FILTER(!BOUND(?scope) || CONTAINS(LCASE(STR(?scope)), "{scope.lower()}"))'
+            scope_filter = f'FILTER(!BOUND(?scope) || CONTAINS(LCASE(STR(?scope)), "{_sparql_escape(scope.lower())}"))'
 
-        # Filtre organisation — dct:creator est un champ texte pollué par des
-        # résidus de parsing du tableau source (ex: "&", "?", "10 degrees C")
-        # et ne contient pas forcément le nom de l'org demandée (ex: les
-        # concepts UNFCCC ont dct:creator="KP", pas "UNFCCC"). Le graphe a en
-        # revanche de vraies collections propres ex:Org_UNFCCC, ex:Org_FAO...
-        # avec skos:member correctement peuplé (cf. kg-builder/skos_builder.py
-        # ORG_COLLECTIONS) : on filtre d'abord dessus, et on retombe sur
-        # dct:creator seulement pour les organisations sans collection dédiée.
+        # dct:creator est plein de résidus de parsing bruités et pas fiable
+        # (ex: concepts UNFCCC ont dct:creator="KP", pas "UNFCCC"). On filtre
+        # d'abord sur les vraies collections ex:Org_X, dct:creator en secours.
         org_filter = ""
         org_membership = ""
         if org:
@@ -121,7 +119,7 @@ class GraphStore:
             org_membership = f'OPTIONAL {{ ex:Org_{org_key} skos:member ?uri . BIND(true AS ?orgMember) }}'
             org_filter = (
                 'FILTER(BOUND(?orgMember) || !BOUND(?org) || '
-                f'CONTAINS(LCASE(STR(?org)), "{org.lower()}"))'
+                f'CONTAINS(LCASE(STR(?org)), "{_sparql_escape(org.lower())}"))'
             )
 
         sparql = f"""
@@ -142,11 +140,8 @@ SELECT DISTINCT ?uri ?label ?def ?country ?year ?scope ?org ?orgMember WHERE {{
     {org_filter}
 }} LIMIT {max(top_k * 30, 500)}
 """
-        # LIMIT large : le graphe est petit (~3400 concepts en mémoire, requête
-        # <1s même sans borne). Un LIMIT serré ici coupait les lignes AVANT le
-        # scoring Python ci-dessous, dans l'ordre d'itération arbitraire du
-        # graphe — donc les vrais meilleurs matches pouvaient être perdus avant
-        # même d'être évalués (même défaut que search_continent_thresholds).
+        # LIMIT large exprès : avant ça coupait les lignes avant le scoring
+        # plus bas, donc les meilleurs résultats pouvaient être perdus
         results = self.query_sparql(sparql)
 
         # Scoring : mots-clés + bonus si concept/scope correspondent
@@ -173,11 +168,8 @@ SELECT DISTINCT ?uri ?label ?def ?country ?year ?scope ?org ?orgMember WHERE {{
 
     def get_concept(self, uri: str) -> dict | None:
         """Récupère toutes les propriétés d'un concept donné."""
-        # uri vient d'un paramètre d'URL utilisateur (urllib.parse.unquote) :
-        # lié via initBindings plutôt qu'interpolé dans le texte de la
-        # requête, sinon un caractère comme '>' casse la syntaxe IRIREF et
-        # peut altérer la requête exécutée (vérifié : provoque une
-        # ParseException, potentiellement pire selon le contenu).
+        # uri vient d'une URL utilisateur donc on la lie en paramètre au lieu
+        # de l'interpoler dans le texte, sinon un '>' casse la requête (testé)
         sparql = """
 SELECT ?pred ?obj WHERE {
     ?uri ?pred ?obj .
@@ -201,8 +193,7 @@ SELECT ?pred ?obj WHERE {
             elif "scopeNote" in pred:  result["scopeNotes"].append(obj)
             elif "altLabel"  in pred:  result["altLabels"].append(obj)
             elif "spatial"   in pred:
-                # dct:spatial pointe vers ex:Country_ISO3 : on résout son
-                # skos:prefLabel pour afficher un nom de pays, pas l'URI brute.
+                # dct:spatial est une URI de pays, on va chercher son nom
                 labels = list(self._g.objects(URIRef(obj), SKOS.prefLabel))
                 result["country"] = str(labels[0]) if labels else obj
             elif "date"      in pred:  result["year"] = obj
@@ -286,13 +277,9 @@ SELECT ?pred ?obj WHERE {
         ou une définition textuelle des critères nationaux.
         Priorité : concepts avec le plus de propriétés numériques en premier.
         """
-        # dct:spatial pointe vers le concept ex:Country_ISO3 (pas du texte
-        # libre). Résoudre le pays et joindre les définitions en une seule
-        # requête est correct mais très lent avec le moteur SPARQL de rdflib
-        # (~90s mesuré : il évalue le filtre CONTAINS après avoir déjà tenté
-        # de joindre sur tous les skos:Concept). On sépare donc en 2 requêtes
-        # bon marché : résolution du pays sur le petit ensemble ex:Countries
-        # (~230 membres), puis jointure sur l'URI concrète obtenue.
+        # tout faire en une seule requête est correct mais super lent (90s
+        # mesuré, rdflib galère avec le CONTAINS + jointure). Du coup on
+        # résout le pays d'abord (petit ensemble), puis on joint sur l'URI
         c = country.lower().replace('"', "").replace("'", "")
         country_rows = self.query_sparql(f"""
 SELECT ?countryUri WHERE {{
@@ -370,10 +357,7 @@ SELECT DISTINCT ?uri ?label ?def ?year ?org
 
     def get_countries_by_continent(self, continent: str) -> list[str]:
         """Retourne les noms des pays d'un continent via le graphe SPARQL."""
-        # Interpolé dans une URI (ex:Continent_X), pas dans un littéral :
-        # restreint aux lettres par défense en profondeur, cohérent avec
-        # org_key dans search_by_keyword.
-        continent_key = re.sub(r"[^A-Za-z]", "", continent)
+        continent_key = re.sub(r"[^A-Za-z]", "", continent)  # que des lettres pour l'URI
         sparql = f"""
 SELECT ?label WHERE {{
     ex:Continent_{continent_key} skos:member ?country .
@@ -388,21 +372,13 @@ SELECT ?label WHERE {{
     ) -> list[dict]:
         """Cherche les definitions avec seuils pour tous les pays d'un continent.
 
-        Un continent peut compter jusqu'à ~46 pays (Afrique) : top_k doit donc
-        couvrir le continent entier, sinon des pays valides sont tronqués avant
-        même d'être vus. Les concepts sont aussi triés par "richesse" (nombre de
-        seuils numériques renseignés) pour que les vraies définitions nationales
-        (minAreaHa/minCrownCoverPct) passent devant les concepts sans seuil
-        (Afforestation, Tree, Woodland...) qui matchent le même pays par texte.
+        top_k doit couvrir le continent entier (l'Afrique a 46 pays), sinon
+        des pays valides sont coupés avant d'être vus. On trie aussi par
+        richesse (nombre de seuils remplis) pour que les vraies définitions
+        nationales passent devant les concepts sans seuil (Tree, Woodland...)
+        qui matchent le même pays.
         """
-        # dct:spatial pointe désormais vers ex:Country_ISO3 : la jointure
-        # avec l'appartenance au continent se fait par égalité d'URI exacte
-        # (?uri dct:spatial ?country, la même variable que skos:member),
-        # plus par un CONTAINS texte fragile sur le nom du pays.
-        # Interpolé dans une URI (ex:Continent_X), pas dans un littéral :
-        # restreint aux lettres par défense en profondeur, cohérent avec
-        # org_key dans search_by_keyword.
-        continent_key = re.sub(r"[^A-Za-z]", "", continent)
+        continent_key = re.sub(r"[^A-Za-z]", "", continent)  # que des lettres pour l'URI
         sparql = f"""
 SELECT DISTINCT ?uri ?label ?def ?countryName ?year
                ?minArea ?minCrown ?minHeight WHERE {{
