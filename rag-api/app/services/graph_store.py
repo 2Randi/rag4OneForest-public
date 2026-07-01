@@ -118,7 +118,9 @@ SELECT DISTINCT ?uri ?label ?def ?country ?year ?scope ?org ?orgMember WHERE {{
     ?uri a skos:Concept ;
          skos:definition ?def .
     OPTIONAL {{ ?uri skos:prefLabel ?label   . FILTER(LANG(?label) IN ('en', 'fr', '')) }}
-    OPTIONAL {{ ?uri dct:spatial    ?country . }}
+    OPTIONAL {{ ?uri dct:spatial ?countryUri .
+               OPTIONAL {{ ?countryUri skos:prefLabel ?country .
+                          FILTER(LANG(?country) IN ('en', 'fr', '')) }} }}
     OPTIONAL {{ ?uri dct:date       ?year    . }}
     OPTIONAL {{ ?uri skos:scopeNote ?scope   . }}
     OPTIONAL {{ ?uri dct:creator    ?org     . }}
@@ -179,7 +181,11 @@ SELECT ?pred ?obj WHERE {{
             elif "definition" in pred: result["definitions"].append(obj)
             elif "scopeNote" in pred:  result["scopeNotes"].append(obj)
             elif "altLabel"  in pred:  result["altLabels"].append(obj)
-            elif "spatial"   in pred:  result["country"] = obj
+            elif "spatial"   in pred:
+                # dct:spatial pointe vers ex:Country_ISO3 : on résout son
+                # skos:prefLabel pour afficher un nom de pays, pas l'URI brute.
+                labels = list(self._g.objects(URIRef(obj), SKOS.prefLabel))
+                result["country"] = str(labels[0]) if labels else obj
             elif "date"      in pred:  result["year"] = obj
             elif "creator"   in pred:  result["organization"] = obj
             elif "source"    in pred:  result["sources"].append(obj)
@@ -261,14 +267,32 @@ SELECT ?pred ?obj WHERE {{
         ou une définition textuelle des critères nationaux.
         Priorité : concepts avec le plus de propriétés numériques en premier.
         """
+        # dct:spatial pointe vers le concept ex:Country_ISO3 (pas du texte
+        # libre). Résoudre le pays et joindre les définitions en une seule
+        # requête est correct mais très lent avec le moteur SPARQL de rdflib
+        # (~90s mesuré : il évalue le filtre CONTAINS après avoir déjà tenté
+        # de joindre sur tous les skos:Concept). On sépare donc en 2 requêtes
+        # bon marché : résolution du pays sur le petit ensemble ex:Countries
+        # (~230 membres), puis jointure sur l'URI concrète obtenue.
         c = country.lower().replace('"', "").replace("'", "")
-        sparql = f"""
+        country_rows = self.query_sparql(f"""
+SELECT ?countryUri WHERE {{
+    ex:Countries skos:member ?countryUri .
+    ?countryUri skos:prefLabel ?countryLabel .
+    FILTER(CONTAINS(LCASE(STR(?countryLabel)), "{c}"))
+}} LIMIT 5
+""")
+        if not country_rows:
+            return []
+
+        rows: list[dict] = []
+        for cr in country_rows:
+            rows.extend(self.query_sparql(f"""
 SELECT DISTINCT ?uri ?label ?def ?year ?org
                ?minArea ?minCrown ?minHeight ?maxCrown WHERE {{
     ?uri a skos:Concept ;
-         dct:spatial ?country ;
+         dct:spatial <{cr['countryUri']}> ;
          skos:definition ?def .
-    FILTER(CONTAINS(LCASE(STR(?country)), "{c}"))
     OPTIONAL {{ ?uri skos:prefLabel ?label .
                FILTER(LANG(?label) IN ('en', 'fr', '')) }}
     OPTIONAL {{ ?uri dct:date       ?year    . }}
@@ -277,9 +301,8 @@ SELECT DISTINCT ?uri ?label ?def ?year ?org
     OPTIONAL {{ ?uri ex:minCrownCoverPct ?minCrown . }}
     OPTIONAL {{ ?uri ex:maxCrownCoverPct ?maxCrown . }}
     OPTIONAL {{ ?uri ex:minTreeHeightM   ?minHeight . }}
-}} LIMIT {top_k * 4}
-"""
-        rows = self.query_sparql(sparql)
+}} LIMIT {max(top_k * 30, 200)}
+"""))
 
         def _richness(r: dict) -> int:
             return sum(1 for k in ("minCrown", "minArea", "minHeight")
@@ -350,6 +373,10 @@ SELECT ?label WHERE {{
         (minAreaHa/minCrownCoverPct) passent devant les concepts sans seuil
         (Afforestation, Tree, Woodland...) qui matchent le même pays par texte.
         """
+        # dct:spatial pointe désormais vers ex:Country_ISO3 : la jointure
+        # avec l'appartenance au continent se fait par égalité d'URI exacte
+        # (?uri dct:spatial ?country, la même variable que skos:member),
+        # plus par un CONTAINS texte fragile sur le nom du pays.
         continent_key = continent.strip().replace(" ", "")
         sparql = f"""
 SELECT DISTINCT ?uri ?label ?def ?countryName ?year
@@ -357,9 +384,8 @@ SELECT DISTINCT ?uri ?label ?def ?countryName ?year
     ex:Continent_{continent_key} skos:member ?country .
     ?country skos:prefLabel ?countryName .
     ?uri a skos:Concept ;
-         dct:spatial ?spatial ;
+         dct:spatial ?country ;
          skos:definition ?def .
-    FILTER(CONTAINS(LCASE(STR(?spatial)), LCASE(STR(?countryName))))
     OPTIONAL {{ ?uri skos:prefLabel ?label .
                FILTER(LANG(?label) IN ('en', 'fr', '')) }}
     OPTIONAL {{ ?uri dct:date ?year . }}
