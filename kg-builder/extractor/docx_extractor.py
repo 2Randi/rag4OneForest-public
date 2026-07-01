@@ -217,28 +217,53 @@ def _year_ext(s: str) -> str:
 #     (ex: "Canada-BC 2008"), sauf "USA-STATE-..." (ex: "USA-STATE-Georgia 2003")
 #     où la région ("Georgia") serait sinon confondue avec le pays homonyme
 #     (la Géorgie) si on cherchait un nom de pays dans tout le texte.
+def _find_country_match(s: str) -> tuple[str, int, int] | None:
+    """
+    Cherche UN nom de pays dans s et renvoie (nom, début, fin) dans le texte
+    original (casse préservée) pour permettre de le retirer précisément.
+
+    Une note peut mentionner plusieurs pays à la fois (ex: "Serbia & Montenegro",
+    une union historique) : _org_ext ne doit retirer QUE celui choisi ici, pas
+    boucler sur tous les noms de pays trouvés — sinon "Serbia & Montenegro"
+    perd les deux noms et il ne reste que "&" comme organisation.
+    """
+    t = s.lower()
+    for country in pycountry.countries:
+        name = country.name.lower()
+        idx = t.find(name)
+        if idx != -1:
+            return country.name, idx, idx + len(name)
+    return None
+
+
 def _country_ext(s: str, scope: str = "") -> str:
     t = s.strip().lower()
     if t.startswith("usa-state") or t.startswith("usa-fed"):
         return "United States"
     if scope in ("International", "General"):
         return ""
-    for country in pycountry.countries:
-        if country.name.lower() in t:
-            return country.name
-    return ""
+    match = _find_country_match(s)
+    return match[0] if match else ""
 
 
 def _org_ext(s: str, scope: str = "") -> str:
     """Extrait l'organisation = résidu après suppression de l'année et du pays."""
-    org = re.sub(r"(19|20)\d{2}", "", s)
     t = s.strip().lower()
     if t.startswith("usa-state") or t.startswith("usa-fed"):
-        return org.strip(" -;.")
+        org = re.sub(r"(19|20)\d{2}", "", s)
+        return org.strip(" -;.&")
+    org = s
     if scope not in ("International", "General"):
-        for country in pycountry.countries:
-            org = org.replace(country.name, "")
-    return org.strip(" -;.")
+        match = _find_country_match(s)
+        if match:
+            _, start, end = match
+            org = org[:start] + org[end:]
+    org = re.sub(r"(19|20)\d{2}", "", org).strip(" -;.&")
+    # La note (première parenthèse) n'est pas toujours une vraie citation —
+    # parfois c'est juste une mesure ou un symbole incident dans la phrase
+    # ("10 ft", "2 ha", "45°", "?"). Sans lettre, ce n'est pas un nom
+    # d'organisation : mieux vaut ne rien stocker qu'un résidu-bruit.
+    return org if re.search(r"[A-Za-z]", org) else ""
 
 
 # Arbre de titres
