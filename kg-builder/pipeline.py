@@ -169,7 +169,7 @@ def print_stats(ttl_path: Path) -> None:
         ("Total skos:Concept",           "SELECT (COUNT(?c) AS ?n) WHERE { ?c a skos:Concept . }"),
         ("Avec skos:broadMatch",         "SELECT (COUNT(DISTINCT ?c) AS ?n) WHERE { ?c skos:broadMatch ?p . }"),
         ("Avec définition",              "SELECT (COUNT(?c) AS ?n) WHERE { ?c skos:definition ?d . }"),
-        ("Concepts UNFCCC",              "SELECT (COUNT(?c) AS ?n) WHERE { ex:UNFCCC skos:member ?c . }"),
+        ("Concepts UNFCCC",              "SELECT (COUNT(?c) AS ?n) WHERE { ex:Org_UNFCCC skos:member ?c . }"),
         ("Avec seuil minAreaHa",         "SELECT (COUNT(DISTINCT ?c) AS ?n) WHERE { ?c ex:minAreaHa ?v . }"),
         ("Alignements Agrovoc",          "SELECT (COUNT(?c) AS ?n) WHERE { ?c skos:exactMatch ?a . FILTER(STRSTARTS(STR(?a),'http://aims.fao.org')) }"),
         ("Top Concepts",                 "SELECT (COUNT(?c) AS ?n) WHERE { ?c skos:topConceptOf ?s . }"),

@@ -369,6 +369,38 @@ class SKOSBuilder:
         if continent and continent in self._continent_colls:
             g.add((self._continent_colls[continent], SKOS.member, country_uri))
 
+    def _resolve_country_uri(self, country_raw: str) -> URIRef | None:
+        """
+        Résout un nom de pays en concept ex:Country_ISO3 (le crée si besoin,
+        avec rattachement à sa collection continent) et retourne son URI.
+
+        dct:spatial doit pointer vers ce concept plutôt que porter le nom du
+        pays en texte libre : ça transforme les recherches par pays/continent
+        d'un CONTAINS(texte) fragile en une jointure exacte sur le graphe,
+        cohérent avec ex:Continent_X skos:member ex:Country_ISO3 qui existe
+        déjà. Retourne None si country_raw est vide/absent.
+        """
+        import pycountry
+
+        country_raw = (country_raw or "").strip()
+        if not country_raw or country_raw.lower() == "nan":
+            return None
+
+        try:
+            iso3 = pycountry.countries.search_fuzzy(country_raw)[0].alpha_3
+        except Exception:
+            iso3 = re.sub(r'[^A-Za-z0-9]', '_', country_raw)[:10].upper()
+
+        g = self.graph
+        country_uri = EX[f"Country_{iso3}"]
+        if (country_uri, RDF.type, SKOS.Concept) not in g:
+            g.add((country_uri, RDF.type,       SKOS.Concept))
+            g.add((country_uri, SKOS.prefLabel, Literal(country_raw, lang="en")))
+            g.add((country_uri, SKOS.notation,  Literal(iso3)))
+            g.add((country_uri, SKOS.inScheme,  self._scheme_uri))
+            self._add_country_to_collections(country_uri, iso3)
+        return country_uri
+
     def _init_related_links(self) -> None:
         """Relie les top-concepts par skos:related (relations associatives)."""
         g = self.graph
@@ -391,8 +423,9 @@ class SKOSBuilder:
                 pass
         if rec.organization and rec.organization not in ("", "nan"):
             g.add((uri, DCTERMS.creator, Literal(rec.organization.strip())))
-        if rec.country and rec.country not in ("", "nan"):
-            g.add((uri, DCTERMS.spatial, Literal(rec.country)))
+        country_uri = self._resolve_country_uri(rec.country)
+        if country_uri:
+            g.add((uri, DCTERMS.spatial, country_uri))
         for url in rec.urls:
             g.add((uri, DCTERMS.source, Literal(url, datatype=XSD.anyURI)))
         for ref in rec.references:
@@ -544,8 +577,6 @@ class SKOSBuilder:
             * Membres des collections Scope_National et UNFCCC
         - Joint les définitions textuelles collectées dans _unfccc_defs
         """
-        import pycountry
-
         g            = self.graph
         forest_uri   = self._top_concepts.get("FOREST/FOREST LAND")
         national_col = self._scope_colls.get("National")
@@ -564,26 +595,15 @@ class SKOSBuilder:
             if not country_raw:
                 continue
 
-            # Résolution ISO-3166-1 alpha-3
-            try:
-                iso3 = pycountry.countries.search_fuzzy(country_raw)[0].alpha_3
-            except Exception:
-                iso3 = re.sub(r'[^A-Za-z0-9]', '_', country_raw)[:10].upper()
-
-            # Concept pays (unique par ISO3)
-            country_uri = EX[f"Country_{iso3}"]
-            if (country_uri, RDF.type, SKOS.Concept) not in g:
-                g.add((country_uri, RDF.type,         SKOS.Concept))
-                g.add((country_uri, SKOS.prefLabel,   Literal(country_raw, lang="en")))
-                g.add((country_uri, SKOS.notation,    Literal(iso3)))
-                g.add((country_uri, SKOS.inScheme,    self._scheme_uri))
-                self._add_country_to_collections(country_uri, iso3)
+            country_uri = self._resolve_country_uri(country_raw)
+            iso3 = str(country_uri).rsplit("Country_", 1)[-1]
 
             unfccc_uri = self._unique_concept_uri(f"{iso3}Unfccc")
             g.add((unfccc_uri, RDF.type,        SKOS.Concept))
             g.add((unfccc_uri, SKOS.inScheme,   self._scheme_uri))
             g.add((unfccc_uri, SKOS.prefLabel,  Literal(f"{country_raw} UNFCCC", lang="en")))
-            g.add((unfccc_uri, DCTERMS.spatial,  Literal(country_raw)))
+            if country_uri:
+                g.add((unfccc_uri, DCTERMS.spatial, country_uri))
             g.add((unfccc_uri, SKOS.scopeNote,  Literal("National", lang="en")))
 
             # skos:broadMatch → Forest top-concept (plus spécifique que le général)
@@ -676,25 +696,16 @@ class SKOSBuilder:
             if not country_raw or country_raw.lower() in ("nan", ""):
                 continue
 
-            try:
-                iso3 = pycountry.countries.search_fuzzy(country_raw)[0].alpha_3
-            except Exception:
-                iso3 = re.sub(r'[^A-Za-z0-9]', '_', country_raw)[:10].upper()
-
-            # Concept pays (partagé avec UNFCCC si déjà créé)
-            country_uri = EX[f"Country_{iso3}"]
-            if (country_uri, RDF.type, SKOS.Concept) not in g:
-                g.add((country_uri, RDF.type,       SKOS.Concept))
-                g.add((country_uri, SKOS.prefLabel, Literal(country_raw, lang="en")))
-                g.add((country_uri, SKOS.notation,  Literal(iso3)))
-                g.add((country_uri, SKOS.inScheme,  self._scheme_uri))
-                self._add_country_to_collections(country_uri, iso3)
+            # Concept pays partagé avec UNFCCC si déjà créé
+            country_uri = self._resolve_country_uri(country_raw)
+            iso3 = str(country_uri).rsplit("Country_", 1)[-1]
 
             nat_uri = self._unique_concept_uri(f"{iso3}National")
             g.add((nat_uri, RDF.type,       SKOS.Concept))
             g.add((nat_uri, SKOS.inScheme,  self._scheme_uri))
             g.add((nat_uri, SKOS.prefLabel, Literal(f"{country_raw} national criteria", lang="en")))
-            g.add((nat_uri, DCTERMS.spatial, Literal(country_raw)))
+            if country_uri:
+                g.add((nat_uri, DCTERMS.spatial, country_uri))
             g.add((nat_uri, SKOS.scopeNote, Literal("National", lang="en")))
 
             if forest_uri:
