@@ -135,7 +135,7 @@ rag4oneforest/
 
 ```bash
 git clone <url-du-depot>
-cd rag4oneforest
+cd rag4oneforest-public
 python tasks.py install
 ```
 
@@ -171,7 +171,7 @@ Ouvrir **http://localhost:5173** dans le navigateur.
 
 ```bash
 git clone <url-du-depot>
-cd rag4oneforest
+cd rag4oneforest-public
 ```
 
 **2. Ajouter votre clé API LLM**
