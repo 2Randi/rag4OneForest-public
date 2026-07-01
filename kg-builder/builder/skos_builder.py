@@ -831,7 +831,7 @@ class SKOSBuilder:
             "with_broad_match":  count("SELECT (COUNT(DISTINCT ?c) AS ?n) WHERE { ?c skos:broadMatch ?p . }"),
             "with_definition":   count("SELECT (COUNT(?c) AS ?n) WHERE { ?c skos:definition ?d . }"),
             "with_thresholds":   count("SELECT (COUNT(DISTINCT ?c) AS ?n) WHERE { ?c ex:minAreaHa ?v . }"),
-            "unfccc_concepts":   count("SELECT (COUNT(?c) AS ?n) WHERE { ex:UNFCCC skos:member ?c . }"),
+            "unfccc_concepts":   count("SELECT (COUNT(?c) AS ?n) WHERE { ex:Org_UNFCCC skos:member ?c . }"),
             "agrovoc_aligned":   count(
                 "SELECT (COUNT(?c) AS ?n) WHERE { "
                 "?c skos:exactMatch ?a . "
