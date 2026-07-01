@@ -19,6 +19,10 @@ _RETRYABLE = (
     "overloaded", "too many requests", "capacity",
     "not_found", "404", "not found", "unavailable",
     "503", "502", "500", "connection", "timeout",
+    # Clé API invalide/révoquée ou expirée sur CE backend : ne doit pas
+    # empêcher d'essayer les autres backends configurés.
+    "401", "403", "invalid_api_key", "invalid api key",
+    "unauthorized", "authentication", "permission_denied",
 )
 
 
