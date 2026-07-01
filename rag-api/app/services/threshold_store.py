@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from app.core.settings import settings
+from app.services.graph_store import GraphStore, get_graph_store
 
 
 def _normalise(s: str) -> str:
@@ -18,71 +19,21 @@ def _normalise(s: str) -> str:
     return re.sub(r"[^a-z0-9]", " ", s.lower()).strip()
 
 
-# Mapping continent/region vers pays (noms normalises comme dans table3.csv)
-CONTINENT_COUNTRIES: dict[str, list[str]] = {
-    "africa": [
-        "Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi",
-        "Cameroon", "Cape Verde", "Central African Republic", "Chad", "Comoros",
-        "Congo- Republic of", "Congo Zaire", "Democratic Republic Congo",
-        "Côte d'Ivoire", "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea",
-        "Ethiopia", "Gabon", "Gambia", "Ghana", "Guinea", "Guinea Bissau",
-        "Kenya", "Lesotho", "Liberia", "Libya Arab Jamahiriy", "Madagascar",
-        "Malawi", "Mali", "Mauritania", "Mauritius", "Morocco", "Mozambique",
-        "Namibia", "Niger", "Nigeria", "Rwanda", "Senegal", "Seychelles",
-        "Sierra Leone", "Somalia", "South Africa", "South Sudan", "Sudan",
-        "Swaziland", "Tanzania", "Togo", "Tunisia", "Uganda", "Western Sahara",
-        "Zambia", "Zimbabwe",
-    ],
-    "europe": [
-        "Albania", "Austria", "Belarus", "Belgium", "Belgium Flemmish",
-        "Belgium Walloon", "Bosnia and Herzegovina", "Bulgaria", "Croatia",
-        "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France",
-        "Georgia", "Germany", "Great Britain", "Greece", "Greenland Denmark",
-        "Hungary", "Iceland", "Ireland", "Isle of Man", "Italy", "Latvia",
-        "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Malta",
-        "Moldova- Republic of", "Monaco", "Montenegro", "Netherlands", "Norway",
-        "Poland", "Portugal", "Romania", "Russian Federation",
-        "Serbia and Montenegro", "Slovakia", "Slovenia", "Spain", "Sweden",
-        "Switzerland", "Turkey", "Ukraine", "United Kingdom",
-    ],
-    "asia": [
-        "Afghanistan", "Azerbaijan", "Bangladesh", "Bhutan", "Brunei Darussalam",
-        "Cambodia", "China", "India", "Indonesia", "Iran", "Iraq", "Israel",
-        "Japan", "Jordan", "Kazakhstan", "Korea- Dem People's Rep",
-        "Korea- Republic of", "Kuwait", "Kyrgyzstan", "Lao", "Lebanon",
-        "Malaysia", "Maldives", "Mongolia", "Myanmar", "Nepal", "Oman",
-        "Pakistan", "Palestine", "Philippines", "Saudi Arabia", "Singapore",
-        "Sri Lanka", "Syrian Arab Rep", "Taiwan R O C", "Tajikistan",
-        "Thailand", "Turkmenistan", "United Arab Emirates", "Uzbekistan",
-        "Viet Nam", "Yemen",
-    ],
-    "south america": [
-        "Argentina", "Bolivia", "Brazil", "Chile", "Colombia", "Ecuador",
-        "French Guyana", "Guyana", "Paraguay", "Peru", "Peru Amazon",
-        "Suriname", "Uruguay", "Venezuela",
-    ],
-    "north america": [
-        "Canada", "Costa Rica", "Cuba", "Dominican Republic", "El Salvador",
-        "Guatemala", "Haiti", "Honduras", "Jamaica", "Mexico", "Nicaragua",
-        "Panama", "Puerto Rico", "Trinidad & Tobago",
-    ],
-    "oceania": [
-        "American Samoa", "Australia", "Fiji", "New Caledonia", "New Zealand",
-        "Papua New Guinea", "Solomon Islands", "Tonga", "Vanuatu",
-        "Western Samoa",
-    ],
-}
-
-# Patterns pour detecter un continent dans une requete
+# Patterns pour detecter un continent dans une requete. La clé correspond au
+# nom de collection ex:Continent_<clé> dans le graphe RDF (GraphStore) : la
+# liste des pays par continent n'est plus dupliquée ici en dur — elle vient
+# toujours du graphe, seule source de vérité, pour éviter que les deux
+# divergent (ex: 52 pays "Afrique" ici vs 46 dans le graphe, constaté avant
+# ce correctif).
 CONTINENT_PATTERNS: list[tuple[str, str]] = [
-    (r'\bafrica\w*\b', 'africa'),
-    (r'\beurope\w*\b', 'europe'),
-    (r'\basia\w*\b', 'asia'),
-    (r'\bsouth\s*america\w*\b', 'south america'),
-    (r'\bnorth\s*america\w*\b', 'north america'),
-    (r'\boceania\w*\b', 'oceania'),
-    (r'\blatin\s*america\w*\b', 'south america'),
-    (r'\bamericas?\b', 'south america'),
+    (r'\bafrica\w*\b', 'Africa'),
+    (r'\beurope\w*\b', 'Europe'),
+    (r'\basia\w*\b', 'Asia'),
+    (r'\bsouth\s*america\w*\b', 'SouthAmerica'),
+    (r'\bnorth\s*america\w*\b', 'NorthAmerica'),
+    (r'\boceania\w*\b', 'Oceania'),
+    (r'\blatin\s*america\w*\b', 'SouthAmerica'),
+    (r'\bamericas?\b', 'SouthAmerica'),
 ]
 
 
@@ -92,7 +43,14 @@ class ThresholdStore:
     Un pays peut avoir plusieurs entrées (définition nationale + UNFCCC + FREL…).
     """
 
-    def __init__(self, csv_path: str | Path | None = None):
+    def __init__(
+        self,
+        csv_path: str | Path | None = None,
+        graph_store: GraphStore | None = None,
+    ):
+        # Résolu paresseusement (pas d'appel à get_graph_store() si aucune
+        # requête sur un continent n'est jamais faite).
+        self._graph_store = graph_store
         path = Path(csv_path or settings.table3_path)
         self._rows: list[dict[str, Any]] = []
         self._index: dict[str, list[dict]] = {}   # pays normalisé → lignes
@@ -160,10 +118,15 @@ class ThresholdStore:
         q = _normalise(query)
         found: list[str] = []
 
-        # D'abord chercher un continent
-        for pattern, continent in CONTINENT_PATTERNS:
+        # D'abord chercher un continent — la liste des pays vient toujours du
+        # graphe (seule source de vérité), pas d'une copie codée en dur ici.
+        for pattern, continent_key in CONTINENT_PATTERNS:
             if re.search(pattern, query, re.IGNORECASE):
-                continent_countries = CONTINENT_COUNTRIES.get(continent, [])
+                try:
+                    gs = self._graph_store or get_graph_store()
+                    continent_countries = gs.get_countries_by_continent(continent_key)
+                except FileNotFoundError:
+                    continent_countries = []
                 for c in continent_countries:
                     if c not in found and _normalise(c) in self._index:
                         found.append(c)
