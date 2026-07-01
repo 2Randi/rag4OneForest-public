@@ -25,8 +25,6 @@ organization, year). Best for precise queries like "FAO definition" or \
 "definitions from Brazil".
 2. vector_search - Semantic similarity search. Best for broad or conceptual \
 questions like "what is deforestation" or "definitions mentioning carbon".
-3. graph_context - Get related concepts and metadata for a known URI. \
-Use after finding a concept to enrich the context.
 
 INSTRUCTIONS:
 - Analyze the question and decide which tool(s) to use.
@@ -78,13 +76,6 @@ class AgentRAG:
             if not self._vs.is_indexed():
                 return []
             return self._vs.search(query, top_k=top_k)
-
-        elif tool_name == "graph_context":
-            ctx = self._gs.get_context(query)
-            if ctx:
-                return [{"text": ctx, "metadata": {"uri": query},
-                         "sources": ["graph"], "rrf_score": 0.01}]
-            return []
 
         return []
 
