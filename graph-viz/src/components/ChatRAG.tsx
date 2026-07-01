@@ -181,12 +181,12 @@ function MessageBubble({ msg, onOpenConcept }: { msg: Message; onOpenConcept: (u
 
 // Suggestions de départ
 const SUGGESTIONS = [
-  'What is the FAO definition of forest?',
-  'What is the crown cover threshold for Madagascar?',
-  'What are the UNFCCC criteria for afforestation?',
-  'What minimum area and crown cover does Germany use to define forest?',
-  'Compare deforestation definitions across FAO, UNFCCC and IPCC',
   'Which countries in Africa define forest with a minimum crown cover of 30%?',
+  'How many African countries use a minimum forest area of 0.5 hectares or less?',
+  'Which Asian countries define forest with a minimum crown cover below 20%?',
+  'Compare the forest definition thresholds of Madagascar and Côte d\'Ivoire',
+  'Compare deforestation definitions across FAO, UNFCCC and IPCC',
+  'What are the UNFCCC criteria for afforestation?',
 ]
 
 // Composant principal
