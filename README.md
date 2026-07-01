@@ -3,8 +3,10 @@
 > **GraphRAG sur un Knowledge Graph de définitions forestières** - Projet de stage, IRD, Université de Montpellier (RAG4OneForest)
 
 **Auteur :** RANDRIAMISAINA Tsiory
-**Laboratoire :** UMR ESPACE-DEV, IRD   
-**Période :** 13/04/2026 - 13/08/2026
+
+**Laboratoire :** UMR ESPACE-DEV, IRD
+
+**Période :** 14/04/2026 - 13/08/2026
 
 [![Python](https://img.shields.io/badge/Python-3.12+-blue)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.111-green)](https://fastapi.tiangolo.com)
