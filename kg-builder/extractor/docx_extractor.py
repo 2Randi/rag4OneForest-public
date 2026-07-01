@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import re
+import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
@@ -9,6 +10,9 @@ from typing import Optional
 import pycountry  # type: ignore[import-untyped]
 from docx import Document  # type: ignore[import-untyped]
 from docx.oxml.ns import qn  # type: ignore[import-untyped]  # noqa: F401 — utilisé dans hyperlinks (activable)
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import settings  # noqa: E402
 
 
 # Modèles de données
@@ -201,19 +205,39 @@ def _year_ext(s: str) -> str:
     return m.group(0) if m else ""
 
 
-def _country_ext(s: str) -> str:
-    t = s.lower()
+# La note (première parenthèse en tête de paragraphe) ne se découpe pas de
+# la même façon selon la section (title_3, normalisé en "scope" via
+# settings.scope_map) où elle apparaît :
+#   - International / General : organisation seule, jamais de pays
+#     (ex: "OECD", "IPCC - 2003").
+#   - National : pays [+ organisation] [+ année] (ex: "Kenya UNFCCC 2006"),
+#     sauf "USA-FED-..." (agences fédérales US, ex: "USA-FED-Census Bureau 2006")
+#     où il n'y a pas de pays au sens pycountry, seulement les USA.
+#   - State, province and local : "<Pays>-<Région> [année]"
+#     (ex: "Canada-BC 2008"), sauf "USA-STATE-..." (ex: "USA-STATE-Georgia 2003")
+#     où la région ("Georgia") serait sinon confondue avec le pays homonyme
+#     (la Géorgie) si on cherchait un nom de pays dans tout le texte.
+def _country_ext(s: str, scope: str = "") -> str:
+    t = s.strip().lower()
+    if t.startswith("usa-state") or t.startswith("usa-fed"):
+        return "United States"
+    if scope in ("International", "General"):
+        return ""
     for country in pycountry.countries:
         if country.name.lower() in t:
             return country.name
     return ""
 
 
-def _org_ext(s: str) -> str:
+def _org_ext(s: str, scope: str = "") -> str:
     """Extrait l'organisation = résidu après suppression de l'année et du pays."""
     org = re.sub(r"(19|20)\d{2}", "", s)
-    for country in pycountry.countries:
-        org = org.replace(country.name, "")
+    t = s.strip().lower()
+    if t.startswith("usa-state") or t.startswith("usa-fed"):
+        return org.strip(" -;.")
+    if scope not in ("International", "General"):
+        for country in pycountry.countries:
+            org = org.replace(country.name, "")
     return org.strip(" -;.")
 
 
@@ -281,6 +305,7 @@ def _traverse(node: dict, doc: Document,
             continue
 
         padded = (current + ["", "", "", ""])[:4]
+        scope  = settings.scope_map.get(padded[2], "")
         records.append(DefinitionRecord(
             title_1=padded[0],      title_2=padded[1],
             title_3=padded[2],      title_4=padded[3],
@@ -289,8 +314,8 @@ def _traverse(node: dict, doc: Document,
             urls=urls,
             references=refs,
             definition=defn,
-            organization=_org_ext(source),
-            country=_country_ext(source),
+            organization=_org_ext(source, scope),
+            country=_country_ext(source, scope),
             year=_year_ext(source),
         ))
 
