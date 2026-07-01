@@ -284,7 +284,6 @@ ex:Afforestation_32 a skos:Concept ;
     skos:prefLabel "Afforestation"@en .
 
 ex:Afforestation_33 a skos:Concept ;
-    dct:creator "1" ;
     dct:spatial ex:Country_PAK ;
     skos:broadMatch ex:Afforestation ;
     skos:definition "To establish a forest on an area from which forest vegetation has always or long been absent. Definition adopted from the British Commonwealth Forest Terminology Part-I, 1953. Source: Mumtaz Ahmad, Section Forest Officer, Pakistan Min. of Environment, Local Government, and Rural Development"@en ;
@@ -293,7 +292,6 @@ ex:Afforestation_33 a skos:Concept ;
     skos:prefLabel "AFFORESTATION"@tl .
 
 ex:Afforestation_34 a skos:Concept ;
-    dct:creator "2" ;
     dct:spatial ex:Country_PAK ;
     skos:broadMatch ex:Afforestation ;
     skos:definition "To establish a species or frees on an area in which it did not occur naturally. Definition adopted from the British Commonwealth Forest Terminology Part-I, 1953. Source: Mumtaz Ahmad, Section Forest Officer, Pakistan Min. of Environment, Local Government, and Rural Development"@en ;
@@ -319,6 +317,7 @@ ex:Afforestation_36 a skos:Concept ;
     skos:prefLabel "AFFORESTATION"@tl .
 
 ex:Afforestation_37 a skos:Concept ;
+    dct:creator "Ria" ;
     dct:spatial ex:Country_OMN ;
     skos:broadMatch ex:Afforestation ;
     skos:definition "The act of installation, through artificial methods, of the forest vegetation on lands where forest was never present or it was removed for a long time. Sorin Sfirlogea <sorinsf@rosilva.ro National Forests Administration"@en ;
@@ -407,7 +406,7 @@ ex:Afforestation_49 a skos:Concept ;
     skos:prefLabel "AFFORESTATION"@tl .
 
 ex:Afforestation_5 a skos:Concept ;
-    dct:creator "and" ;
+    dct:creator "and New Zealand" ;
     dct:spatial ex:Country_AUS ;
     skos:broadMatch ex:Afforestation ;
     skos:definition "The establishment of a species of forest on an area where it does not occur naturally (British Commonwealth Terminology) (Ford-Robertson 1971"@en ;
@@ -856,7 +855,6 @@ ex:Concept_12 a skos:Concept ;
     skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
 
 ex:Concept_13 a skos:Concept ;
-    dct:creator "2" ;
     dct:source "http://www.ncfcnfr.net/glossary.html"^^xsd:anyURI ;
     skos:definition "Forest Management - The practical application of scientific, economic and social principles to the administration and working of a forest for specified objectives. Particularly, that branch of forestry concerned with the overall administrative, economic, legal and social aspects and with the essentially scientific and technical aspects, especially silviculture, protection and forest regulation"@en ;
     skos:inScheme ex:ForestScheme ;
@@ -1238,7 +1236,6 @@ ex:Concept_64 a skos:Concept ;
     skos:prefLabel "FORESTATION"@de .
 
 ex:Concept_65 a skos:Concept ;
-    dct:creator "3" ;
     dct:source "http://nfdp.ccfm.org/silviterm/silvi_e/silvitermetohe.htm#F"^^xsd:anyURI ;
     skos:definition "The establishment of forest, naturally or artificially, on an area, whether previously carrying forest or not. cf. afforestation, deforestation, reforestation"@en ;
     skos:inScheme ex:ForestScheme ;
@@ -1340,6 +1337,7 @@ ex:Concept_8 a skos:Concept ;
     skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
 
 ex:Concept_80 a skos:Concept ;
+    dct:creator "Ria" ;
     dct:spatial ex:Country_OMN ;
     skos:definition "Natural regeneration - -The act of installation, through natural methods, of the forest vegetation. Sorin Sfirlogea <sorinsf@rosilva.ro National Forests Administration"@en ;
     skos:inScheme ex:ForestScheme ;
@@ -1414,7 +1412,6 @@ ex:Concept_92 a skos:Concept ;
     skos:note "South Africa" .
 
 ex:Concept_93 a skos:Concept ;
-    dct:creator "45°" ;
     dct:source "http://www.bioone.org/doi/pdf/10.1659/0276-4741(2002)022"^^xsd:anyURI ;
     skos:definition "Inaccessible forest: A forest area is inaccessible if it is located on a slope of more than 100 per cent or if it is surrounded by steep slopes, landslides, or other physical obstacles. per cent5B0085:IONSFR per cent5D2.0.CO per cent3B2"@en ;
     skos:inScheme ex:ForestScheme ;
@@ -3153,6 +3150,7 @@ ex:Deforestation_259 a skos:Concept ;
     skos:prefLabel "DEFORESTATION"@de .
 
 ex:Deforestation_26 a skos:Concept ;
+    dct:creator "Ria" ;
     dct:spatial ex:Country_OMN ;
     skos:broadMatch ex:Deforestation ;
     skos:definition "The act of removing the forest vegetation from forest lands, without changing the land destination (considering the administrative point of view). Sorin Sfirlogea <sorinsf@rosilva.ro National Forests Administration"@en ;
@@ -3945,7 +3943,6 @@ ex:Forest_1 a skos:Concept ;
     skos:prefLabel "FOREST/FOREST LAND"@de .
 
 ex:Forest_2 a skos:Concept ;
-    dct:creator "1598" ;
     dct:source "http://books.google.com/books?id=jhZsJc4z5RkC&pg=PA657&lpg=PA657&dq=hawaii+forestland&source=web&ots=YlCTj-qUZR&sig=PtkyXu4oaaWBg-3k45z2nub3mDs#PPA645,M1"^^xsd:anyURI,
         "http://www.ecobooks.com/forests.htm"^^xsd:anyURI ;
     skos:broadMatch ex:Forest ;
@@ -3986,7 +3983,6 @@ ex:Forest_6 a skos:Concept ;
     skos:prefLabel "FOREST/FOREST LAND"@de .
 
 ex:Forest_7 a skos:Concept ;
-    dct:creator "1" ;
     dct:source "http://ruralsystemguide.com/Appendices/GlossF.html"^^xsd:anyURI ;
     skos:broadMatch ex:Forest ;
     skos:definition "A community dominated by dense, extensive tree cover. (2) An area managed for producing timber and other products, or maintained under woody vegetation for such indirect benefits as protection of watersheds or recreation. (3) An area within an administrative boundary of a forest agency, whether having trees or not.(4) Land primarily devoted to trees"@en ;
@@ -5666,6 +5662,7 @@ ex:Reforestation_31 a skos:Concept ;
     skos:prefLabel "Reforestation"@en .
 
 ex:Reforestation_32 a skos:Concept ;
+    dct:creator "Ria" ;
     dct:spatial ex:Country_OMN ;
     skos:broadMatch ex:Reforestation ;
     skos:definition "The act of installation, through artificial methods, of the forest vegetation on lands where forest was recently removed. Sorin Sfirlogea <sorinsf@rosilva.ro National Forests Administration"@en ;
@@ -6198,7 +6195,6 @@ ex:Regeneration_14 a skos:Concept ;
     skos:prefLabel "REGENERATION"@de .
 
 ex:Regeneration_15 a skos:Concept ;
-    dct:creator "17" ;
     dct:source "http://rredc.nrel.gov/biomass/forest/tim_glossary/t_glossary.html#F"^^xsd:anyURI ;
     skos:broadMatch ex:Regeneration ;
     skos:definition "Renewal of a tree crop, either by natural or artificial means. -Young tree crop"@en ;
@@ -8968,7 +8964,6 @@ ex:Tree_170 a skos:Concept ;
     skos:prefLabel "TREE"@vi .
 
 ex:Tree_171 a skos:Concept ;
-    dct:creator "15" ;
     dct:source "http://www.orgler.ws/huxley/Huxley%20Tree%20Ordinance%202001.htm"^^xsd:anyURI ;
     skos:broadMatch ex:Tree ;
     skos:definition "A single stemmed, woody plant with a mature height of a minimum of fifteen feet; a small tree less than twenty-five feet (25’), a medium tree twenty-five to forty feet (25’-40’), and a large tree over forty feet (40’"@en ;
@@ -9061,7 +9056,6 @@ ex:Tree_181 a skos:Concept ;
     skos:prefLabel "TREE"@vi .
 
 ex:Tree_182 a skos:Concept ;
-    dct:creator "20" ;
     dct:source "http://www.tiburon.org/Government/images/Departments/planning%20dept/plng%20forms/TreeOrd.htm#Section%2015A-2.%20Definitions"^^xsd:anyURI ;
     skos:broadMatch ex:Tree ;
     skos:definition "A woody perennial plant that has a trunk circumference of twenty inches measured at twenty-four (24) inches above the ground surface; or A woody perennial plant at least fifteen (15) feet in height that usually, but not necessarily, has a single trunk. In applying subsection (1) above, for trees with more than one trunk, the circumference measurement shall be ascertained from a single measurement around the outside perimeter of all trunks and shall not be calculated as the sum total of the circumferences of the individual trunks. References to \"tree\" shall include the plural"@en ;
@@ -9331,7 +9325,6 @@ ex:Tree_211 a skos:Concept ;
     skos:prefLabel "TREE"@vi .
 
 ex:Tree_212 a skos:Concept ;
-    dct:creator "15" ;
     dct:source "http://www.eastgr.org/citycode/IIIPARKS/35.html"^^xsd:anyURI ;
     skos:broadMatch ex:Tree ;
     skos:definition "Any self-supporting woody plant of a species which normally grows to an overall height of fifteen feet or more. (Ord., 2-28-92; Ord., 8-14-92"@en ;
@@ -9738,7 +9731,6 @@ ex:Tree_260 a skos:Concept ;
     skos:prefLabel "TREE"@vi .
 
 ex:Tree_261 a skos:Concept ;
-    dct:creator "–" ;
     dct:date "2000"^^xsd:gYear ;
     dct:source "http://www.belizeaudubon.org/new_site/wp-content/uploads/2014/10/Forest_Act_213.pdf"^^xsd:anyURI ;
     dct:spatial ex:Country_BLZ ;
@@ -9771,7 +9763,6 @@ ex:Tree_263 a skos:Concept ;
     skos:prefLabel "TREE"@vi .
 
 ex:Tree_264 a skos:Concept ;
-    dct:creator "–" ;
     dct:date "2014"^^xsd:gYear ;
     dct:source "https://www.agriculture.gov.ie/media/migration/forestry/forestrythelaw/ForestryAct2014240517.pdf"^^xsd:anyURI ;
     dct:spatial ex:Country_IRL ;
@@ -10285,6 +10276,7 @@ ex:Tree_75 a skos:Concept ;
     skos:prefLabel "TREE"@vi .
 
 ex:Tree_76 a skos:Concept ;
+    dct:creator "Ria" ;
     dct:spatial ex:Country_OMN ;
     skos:broadMatch ex:Tree ;
     skos:definition "Wooden perennate plant, with a minimum 7 m height, able to accumulate vegetal biomass and to reproduce itself. Source: Sorin Sfirlogea <sorinsf@rosilva.ro National Forests Administration"@en ;
@@ -12820,7 +12812,6 @@ ex:Woodland_144 a skos:Concept ;
     skos:prefLabel "WOODS, WOODLAND, OTHER WOODED LANDS (OWL)"@de .
 
 ex:Woodland_145 a skos:Concept ;
-    dct:creator "6" ;
     dct:source "http://home.gdbc.gov.bc.ca/TRIM/IDM_Project_Riparian_Zone_specs.pdf"^^xsd:anyURI ;
     skos:broadMatch ex:Woodland ;
     skos:definition "Wooded area - A land area which is at least six percent covered with trees that are two (2) metres or more in height"@en ;
@@ -13088,7 +13079,7 @@ ex:Woodland_39 a skos:Concept ;
     skos:prefLabel "WOODS, WOODLAND, OTHER WOODED LANDS (OWL)"@de .
 
 ex:Woodland_4 a skos:Concept ;
-    dct:creator "– South" ;
+    dct:creator "– South Australia" ;
     dct:source "http://www.atlas.sa.gov.au/atlas1986/2ENVIRONMENT_RESOURCES/5VEGETATION.cfm"^^xsd:anyURI ;
     dct:spatial ex:Country_AUS ;
     skos:broadMatch ex:Woodland ;
@@ -13351,6 +13342,7 @@ ex:Woodland_8 a skos:Concept ;
     skos:prefLabel "WOODS, WOODLAND, OTHER WOODED LANDS (OWL)"@de .
 
 ex:Woodland_80 a skos:Concept ;
+    dct:creator "Ria" ;
     dct:spatial ex:Country_OMN ;
     skos:broadMatch ex:Woodland ;
     skos:definition "OWL - forests owned by different state owners outside the \"forest fund\" - which are not characterized by statistical parameters. For FRA 2000 - Source: UN/ECE 2000 p 85"@en ;
@@ -15673,7 +15665,6 @@ ex:Afforestation_63 a skos:Concept ;
     skos:prefLabel "AFFORESTATION"@tl .
 
 ex:ArticleParagraphOfTheLaw_1 a skos:Concept ;
-    dct:creator "?" ;
     dct:date "2013"^^xsd:gYear ;
     dct:source "http://www.efi.int/files/attachments/publications/annex_1_to_efi_technical_report_88__2013.pdf"^^xsd:anyURI ;
     dct:spatial ex:Country_BGR ;
@@ -16722,6 +16713,7 @@ ex:ForestLand_16 a skos:Concept ;
         "National"@en .
 
 ex:ForestLand_17 a skos:Concept ;
+    dct:creator "Ria" ;
     dct:source "http://www.fris.sk/Phare/Projects/ManagementOfForestInEurope/PDF/annex2.pdf"^^xsd:anyURI ;
     dct:spatial ex:Country_OMN ;
     skos:broadMatch ex:Forest ;
@@ -16822,6 +16814,7 @@ ex:ForestLand_6 a skos:Concept ;
         "National"@en .
 
 ex:ForestLand_7 a skos:Concept ;
+    dct:creator "Ria" ;
     dct:spatial ex:Country_OMN ;
     skos:broadMatch ex:Forest ;
     skos:definition "Surface of forest covered by forest vegetation, destined to fulfill social and/or economic function. Sorin Sfirlogea <sorinsf@rosilva.ro National Forests Administration"@en ;
@@ -17324,7 +17317,6 @@ ex:Forest_1048 a skos:Concept ;
         "National"@en .
 
 ex:Forest_1049 a skos:Concept ;
-    dct:creator "–" ;
     dct:date "2011"^^xsd:gYear ;
     dct:source "http://www.tradingeconomics.com/barbados/forest-area-sq-km-wb-data.html"^^xsd:anyURI ;
     dct:spatial ex:Country_BRB ;
@@ -17484,7 +17476,7 @@ ex:Forest_1060 a skos:Concept ;
         "National"@en .
 
 ex:Forest_1061 a skos:Concept ;
-    dct:creator "– n and Northern Affairs" ;
+    dct:creator "– Indian and Northern Affairs" ;
     dct:source "http://www.ainc-inac.gc.ca/pr/pub/bldg/frst/glss_e.html"^^xsd:anyURI ;
     dct:spatial ex:Country_CAN ;
     skos:broadMatch ex:Forest ;
@@ -17744,7 +17736,6 @@ ex:Forest_1081 a skos:Concept ;
         "National"@en .
 
 ex:Forest_1082 a skos:Concept ;
-    dct:creator "FIJI" ;
     dct:date "2016"^^xsd:gYear ;
     dct:source "http://www.parliament.gov.fj/wp-content/uploads/2017/03/Bill-No-13-Forest.pdf"^^xsd:anyURI ;
     dct:spatial ex:Country_FJI ;
@@ -18631,7 +18622,6 @@ ex:Forest_1151 a skos:Concept ;
         "National"@en .
 
 ex:Forest_1152 a skos:Concept ;
-    dct:creator "?" ;
     dct:source "http://icaci.org/documents/ICC_proceedings/ICC2011/Oral%20Presentations%20PDF/A3-Data%20integration/CO-028.pdf"^^xsd:anyURI ;
     dct:spatial ex:Country_POL ;
     skos:broadMatch ex:Forest ;
@@ -18712,7 +18702,7 @@ ex:Forest_1158 a skos:Concept ;
         "National"@en .
 
 ex:Forest_1159 a skos:Concept ;
-    dct:creator "&" ;
+    dct:creator "Serbia" ;
     dct:source "http://www.unece.org/trade/timber/docs/dp/dp-40.pdf"^^xsd:anyURI ;
     dct:spatial ex:Country_MNE ;
     skos:broadMatch ex:Forest ;
@@ -19544,6 +19534,7 @@ ex:Forest_1262 a skos:Concept ;
         "National"@en .
 
 ex:Forest_1263 a skos:Concept ;
+    dct:creator "Ria" ;
     dct:source "http://bucharest.usembassy.gov/InfoA/new05.htm"^^xsd:anyURI ;
     dct:spatial ex:Country_OMN ;
     skos:broadMatch ex:Forest ;
@@ -19884,7 +19875,7 @@ ex:Forest_1296 a skos:Concept ;
         "State"@en .
 
 ex:Forest_1297 a skos:Concept ;
-    dct:creator "INDIA-Kerala" ;
+    dct:creator "Kerala" ;
     dct:date "1978"^^xsd:gYear ;
     dct:spatial ex:Country_IND ;
     skos:broadMatch ex:Forest ;
@@ -19896,7 +19887,7 @@ ex:Forest_1297 a skos:Concept ;
         "State"@en .
 
 ex:Forest_1298 a skos:Concept ;
-    dct:creator "INDIA-Mizoram" ;
+    dct:creator "Mizoram" ;
     dct:date "2010"^^xsd:gYear ;
     dct:source "http://www.forest.mizoram.gov.in/index.php?option=com_content&task=view&id=127"^^xsd:anyURI ;
     dct:spatial ex:Country_IND ;
@@ -20110,7 +20101,7 @@ ex:Forest_1312 a skos:Concept ;
         "State"@en .
 
 ex:Forest_1313 a skos:Concept ;
-    dct:creator "South" ;
+    dct:creator "South Australia" ;
     dct:source "http://www.atlas.sa.gov.au/atlas1986/2ENVIRONMENT_RESOURCES/5VEGETATION.cfm"^^xsd:anyURI ;
     dct:spatial ex:Country_AUS ;
     skos:broadMatch ex:Forest ;
@@ -21567,7 +21558,7 @@ ex:Forest_1423 a skos:Concept ;
         "State"@en .
 
 ex:Forest_1424 a skos:Concept ;
-    dct:creator "INDIA-Kerala" ;
+    dct:creator "Kerala" ;
     dct:date "2003"^^xsd:gYear ;
     dct:source "http://www.kerenvis.nic.in/legislation/Microsoft%20Word%20-%20Act2003.pdf"^^xsd:anyURI ;
     dct:spatial ex:Country_IND ;
@@ -22734,7 +22725,7 @@ ex:Forest_1516 a skos:Concept ;
         "State"@en .
 
 ex:Forest_1517 a skos:Concept ;
-    dct:creator "INDONESIA-Papua" ;
+    dct:creator "Papua" ;
     dct:date "2002"^^xsd:gYear ;
     dct:source "http://74.125.93.132/search?q=cache:bwzUkrDvEFsJ:www.papuaweb.org/dlib/lap/sullivan/perdasi-perdasus/forestry.rtf+%22forest+means%22&cd=215&hl=en&ct=clnk&gl=us&client=safari"^^xsd:anyURI ;
     dct:spatial ex:Country_IDN ;
@@ -23116,7 +23107,6 @@ ex:Forest_168 a skos:Concept ;
         "Land cover"@en .
 
 ex:Forest_169 a skos:Concept ;
-    dct:creator "3" ;
     dct:source "http://www.gisdevelopment.net/aars/acrs/1995/ts6/ts6003pf.htm"^^xsd:anyURI ;
     skos:broadMatch ex:Forest ;
     skos:definition "Canopy cover is > 60%. Tree height is exceeding 2 meters"@en ;
@@ -23353,7 +23343,6 @@ ex:Forest_190 a skos:Concept ;
         "Land cover"@en .
 
 ex:Forest_191 a skos:Concept ;
-    dct:creator "1" ;
     dct:source "http://www.fw.vt.edu/zedaker/3364/ecolterms.html"^^xsd:anyURI ;
     skos:broadMatch ex:Forest ;
     skos:definition "FOREST COVER: All trees and other plants occupying the ground in a forest, i.e. including any ground cover. NOTE: Is the silviculturist's crop viewed from the ecologist's angle. (2) All woody growth occupying the ground in a forest, as distinct from the ground cover NOTE: Is the silviculturist's forest crop viewed from the ecologist's angle. (3) A category of forest site, including all the interchangeable phases of vegetation that it supports, defined mainly by the general nature of the ground cover. NOTE: As originally developed by Cajander for Finland"@en ;
@@ -23510,7 +23499,6 @@ ex:Forest_205 a skos:Concept ;
         "Land cover"@en .
 
 ex:Forest_206 a skos:Concept ;
-    dct:creator "2" ;
     dct:source "http://www.cnr.vt.edu/for3364/ecolterms.htm#F"^^xsd:anyURI,
         "http://www.fw.vt.edu/zedaker/3364/ecolterms.html"^^xsd:anyURI ;
     skos:broadMatch ex:Forest ;
@@ -24464,7 +24452,6 @@ ex:Forest_298 a skos:Concept ;
         "Land use"@en .
 
 ex:Forest_299 a skos:Concept ;
-    dct:creator "26" ;
     dct:source "http://rredc.nrel.gov/biomass/forest/tim_glossary/t_glossary.html#F"^^xsd:anyURI,
         "http://www.rook.org/earl/bwca/lists/glossary/"^^xsd:anyURI ;
     skos:broadMatch ex:Forest ;
@@ -26100,7 +26087,6 @@ ex:Forest_534 a skos:Concept ;
         "National"@en .
 
 ex:Forest_535 a skos:Concept ;
-    dct:creator "1879" ;
     dct:source "http://books.google.com/books?pg=RA6-PA56&lpg=RA6-PA56&dq=%22forest%20means%22&sig=0C-6Qq9owihmR0j54aj8YA7qI30&ei=aQhXS92fHJCXtgfdlpW0BA&ct=result&id=RiETAAAAYAAJ&ots=6GPnEMMlVl&output=text"^^xsd:anyURI ;
     dct:spatial ex:Country_IND ;
     skos:broadMatch ex:Forest ;
@@ -26740,6 +26726,7 @@ ex:Forest_585 a skos:Concept ;
         "National"@en .
 
 ex:Forest_586 a skos:Concept ;
+    dct:creator "Ria" ;
     dct:source "http://www.metla.fi/eu/cost/e43/minutes/wg1-min-florence.pdf"^^xsd:anyURI ;
     dct:spatial ex:Country_OMN ;
     skos:broadMatch ex:Forest ;
@@ -27011,7 +26998,6 @@ ex:Forest_607 a skos:Concept ;
         "National"@en .
 
 ex:Forest_608 a skos:Concept ;
-    dct:creator "1598" ;
     dct:spatial ex:Country_GBR ;
     skos:broadMatch ex:Forest ;
     skos:definition "A certen Territorie of wooddy grounds & fruitfull pastures, priviledged for wild beasts and foules of, Forrest, Chase, and Warren, to rest and abide in, in the safe protection of the King, for his princely delight and pleasure, ...\" (Kenneth Rosenbaum <kenro@igc.apc.org from Manwood (1598"@en ;
@@ -28123,7 +28109,6 @@ ex:Forest_700 a skos:Concept ;
         "National"@en .
 
 ex:Forest_701 a skos:Concept ;
-    dct:creator "?" ;
     dct:date "2003"^^xsd:gYear ;
     dct:source "http://web.idrc.ca/en/ev-43425-201-1-DO_TOPIC.html"^^xsd:anyURI ;
     dct:spatial ex:Country_CRI ;
@@ -28785,7 +28770,6 @@ ex:Forest_760 a skos:Concept ;
         "National"@en .
 
 ex:Forest_761 a skos:Concept ;
-    dct:creator "?" ;
     dct:date "2006"^^xsd:gYear ;
     dct:source "https://cdm.unfccc.int/DNA/DNA/allCountriesARInfos.html"^^xsd:anyURI ;
     dct:spatial ex:Country_GHA ;
@@ -29071,7 +29055,6 @@ ex:Forest_784 a skos:Concept ;
         "National"@en .
 
 ex:Forest_785 a skos:Concept ;
-    dct:creator "1865" ;
     dct:source "http://www.mtnforum.org/sites/default/files/pub/4946.pdf"^^xsd:anyURI ;
     dct:spatial ex:Country_IND ;
     skos:broadMatch ex:Forest ;
@@ -29256,7 +29239,6 @@ ex:Forest_799 a skos:Concept ;
         "National"@en .
 
 ex:Forest_80 a skos:Concept ;
-    dct:creator "26" ;
     dct:source "http://www.genesisny.net/Commodity/Timber/Timberglos.html"^^xsd:anyURI,
         "http://www.pkarticleshub.com/2012/02/04/forests-"^^xsd:anyURI ;
     skos:broadMatch ex:Forest ;
@@ -29455,7 +29437,6 @@ ex:Forest_817 a skos:Concept ;
         "National"@en .
 
 ex:Forest_818 a skos:Concept ;
-    dct:creator "?" ;
     dct:date "1965"^^xsd:gYear ;
     dct:source "http://www.kalro.org:8080/repository/bitstream/0/5057/1/REPRINT%20COLLECTION%2063%20Split%2035.pdf"^^xsd:anyURI ;
     dct:spatial ex:Country_KEN ;
@@ -30157,7 +30138,6 @@ ex:Forest_874 a skos:Concept ;
         "National"@en .
 
 ex:Forest_875 a skos:Concept ;
-    dct:creator "?" ;
     dct:date "2007"^^xsd:gYear ;
     dct:source "https://cdm.unfccc.int/DNA/DNA/allCountriesARInfos.html"^^xsd:anyURI ;
     dct:spatial ex:Country_MNG ;
@@ -30205,7 +30185,6 @@ ex:Forest_878 a skos:Concept ;
         "National"@en .
 
 ex:Forest_879 a skos:Concept ;
-    dct:creator "?" ;
     dct:date "2007"^^xsd:gYear ;
     dct:source "https://cdm.unfccc.int/DNA/DNA/allCountriesARInfos.html"^^xsd:anyURI ;
     dct:spatial ex:Country_MMR ;
@@ -30238,7 +30217,6 @@ ex:Forest_880 a skos:Concept ;
         "National"@en .
 
 ex:Forest_881 a skos:Concept ;
-    dct:creator "&" ;
     dct:date "1964"^^xsd:gYear ;
     dct:source "http://rmportal.net/tools/biodiversity-support-program/cbnfm/USAID-BDB-cd-2-data/pnabb308-nepal.pdf/attachment_download/file"^^xsd:anyURI ;
     dct:spatial ex:Country_NPL ;
@@ -30561,7 +30539,6 @@ ex:Forest_907 a skos:Concept ;
         "National"@en .
 
 ex:Forest_908 a skos:Concept ;
-    dct:creator "?" ;
     dct:date "1991"^^xsd:gYear ;
     dct:source "http://icaci.org/documents/ICC_proceedings/ICC2011/Oral%20Presentations%20PDF/A3-Data%20integration/CO-028.pdf"^^xsd:anyURI ;
     dct:spatial ex:Country_POL ;
@@ -30574,7 +30551,6 @@ ex:Forest_908 a skos:Concept ;
         "National"@en .
 
 ex:Forest_909 a skos:Concept ;
-    dct:creator "?" ;
     dct:source "http://icaci.org/documents/ICC_proceedings/ICC2011/Oral%20Presentations%20PDF/A3-Data%20integration/CO-028.pdf"^^xsd:anyURI ;
     dct:spatial ex:Country_POL ;
     skos:broadMatch ex:Forest ;
@@ -30631,6 +30607,7 @@ ex:Forest_913 a skos:Concept ;
         "National"@en .
 
 ex:Forest_914 a skos:Concept ;
+    dct:creator "Ria" ;
     dct:date "1996"^^xsd:gYear ;
     dct:source "http://www.fao.org/docrep/w7170E/w7170e0f.htm"^^xsd:anyURI ;
     dct:spatial ex:Country_OMN ;
@@ -30643,6 +30620,7 @@ ex:Forest_914 a skos:Concept ;
         "National"@en .
 
 ex:Forest_915 a skos:Concept ;
+    dct:creator "Ria" ;
     dct:date "2000"^^xsd:gYear ;
     dct:source "http://www.fris.sk/Phare/Projects/ManagementOfForestInEurope/PDF/annex2.pdf"^^xsd:anyURI ;
     dct:spatial ex:Country_OMN ;
@@ -30655,6 +30633,7 @@ ex:Forest_915 a skos:Concept ;
         "National"@en .
 
 ex:Forest_916 a skos:Concept ;
+    dct:creator "Ria" ;
     dct:date "2011"^^xsd:gYear ;
     dct:source "http://www.efi.int/files/attachments/publications/annex_1_to_efi_technical_report_88__2013.pdf"^^xsd:anyURI ;
     dct:spatial ex:Country_OMN ;
@@ -30667,6 +30646,7 @@ ex:Forest_916 a skos:Concept ;
         "National"@en .
 
 ex:Forest_917 a skos:Concept ;
+    dct:creator "Ria" ;
     dct:source "http://www.unece.org/fileadmin/DAM/timber/fra/pdf/chp1_tot.pdf"^^xsd:anyURI ;
     dct:spatial ex:Country_OMN ;
     skos:broadMatch ex:Forest ;
@@ -30678,6 +30658,7 @@ ex:Forest_917 a skos:Concept ;
         "National"@en .
 
 ex:Forest_918 a skos:Concept ;
+    dct:creator "Ria" ;
     dct:spatial ex:Country_OMN ;
     skos:broadMatch ex:Forest ;
     skos:definition "Dense group of trees, interdependent one to another and to the other plants, animals and environmental conditions, creating a complex and unitary community, able to fulfill social and economic functions. Sorin Sfirlogea <sorinsf@rosilva.ro National Forests Administration"@en ;
@@ -30688,6 +30669,7 @@ ex:Forest_918 a skos:Concept ;
         "National"@en .
 
 ex:Forest_919 a skos:Concept ;
+    dct:creator "Ria" ;
     dct:spatial ex:Country_OMN ;
     skos:broadMatch ex:Forest ;
     skos:definition "This term includes not only surfaces covered by forest vegetation, but also nurseries, administrative surfaces (around the forest ranges offices, a.o.) glades (blanks) (M. Ilie, Bucuresti, Romania"@en ;
@@ -30927,6 +30909,7 @@ ex:Forest_938 a skos:Concept ;
         "National"@en .
 
 ex:Forest_939 a skos:Concept ;
+    dct:creator "Soa" ;
     dct:spatial ex:Country_MLI ;
     skos:broadMatch ex:Forest ;
     skos:definition "Min. av. height 5-10 m. Canopy closure 20%. Source: ECE-FAO Partnership Programme: Kenya Workshop on Forestry Statistics. Appendix 6"@en ;
@@ -34319,7 +34302,7 @@ ex:Forest_1205 a skos:Concept ;
         "National"@en .
 
 ex:Forest_1206 a skos:Concept ;
-    dct:creator "USA-FED-DA-NRCS  &" ;
+    dct:creator "USA-FED-DA-NRCS" ;
     dct:date "2002"^^xsd:gYear ;
     dct:spatial ex:Country_USA ;
     skos:broadMatch ex:Forest ;
@@ -37080,7 +37063,7 @@ ex:ROUUnfccc_1 a skos:Concept ;
     ex:minAreaHa 0.25 ;
     ex:minCrownCoverPct 10.0 ;
     ex:minTreeHeightM 5.0 ;
-    dct:creator "KP" ;
+    dct:creator "Ria  KP" ;
     dct:date "2007"^^xsd:gYear ;
     dct:source "http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529"^^xsd:anyURI,
         "http://unfccc.int/files/national_reports/initial_reports_under_the_kyoto_protocol/application/pdf/romanias_initial_report_under_the_kyoto_protocol.pdf"^^xsd:anyURI ;
