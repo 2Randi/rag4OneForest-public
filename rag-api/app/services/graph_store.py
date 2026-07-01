@@ -39,11 +39,19 @@ class GraphStore:
 
     # SPARQL générique
 
-    def query_sparql(self, sparql: str) -> list[dict[str, Any]]:
-        """Exécute une requête SPARQL SELECT et retourne les résultats."""
+    def query_sparql(
+        self, sparql: str, bindings: dict[str, Any] | None = None
+    ) -> list[dict[str, Any]]:
+        """
+        Exécute une requête SPARQL SELECT et retourne les résultats.
+        bindings : valeurs à lier à des variables (ex: {"uri": URIRef(...)})
+        au lieu de les interpoler dans le texte de la requête — évite qu'une
+        valeur contenant des caractères spéciaux SPARQL (>, ", {, }...) ne
+        casse ou ne détourne la requête.
+        """
         full_query = settings.sparql_prefixes + sparql
         rows = []
-        for row in self._g.query(full_query):
+        for row in self._g.query(full_query, initBindings=bindings):
             rows.append({str(var): str(val) if val is not None else ""
                           for var, val in zip(row.labels, row)})
         return rows
@@ -165,12 +173,20 @@ SELECT DISTINCT ?uri ?label ?def ?country ?year ?scope ?org ?orgMember WHERE {{
 
     def get_concept(self, uri: str) -> dict | None:
         """Récupère toutes les propriétés d'un concept donné."""
-        sparql = f"""
-SELECT ?pred ?obj WHERE {{
-    <{uri}> ?pred ?obj .
-}}
+        # uri vient d'un paramètre d'URL utilisateur (urllib.parse.unquote) :
+        # lié via initBindings plutôt qu'interpolé dans le texte de la
+        # requête, sinon un caractère comme '>' casse la syntaxe IRIREF et
+        # peut altérer la requête exécutée (vérifié : provoque une
+        # ParseException, potentiellement pire selon le contenu).
+        sparql = """
+SELECT ?pred ?obj WHERE {
+    ?uri ?pred ?obj .
+}
 """
-        rows = self.query_sparql(sparql)
+        try:
+            rows = self.query_sparql(sparql, bindings={"uri": URIRef(uri)})
+        except Exception:
+            return None
         if not rows:
             return None
 
@@ -354,7 +370,10 @@ SELECT DISTINCT ?uri ?label ?def ?year ?org
 
     def get_countries_by_continent(self, continent: str) -> list[str]:
         """Retourne les noms des pays d'un continent via le graphe SPARQL."""
-        continent_key = continent.strip().replace(" ", "")
+        # Interpolé dans une URI (ex:Continent_X), pas dans un littéral :
+        # restreint aux lettres par défense en profondeur, cohérent avec
+        # org_key dans search_by_keyword.
+        continent_key = re.sub(r"[^A-Za-z]", "", continent)
         sparql = f"""
 SELECT ?label WHERE {{
     ex:Continent_{continent_key} skos:member ?country .
@@ -380,7 +399,10 @@ SELECT ?label WHERE {{
         # avec l'appartenance au continent se fait par égalité d'URI exacte
         # (?uri dct:spatial ?country, la même variable que skos:member),
         # plus par un CONTAINS texte fragile sur le nom du pays.
-        continent_key = continent.strip().replace(" ", "")
+        # Interpolé dans une URI (ex:Continent_X), pas dans un littéral :
+        # restreint aux lettres par défense en profondeur, cohérent avec
+        # org_key dans search_by_keyword.
+        continent_key = re.sub(r"[^A-Za-z]", "", continent)
         sparql = f"""
 SELECT DISTINCT ?uri ?label ?def ?countryName ?year
                ?minArea ?minCrown ?minHeight WHERE {{
