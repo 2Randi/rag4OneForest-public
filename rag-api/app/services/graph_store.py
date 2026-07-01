@@ -90,10 +90,13 @@ class GraphStore:
                 f'    FILTER(!BOUND(?tc) || CONTAINS(LCASE(STR(?tc)), "{concept.lower()}"))'
             )
 
-        # Filtre scope géographique
+        # Filtre scope (International/National/Local, via skos:scopeNote) —
+        # testait par erreur ?country (dct:spatial) au lieu de ?scope, donc
+        # ne filtrait jamais rien puisqu'aucun nom de pays ne contient les
+        # mots "international"/"national"/"local".
         scope_filter = ""
         if scope:
-            scope_filter = f'FILTER(!BOUND(?country) || CONTAINS(LCASE(STR(?country)), "{scope.lower()}"))'
+            scope_filter = f'FILTER(!BOUND(?scope) || CONTAINS(LCASE(STR(?scope)), "{scope.lower()}"))'
 
         # Filtre organisation — dct:creator est un champ texte pollué par des
         # résidus de parsing du tableau source (ex: "&", "?", "10 degrees C")
