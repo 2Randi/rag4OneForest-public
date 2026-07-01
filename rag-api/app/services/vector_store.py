@@ -21,7 +21,9 @@ SELECT ?uri ?label ?def ?country ?year ?org ?scope ?type ?parent WHERE {
     ?uri a skos:Concept ;
          skos:definition ?def .
     OPTIONAL { ?uri skos:prefLabel ?label   . FILTER(LANG(?label) IN ('en','fr','')) }
-    OPTIONAL { ?uri dct:spatial    ?country . }
+    OPTIONAL { ?uri dct:spatial ?countryUri .
+               OPTIONAL { ?countryUri skos:prefLabel ?country .
+                          FILTER(LANG(?country) IN ('en', 'fr', '')) } }
     OPTIONAL { ?uri dct:date       ?year    . }
     OPTIONAL { ?uri dct:creator    ?org     . }
     OPTIONAL { ?uri skos:scopeNote ?scope   . }
