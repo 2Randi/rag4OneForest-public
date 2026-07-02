@@ -3,6 +3,7 @@ pandas==2.2.2
 python-docx==1.1.2
 python-dateutil==2.8.2
 pycountry==23.12.11
+pycountry-convert==0.7.2
 langdetect==1.0.9
 spacy==3.7.4
 tqdm==4.66.4
