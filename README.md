@@ -250,12 +250,11 @@ L'interface React propose quatre vues accessibles depuis la barre de navigation 
 | **Graphe global** | Visualisation D3 force-directed du SKOS. Clic → déplier ; double-clic → fiche RDF |
 | **Vue RDF** | Détail complet d'un concept : littéraux, relations, alignements |
 | **Statistiques** | Tableaux de bord interactifs (qualité KG, distribution géographique, temporelle…) |
-| **Chat RAG** | Interface de conversation avec Gemini/Claude/GPT, sources traçables et cliquables |
+| **Chat RAG** | Interface de conversation avec Gemini/Groq, sources traçables et cliquables |
 
 Le panneau de gauche permet de filtrer par :
 - Catégorie (Forest, Deforestation, Afforestation…)
 - Pays
-- Année
 - Organisation (FAO, UNFCCC, IPCC, EU, World Bank…)
 - Portée (General, International, National, State)
 
@@ -314,7 +313,7 @@ Question utilisateur
         │   Concept parent, frères, relations, seuils
         │
         └─→ Génération LLM (chaîne de fallback)
-            Gemini → DeepSeek → Claude → GPT → Groq
+            Gemini → Groq
             Prompt structuré + citations [N]
             Température 0.1 (réponses déterministes)
 ```
