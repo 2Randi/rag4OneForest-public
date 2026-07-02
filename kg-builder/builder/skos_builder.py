@@ -70,6 +70,19 @@ def _lang_literal(text: str) -> Optional[Literal]:
     return Literal(t, lang=lang)
 
 
+def _label_literal(text: str) -> Optional[Literal]:
+    """
+    Pareil que _lang_literal mais pour les labels courts (1-3 mots, genre
+    "FORESTRY", "STAND"). langdetect se plante souvent dessus (verifie :
+    "FORESTRY" detecte comme allemand, "STAND" pareil, sur des milliers
+    de labels). Sur des mots seuls y a pas assez de signal, donc pas la
+    peine d'essayer, on part sur anglais direct.
+    """
+    if not text or not text.strip() or text == "nan":
+        return None
+    return Literal(text.strip(), lang="en")
+
+
 def _decimal_literal(val) -> Optional[Literal]:
     """Convertit une valeur numérique en xsd:decimal."""
     try:
@@ -327,39 +340,27 @@ class SKOSBuilder:
                     matched.append(uri)
         return matched
 
-    # Mapping pays → continent pour le rattachement automatique
-    _COUNTRY_CONTINENT: dict[str, str] = {
-        c: "Africa" for c in [
-            "DZA","AGO","BEN","BWA","BFA","BDI","CMR","CPV","CAF","TCD","COM","COG","COD",
-            "CIV","DJI","EGY","GNQ","ERI","ETH","GAB","GMB","GHA","GIN","GNB","KEN","LSO",
-            "LBR","LBY","MDG","MWI","MLI","MRT","MUS","MAR","MOZ","NAM","NER","NGA","RWA",
-            "SEN","SYC","SLE","SOM","ZAF","SSD","SDN","SWZ","TZA","TGO","TUN","UGA","ZMB","ZWE",
-        ]
+    # code continent pycountry_convert -> clé ex:Continent_X dans le graphe
+    _CONTINENT_CODES = {
+        "AF": "Africa", "AS": "Asia", "EU": "Europe",
+        "NA": "NorthAmerica", "SA": "SouthAmerica", "OC": "Oceania",
     }
-    _COUNTRY_CONTINENT.update({c: "Europe" for c in [
-        "ALB","AUT","BLR","BEL","BIH","BGR","HRV","CYP","CZE","DNK","EST","FIN","FRA",
-        "GEO","DEU","GBR","GRC","HUN","ISL","IRL","ITA","LVA","LIE","LTU","LUX","MKD",
-        "MLT","MDA","MCO","MNE","NLD","NOR","POL","PRT","ROU","RUS","SRB","SVK","SVN",
-        "ESP","SWE","CHE","TUR","UKR",
-    ]})
-    _COUNTRY_CONTINENT.update({c: "Asia" for c in [
-        "AFG","AZE","BGD","BTN","BRN","KHM","CHN","IND","IDN","IRN","IRQ","ISR","JPN",
-        "JOR","KAZ","PRK","KOR","KWT","KGZ","LAO","LBN","MYS","MDV","MNG","MMR","NPL",
-        "OMN","PAK","PHL","SAU","SGP","LKA","SYR","TWN","TJK","THA","TKM","ARE","UZB",
-        "VNM","YEM",
-    ]})
-    _COUNTRY_CONTINENT.update({c: "SouthAmerica" for c in [
-        "ARG","BOL","BRA","CHL","COL","ECU","GUY","PRY","PER","SUR","URY","VEN",
-    ]})
-    _COUNTRY_CONTINENT.update({c: "NorthAmerica" for c in [
-        "CAN","CRI","CUB","DOM","SLV","GTM","HTI","HND","JAM","MEX","NIC","PAN","PRI","TTO",
-    ]})
-    _COUNTRY_CONTINENT.update({c: "Oceania" for c in [
-        "ASM","AUS","FJI","NCL","NZL","PNG","SLB","TON","VUT","WSM",
-    ]})
 
     def _get_continent(self, iso3: str) -> str | None:
-        return self._COUNTRY_CONTINENT.get(iso3)
+        # avant y avait une liste de ~174 pays codee a la main ici, et une
+        # bonne vingtaine de vrais pays du graphe (dont les USA !) n'y
+        # etaient juste pas, donc jamais rattaches a un continent. Autant
+        # utiliser une vraie source de donnees pays -> continent
+        import pycountry
+        import pycountry_convert
+        country = pycountry.countries.get(alpha_3=iso3)
+        if not country:
+            return None
+        try:
+            code = pycountry_convert.country_alpha2_to_continent_code(country.alpha_2)
+        except KeyError:
+            return None
+        return self._CONTINENT_CODES.get(code)
 
     def _add_country_to_collections(self, country_uri: URIRef, iso3: str) -> None:
         """Ajoute un concept pays dans la collection Countries et son continent."""
@@ -502,7 +503,7 @@ class SKOSBuilder:
                 g.add((uri, SKOS.broadMatch, parent_uri))
 
             # prefLabel = premier bold_term ou title_2 par défaut
-            pref_label = _lang_literal(first_term or rec.title_2)
+            pref_label = _label_literal(first_term or rec.title_2)
             if pref_label:
                 g.add((uri, SKOS.prefLabel, pref_label))
 
@@ -510,7 +511,7 @@ class SKOSBuilder:
             for alt in (rec.bold_terms.split(";")[1:] if rec.bold_terms else []):
                 alt = alt.strip()
                 if alt:
-                    lbl = _lang_literal(alt)
+                    lbl = _label_literal(alt)
                     if lbl:
                         g.add((uri, SKOS.altLabel, lbl))
 
@@ -612,19 +613,28 @@ class SKOSBuilder:
                 g.add((national_col, SKOS.member, unfccc_uri))
 
             # Seuils numériques directement depuis Table 3
-            for col_val, min_prop, max_prop in [
-                (rec.area_ha,            "minAreaHa",        "maxAreaHa"),
-                (rec.crown_cover_percent, "minCrownCoverPct", "maxCrownCoverPct"),
-                (rec.tree_height_m,      "minTreeHeightM",   "maxTreeHeightM"),
-                (rec.strip_width_m,      "minStripWidthM",   "maxStripWidthM"),
+            def_parts = []
+            for col_val, min_prop, max_prop, label in [
+                (rec.area_ha,            "minAreaHa",        "maxAreaHa",        "Min. Area (ha)"),
+                (rec.crown_cover_percent, "minCrownCoverPct", "maxCrownCoverPct", "Min. Crown Cover (%)"),
+                (rec.tree_height_m,      "minTreeHeightM",   "maxTreeHeightM",   "Min. Tree Height (m)"),
+                (rec.strip_width_m,      "minStripWidthM",   "maxStripWidthM",   "Min. Strip Width (m)"),
             ]:
                 vmin, vmax = _parse_range(col_val)
                 if vmin is not None:
                     g.add((unfccc_uri, EX[min_prop],
                            Literal(Decimal(str(vmin)), datatype=XSD.decimal)))
+                    def_parts.append(f"{label} = {vmin}")
                 if vmax is not None:
                     g.add((unfccc_uri, EX[max_prop],
                            Literal(Decimal(str(vmax)), datatype=XSD.decimal)))
+
+            # definition de secours a partir des chiffres, au cas ou la
+            # jointure texte plus bas (par nom de pays) rate a cause d'une
+            # variante d'orthographe ("Columbia" vs "Colombia" par ex).
+            # sans skos:definition le concept est invisible aux recherches
+            if def_parts:
+                g.add((unfccc_uri, SKOS.definition, Literal(" ".join(def_parts), lang="en")))
 
             # Type de définition (Table 3) → Collection type
             def_type = (rec.definition_type or "").strip().lower()
@@ -674,6 +684,8 @@ class SKOSBuilder:
                 if ftype and ftype in self._type_colls:
                     g.add((self._type_colls[ftype], SKOS.member, concept_uri))
                 self._add_metadata(concept_uri, drec)
+                for org_coll_uri in self._match_org_collections(drec.organization):
+                    g.add((org_coll_uri, SKOS.member, concept_uri))
                 n_joined += 1
 
         print(
@@ -721,17 +733,26 @@ class SKOSBuilder:
                         break
 
             # Seuils numériques
-            for col_val, min_prop, max_prop in [
-                (rec.area_ha,             "minAreaHa",        "maxAreaHa"),
-                (rec.crown_cover_percent, "minCrownCoverPct", "maxCrownCoverPct"),
-                (rec.tree_height_m,       "minTreeHeightM",   "maxTreeHeightM"),
-                (rec.strip_width_m,       "minStripWidthM",   "maxStripWidthM"),
+            def_parts = []
+            for col_val, min_prop, max_prop, label in [
+                (rec.area_ha,             "minAreaHa",        "maxAreaHa",        "Min. Area (ha)"),
+                (rec.crown_cover_percent, "minCrownCoverPct", "maxCrownCoverPct", "Min. Crown Cover (%)"),
+                (rec.tree_height_m,       "minTreeHeightM",   "maxTreeHeightM",   "Min. Tree Height (m)"),
+                (rec.strip_width_m,       "minStripWidthM",   "maxStripWidthM",   "Min. Strip Width (m)"),
             ]:
                 vmin, vmax = _parse_range(col_val)
                 if vmin is not None:
                     g.add((nat_uri, EX[min_prop], Literal(Decimal(str(vmin)), datatype=XSD.decimal)))
+                    def_parts.append(f"{label} = {vmin}")
                 if vmax is not None:
                     g.add((nat_uri, EX[max_prop], Literal(Decimal(str(vmax)), datatype=XSD.decimal)))
+
+            # sans skos:definition, ce concept est invisible pour toutes les
+            # recherches (search_country_thresholds, search_continent_thresholds,
+            # search_by_keyword l'exigent). C'etait le cas pour tous les
+            # concepts nationaux non-UNFCCC avant ce fix (222 pays, dont les USA)
+            if def_parts:
+                g.add((nat_uri, SKOS.definition, Literal(" ".join(def_parts), lang="en")))
 
             self._country_idx.setdefault(iso3, []).append(nat_uri)
             n_national += 1
