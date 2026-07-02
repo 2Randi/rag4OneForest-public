@@ -22,26 +22,7 @@ RAG4OneForest est un système **GraphRAG** (Retrieval-Augmented Generation sur g
 
 Le système intègre trois composants principaux :
 
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                          RAG4OneForest                                   │
-│                                                                           │
-│  ┌────────────────┐    ┌──────────────────────┐    ┌─────────────────┐  │
-│  │  kg-builder    │    │      rag-api          │    │   graph-viz     │  │
-│  │  (Python)      │───▶│  (FastAPI + Python)   │◀───│  (React / D3)  │  │
-│  │                │    │                      │    │                 │  │
-│  │ DOCX → SKOS    │    │ SPARQL + Vectoriel    │    │ Graphe SKOS    │  │
-│  │ RDF/Turtle     │    │ Retrieval hybride     │    │ Chat RAG       │  │
-│  │ 34 480 triplets│    │ Multi-LLM fallback    │    │ Vue RDF        │  │
-│  └────────────────┘    └──────────────────────┘    │ Statistiques   │  │
-│           │                       │                 └─────────────────┘  │
-│           ▼                       ▼                                       │
-│  ┌────────────────┐    ┌──────────────────────┐                          │
-│  │ forest_kg.ttl  │    │  ChromaDB            │                          │
-│  │ (RDF/SKOS)     │    │  2 972 embeddings    │                          │
-│  └────────────────┘    └──────────────────────┘                          │
-└─────────────────────────────────────────────────────────────────────────┘
-```
+<img width="1536" height="1024" alt="graphrag" src="https://github.com/user-attachments/assets/381bd803-c8c2-4228-81f1-cb3c19b521a6" />
 
 ---
 
