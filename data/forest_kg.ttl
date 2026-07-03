@@ -1426,8 +1426,10 @@ ex:Continent_Africa a skos:Collection ;
         ex:Country_CAF,
         ex:Country_CIV,
         ex:Country_CMR,
+        ex:Country_COD,
         ex:Country_COG,
         ex:Country_COM,
+        ex:Country_CPV,
         ex:Country_DJI,
         ex:Country_DZA,
         ex:Country_EGY,
@@ -1440,6 +1442,7 @@ ex:Continent_Africa a skos:Collection ;
         ex:Country_GNQ,
         ex:Country_KEN,
         ex:Country_LBR,
+        ex:Country_LBY,
         ex:Country_LSO,
         ex:Country_MAR,
         ex:Country_MDG,
@@ -1457,6 +1460,7 @@ ex:Continent_Africa a skos:Collection ;
         ex:Country_SLE,
         ex:Country_SOM,
         ex:Country_SSD,
+        ex:Country_SWZ,
         ex:Country_SYC,
         ex:Country_TCD,
         ex:Country_TGO,
@@ -1509,6 +1513,7 @@ ex:Continent_Asia a skos:Collection ;
         ex:Country_THA,
         ex:Country_TJK,
         ex:Country_TKM,
+        ex:Country_TUR,
         ex:Country_UZB,
         ex:Country_VNM,
         ex:Country_YEM ;
@@ -1542,6 +1547,7 @@ ex:Continent_Europe a skos:Collection ;
         ex:Country_LUX,
         ex:Country_LVA,
         ex:Country_MCO,
+        ex:Country_MDA,
         ex:Country_MKD,
         ex:Country_MLT,
         ex:Country_MNE,
@@ -1576,6 +1582,7 @@ ex:Continent_NorthAmerica a skos:Collection ;
         ex:Country_HND,
         ex:Country_HTI,
         ex:Country_JAM,
+        ex:Country_KNA,
         ex:Country_LCA,
         ex:Country_MEX,
         ex:Country_MSR,
@@ -1626,7 +1633,6 @@ ex:Countries a skos:Collection ;
         ex:Country_AFG,
         ex:Country_AGO,
         ex:Country_ALB,
-        ex:Country_ANTIGUA_BA,
         ex:Country_ARE,
         ex:Country_ARG,
         ex:Country_ARM,
@@ -1655,24 +1661,21 @@ ex:Countries a skos:Collection ;
         ex:Country_BWA,
         ex:Country_CAF,
         ex:Country_CAN,
-        ex:Country_CAPE_VERDE,
         ex:Country_CHE,
-        ex:Country_CHILE___,
         ex:Country_CHL,
         ex:Country_CHN,
         ex:Country_CIV,
         ex:Country_CMR,
+        ex:Country_COD,
         ex:Country_COG,
         ex:Country_COL,
         ex:Country_COM,
-        ex:Country_CONGO__REP,
-        ex:Country_CONGO__ZAI,
+        ex:Country_CPV,
         ex:Country_CRI,
         ex:Country_CUB,
         ex:Country_CYM,
         ex:Country_CYP,
         ex:Country_CZE,
-        ex:Country_DEMOCRATIC,
         ex:Country_DEU,
         ex:Country_DJI,
         ex:Country_DMA,
@@ -1680,7 +1683,6 @@ ex:Countries a skos:Collection ;
         ex:Country_DOM,
         ex:Country_DZA,
         ex:Country_ECU,
-        ex:Country_ECUADOR___,
         ex:Country_EGY,
         ex:Country_ERI,
         ex:Country_ESH,
@@ -1706,16 +1708,13 @@ ex:Countries a skos:Collection ;
         ex:Country_GUINEA_BIS,
         ex:Country_GUM,
         ex:Country_GUY,
-        ex:Country_GUYANA___,
         ex:Country_HND,
         ex:Country_HRV,
         ex:Country_HTI,
         ex:Country_HUN,
         ex:Country_IDN,
-        ex:Country_IIASA,
         ex:Country_IMN,
         ex:Country_IND,
-        ex:Country_INDONESIA_,
         ex:Country_IRL,
         ex:Country_IRN,
         ex:Country_IRQ,
@@ -1730,15 +1729,15 @@ ex:Countries a skos:Collection ;
         ex:Country_KGZ,
         ex:Country_KHM,
         ex:Country_KIR,
+        ex:Country_KNA,
         ex:Country_KOR,
         ex:Country_KOREA__DEM,
-        ex:Country_KOREA__REP,
         ex:Country_KWT,
         ex:Country_LAO,
         ex:Country_LBN,
         ex:Country_LBR,
+        ex:Country_LBY,
         ex:Country_LCA,
-        ex:Country_LIBYA_ARAB,
         ex:Country_LIE,
         ex:Country_LKA,
         ex:Country_LSO,
@@ -1747,10 +1746,10 @@ ex:Countries a skos:Collection ;
         ex:Country_LVA,
         ex:Country_MAR,
         ex:Country_MCO,
+        ex:Country_MDA,
         ex:Country_MDG,
         ex:Country_MDV,
         ex:Country_MEX,
-        ex:Country_MEXICO___,
         ex:Country_MKD,
         ex:Country_MLI,
         ex:Country_MLT,
@@ -1758,7 +1757,6 @@ ex:Countries a skos:Collection ;
         ex:Country_MNE,
         ex:Country_MNG,
         ex:Country_MNP,
-        ex:Country_MOLDOVA__R,
         ex:Country_MOZ,
         ex:Country_MRT,
         ex:Country_MSR,
@@ -1777,7 +1775,6 @@ ex:Countries a skos:Collection ;
         ex:Country_OMN,
         ex:Country_PAK,
         ex:Country_PAN,
-        ex:Country_PARAGUAY__,
         ex:Country_PER,
         ex:Country_PERU_AMAZO,
         ex:Country_PHL,
@@ -1792,7 +1789,6 @@ ex:Countries a skos:Collection ;
         ex:Country_ROU,
         ex:Country_RUS,
         ex:Country_RWA,
-        ex:Country_SADC,
         ex:Country_SAU,
         ex:Country_SDN,
         ex:Country_SEN,
@@ -1806,15 +1802,13 @@ ex:Countries a skos:Collection ;
         ex:Country_SSD,
         ex:Country_ST_VINCENT,
         ex:Country_ST__HELENA,
-        ex:Country_ST__KITTS_,
         ex:Country_SUR,
         ex:Country_SVK,
         ex:Country_SVN,
-        ex:Country_SWAZILAND,
         ex:Country_SWE,
+        ex:Country_SWZ,
         ex:Country_SYC,
         ex:Country_SYR,
-        ex:Country_TABLE_3___,
         ex:Country_TAIWAN__R_,
         ex:Country_TCD,
         ex:Country_TGO,
@@ -1822,19 +1816,12 @@ ex:Countries a skos:Collection ;
         ex:Country_TJK,
         ex:Country_TKM,
         ex:Country_TON,
-        ex:Country_TRINIDAD_T,
         ex:Country_TTO,
         ex:Country_TUN,
-        ex:Country_TURKEY,
+        ex:Country_TUR,
         ex:Country_TZA,
         ex:Country_UGA,
         ex:Country_UKR,
-        ex:Country_UN_CCD,
-        ex:Country_UN_ESCO,
-        ex:Country_UN_FCCC,
-        ex:Country_UN_FRA,
-        ex:Country_UN_LAND_US,
-        ex:Country_UN_LCCS,
         ex:Country_URY,
         ex:Country_USA,
         ex:Country_UZB,
@@ -1842,7 +1829,6 @@ ex:Countries a skos:Collection ;
         ex:Country_VGB,
         ex:Country_VNM,
         ex:Country_VUT,
-        ex:Country_WESTERN_SA,
         ex:Country_WSM,
         ex:Country_YEM,
         ex:Country_YUGOSLAVIA,
@@ -4964,9 +4950,9 @@ ex:Org_KP a skos:Collection ;
         ex:CHEUnfccc_1,
         ex:CHNUnfccc_1,
         ex:CIVUnfccc_1,
+        ex:CODUnfccc_1,
         ex:CRIUnfccc_1,
         ex:CZEUnfccc_1,
-        ex:DEMOCRATICUnfccc_1,
         ex:DEUUnfccc_1,
         ex:DNKUnfccc_1,
         ex:DOMUnfccc_1,
@@ -4990,7 +4976,7 @@ ex:Org_KP a skos:Collection ;
         ex:KENUnfccc_1,
         ex:KGZUnfccc_1,
         ex:KHMUnfccc_1,
-        ex:KOREA__REPUnfccc_1,
+        ex:KORUnfccc_1,
         ex:LAOUnfccc_1,
         ex:LIEUnfccc_1,
         ex:LKAUnfccc_1,
@@ -5027,7 +5013,7 @@ ex:Org_KP a skos:Collection ;
         ex:SWEUnfccc_1,
         ex:TGOUnfccc_1,
         ex:THAUnfccc_1,
-        ex:TRINIDAD_TUnfccc_1,
+        ex:TTOUnfccc_1,
         ex:UGAUnfccc_1,
         ex:UKRUnfccc_1,
         ex:URYUnfccc_1,
@@ -5130,10 +5116,10 @@ ex:Org_UNFCCC a skos:Collection ;
         ex:CHEUnfccc_1,
         ex:CHNUnfccc_1,
         ex:CIVUnfccc_1,
+        ex:CODUnfccc_1,
         ex:CRIUnfccc_1,
         ex:CZEUnfccc_1,
         ex:Concept_85,
-        ex:DEMOCRATICUnfccc_1,
         ex:DEUUnfccc_1,
         ex:DNKUnfccc_1,
         ex:DOMUnfccc_1,
@@ -5142,10 +5128,11 @@ ex:Org_UNFCCC a skos:Collection ;
         ex:Deforestation_37,
         ex:Deforestation_38,
         ex:Devegetation_1,
-        ex:ECUADOR___Unfccc_1,
+        ex:ECUUnfccc_1,
         ex:ESPUnfccc_1,
         ex:ESTUnfccc_1,
         ex:ETHUnfccc_1,
+        ex:EUUnfccc_1,
         ex:FINUnfccc_1,
         ex:FRAUnfccc_1,
         ex:Forest_440,
@@ -5168,7 +5155,7 @@ ex:Org_UNFCCC a skos:Collection ;
         ex:KENUnfccc_1,
         ex:KGZUnfccc_1,
         ex:KHMUnfccc_1,
-        ex:KOREA__REPUnfccc_1,
+        ex:KORUnfccc_1,
         ex:KyotoForest_1,
         ex:LAOUnfccc_1,
         ex:LIEUnfccc_1,
@@ -5178,12 +5165,12 @@ ex:Org_UNFCCC a skos:Collection ;
         ex:LVAUnfccc_1,
         ex:MARUnfccc_1,
         ex:MCOUnfccc_1,
+        ex:MDAUnfccc_1,
         ex:MDGUnfccc_1,
         ex:MEXUnfccc_1,
         ex:MLIUnfccc_1,
         ex:MMRUnfccc_1,
         ex:MNGUnfccc_1,
-        ex:MOLDOVA__RUnfccc_1,
         ex:MYSUnfccc_1,
         ex:NGAUnfccc_1,
         ex:NICUnfccc_1,
@@ -5198,7 +5185,6 @@ ex:Org_UNFCCC a skos:Collection ;
         ex:POLUnfccc_1,
         ex:PRTUnfccc_1,
         ex:PRYUnfccc_1,
-        ex:REUUnfccc_1,
         ex:ROUUnfccc_1,
         ex:RUSUnfccc_1,
         ex:RWAUnfccc_1,
@@ -5210,7 +5196,7 @@ ex:Org_UNFCCC a skos:Collection ;
         ex:SWEUnfccc_1,
         ex:TGOUnfccc_1,
         ex:THAUnfccc_1,
-        ex:TRINIDAD_TUnfccc_1,
+        ex:TTOUnfccc_1,
         ex:UGAUnfccc_1,
         ex:UKRUnfccc_1,
         ex:URYUnfccc_1,
@@ -6949,12 +6935,12 @@ ex:Scope_National a skos:Collection ;
         ex:AGONational_1,
         ex:ALBNational_1,
         ex:ALBUnfccc_1,
-        ex:ANTIGUA_BANational_1,
         ex:ARENational_1,
         ex:ARGNational_1,
         ex:ARGUnfccc_1,
         ex:ARMNational_1,
         ex:ASMNational_1,
+        ex:ATGNational_1,
         ex:AUSNational_1,
         ex:AUSUnfccc_1,
         ex:AUTNational_1,
@@ -6993,20 +6979,21 @@ ex:Scope_National a skos:Collection ;
         ex:CANNational_1,
         ex:CANUnfccc_1,
         ex:CANUnfccc_2,
-        ex:CAPE_VERDENational_1,
         ex:CHENational_1,
         ex:CHEUnfccc_1,
-        ex:CHILE___National_1,
         ex:CHLNational_1,
+        ex:CHLNational_2,
         ex:CHNNational_1,
         ex:CHNUnfccc_1,
         ex:CIVNational_1,
         ex:CIVUnfccc_1,
         ex:CMRNational_1,
+        ex:CODNational_1,
+        ex:CODUnfccc_1,
+        ex:COGNational_1,
         ex:COLNational_1,
         ex:COMNational_1,
-        ex:CONGO__REPNational_1,
-        ex:CONGO__ZAINational_1,
+        ex:CPVNational_1,
         ex:CRINational_1,
         ex:CRIUnfccc_1,
         ex:CUBNational_1,
@@ -7016,7 +7003,6 @@ ex:Scope_National a skos:Collection ;
         ex:CZEUnfccc_1,
         ex:ClosedTreeCanopy_1,
         ex:CoillteEstate_1,
-        ex:DEMOCRATICUnfccc_1,
         ex:DEUNational_1,
         ex:DEUUnfccc_1,
         ex:DJINational_1,
@@ -7028,7 +7014,7 @@ ex:Scope_National a skos:Collection ;
         ex:DZANational_1,
         ex:DefiniciNDeBosqueNativo_1,
         ex:DenseForest_1,
-        ex:ECUADOR___Unfccc_1,
+        ex:ECUUnfccc_1,
         ex:EGYNational_1,
         ex:ERINational_1,
         ex:ESHNational_1,
@@ -7038,6 +7024,8 @@ ex:Scope_National a skos:Collection ;
         ex:ESTUnfccc_1,
         ex:ETHNational_1,
         ex:ETHUnfccc_1,
+        ex:EUNational_1,
+        ex:EUUnfccc_1,
         ex:FINNational_1,
         ex:FINUnfccc_1,
         ex:FJINational_1,
@@ -7890,8 +7878,8 @@ ex:Scope_National a skos:Collection ;
         ex:GTMUnfccc_1,
         ex:GUINEA_BISNational_1,
         ex:GUMNational_1,
-        ex:GUYANA___National_1,
         ex:GUYNational_1,
+        ex:GUYNational_2,
         ex:HNDNational_1,
         ex:HNDUnfccc_1,
         ex:HRVNational_1,
@@ -7900,10 +7888,10 @@ ex:Scope_National a skos:Collection ;
         ex:HUNNational_1,
         ex:HUNUnfccc_1,
         ex:IDNNational_1,
+        ex:IDNNational_2,
         ex:IIASANational_1,
         ex:IMNNational_1,
         ex:INDNational_1,
-        ex:INDONESIA_National_1,
         ex:INDUnfccc_1,
         ex:IRLNational_1,
         ex:IRLUnfccc_1,
@@ -7925,16 +7913,17 @@ ex:Scope_National a skos:Collection ;
         ex:KGZUnfccc_1,
         ex:KHMNational_1,
         ex:KHMUnfccc_1,
+        ex:KNANational_1,
         ex:KOREA__DEMNational_1,
-        ex:KOREA__REPNational_1,
-        ex:KOREA__REPUnfccc_1,
+        ex:KORNational_1,
+        ex:KORUnfccc_1,
         ex:KWTNational_1,
         ex:LAONational_1,
         ex:LAOUnfccc_1,
         ex:LBNNational_1,
         ex:LBRNational_1,
+        ex:LBYNational_1,
         ex:LCANational_1,
-        ex:LIBYA_ARABNational_1,
         ex:LIENational_1,
         ex:LIEUnfccc_1,
         ex:LKANational_1,
@@ -7950,11 +7939,13 @@ ex:Scope_National a skos:Collection ;
         ex:MARUnfccc_1,
         ex:MCONational_1,
         ex:MCOUnfccc_1,
+        ex:MDANational_1,
+        ex:MDAUnfccc_1,
         ex:MDGNational_1,
         ex:MDGUnfccc_1,
         ex:MDVNational_1,
-        ex:MEXICO___National_1,
         ex:MEXNational_1,
+        ex:MEXNational_2,
         ex:MEXUnfccc_1,
         ex:MKDNational_1,
         ex:MLINational_1,
@@ -7965,8 +7956,6 @@ ex:Scope_National a skos:Collection ;
         ex:MNGNational_1,
         ex:MNGUnfccc_1,
         ex:MNPNational_1,
-        ex:MOLDOVA__RNational_1,
-        ex:MOLDOVA__RUnfccc_1,
         ex:MOZNational_1,
         ex:MRTNational_1,
         ex:MSRNational_1,
@@ -7998,7 +7987,6 @@ ex:Scope_National a skos:Collection ;
         ex:PAKUnfccc_1,
         ex:PANNational_1,
         ex:PANUnfccc_1,
-        ex:PARAGUAY__National_1,
         ex:PERNational_1,
         ex:PERNational_2,
         ex:PERU_AMAZONational_1,
@@ -8012,14 +8000,13 @@ ex:Scope_National a skos:Collection ;
         ex:PRTNational_1,
         ex:PRTUnfccc_1,
         ex:PRYNational_1,
+        ex:PRYNational_2,
         ex:PRYUnfccc_1,
         ex:PSENational_1,
         ex:PYFNational_1,
         ex:ProductiveForestLand_1,
         ex:ProfessionalOfForestInventory_1,
         ex:REUNational_1,
-        ex:REUNational_2,
-        ex:REUUnfccc_1,
         ex:ROUNational_1,
         ex:ROUUnfccc_1,
         ex:RUSNational_1,
@@ -8041,15 +8028,14 @@ ex:Scope_National a skos:Collection ;
         ex:SSDNational_2,
         ex:ST_VINCENTNational_1,
         ex:ST__HELENANational_1,
-        ex:ST__KITTS_National_1,
         ex:SURNational_1,
         ex:SVKNational_1,
         ex:SVKUnfccc_1,
         ex:SVNNational_1,
         ex:SVNUnfccc_1,
-        ex:SWAZILANDNational_1,
         ex:SWENational_1,
         ex:SWEUnfccc_1,
+        ex:SWZNational_1,
         ex:SYCNational_1,
         ex:SYRNational_1,
         ex:SociallyCommonDefinition_1,
@@ -8063,10 +8049,10 @@ ex:Scope_National a skos:Collection ;
         ex:TJKNational_1,
         ex:TKMNational_1,
         ex:TONNational_1,
-        ex:TRINIDAD_TNational_1,
-        ex:TRINIDAD_TUnfccc_1,
+        ex:TTONational_1,
+        ex:TTOUnfccc_1,
         ex:TUNNational_1,
-        ex:TURKEYNational_1,
+        ex:TURNational_1,
         ex:TZANational_1,
         ex:TerrenosForestales_1,
         ex:TimberLandsForestLands_1,
@@ -8092,7 +8078,7 @@ ex:Scope_National a skos:Collection ;
         ex:VNMUnfccc_1,
         ex:VUTNational_1,
         ex:VegetacionForestal_1,
-        ex:WESTERN_SANational_1,
+        ex:WSMNational_1,
         ex:YEMNational_1,
         ex:YEMUnfccc_1,
         ex:YUGOSLAVIANational_1,
@@ -10907,31 +10893,32 @@ ex:Type_Land_cover a skos:Collection ;
         ex:Bosques_1,
         ex:CANUnfccc_1,
         ex:CHENational_1,
-        ex:CHILE___National_1,
         ex:CHLNational_1,
+        ex:CHLNational_2,
         ex:CHNNational_1,
         ex:CHNUnfccc_1,
         ex:CIVNational_1,
         ex:CIVUnfccc_1,
         ex:CMRNational_1,
-        ex:CONGO__REPNational_1,
-        ex:CONGO__ZAINational_1,
+        ex:CODNational_1,
+        ex:CODUnfccc_1,
+        ex:COGNational_1,
         ex:CRINational_1,
         ex:CRIUnfccc_1,
         ex:CZEUnfccc_1,
         ex:ClosedForest_1,
         ex:ClosedTreeCanopy_1,
-        ex:DEMOCRATICUnfccc_1,
         ex:DEUUnfccc_1,
         ex:DOMNational_1,
         ex:DOMUnfccc_1,
         ex:DenseForest_1,
-        ex:ECUADOR___Unfccc_1,
+        ex:ECUUnfccc_1,
         ex:ERINational_1,
         ex:ESPUnfccc_1,
         ex:ESTUnfccc_1,
         ex:ETHNational_1,
         ex:ETHUnfccc_1,
+        ex:EUNational_1,
         ex:EvergreenAndSemiDeciduousForest_1,
         ex:FINUnfccc_1,
         ex:FJINational_1,
@@ -11847,15 +11834,15 @@ ex:Type_Land_cover a skos:Collection ;
         ex:GTMNational_1,
         ex:GTMUnfccc_1,
         ex:GUINEA_BISNational_1,
-        ex:GUYANA___National_1,
+        ex:GUYNational_2,
         ex:HNDNational_1,
         ex:HNDUnfccc_1,
         ex:HRVNational_1,
         ex:HRVUnfccc_1,
         ex:HUNUnfccc_1,
+        ex:IDNNational_2,
         ex:IIASANational_1,
         ex:INDNational_1,
-        ex:INDONESIA_National_1,
         ex:INDUnfccc_1,
         ex:IRLUnfccc_1,
         ex:IRNNational_1,
@@ -11869,7 +11856,7 @@ ex:Type_Land_cover a skos:Collection ;
         ex:KGZUnfccc_1,
         ex:KHMNational_1,
         ex:KHMUnfccc_1,
-        ex:KOREA__REPUnfccc_1,
+        ex:KORUnfccc_1,
         ex:LAONational_1,
         ex:LAOUnfccc_1,
         ex:LIENational_1,
@@ -11914,7 +11901,6 @@ ex:Type_Land_cover a skos:Collection ;
         ex:PRTUnfccc_1,
         ex:PRYUnfccc_1,
         ex:PYFNational_1,
-        ex:REUNational_2,
         ex:RUSNational_1,
         ex:RUSUnfccc_1,
         ex:RWANational_1,
@@ -11932,8 +11918,8 @@ ex:Type_Land_cover a skos:Collection ;
         ex:TGOUnfccc_1,
         ex:THAUnfccc_1,
         ex:TJKNational_1,
-        ex:TRINIDAD_TNational_1,
-        ex:TRINIDAD_TUnfccc_1,
+        ex:TTONational_1,
+        ex:TTOUnfccc_1,
         ex:TUNNational_1,
         ex:TZANational_1,
         ex:TerrenosForestales_1,
@@ -11961,8 +11947,8 @@ ex:Type_Land_cover a skos:Collection ;
 
 ex:Type_Land_use a skos:Collection ;
     dct:description "Forest as a land use type"@en ;
-    skos:member ex:ANTIGUA_BANational_1,
-        ex:ARGNational_1,
+    skos:member ex:ARGNational_1,
+        ex:ATGNational_1,
         ex:AUTNational_1,
         ex:AnAreaOfLand_1,
         ex:AndWoodland_1,
@@ -11978,9 +11964,9 @@ ex:Type_Land_use a skos:Collection ;
         ex:BRBNational_1,
         ex:CANNational_1,
         ex:CANUnfccc_2,
-        ex:CAPE_VERDENational_1,
         ex:CHEUnfccc_1,
         ex:COMNational_1,
+        ex:CPVNational_1,
         ex:CUBNational_1,
         ex:CYPNational_1,
         ex:CZENational_1,
@@ -12442,7 +12428,7 @@ ex:Type_Land_use a skos:Collection ;
         ex:ITANational_1,
         ex:JPNUnfccc_1,
         ex:KGZNational_1,
-        ex:KOREA__REPNational_1,
+        ex:KORNational_1,
         ex:KyotoForest_1,
         ex:LBNNational_1,
         ex:LCANational_1,
@@ -12452,8 +12438,8 @@ ex:Type_Land_use a skos:Collection ;
         ex:LUXNational_1,
         ex:LVANational_1,
         ex:MDGNational_1,
-        ex:MEXICO___National_1,
         ex:MEXNational_1,
+        ex:MEXNational_2,
         ex:MEXUnfccc_1,
         ex:MLINational_1,
         ex:MUSNational_1,
@@ -12465,10 +12451,10 @@ ex:Type_Land_use a skos:Collection ;
         ex:NZLNational_1,
         ex:NonKyotoForest_1,
         ex:PAKNational_1,
-        ex:PARAGUAY__National_1,
         ex:POLNational_1,
         ex:POLUnfccc_1,
         ex:PRTNational_1,
+        ex:PRYNational_2,
         ex:ProductiveForestLand_1,
         ex:ProfessionalOfForestInventory_1,
         ex:ROUNational_1,
@@ -12482,7 +12468,7 @@ ex:Type_Land_use a skos:Collection ;
         ex:TAIWAN__R_National_1,
         ex:TGONational_1,
         ex:THANational_1,
-        ex:TURKEYNational_1,
+        ex:TURNational_1,
         ex:Timberland_1,
         ex:UN_FCCCNational_1,
         ex:UN_FRANational_1,
@@ -14337,6 +14323,14 @@ ex:KAZNational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "unknown"@en .
 
+ex:KNANational_1 a skos:Concept ;
+    dct:spatial ex:Country_KNA ;
+    skos:broadMatch ex:Forest ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "St. Kitts Nevis national criteria"@en ;
+    skos:scopeNote "National"@en,
+        "unknown"@en .
+
 ex:KOREA__DEMNational_1 a skos:Concept ;
     dct:spatial ex:Country_KOREA__DEM ;
     skos:broadMatch ex:Forest ;
@@ -14361,8 +14355,8 @@ ex:LBRNational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "unknown"@en .
 
-ex:LIBYA_ARABNational_1 a skos:Concept ;
-    dct:spatial ex:Country_LIBYA_ARAB ;
+ex:LBYNational_1 a skos:Concept ;
+    dct:spatial ex:Country_LBY ;
     skos:broadMatch ex:Forest ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Libya Arab Jamahiriy national criteria"@en ;
@@ -14693,6 +14687,14 @@ ex:MCONational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "none"@en .
 
+ex:MDANational_1 a skos:Concept ;
+    dct:spatial ex:Country_MDA ;
+    skos:broadMatch ex:Forest ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Moldova- Republic of national criteria"@en ;
+    skos:scopeNote "National"@en,
+        "unknown"@en .
+
 ex:MDVNational_1 a skos:Concept ;
     dct:spatial ex:Country_MDV ;
     skos:broadMatch ex:Forest ;
@@ -14713,14 +14715,6 @@ ex:MNGNational_1 a skos:Concept ;
     skos:broadMatch ex:Forest ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Mongolia national criteria"@en ;
-    skos:scopeNote "National"@en,
-        "unknown"@en .
-
-ex:MOLDOVA__RNational_1 a skos:Concept ;
-    dct:spatial ex:Country_MOLDOVA__R ;
-    skos:broadMatch ex:Forest ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "Moldova- Republic of national criteria"@en ;
     skos:scopeNote "National"@en,
         "unknown"@en .
 
@@ -15066,27 +15060,11 @@ ex:ST__HELENANational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "unknown"@en .
 
-ex:ST__KITTS_National_1 a skos:Concept ;
-    dct:spatial ex:Country_ST__KITTS_ ;
-    skos:broadMatch ex:Forest ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "St. Kitts Nevis national criteria"@en ;
-    skos:scopeNote "National"@en,
-        "unknown"@en .
-
 ex:SURNational_1 a skos:Concept ;
     dct:spatial ex:Country_SUR ;
     skos:broadMatch ex:Forest ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Suriname national criteria"@en ;
-    skos:scopeNote "National"@en,
-        "unknown"@en .
-
-ex:SWAZILANDNational_1 a skos:Concept ;
-    dct:spatial ex:Country_SWAZILAND ;
-    skos:broadMatch ex:Forest ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "Swaziland national criteria"@en ;
     skos:scopeNote "National"@en,
         "unknown"@en .
 
@@ -15101,6 +15079,14 @@ ex:SWENational_1 a skos:Concept ;
     skos:prefLabel "Sweden national criteria"@en ;
     skos:scopeNote "National"@en,
         "potential"@en .
+
+ex:SWZNational_1 a skos:Concept ;
+    dct:spatial ex:Country_SWZ ;
+    skos:broadMatch ex:Forest ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Swaziland national criteria"@en ;
+    skos:scopeNote "National"@en,
+        "unknown"@en .
 
 ex:SYRNational_1 a skos:Concept ;
     dct:spatial ex:Country_SYR ;
@@ -15422,8 +15408,8 @@ ex:VGBNational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "unknown"@en .
 
-ex:WESTERN_SANational_1 a skos:Concept ;
-    dct:spatial ex:Country_WESTERN_SA ;
+ex:WSMNational_1 a skos:Concept ;
+    dct:spatial ex:Country_WSM ;
     skos:broadMatch ex:Forest ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Western Samoa national criteria"@en ;
@@ -15709,16 +15695,6 @@ ex:ALBNational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "cover"@en .
 
-ex:ANTIGUA_BANational_1 a skos:Concept ;
-    ex:minTreeHeightM 5.0 ;
-    dct:spatial ex:Country_ANTIGUA_BA ;
-    skos:broadMatch ex:Forest ;
-    skos:definition "Min. Tree Height (m) = 5.0"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "Antigua Barbuda national criteria"@en ;
-    skos:scopeNote "National"@en,
-        "use"@en .
-
 ex:ARGNational_1 a skos:Concept ;
     ex:minAreaHa 0.5 ;
     ex:minCrownCoverPct 10.0 ;
@@ -15746,6 +15722,16 @@ ex:ASMNational_1 a skos:Concept ;
     skos:prefLabel "American Samoa national criteria"@en ;
     skos:scopeNote "National"@en,
         "cover"@en .
+
+ex:ATGNational_1 a skos:Concept ;
+    ex:minTreeHeightM 5.0 ;
+    dct:spatial ex:Country_ATG ;
+    skos:broadMatch ex:Forest ;
+    skos:definition "Min. Tree Height (m) = 5.0"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Antigua Barbuda national criteria"@en ;
+    skos:scopeNote "National"@en,
+        "use"@en .
 
 ex:AUSNational_1 a skos:Concept ;
     ex:minCrownCoverPct 30.0 ;
@@ -16001,14 +15987,6 @@ ex:CANNational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "use"@en .
 
-ex:CAPE_VERDENational_1 a skos:Concept ;
-    dct:spatial ex:Country_CAPE_VERDE ;
-    skos:broadMatch ex:Forest ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "Cape Verde national criteria"@en ;
-    skos:scopeNote "National"@en,
-        "use"@en .
-
 ex:CHENational_1 a skos:Concept ;
     ex:maxCrownCoverPct 100.0 ;
     ex:maxStripWidthM 50.0 ;
@@ -16023,19 +16001,6 @@ ex:CHENational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "cover"@en .
 
-ex:CHILE___National_1 a skos:Concept ;
-    ex:maxCrownCoverPct 25.0 ;
-    ex:minAreaHa 5.0 ;
-    ex:minCrownCoverPct 10.0 ;
-    ex:minStripWidthM 40.0 ;
-    dct:spatial ex:Country_CHILE___ ;
-    skos:broadMatch ex:Forest ;
-    skos:definition "Min. Area (ha) = 5.0 Min. Crown Cover (%) = 10.0 Min. Strip Width (m) = 40.0"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "Chile () national criteria"@en ;
-    skos:scopeNote "National"@en,
-        "cover"@en .
-
 ex:CHLNational_1 a skos:Concept ;
     ex:minAreaHa 5.0 ;
     ex:minCrownCoverPct 10.0 ;
@@ -16044,6 +16009,19 @@ ex:CHLNational_1 a skos:Concept ;
     skos:definition "Min. Area (ha) = 5.0 Min. Crown Cover (%) = 10.0"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Chile national criteria"@en ;
+    skos:scopeNote "National"@en,
+        "cover"@en .
+
+ex:CHLNational_2 a skos:Concept ;
+    ex:maxCrownCoverPct 25.0 ;
+    ex:minAreaHa 5.0 ;
+    ex:minCrownCoverPct 10.0 ;
+    ex:minStripWidthM 40.0 ;
+    dct:spatial ex:Country_CHL ;
+    skos:broadMatch ex:Forest ;
+    skos:definition "Min. Area (ha) = 5.0 Min. Crown Cover (%) = 10.0 Min. Strip Width (m) = 40.0"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Chile () national criteria"@en ;
     skos:scopeNote "National"@en,
         "cover"@en .
 
@@ -16076,6 +16054,28 @@ ex:CMRNational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "cover"@en .
 
+ex:CODNational_1 a skos:Concept ;
+    ex:minCrownCoverPct 10.0 ;
+    dct:spatial ex:Country_COD ;
+    skos:broadMatch ex:Forest ;
+    skos:definition "Min. Crown Cover (%) = 10.0"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Congo (Zaire) national criteria"@en ;
+    skos:scopeNote "National"@en,
+        "cover"@en .
+
+ex:COGNational_1 a skos:Concept ;
+    ex:minAreaHa 0.5 ;
+    ex:minCrownCoverPct 30.0 ;
+    ex:minTreeHeightM 3.0 ;
+    dct:spatial ex:Country_COG ;
+    skos:broadMatch ex:Forest ;
+    skos:definition "Min. Area (ha) = 0.5 Min. Crown Cover (%) = 30.0 Min. Tree Height (m) = 3.0"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Congo- Republic of () national criteria"@en ;
+    skos:scopeNote "National"@en,
+        "cover"@en .
+
 ex:COMNational_1 a skos:Concept ;
     dct:spatial ex:Country_COM ;
     skos:broadMatch ex:Forest ;
@@ -16084,27 +16084,13 @@ ex:COMNational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "use"@en .
 
-ex:CONGO__REPNational_1 a skos:Concept ;
-    ex:minAreaHa 0.5 ;
-    ex:minCrownCoverPct 30.0 ;
-    ex:minTreeHeightM 3.0 ;
-    dct:spatial ex:Country_CONGO__REP ;
+ex:CPVNational_1 a skos:Concept ;
+    dct:spatial ex:Country_CPV ;
     skos:broadMatch ex:Forest ;
-    skos:definition "Min. Area (ha) = 0.5 Min. Crown Cover (%) = 30.0 Min. Tree Height (m) = 3.0"@en ;
     skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "Congo- Republic of () national criteria"@en ;
+    skos:prefLabel "Cape Verde national criteria"@en ;
     skos:scopeNote "National"@en,
-        "cover"@en .
-
-ex:CONGO__ZAINational_1 a skos:Concept ;
-    ex:minCrownCoverPct 10.0 ;
-    dct:spatial ex:Country_CONGO__ZAI ;
-    skos:broadMatch ex:Forest ;
-    skos:definition "Min. Crown Cover (%) = 10.0"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "Congo (Zaire) national criteria"@en ;
-    skos:scopeNote "National"@en,
-        "cover"@en .
+        "use"@en .
 
 ex:CRINational_1 a skos:Concept ;
     ex:minAreaHa 2.0 ;
@@ -16169,11 +16155,6 @@ ex:CoillteEstate_1 a skos:Concept ;
     skos:scopeNote "Land use"@en,
         "National"@en .
 
-ex:Country_ANTIGUA_BA a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "ANTIGUA_BA" ;
-    skos:prefLabel "Antigua Barbuda"@en .
-
 ex:Country_BELGIUM_FL a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "BELGIUM_FL" ;
@@ -16183,36 +16164,6 @@ ex:Country_BELGIUM_WA a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "BELGIUM_WA" ;
     skos:prefLabel "Belgium Walloon"@en .
-
-ex:Country_CAPE_VERDE a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "CAPE_VERDE" ;
-    skos:prefLabel "Cape Verde"@en .
-
-ex:Country_CHILE___ a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "CHILE___" ;
-    skos:prefLabel "Chile ()"@en .
-
-ex:Country_CONGO__REP a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "CONGO__REP" ;
-    skos:prefLabel "Congo- Republic of ()"@en .
-
-ex:Country_CONGO__ZAI a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "CONGO__ZAI" ;
-    skos:prefLabel "Congo (Zaire)"@en .
-
-ex:Country_DEMOCRATIC a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "DEMOCRATIC" ;
-    skos:prefLabel "Democratic Republic Congo"@en .
-
-ex:Country_ECUADOR___ a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "ECUADOR___" ;
-    skos:prefLabel "Ecuador ()"@en .
 
 ex:Country_ESH a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -16234,50 +16185,15 @@ ex:Country_GUINEA_BIS a skos:Concept ;
     skos:notation "GUINEA_BIS" ;
     skos:prefLabel "Guinea Bissau"@en .
 
-ex:Country_GUYANA___ a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "GUYANA___" ;
-    skos:prefLabel "Guyana ()"@en .
-
-ex:Country_IIASA a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "IIASA" ;
-    skos:prefLabel "IIASA"@en .
-
-ex:Country_INDONESIA_ a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "INDONESIA_" ;
-    skos:prefLabel "Indonesia ()"@en .
-
 ex:Country_KOREA__DEM a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "KOREA__DEM" ;
     skos:prefLabel "Korea- Dem.People's Rep"@en .
 
-ex:Country_LIBYA_ARAB a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "LIBYA_ARAB" ;
-    skos:prefLabel "Libya Arab Jamahiriy"@en .
-
-ex:Country_MEXICO___ a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "MEXICO___" ;
-    skos:prefLabel "Mexico ()"@en .
-
-ex:Country_PARAGUAY__ a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "PARAGUAY__" ;
-    skos:prefLabel "Paraguay ()"@en .
-
 ex:Country_PERU_AMAZO a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "PERU_AMAZO" ;
     skos:prefLabel "Peru Amazon"@en .
-
-ex:Country_SADC a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "SADC" ;
-    skos:prefLabel "SADC"@en .
 
 ex:Country_SERBIA_AND a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -16294,65 +16210,10 @@ ex:Country_ST__HELENA a skos:Concept ;
     skos:notation "ST__HELENA" ;
     skos:prefLabel "St. Helena"@en .
 
-ex:Country_ST__KITTS_ a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "ST__KITTS_" ;
-    skos:prefLabel "St. Kitts Nevis"@en .
-
-ex:Country_SWAZILAND a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "SWAZILAND" ;
-    skos:prefLabel "Swaziland"@en .
-
-ex:Country_TABLE_3___ a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "TABLE_3___" ;
-    skos:prefLabel "Table 3 – National criteria used for defining forestland. Blanks mean no threshold values were stipulated or found"@en .
-
 ex:Country_TAIWAN__R_ a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "TAIWAN__R_" ;
     skos:prefLabel "Taiwan (R.O.C.)"@en .
-
-ex:Country_TURKEY a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "TURKEY" ;
-    skos:prefLabel "Turkey"@en .
-
-ex:Country_UN_CCD a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "UN_CCD" ;
-    skos:prefLabel "UN CCD"@en .
-
-ex:Country_UN_ESCO a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "UN_ESCO" ;
-    skos:prefLabel "UN ESCO"@en .
-
-ex:Country_UN_FCCC a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "UN_FCCC" ;
-    skos:prefLabel "UN FCCC"@en .
-
-ex:Country_UN_FRA a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "UN_FRA" ;
-    skos:prefLabel "UN FRA"@en .
-
-ex:Country_UN_LAND_US a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "UN_LAND_US" ;
-    skos:prefLabel "UN Land Use"@en .
-
-ex:Country_UN_LCCS a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "UN_LCCS" ;
-    skos:prefLabel "UN LCCS"@en .
-
-ex:Country_WESTERN_SA a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "WESTERN_SA" ;
-    skos:prefLabel "Western Samoa"@en .
 
 ex:Country_YUGOSLAVIA a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -16490,6 +16351,22 @@ ex:ETHNational_1 a skos:Concept ;
     skos:prefLabel "Ethiopia national criteria"@en ;
     skos:scopeNote "National"@en,
         "cover"@en .
+
+ex:EUNational_1 a skos:Concept ;
+    ex:minCrownCoverPct 10.0 ;
+    ex:minTreeHeightM 5.0 ;
+    skos:broadMatch ex:Forest ;
+    skos:definition "Min. Crown Cover (%) = 10.0 Min. Tree Height (m) = 5.0"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "EU national criteria"@en ;
+    skos:scopeNote "National"@en,
+        "cover"@en .
+
+ex:EUUnfccc_1 a skos:Concept ;
+    skos:broadMatch ex:Forest ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "EU UNFCCC"@en ;
+    skos:scopeNote "National"@en .
 
 ex:EvergreenAndSemiDeciduousForest_1 a skos:Concept ;
     dct:creator "TREES" ;
@@ -32007,18 +31884,6 @@ ex:GUINEA_BISNational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "cover"@en .
 
-ex:GUYANA___National_1 a skos:Concept ;
-    ex:minAreaHa 1.0 ;
-    ex:minCrownCoverPct 30.0 ;
-    ex:minTreeHeightM 5.0 ;
-    dct:spatial ex:Country_GUYANA___ ;
-    skos:broadMatch ex:Forest ;
-    skos:definition "Min. Area (ha) = 1.0 Min. Crown Cover (%) = 30.0 Min. Tree Height (m) = 5.0"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "Guyana () national criteria"@en ;
-    skos:scopeNote "National"@en,
-        "cover"@en .
-
 ex:GUYNational_1 a skos:Concept ;
     dct:spatial ex:Country_GUY ;
     skos:broadMatch ex:Forest ;
@@ -32026,6 +31891,18 @@ ex:GUYNational_1 a skos:Concept ;
     skos:prefLabel "Guyana national criteria"@en ;
     skos:scopeNote "National"@en,
         "declared"@en .
+
+ex:GUYNational_2 a skos:Concept ;
+    ex:minAreaHa 1.0 ;
+    ex:minCrownCoverPct 30.0 ;
+    ex:minTreeHeightM 5.0 ;
+    dct:spatial ex:Country_GUY ;
+    skos:broadMatch ex:Forest ;
+    skos:definition "Min. Area (ha) = 1.0 Min. Crown Cover (%) = 30.0 Min. Tree Height (m) = 5.0"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Guyana () national criteria"@en ;
+    skos:scopeNote "National"@en,
+        "cover"@en .
 
 ex:HNDNational_1 a skos:Concept ;
     dct:spatial ex:Country_HND ;
@@ -32083,10 +31960,21 @@ ex:IDNNational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "use"@en .
 
+ex:IDNNational_2 a skos:Concept ;
+    ex:minAreaHa 0.25 ;
+    ex:minCrownCoverPct 30.0 ;
+    ex:minTreeHeightM 5.0 ;
+    dct:spatial ex:Country_IDN ;
+    skos:broadMatch ex:Forest ;
+    skos:definition "Min. Area (ha) = 0.25 Min. Crown Cover (%) = 30.0 Min. Tree Height (m) = 5.0"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Indonesia () national criteria"@en ;
+    skos:scopeNote "National"@en,
+        "cover"@en .
+
 ex:IIASANational_1 a skos:Concept ;
     ex:minCrownCoverPct 40.0 ;
     ex:minTreeHeightM 6.0 ;
-    dct:spatial ex:Country_IIASA ;
     skos:broadMatch ex:Forest ;
     skos:definition "Min. Crown Cover (%) = 40.0 Min. Tree Height (m) = 6.0"@en ;
     skos:inScheme ex:ForestScheme ;
@@ -32101,18 +31989,6 @@ ex:INDNational_1 a skos:Concept ;
     skos:definition "Min. Crown Cover (%) = 10.0"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "India national criteria"@en ;
-    skos:scopeNote "National"@en,
-        "cover"@en .
-
-ex:INDONESIA_National_1 a skos:Concept ;
-    ex:minAreaHa 0.25 ;
-    ex:minCrownCoverPct 30.0 ;
-    ex:minTreeHeightM 5.0 ;
-    dct:spatial ex:Country_INDONESIA_ ;
-    skos:broadMatch ex:Forest ;
-    skos:definition "Min. Area (ha) = 0.25 Min. Crown Cover (%) = 30.0 Min. Tree Height (m) = 5.0"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "Indonesia () national criteria"@en ;
     skos:scopeNote "National"@en,
         "cover"@en .
 
@@ -32229,8 +32105,8 @@ ex:KHMNational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "cover"@en .
 
-ex:KOREA__REPNational_1 a skos:Concept ;
-    dct:spatial ex:Country_KOREA__REP ;
+ex:KORNational_1 a skos:Concept ;
+    dct:spatial ex:Country_KOR ;
     skos:broadMatch ex:Forest ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Korea- Republic of national criteria"@en ;
@@ -32343,23 +32219,22 @@ ex:MARNational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "cover"@en .
 
+ex:MDAUnfccc_1 a skos:Concept ;
+    ex:minAreaHa 0.25 ;
+    ex:minCrownCoverPct 30.0 ;
+    ex:minTreeHeightM 5.0 ;
+    dct:spatial ex:Country_MDA ;
+    skos:broadMatch ex:Forest ;
+    skos:definition "Min. Area (ha) = 0.25 Min. Crown Cover (%) = 30.0 Min. Tree Height (m) = 5.0"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Moldova- Republic of UNFCCC"@en ;
+    skos:scopeNote "National"@en .
+
 ex:MDGNational_1 a skos:Concept ;
     dct:spatial ex:Country_MDG ;
     skos:broadMatch ex:Forest ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Madagascar national criteria"@en ;
-    skos:scopeNote "National"@en,
-        "use"@en .
-
-ex:MEXICO___National_1 a skos:Concept ;
-    ex:minAreaHa 50.0 ;
-    ex:minCrownCoverPct 10.0 ;
-    ex:minTreeHeightM 4.0 ;
-    dct:spatial ex:Country_MEXICO___ ;
-    skos:broadMatch ex:Forest ;
-    skos:definition "Min. Area (ha) = 50.0 Min. Crown Cover (%) = 10.0 Min. Tree Height (m) = 4.0"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "Mexico () national criteria"@en ;
     skos:scopeNote "National"@en,
         "use"@en .
 
@@ -32372,6 +32247,18 @@ ex:MEXNational_1 a skos:Concept ;
     skos:definition "Min. Area (ha) = 0.15 Min. Crown Cover (%) = 10.0 Min. Tree Height (m) = 3.0"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Mexico national criteria"@en ;
+    skos:scopeNote "National"@en,
+        "use"@en .
+
+ex:MEXNational_2 a skos:Concept ;
+    ex:minAreaHa 50.0 ;
+    ex:minCrownCoverPct 10.0 ;
+    ex:minTreeHeightM 4.0 ;
+    dct:spatial ex:Country_MEX ;
+    skos:broadMatch ex:Forest ;
+    skos:definition "Min. Area (ha) = 50.0 Min. Crown Cover (%) = 10.0 Min. Tree Height (m) = 4.0"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Mexico () national criteria"@en ;
     skos:scopeNote "National"@en,
         "use"@en .
 
@@ -32410,17 +32297,6 @@ ex:MNPNational_1 a skos:Concept ;
     skos:prefLabel "Northern Mariana Islands national criteria"@en ;
     skos:scopeNote "National"@en,
         "cover"@en .
-
-ex:MOLDOVA__RUnfccc_1 a skos:Concept ;
-    ex:minAreaHa 0.25 ;
-    ex:minCrownCoverPct 30.0 ;
-    ex:minTreeHeightM 5.0 ;
-    dct:spatial ex:Country_MOLDOVA__R ;
-    skos:broadMatch ex:Forest ;
-    skos:definition "Min. Area (ha) = 0.25 Min. Crown Cover (%) = 30.0 Min. Tree Height (m) = 5.0"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "Moldova- Republic of UNFCCC"@en ;
-    skos:scopeNote "National"@en .
 
 ex:MOZNational_1 a skos:Concept ;
     ex:minCrownCoverPct 25.0 ;
@@ -32581,20 +32457,6 @@ ex:PANNational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "cover"@en .
 
-ex:PARAGUAY__National_1 a skos:Concept ;
-    ex:maxCrownCoverPct 30.0 ;
-    ex:maxTreeHeightM 5.0 ;
-    ex:minAreaHa 1.0 ;
-    ex:minCrownCoverPct 10.0 ;
-    ex:minTreeHeightM 3.0 ;
-    dct:spatial ex:Country_PARAGUAY__ ;
-    skos:broadMatch ex:Forest ;
-    skos:definition "Min. Area (ha) = 1.0 Min. Crown Cover (%) = 10.0 Min. Tree Height (m) = 3.0"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "Paraguay () national criteria"@en ;
-    skos:scopeNote "National"@en,
-        "use"@en .
-
 ex:PERNational_1 a skos:Concept ;
     dct:spatial ex:Country_PER ;
     skos:broadMatch ex:Forest ;
@@ -32683,6 +32545,20 @@ ex:PRTNational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "use"@en .
 
+ex:PRYNational_2 a skos:Concept ;
+    ex:maxCrownCoverPct 30.0 ;
+    ex:maxTreeHeightM 5.0 ;
+    ex:minAreaHa 1.0 ;
+    ex:minCrownCoverPct 10.0 ;
+    ex:minTreeHeightM 3.0 ;
+    dct:spatial ex:Country_PRY ;
+    skos:broadMatch ex:Forest ;
+    skos:definition "Min. Area (ha) = 1.0 Min. Crown Cover (%) = 10.0 Min. Tree Height (m) = 3.0"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Paraguay () national criteria"@en ;
+    skos:scopeNote "National"@en,
+        "use"@en .
+
 ex:PYFNational_1 a skos:Concept ;
     dct:spatial ex:Country_PYF ;
     skos:broadMatch ex:Forest ;
@@ -32713,24 +32589,6 @@ ex:ProfessionalOfForestInventory_1 a skos:Concept ;
     skos:prefLabel "Professional of Forest Inventory"@en ;
     skos:scopeNote "Land use"@en,
         "National"@en .
-
-ex:REUNational_2 a skos:Concept ;
-    ex:minCrownCoverPct 10.0 ;
-    ex:minTreeHeightM 5.0 ;
-    dct:spatial ex:Country_REU ;
-    skos:broadMatch ex:Forest ;
-    skos:definition "Min. Crown Cover (%) = 10.0 Min. Tree Height (m) = 5.0"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "EU national criteria"@en ;
-    skos:scopeNote "National"@en,
-        "cover"@en .
-
-ex:REUUnfccc_1 a skos:Concept ;
-    dct:spatial ex:Country_REU ;
-    skos:broadMatch ex:Forest ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "EU UNFCCC"@en ;
-    skos:scopeNote "National"@en .
 
 ex:ROUNational_1 a skos:Concept ;
     ex:minAreaHa 0.25 ;
@@ -32777,7 +32635,6 @@ ex:Reforestation_73 a skos:Concept ;
 ex:SADCNational_1 a skos:Concept ;
     ex:minCrownCoverPct 70.0 ;
     ex:minTreeHeightM 5.0 ;
-    dct:spatial ex:Country_SADC ;
     skos:broadMatch ex:Forest ;
     skos:definition "Min. Crown Cover (%) = 70.0 Min. Tree Height (m) = 5.0"@en ;
     skos:inScheme ex:ForestScheme ;
@@ -32890,7 +32747,6 @@ ex:TABLE_3___National_1 a skos:Concept ;
     ex:minCrownCoverPct 3.0 ;
     ex:minStripWidthM 3.0 ;
     ex:minTreeHeightM 3.0 ;
-    dct:spatial ex:Country_TABLE_3___ ;
     skos:broadMatch ex:Forest ;
     skos:definition "Min. Area (ha) = 3.0 Min. Crown Cover (%) = 3.0 Min. Tree Height (m) = 3.0 Min. Strip Width (m) = 3.0"@en ;
     skos:inScheme ex:ForestScheme ;
@@ -32942,8 +32798,8 @@ ex:TONNational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "declared"@en .
 
-ex:TRINIDAD_TNational_1 a skos:Concept ;
-    dct:spatial ex:Country_TRINIDAD_T ;
+ex:TTONational_1 a skos:Concept ;
+    dct:spatial ex:Country_TTO ;
     skos:broadMatch ex:Forest ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Trinidad Tobago national criteria"@en ;
@@ -32958,11 +32814,11 @@ ex:TUNNational_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "cover"@en .
 
-ex:TURKEYNational_1 a skos:Concept ;
+ex:TURNational_1 a skos:Concept ;
     ex:minAreaHa 3.0 ;
     ex:minCrownCoverPct 10.0 ;
     ex:minTreeHeightM 8.0 ;
-    dct:spatial ex:Country_TURKEY ;
+    dct:spatial ex:Country_TUR ;
     skos:broadMatch ex:Forest ;
     skos:definition "Min. Area (ha) = 3.0 Min. Crown Cover (%) = 10.0 Min. Tree Height (m) = 8.0"@en ;
     skos:inScheme ex:ForestScheme ;
@@ -33061,7 +32917,6 @@ ex:UKRNational_1 a skos:Concept ;
         "cover"@en .
 
 ex:UN_CCDNational_1 a skos:Concept ;
-    dct:spatial ex:Country_UN_CCD ;
     skos:broadMatch ex:Forest ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "UN CCD national criteria"@en ;
@@ -33071,7 +32926,6 @@ ex:UN_CCDNational_1 a skos:Concept ;
 ex:UN_ESCONational_1 a skos:Concept ;
     ex:minCrownCoverPct 40.0 ;
     ex:minTreeHeightM 5.0 ;
-    dct:spatial ex:Country_UN_ESCO ;
     skos:broadMatch ex:Forest ;
     skos:definition "Min. Crown Cover (%) = 40.0 Min. Tree Height (m) = 5.0"@en ;
     skos:inScheme ex:ForestScheme ;
@@ -33086,7 +32940,6 @@ ex:UN_FCCCNational_1 a skos:Concept ;
     ex:minAreaHa 0.05 ;
     ex:minCrownCoverPct 10.0 ;
     ex:minTreeHeightM 2.0 ;
-    dct:spatial ex:Country_UN_FCCC ;
     skos:broadMatch ex:Forest ;
     skos:definition "Min. Area (ha) = 0.05 Min. Crown Cover (%) = 10.0 Min. Tree Height (m) = 2.0"@en ;
     skos:inScheme ex:ForestScheme ;
@@ -33099,7 +32952,6 @@ ex:UN_FRANational_1 a skos:Concept ;
     ex:minCrownCoverPct 10.0 ;
     ex:minStripWidthM 20.0 ;
     ex:minTreeHeightM 5.0 ;
-    dct:spatial ex:Country_UN_FRA ;
     skos:broadMatch ex:Forest ;
     skos:definition "Min. Area (ha) = 0.5 Min. Crown Cover (%) = 10.0 Min. Tree Height (m) = 5.0 Min. Strip Width (m) = 20.0"@en ;
     skos:inScheme ex:ForestScheme ;
@@ -33108,7 +32960,6 @@ ex:UN_FRANational_1 a skos:Concept ;
         "use"@en .
 
 ex:UN_LAND_USNational_1 a skos:Concept ;
-    dct:spatial ex:Country_UN_LAND_US ;
     skos:broadMatch ex:Forest ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "UN Land Use national criteria"@en ;
@@ -33117,7 +32968,6 @@ ex:UN_LAND_USNational_1 a skos:Concept ;
 
 ex:UN_LCCSNational_1 a skos:Concept ;
     ex:minTreeHeightM 3.0 ;
-    dct:spatial ex:Country_UN_LCCS ;
     skos:broadMatch ex:Forest ;
     skos:definition "Min. Tree Height (m) = 3.0"@en ;
     skos:inScheme ex:ForestScheme ;
@@ -33384,6 +33234,11 @@ ex:Country_BRN a skos:Concept ;
     skos:notation "BRN" ;
     skos:prefLabel "Brunei Darussalam"@en .
 
+ex:Country_CPV a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:notation "CPV" ;
+    skos:prefLabel "Cabo Verde"@en .
+
 ex:Country_DJI a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "DJI" ;
@@ -33393,11 +33248,6 @@ ex:Country_DZA a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "DZA" ;
     skos:prefLabel "Algeria"@en .
-
-ex:Country_ECU a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "ECU" ;
-    skos:prefLabel "Ecuador"@en .
 
 ex:Country_GLP a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -33417,7 +33267,7 @@ ex:Country_GUM a skos:Concept ;
 ex:Country_IRN a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "IRN" ;
-    skos:prefLabel "Iran"@en .
+    skos:prefLabel "Iran, Islamic Republic of"@en .
 
 ex:Country_IRQ a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -33434,15 +33284,20 @@ ex:Country_KIR a skos:Concept ;
     skos:notation "KIR" ;
     skos:prefLabel "Kiribati"@en .
 
-ex:Country_KOREA__REP a skos:Concept ;
+ex:Country_KNA a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
-    skos:notation "KOREA__REP" ;
-    skos:prefLabel "Korea- Republic of"@en .
+    skos:notation "KNA" ;
+    skos:prefLabel "Saint Kitts and Nevis"@en .
 
 ex:Country_KWT a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "KWT" ;
     skos:prefLabel "Kuwait"@en .
+
+ex:Country_LBY a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:notation "LBY" ;
+    skos:prefLabel "Libya"@en .
 
 ex:Country_LCA a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -33457,12 +33312,7 @@ ex:Country_MDV a skos:Concept ;
 ex:Country_MKD a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "MKD" ;
-    skos:prefLabel "Macedonia"@en .
-
-ex:Country_MOLDOVA__R a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "MOLDOVA__R" ;
-    skos:prefLabel "Moldova- Republic of"@en .
+    skos:prefLabel "North Macedonia"@en .
 
 ex:Country_MTQ a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -33482,7 +33332,12 @@ ex:Country_PNG a skos:Concept ;
 ex:Country_PSE a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "PSE" ;
-    skos:prefLabel "Palestine"@en .
+    skos:prefLabel "Palestine, State of"@en .
+
+ex:Country_REU a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:notation "REU" ;
+    skos:prefLabel "Réunion"@en .
 
 ex:Country_SAU a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -33509,10 +33364,15 @@ ex:Country_SRB a skos:Concept ;
     skos:notation "SRB" ;
     skos:prefLabel "Serbia"@en .
 
+ex:Country_SWZ a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:notation "SWZ" ;
+    skos:prefLabel "Eswatini"@en .
+
 ex:Country_SYR a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "SYR" ;
-    skos:prefLabel "Syrian Arab Rep"@en .
+    skos:prefLabel "Syrian Arab Republic"@en .
 
 ex:Country_TCD a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -33524,26 +33384,26 @@ ex:Country_TKM a skos:Concept ;
     skos:notation "TKM" ;
     skos:prefLabel "Turkmenistan"@en .
 
-ex:Country_TRINIDAD_T a skos:Concept ;
+ex:Country_TUR a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
-    skos:notation "TRINIDAD_T" ;
-    skos:prefLabel "Trinidad Tobago"@en .
+    skos:notation "TUR" ;
+    skos:prefLabel "Türkiye"@en .
 
 ex:Country_TZA a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "TZA" ;
-    skos:prefLabel "Tanzania"@en .
+    skos:prefLabel "Tanzania, United Republic of"@en .
 
 ex:Country_VEN a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "VEN" ;
-    skos:prefLabel "Venezuela"@en .
+    skos:prefLabel "Venezuela, Bolivarian Republic of"@en .
 
-ex:ECUADOR___Unfccc_1 a skos:Concept ;
+ex:ECUUnfccc_1 a skos:Concept ;
     ex:minAreaHa 1.0 ;
     ex:minCrownCoverPct 30.0 ;
     ex:minTreeHeightM 5.0 ;
-    dct:spatial ex:Country_ECUADOR___ ;
+    dct:spatial ex:Country_ECU ;
     skos:broadMatch ex:Forest ;
     skos:definition "Min. Area (ha) = 1.0 Min. Crown Cover (%) = 30.0 Min. Tree Height (m) = 5.0"@en ;
     skos:inScheme ex:ForestScheme ;
@@ -36448,6 +36308,24 @@ ex:CIVUnfccc_1 a skos:Concept ;
     skos:scopeNote "Excludes palms and bamboos",
         "National"@en .
 
+ex:CODUnfccc_1 a skos:Concept ;
+    ex:minAreaHa 0.5 ;
+    ex:minCrownCoverPct 30.0 ;
+    ex:minTreeHeightM 3.0 ;
+    dct:creator "Democratic Republic   KP" ;
+    dct:date "2008"^^xsd:gYear ;
+    dct:source "http://cdm.unfccc.int/DNA/cdf/files/2008/1111_DRC.pdf"^^xsd:anyURI,
+        "https://cdm.unfccc.int/DNA/DNA/allCountriesARInfos.html"^^xsd:anyURI ;
+    dct:spatial ex:Country_COD,
+        ex:Country_COG ;
+    skos:broadMatch ex:Forest ;
+    skos:definition "Cover Min. Area (ha) = 0.5 Min. Crown Cover (%) = 30 Min. Tree Height (m) = 3 Min. Strip Width (m) = ns and"@en,
+        "Min. Area (ha) = 0.5 Min. Crown Cover (%) = 30.0 Min. Tree Height (m) = 3.0"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "Democratic Republic Congo 2008 KP" ;
+    skos:prefLabel "Democratic Republic Congo UNFCCC"@en ;
+    skos:scopeNote "National"@en .
+
 ex:CRIUnfccc_1 a skos:Concept ;
     ex:minAreaHa 30.0 ;
     ex:minCrownCoverPct 5.0 ;
@@ -36500,11 +36378,6 @@ ex:Country_ASM a skos:Concept ;
     skos:notation "ASM" ;
     skos:prefLabel "American Samoa"@en .
 
-ex:Country_ATG a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "ATG" ;
-    skos:prefLabel "Antigua and Barbuda"@en .
-
 ex:Country_BDI a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "BDI" ;
@@ -36528,7 +36401,7 @@ ex:Country_BIH a skos:Concept ;
 ex:Country_BOL a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "BOL" ;
-    skos:prefLabel "Bolivia"@en .
+    skos:prefLabel "Bolivia, Plurinational State of"@en .
 
 ex:Country_CAF a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -36539,6 +36412,11 @@ ex:Country_CIV a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "CIV" ;
     skos:prefLabel "Côte d'Ivoire"@en .
+
+ex:Country_COD a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:notation "COD" ;
+    skos:prefLabel "Congo, The Democratic Republic of the"@en .
 
 ex:Country_COM a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -36553,12 +36431,17 @@ ex:Country_CYM a skos:Concept ;
 ex:Country_CZE a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "CZE" ;
-    skos:prefLabel "Czech Republic"@en .
+    skos:prefLabel "Czechia"@en .
 
 ex:Country_DOM a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "DOM" ;
     skos:prefLabel "Dominican Republic"@en .
+
+ex:Country_ECU a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:notation "ECU" ;
+    skos:prefLabel "Ecuador"@en .
 
 ex:Country_EGY a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -36580,20 +36463,20 @@ ex:Country_KAZ a skos:Concept ;
     skos:notation "KAZ" ;
     skos:prefLabel "Kazakhstan"@en .
 
-ex:Country_KOR a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "KOR" ;
-    skos:prefLabel "Korea, Republic of"@en .
-
 ex:Country_LAO a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "LAO" ;
-    skos:prefLabel "Lao"@en .
+    skos:prefLabel "Lao People's Democratic Republic"@en .
 
 ex:Country_MCO a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "MCO" ;
     skos:prefLabel "Monaco"@en .
+
+ex:Country_MDA a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:notation "MDA" ;
+    skos:prefLabel "Moldova, Republic of"@en .
 
 ex:Country_MLT a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -36663,30 +36546,7 @@ ex:Country_UZB a skos:Concept ;
 ex:Country_VGB a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "VGB" ;
-    skos:prefLabel "British Virgin Islands"@en .
-
-ex:Country_WSM a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "WSM" ;
-    skos:prefLabel "Samoa"@en .
-
-ex:DEMOCRATICUnfccc_1 a skos:Concept ;
-    ex:minAreaHa 0.5 ;
-    ex:minCrownCoverPct 30.0 ;
-    ex:minTreeHeightM 3.0 ;
-    dct:creator "Democratic Republic   KP" ;
-    dct:date "2008"^^xsd:gYear ;
-    dct:source "http://cdm.unfccc.int/DNA/cdf/files/2008/1111_DRC.pdf"^^xsd:anyURI,
-        "https://cdm.unfccc.int/DNA/DNA/allCountriesARInfos.html"^^xsd:anyURI ;
-    dct:spatial ex:Country_COG,
-        ex:Country_DEMOCRATIC ;
-    skos:broadMatch ex:Forest ;
-    skos:definition "Cover Min. Area (ha) = 0.5 Min. Crown Cover (%) = 30 Min. Tree Height (m) = 3 Min. Strip Width (m) = ns and"@en,
-        "Min. Area (ha) = 0.5 Min. Crown Cover (%) = 30.0 Min. Tree Height (m) = 3.0"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "Democratic Republic Congo 2008 KP" ;
-    skos:prefLabel "Democratic Republic Congo UNFCCC"@en ;
-    skos:scopeNote "National"@en .
+    skos:prefLabel "Virgin Islands, British"@en .
 
 ex:DEUUnfccc_1 a skos:Concept ;
     ex:minAreaHa 0.1 ;
@@ -37168,7 +37028,7 @@ ex:KHMUnfccc_1 a skos:Concept ;
     skos:prefLabel "Cambodia UNFCCC"@en ;
     skos:scopeNote "National"@en .
 
-ex:KOREA__REPUnfccc_1 a skos:Concept ;
+ex:KORUnfccc_1 a skos:Concept ;
     ex:minAreaHa 0.5 ;
     ex:minCrownCoverPct 10.0 ;
     ex:minTreeHeightM 5.0 ;
@@ -37176,7 +37036,7 @@ ex:KOREA__REPUnfccc_1 a skos:Concept ;
     dct:date "2006"^^xsd:gYear ;
     dct:source "http://cdm.unfccc.int/DNA/index.html"^^xsd:anyURI,
         "https://cdm.unfccc.int/DNA/DNA/allCountriesARInfos.html"^^xsd:anyURI ;
-    dct:spatial ex:Country_KOREA__REP ;
+    dct:spatial ex:Country_KOR ;
     skos:broadMatch ex:Forest ;
     skos:definition "Cover Min. Area (ha) = 0.5 Min. Crown Cover (%) = 10 Min. Tree Height (m) = 5 Min. Strip Width (m) = ns and"@en,
         "Min. Area (ha) = 0.5 Min. Crown Cover (%) = 10.0 Min. Tree Height (m) = 5.0"@en ;
@@ -37833,7 +37693,7 @@ ex:THAUnfccc_1 a skos:Concept ;
     skos:prefLabel "Thailand UNFCCC"@en ;
     skos:scopeNote "National"@en .
 
-ex:TRINIDAD_TUnfccc_1 a skos:Concept ;
+ex:TTOUnfccc_1 a skos:Concept ;
     ex:minAreaHa 0.4 ;
     ex:minCrownCoverPct 10.0 ;
     ex:minTreeHeightM 3.0 ;
@@ -37841,7 +37701,7 @@ ex:TRINIDAD_TUnfccc_1 a skos:Concept ;
     dct:date "2006"^^xsd:gYear ;
     dct:source "http://cdm.unfccc.int/DNA/index.html"^^xsd:anyURI,
         "https://cdm.unfccc.int/DNA/DNA/allCountriesARInfos.html"^^xsd:anyURI ;
-    dct:spatial ex:Country_TRINIDAD_T ;
+    dct:spatial ex:Country_TTO ;
     skos:broadMatch ex:Forest ;
     skos:definition "Cover Min. Area (ha) = 0.4 Min. Crown Cover (%) = 10 Min. Tree Height (m) = 3 Min. Strip Width (m) = ns and"@en,
         "Min. Area (ha) = 0.4 Min. Crown Cover (%) = 10.0 Min. Tree Height (m) = 3.0"@en ;
@@ -37956,6 +37816,11 @@ ex:BGRUnfccc_1 a skos:Concept ;
     skos:scopeNote "National"@en,
         "cover"@en .
 
+ex:Country_ATG a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:notation "ATG" ;
+    skos:prefLabel "Antigua and Barbuda"@en .
+
 ex:Country_BRB a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "BRB" ;
@@ -38006,11 +37871,6 @@ ex:Country_NAM a skos:Concept ;
     skos:notation "NAM" ;
     skos:prefLabel "Namibia"@en .
 
-ex:Country_REU a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "REU" ;
-    skos:prefLabel "EU"@en .
-
 ex:Country_SLE a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "SLE" ;
@@ -38030,6 +37890,11 @@ ex:Country_VUT a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "VUT" ;
     skos:prefLabel "Vanuatu"@en .
+
+ex:Country_WSM a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:notation "WSM" ;
+    skos:prefLabel "Samoa"@en .
 
 ex:Degradation a skos:Concept ;
     skos:definition "Water that is safe to drink or use for food preparation."@en ;
@@ -38193,15 +38058,15 @@ ex:Country_GTM a skos:Concept ;
     skos:notation "GTM" ;
     skos:prefLabel "Guatemala"@en .
 
-ex:Country_GUY a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "GUY" ;
-    skos:prefLabel "Guyana"@en .
-
 ex:Country_IMN a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "IMN" ;
     skos:prefLabel "Isle of Man"@en .
+
+ex:Country_KOR a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:notation "KOR" ;
+    skos:prefLabel "Korea, Republic of"@en .
 
 ex:Country_LIE a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -38232,11 +38097,6 @@ ex:Country_TON a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "TON" ;
     skos:prefLabel "Tonga"@en .
-
-ex:Country_TTO a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "TTO" ;
-    skos:prefLabel "Trinidad and Tobago"@en .
 
 ex:Country_URY a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -38273,6 +38133,11 @@ ex:Country_GAB a skos:Concept ;
     skos:notation "GAB" ;
     skos:prefLabel "Gabon"@en .
 
+ex:Country_GUY a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:notation "GUY" ;
+    skos:prefLabel "Guyana"@en .
+
 ex:Country_ISR a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "ISR" ;
@@ -38297,11 +38162,6 @@ ex:Country_CMR a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "CMR" ;
     skos:prefLabel "Cameroon"@en .
-
-ex:Country_COG a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "COG" ;
-    skos:prefLabel "Congo"@en .
 
 ex:Country_CUB a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -38346,7 +38206,7 @@ ex:Country_MMR a skos:Concept ;
 ex:Country_NGA a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "NGA" ;
-    skos:prefLabel "Niger"@en .
+    skos:prefLabel "Nigeria"@en .
 
 ex:Country_NLD a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -38358,20 +38218,25 @@ ex:Country_PRT a skos:Concept ;
     skos:notation "PRT" ;
     skos:prefLabel "Portugal"@en .
 
-ex:Country_PRY a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "PRY" ;
-    skos:prefLabel "Paraguay"@en .
-
 ex:Country_SVK a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "SVK" ;
     skos:prefLabel "Slovakia"@en .
 
+ex:Country_TTO a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:notation "TTO" ;
+    skos:prefLabel "Trinidad and Tobago"@en .
+
 ex:Country_CHE a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "CHE" ;
     skos:prefLabel "Switzerland"@en .
+
+ex:Country_COG a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:notation "COG" ;
+    skos:prefLabel "Congo"@en .
 
 ex:Country_DEU a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -38392,6 +38257,11 @@ ex:Country_MNP a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "MNP" ;
     skos:prefLabel "Northern Mariana Islands"@en .
+
+ex:Country_PRY a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:notation "PRY" ;
+    skos:prefLabel "Paraguay"@en .
 
 ex:Country_VNM a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -38500,11 +38370,6 @@ ex:Country_AUT a skos:Concept ;
     skos:notation "AUT" ;
     skos:prefLabel "Austria"@en .
 
-ex:Country_CHL a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "CHL" ;
-    skos:prefLabel "Chile"@en .
-
 ex:Country_CRI a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "CRI" ;
@@ -38519,6 +38384,11 @@ ex:Country_POL a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "POL" ;
     skos:prefLabel "Poland"@en .
+
+ex:Country_CHL a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:notation "CHL" ;
+    skos:prefLabel "Chile"@en .
 
 ex:Country_DNK a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -38654,15 +38524,15 @@ ex:Country_IDN a skos:Concept ;
     skos:notation "IDN" ;
     skos:prefLabel "Indonesia"@en .
 
-ex:Country_MEX a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "MEX" ;
-    skos:prefLabel "Mexico"@en .
-
 ex:Country_EST a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "EST" ;
     skos:prefLabel "Estonia"@en .
+
+ex:Country_MEX a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:notation "MEX" ;
+    skos:prefLabel "Mexico"@en .
 
 ex:Country_GBR a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
