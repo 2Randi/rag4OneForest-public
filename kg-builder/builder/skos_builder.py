@@ -46,7 +46,6 @@ AFO = Namespace(settings.afo_uri)
 
 
 # Helpers module-level
-
 def _make_camel(label: str) -> str:
     """
     Convertit un label en CamelCase URI fragment.
@@ -132,7 +131,6 @@ def _normalize_country_name(s: str) -> str:
 
 
 # Constructeur principal
-
 class SKOSBuilder:
     """
     Construit le graphe RDF/SKOS depuis des DefinitionRecord et Table3Record.
@@ -154,15 +152,10 @@ class SKOSBuilder:
         self._scope_colls:       dict[str, URIRef] = {}   # scope  → Collection URI
         self._type_colls:        dict[str, URIRef] = {}   # type   → Collection URI
         self._org_colls:         dict[str, URIRef] = {}   # org key → Collection URI
-        self._country_idx:       dict[str, list[URIRef]] = {}  # iso3 → [concept URIs]
 
         # Compteur pour URI uniques CamelCase (comme unique_uri() de build_graph.py)
         # 'CarbonStock' → 1re fois: ex:CarbonStock, 2e fois: ex:CarbonStock_2
         self._uri_counter:        dict[str, int] = {}
-
-        # Stockage des définitions UNFCCC Forest pour la jointure Table 3
-        self._unfccc_defs:        dict[str, list[DefinitionRecord]] = {}  # country_key → recs
-        self._unfccc_concept_idx: dict[str, URIRef] = {}                  # country_key → URI
 
         # Initialisation du schéma
         self._scheme_uri = EX["ForestScheme"]
@@ -175,7 +168,6 @@ class SKOSBuilder:
         self._init_related_links()
 
     # Initialisation
-
     def _bind_namespaces(self) -> None:
         g = self.graph
         g.bind("skos", SKOS)
@@ -448,7 +440,6 @@ class SKOSBuilder:
                 g.add((uri_b, SKOS.related, uri_a))
 
     # Métadonnées Dublin Core
-
     def _add_metadata(self, uri: URIRef, rec: DefinitionRecord) -> None:
         g = self.graph
         if rec.year and rec.year not in ("", "nan"):
@@ -482,18 +473,16 @@ class SKOSBuilder:
         self._uri_counter[base] = self._uri_counter.get(base, 0) + 1
         return EX[f"{base}_{self._uri_counter[base]}"]
 
-    # Construction des concepts textuels
 
+    # Construction des concepts textuels
     def build(self, records: list[DefinitionRecord]) -> None:
         """
         Construit les skos:Concept depuis les DefinitionRecord.
 
-        Les définitions nationales UNFCCC pour Forest/Forest Land sont
-        mises de côté dans _unfccc_defs pour être jointes dans
-        build_table3_concepts(). Tous les autres records créent un concept.
+        Chaque record fait son propre concept, meme les definitions UNFCCC
+        Forest/Forest Land (avant elles etaient mises de cote pour une
+        jointure avec Table 3, plus maintenant : dct:spatial suffit).
         """
-        import pycountry
-
         n_ok = n_skip = n_unfccc = 0
         for rec in records:
             if not rec.definition.strip():
@@ -510,12 +499,8 @@ class SKOSBuilder:
                 n_skip += 1
                 continue
 
-            # Les définitions UNFCCC Forest sont réservées pour la jointure Table 3
             if _is_unfccc_source(rec.sources) and t2_upper == "FOREST/FOREST LAND":
-                key = _normalize_country_name(rec.sources).lower()
-                self._unfccc_defs.setdefault(key, []).append(rec)
                 n_unfccc += 1
-                continue
 
             # URI : premier bold_term (ex: ex:Treed_1) ou nom canonique du top concept
             # (ex: ex:Forest_1) quand pas de bold term.
@@ -558,21 +543,18 @@ class SKOSBuilder:
             if def_lit:
                 g.add((uri, SKOS.definition, def_lit))
 
-            # Scope (title_3) → scopeNote + Collection
+            # Scope (title_3) → juste la collection, pas de texte libre
+            # (avant scopeNote melangeait scope/type/notes, impossible a filtrer)
             scope = settings.scope_map.get(rec.title_3, "")
             if not scope and rec.title_3 in settings.valid_scopes:
                 scope = rec.title_3
-            if scope:
-                g.add((uri, SKOS.scopeNote, Literal(scope, lang="en")))
-                if scope in self._scope_colls:
-                    g.add((self._scope_colls[scope], SKOS.member, uri))
+            if scope and scope in self._scope_colls:
+                g.add((self._scope_colls[scope], SKOS.member, uri))
 
-            # Type (title_4) → scopeNote + Collection
+            # Type (title_4) pareil, juste la collection
             ftype = settings.type_map.get(rec.title_4, "")
-            if ftype:
-                g.add((uri, SKOS.scopeNote, Literal(ftype, lang="en")))
-                if ftype in self._type_colls:
-                    g.add((self._type_colls[ftype], SKOS.member, uri))
+            if ftype and ftype in self._type_colls:
+                g.add((self._type_colls[ftype], SKOS.member, uri))
 
             # Métadonnées Dublin Core
             self._add_metadata(uri, rec)
@@ -581,19 +563,11 @@ class SKOSBuilder:
             for org_coll_uri in self._match_org_collections(rec.organization):
                 g.add((org_coll_uri, SKOS.member, uri))
 
-            # Index pays pour la jointure (hors UNFCCC déjà traités)
-            if rec.country and rec.country not in ("", "nan"):
-                try:
-                    iso3 = pycountry.countries.search_fuzzy(rec.country)[0].alpha_3
-                    self._country_idx.setdefault(iso3, []).append(uri)
-                except Exception:
-                    pass
-
             n_ok += 1
 
         print(
-            f"[SKOSBuilder] build: {n_ok} concepts créés, "
-            f"{n_unfccc} définitions UNFCCC réservées, "
+            f"[SKOSBuilder] build: {n_ok} concepts créés "
+            f"(dont {n_unfccc} définitions UNFCCC), "
             f"{n_skip} lignes ignorées"
         )
 
@@ -610,7 +584,11 @@ class SKOSBuilder:
             * Seuils numériques (minAreaHa, maxAreaHa, etc.) en xsd:decimal
             * Lien type → Collection (Declared / Land use / Land cover / Ecological)
             * Membres des collections Scope_National et UNFCCC
-        - Joint les définitions textuelles collectées dans _unfccc_defs
+
+        Pas de jointure avec les definitions texte du docx : ce concept a
+        son propre dct:spatial vers le pays, point. Pour "tout sur le pays
+        X" on filtre par dct:spatial, pas par un concept fusionne (c'est
+        deja comme ca que search_country_thresholds marche cote rag-api).
         """
         g            = self.graph
         forest_uri   = self._top_concepts.get("FOREST/FOREST LAND")
@@ -620,7 +598,7 @@ class SKOSBuilder:
         unfccc_coll = self._org_colls.get("UNFCCC", EX["Org_UNFCCC"])
         g.add((unfccc_coll, SKOS.definition, Literal(settings.unfccc_canonical_definition, lang="en")))
 
-        n_created = n_joined = 0
+        n_created = 0
 
         for rec in table3_records:
             if not rec.is_unfccc:
@@ -630,17 +608,19 @@ class SKOSBuilder:
             if not country_raw:
                 continue
 
+            # si c'est pas un pays (EU, IIASA, ligne d'en-tete Table 3...)
+            # on cree pas le concept, sinon il traine sans dct:spatial et
+            # devient invisible/faux pour toutes les recherches par pays
             country_uri = self._resolve_country_uri(country_raw)
-            iso3 = (str(country_uri).rsplit("Country_", 1)[-1] if country_uri
-                    else re.sub(r'[^A-Za-z0-9]', '_', country_raw)[:10].upper())
+            if not country_uri:
+                continue
+            iso3 = str(country_uri).rsplit("Country_", 1)[-1]
 
             unfccc_uri = self._unique_concept_uri(f"{iso3}Unfccc")
             g.add((unfccc_uri, RDF.type,        SKOS.Concept))
             g.add((unfccc_uri, SKOS.inScheme,   self._scheme_uri))
             g.add((unfccc_uri, SKOS.prefLabel,  Literal(f"{country_raw} UNFCCC", lang="en")))
-            if country_uri:
-                g.add((unfccc_uri, DCTERMS.spatial, country_uri))
-            g.add((unfccc_uri, SKOS.scopeNote,  Literal("National", lang="en")))
+            g.add((unfccc_uri, DCTERMS.spatial, country_uri))
 
             # skos:broadMatch → Forest top-concept (plus spécifique que le général)
             if forest_uri:
@@ -668,25 +648,27 @@ class SKOSBuilder:
                     g.add((unfccc_uri, EX[max_prop],
                            Literal(Decimal(str(vmax)), datatype=XSD.decimal)))
 
-            # definition de secours a partir des chiffres, au cas ou la
-            # jointure texte plus bas (par nom de pays) rate a cause d'une
-            # variante d'orthographe ("Columbia" vs "Colombia" par ex).
             # sans skos:definition le concept est invisible aux recherches
+            # (search_country_thresholds, search_by_keyword l'exigent)
             if def_parts:
                 g.add((unfccc_uri, SKOS.definition, Literal(" ".join(def_parts), lang="en")))
 
-            # Type de définition (Table 3) → Collection type
+            # Type (Table 3) : def_type est brut ("cover"), on ecrit toujours
+            # le type_label canonique ("Land cover") pour pas avoir les deux
+            # formes qui trainent. Rien si aucun des 4 mots-cles ne matche.
             def_type = (rec.definition_type or "").strip().lower()
             if def_type and def_type not in ("nan", ""):
-                g.add((unfccc_uri, SKOS.scopeNote, Literal(def_type, lang="en")))
                 for kw, type_label in settings.table3_type_keywords.items():
                     if kw in def_type:
+                        g.add((unfccc_uri, SKOS.scopeNote, Literal(type_label, lang="en")))
                         coll_uri = self._type_colls.get(type_label)
                         if coll_uri:
                             g.add((coll_uri, SKOS.member, unfccc_uri))
                         break
 
-            # Notes / URLs de la colonne notes
+            # Colonne notes = texte libre (citations, exclusions...), pas
+            # une classification, donc editorialNote (note est deja pris
+            # par la citation source dans _add_metadata)
             if rec.notes and rec.notes not in ("", "nan"):
                 urls_found = re.findall(r'https?://\S+', rec.notes)
                 for u in urls_found:
@@ -697,44 +679,22 @@ class SKOSBuilder:
                     remaining = remaining.replace(u, '')
                 remaining = remaining.strip(' -\n')
                 if remaining:
-                    g.add((unfccc_uri, SKOS.scopeNote, Literal(remaining)))
+                    g.add((unfccc_uri, SKOS.editorialNote, Literal(remaining)))
 
-            # Index pour la jointure
-            self._unfccc_concept_idx[country_raw.lower()] = unfccc_uri
-            self._country_idx.setdefault(iso3, []).append(unfccc_uri)
             n_created += 1
 
-        # Jointure : définitions textuelles → concepts UNFCCC
-        for country_key, def_records in self._unfccc_defs.items():
-            concept_uri = self._unfccc_concept_idx.get(country_key)
-            if not concept_uri:
-                continue
-            for drec in def_records:
-                def_lit = _lang_literal(drec.definition)
-                if def_lit:
-                    g.add((concept_uri, SKOS.definition, def_lit))
-                # Scope et type depuis la définition textuelle
-                scope = settings.scope_map.get(drec.title_3, "")
-                if not scope and drec.title_3 in settings.valid_scopes:
-                    scope = drec.title_3
-                if scope and scope in self._scope_colls:
-                    g.add((self._scope_colls[scope], SKOS.member, concept_uri))
-                ftype = settings.type_map.get(drec.title_4, "")
-                if ftype and ftype in self._type_colls:
-                    g.add((self._type_colls[ftype], SKOS.member, concept_uri))
-                self._add_metadata(concept_uri, drec)
-                for org_coll_uri in self._match_org_collections(drec.organization):
-                    g.add((org_coll_uri, SKOS.member, concept_uri))
-                n_joined += 1
-
-        print(
-            f"[SKOSBuilder] table3 UNFCCC: {n_created} concepts créés, "
-            f"{n_joined} définitions textuelles jointes"
-        )
+        print(f"[SKOSBuilder] table3 UNFCCC: {n_created} concepts créés")
 
         # Critères nationaux non-UNFCCC (Table 3, is_unfccc=False)
         # Pays avec seuils propres (surface, couvert, hauteur) hors protocole Kyoto
         national_coll = self._scope_colls.get("National")
+
+        # regroupe tous les concepts Criteria ensemble, meme principe que
+        # Org_UNFCCC pour les concepts Unfccc
+        criteria_coll = EX["CountryCriteria"]
+        g.add((criteria_coll, RDF.type,       SKOS.Collection))
+        g.add((criteria_coll, SKOS.prefLabel, Literal("National criteria (non-UNFCCC)", lang="en")))
+
         n_national = 0
         for rec in table3_records:
             if rec.is_unfccc:
@@ -743,30 +703,31 @@ class SKOSBuilder:
             if not country_raw or country_raw.lower() in ("nan", ""):
                 continue
 
-            # Concept pays partagé avec UNFCCC si déjà créé
+            # si c'est pas un pays (EU, IIASA, ligne d'en-tete Table 3...)
+            # on cree pas le concept, meme raison que le chemin UNFCCC
             country_uri = self._resolve_country_uri(country_raw)
-            iso3 = (str(country_uri).rsplit("Country_", 1)[-1] if country_uri
-                    else re.sub(r'[^A-Za-z0-9]', '_', country_raw)[:10].upper())
+            if not country_uri:
+                continue
+            iso3 = str(country_uri).rsplit("Country_", 1)[-1]
 
-            nat_uri = self._unique_concept_uri(f"{iso3}National")
+            nat_uri = self._unique_concept_uri(f"{iso3}Criteria")
             g.add((nat_uri, RDF.type,       SKOS.Concept))
             g.add((nat_uri, SKOS.inScheme,  self._scheme_uri))
-            g.add((nat_uri, SKOS.prefLabel, Literal(f"{country_raw} national criteria", lang="en")))
-            if country_uri:
-                g.add((nat_uri, DCTERMS.spatial, country_uri))
-            g.add((nat_uri, SKOS.scopeNote, Literal("National", lang="en")))
+            g.add((nat_uri, SKOS.prefLabel, Literal(f"{country_raw} criteria", lang="en")))
+            g.add((nat_uri, DCTERMS.spatial, country_uri))
+            g.add((criteria_coll, SKOS.member, nat_uri))
 
             if forest_uri:
                 g.add((nat_uri, SKOS.broadMatch, forest_uri))
             if national_col:
                 g.add((national_col, SKOS.member, nat_uri))
 
-            # Type de définition
+            # Type : meme normalisation que le chemin UNFCCC juste au-dessus
             def_type = (rec.definition_type or "").strip().lower()
             if def_type and def_type not in ("nan", ""):
-                g.add((nat_uri, SKOS.scopeNote, Literal(def_type, lang="en")))
                 for kw, type_label in settings.table3_type_keywords.items():
                     if kw in def_type:
+                        g.add((nat_uri, SKOS.scopeNote, Literal(type_label, lang="en")))
                         coll_uri = self._type_colls.get(type_label)
                         if coll_uri:
                             g.add((coll_uri, SKOS.member, nat_uri))
@@ -794,10 +755,9 @@ class SKOSBuilder:
             if def_parts:
                 g.add((nat_uri, SKOS.definition, Literal(" ".join(def_parts), lang="en")))
 
-            self._country_idx.setdefault(iso3, []).append(nat_uri)
             n_national += 1
 
-        print(f"[SKOSBuilder] table3 National: {n_national} concepts nationaux créés")
+        print(f"[SKOSBuilder] table3 Criteria: {n_national} concepts créés")
 
     def attach_thresholds(self, df_table3) -> None:
         """
