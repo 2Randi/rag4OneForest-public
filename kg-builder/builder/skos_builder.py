@@ -370,12 +370,39 @@ class SKOSBuilder:
         if continent and continent in self._continent_colls:
             g.add((self._continent_colls[continent], SKOS.member, country_uri))
 
+    # des trucs qui trainent dans la colonne pays de table3.csv mais qui ne
+    # sont pas des pays : des organisations, et la ligne d'en-tete du tableau
+    _NOT_A_COUNTRY = {
+        "eu", "iiasa", "sadc", "un ccd", "un esco", "un fcc", "un fccc",
+        "un fra", "un lccs", "un land use",
+    }
+
+    # pays renommes officiellement que pycountry.search_fuzzy ne retrouve
+    # plus depuis l'ancien nom courant (verifie un par un), ou formulations
+    # sans "and" qui font echouer le matching flou
+    _COUNTRY_ALIASES = {
+        "turkey": "Turkiye",
+        "swaziland": "Eswatini",
+        "cape verde": "Cabo Verde",
+        "antigua barbuda": "Antigua and Barbuda",
+        "trinidad tobago": "Trinidad and Tobago",
+        "st. kitts nevis": "Saint Kitts and Nevis",
+        "western samoa": "Samoa",
+        "korea- republic of": "Korea, Republic of",
+        "moldova- republic of": "Moldova, Republic of",
+        "libya arab jamahiriy": "Libya",
+        "congo- republic of": "Congo",
+        "congo (zaire)": "Congo, The Democratic Republic of the",
+        "democratic republic congo": "Congo, The Democratic Republic of the",
+    }
+
     def _resolve_country_uri(self, country_raw: str) -> URIRef | None:
         """
         Résout un nom de pays en concept ex:Country_ISO3 (le crée si besoin)
         et renvoie son URI. dct:spatial pointe vers ce concept au lieu de
         porter le nom en texte libre, comme ça les recherches par pays sont
-        exactes au lieu de faire un CONTAINS fragile. None si vide.
+        exactes au lieu de faire un CONTAINS fragile. None si vide ou si
+        c'est pas un pays du tout (organisation, ligne d'en-tete...).
         """
         import pycountry
 
@@ -383,16 +410,27 @@ class SKOSBuilder:
         if not country_raw or country_raw.lower() == "nan":
             return None
 
+        key = country_raw.lower()
+        if key in self._NOT_A_COUNTRY or "table 3" in key:
+            return None
+
+        # "Chile ()" -> "Chile" : parentheses vides qui trainent dans la source
+        search_name = re.sub(r'\(\s*\)', '', country_raw).strip()
+        search_name = self._COUNTRY_ALIASES.get(search_name.lower(), search_name)
+
         try:
-            iso3 = pycountry.countries.search_fuzzy(country_raw)[0].alpha_3
+            match = pycountry.countries.search_fuzzy(search_name)[0]
+            iso3 = match.alpha_3
+            display_name = match.name
         except Exception:
             iso3 = re.sub(r'[^A-Za-z0-9]', '_', country_raw)[:10].upper()
+            display_name = country_raw
 
         g = self.graph
         country_uri = EX[f"Country_{iso3}"]
         if (country_uri, RDF.type, SKOS.Concept) not in g:
             g.add((country_uri, RDF.type,       SKOS.Concept))
-            g.add((country_uri, SKOS.prefLabel, Literal(country_raw, lang="en")))
+            g.add((country_uri, SKOS.prefLabel, Literal(display_name, lang="en")))
             g.add((country_uri, SKOS.notation,  Literal(iso3)))
             g.add((country_uri, SKOS.inScheme,  self._scheme_uri))
             self._add_country_to_collections(country_uri, iso3)
@@ -593,7 +631,8 @@ class SKOSBuilder:
                 continue
 
             country_uri = self._resolve_country_uri(country_raw)
-            iso3 = str(country_uri).rsplit("Country_", 1)[-1]
+            iso3 = (str(country_uri).rsplit("Country_", 1)[-1] if country_uri
+                    else re.sub(r'[^A-Za-z0-9]', '_', country_raw)[:10].upper())
 
             unfccc_uri = self._unique_concept_uri(f"{iso3}Unfccc")
             g.add((unfccc_uri, RDF.type,        SKOS.Concept))
@@ -706,7 +745,8 @@ class SKOSBuilder:
 
             # Concept pays partagé avec UNFCCC si déjà créé
             country_uri = self._resolve_country_uri(country_raw)
-            iso3 = str(country_uri).rsplit("Country_", 1)[-1]
+            iso3 = (str(country_uri).rsplit("Country_", 1)[-1] if country_uri
+                    else re.sub(r'[^A-Za-z0-9]', '_', country_raw)[:10].upper())
 
             nat_uri = self._unique_concept_uri(f"{iso3}National")
             g.add((nat_uri, RDF.type,       SKOS.Concept))
