@@ -1,312 +1,312 @@
 countries,definition_type,area_ha,crown_cover_percent,tree_height_m,strip_width_m,notes,country_clean,definition_type_clean,is_unfccc
 Table 3 – National criteria used for defining forestland. Blanks mean no threshold values were stipulated or found,Table 3 – National criteria used for defining forestland. Blanks mean no threshold values were stipulated or found,Table 3 – National criteria used for defining forestland. Blanks mean no threshold values were stipulated or found,Table 3 – National criteria used for defining forestland. Blanks mean no threshold values were stipulated or found,Table 3 – National criteria used for defining forestland. Blanks mean no threshold values were stipulated or found,Table 3 – National criteria used for defining forestland. Blanks mean no threshold values were stipulated or found,Table 3 – National criteria used for defining forestland. Blanks mean no threshold values were stipulated or found,Table 3 – National criteria used for defining forestland Blanks mean no threshold values were stipulated or found,Land use,False
-Afghanistan,Cover,nan,20,nan,nan,nan,Afghanistan,Land cover,False
-Albania,Cover,0.1,20/30,5,nan,nan,Albania,Land cover,False
-Albania UNFCCC,nan,0.1,30,3,nan,nan,Albania,nan,True
-Algeria,Unknown,nan,nan,nan,nan,nan,Algeria,Unknown,False
-American Samoa,Cover,nan,nan,nan,nan,nan,American Samoa,Land cover,False
-Angola,Unknown,nan,nan,nan,nan,nan,Angola,Unknown,False
-Antigua & Barbuda,Use,nan,nan,5,nan,nan,Antigua & Barbuda,Land use,False
-Argentina,Use,0.5,10,5,nan,Source: http://www.cbd.int/doc/world/us/us-nr-vfe-en.pdf and USFS 2004.,Argentina,Land use,False
-Argentina UNFCCC,nan,1,22.5,3,nan,nan,Argentina,nan,True
-Armenia,Cover,nan,nan,nan,nan,nan,Armenia,Land cover,False
-Aruba,Cover,nan,nan,nan,nan,nan,Aruba,Land cover,False
-Australia,Cover,nan,30,5,nan,"Another source gives min. area of 0.5 ha, Crown Cover of 20 % and tree height of 2 m. http://www.cbd.int/doc/world/us/us-nr-vfe-en.pdf (2003) and USFS 2004.",Australia,Land cover,False
-Australia UNFCCC,nan,0.2,20,5,nan,nan,Australia,nan,True
-Austria,Use,0.1,30,nan,10,Traub et al. 1998 give the minimum area as 0.05 ha,Austria,Land use,False
+Afghanistan,Cover,,20,,,,Afghanistan,Land cover,False
+Albania,Cover,0.1,20/30,5,,,Albania,Land cover,False
+Albania UNFCCC,,0.1,30,3,,,Albania,,True
+Algeria,Unknown,,,,,,Algeria,Unknown,False
+American Samoa,Cover,,,,,,American Samoa,Land cover,False
+Angola,Unknown,,,,,,Angola,Unknown,False
+Antigua & Barbuda,Use,,,5,,,Antigua & Barbuda,Land use,False
+Argentina,Use,0.5,10,5,,Source: http://www.cbd.int/doc/world/us/us-nr-vfe-en.pdf and USFS 2004.,Argentina,Land use,False
+Argentina UNFCCC,,1,22.5,3,,,Argentina,,True
+Armenia,Cover,,,,,,Armenia,Land cover,False
+Aruba,Cover,,,,,,Aruba,Land cover,False
+Australia,Cover,,30,5,,"Another source gives min. area of 0.5 ha, Crown Cover of 20 % and tree height of 2 m. http://www.cbd.int/doc/world/us/us-nr-vfe-en.pdf (2003) and USFS 2004.",Australia,Land cover,False
+Australia UNFCCC,,0.2,20,5,,,Australia,,True
+Austria,Use,0.1,30,,10,Traub et al. 1998 give the minimum area as 0.05 ha,Austria,Land use,False
 Austria UNFCCC,Cover,0.05,30,2,10,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Austria,Land cover,True
-Azerbaijan,Unknown,nan,nan,nan,nan,nan,Azerbaijan,Unknown,False
-Azerbaijan UNFCCC,nan,0.5,20,nan,2.5,nan,Azerbaijan,nan,True
-Bahamas,Cover,nan,nan,3,nan,Uses FAO for GFRA,Bahamas,Land cover,False
-Bangladesh,Declared,nan,nan,nan,nan,"""Tree"" includes palms- bamboos- stumps- brush-wood and canes",Bangladesh,Declared,False
-Barbados,Use,nan,nan,5,nan,nan,Barbados,Land use,False
-Belarus,Cover,nan,nan,nan,nan,nan,Belarus,Land cover,False
-Belarus UNFCCC,Use,0.1,30,nan,nan,"National Forest Legislation defines forested lands as forested lands of the forest fund occupied by young forest of timber species with stand density of 0.4 and higher, and stands of other age groups with stand density of 0.3 and higher, as well as areas occupied by bushes, at which stands of timber species cannot be developed without special forest improvement.. 0.1 hectare is adopted as a minimal accounting unit of area. (2006)",Belarus,Land use,True
-Belgium Flemmish,Use,0.05,20,nan,25,nan,Belgium Flemmish,Land use,False
-Belgium Walloon,Use,0.01,10,5,9,nan,Belgium Walloon,Land use,False
-Belgium UNFCCC,Cover,0.5,20,5,nan,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Belgium,Land cover,True
-Belize,Unknown,nan,nan,nan,nan,"""Tree"" includes shrubs- bushes- palms- bamboos- creepers- canes- stumps- seedlings- saplings and coppice shoots",Belize,Unknown,False
-Belize UNFCCC,nan,0.3,30,5,nan,nan,Belize,nan,True
-Benin,Cover,nan,nan,nan,nan,nan,Benin,Land cover,False
-Bhutan,Declared,nan,nan,nan,nan,nan,Bhutan,Declared,False
-Bolivia,Use,nan,nan,nan,nan,nan,Bolivia,Land use,False
-Bolivia UNFCCC,nan,0.5,30,4,nan,nan,Bolivia,nan,True
-Bosnia and Herzegovina,Cover,0.1,nan,nan,nan,nan,Bosnia and Herzegovina,Land cover,False
-Botswana,Declared,nan,nan,nan,nan,"""Tree"" includes palms- shrubs- bushes- climbers- seedlings- saplings and regrowth of all ages and of all kinds- and any part thereof.",Botswana,Declared,False
-Brazil UNFCCC,Cover,1,30,5,nan,nan,Brazil,Land cover,True
-Brazil FREL,Cover,0.5,10,5,nan,nan,Brazil,Land cover,False
-British Virgin Islands,Unknown,nan,nan,nan,nan,nan,British Virgin Islands,Unknown,False
-Brunei Darussalam,Unknown,nan,nan,nan,nan,nan,Brunei Darussalam,Unknown,False
-Bulgaria,Admin,0.1,nan,3,10,nan,Bulgaria,Declared,False
-Bulgaria UNFCCC,Cover,0.1,10,5,nan,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Bulgaria,Land cover,True
-Burkina Faso,Use,nan,nan,nan,nan,nan,Burkina Faso,Land use,False
-Burundi,Use,nan,nan,nan,nan,nan,Burundi,Land use,False
-Cambodia,Cover,nan,30,5,nan,nan,Cambodia,Land cover,False
-Cambodia UNFCCC,nan,0.5,10,5,nan,nan,Cambodia,nan,True
-Cameroon,Cover,nan,nan,nan,nan,nan,Cameroon,Land cover,False
-Canada,Use,0.5,20,5,nan,nan,Canada,Land use,False
-Canada UNFCCC,nan,1,25,5,nan,nan,Canada,nan,True
-Cape Verde,Use,nan,nan,nan,nan,nan,Cape Verde,Land use,False
-Cayman Islands,Unknown,nan,nan,nan,nan,nan,Cayman Islands,Unknown,False
-Central African Republic,Declared,nan,10,5,nan,nan,Central African Republic,Declared,False
-Chad,Unknown,nan,nan,nan,nan,nan,Chad,Unknown,False
-Chile,Cover,5,10,nan,nan,"Excludes degraded areas- and areas used for agriculture- fruit trees and intense grazing. . http://www.cbd.int/doc/world/us/us-nr-vfe-en.pdf lists min.area as 0.5 ha, Crown cover as 25% and min height as 2 m and USFS 2004.",Chile,Land cover,False
-Chile (2008),Cover,5,10/25,nan,40,nan,Chile,Land cover,False
+Azerbaijan,Unknown,,,,,,Azerbaijan,Unknown,False
+Azerbaijan UNFCCC,,0.5,20,,2.5,,Azerbaijan,,True
+Bahamas,Cover,,,3,,Uses FAO for GFRA,Bahamas,Land cover,False
+Bangladesh,Declared,,,,,"""Tree"" includes palms- bamboos- stumps- brush-wood and canes",Bangladesh,Declared,False
+Barbados,Use,,,5,,,Barbados,Land use,False
+Belarus,Cover,,,,,,Belarus,Land cover,False
+Belarus UNFCCC,Use,0.1,30,,,"National Forest Legislation defines forested lands as forested lands of the forest fund occupied by young forest of timber species with stand density of 0.4 and higher, and stands of other age groups with stand density of 0.3 and higher, as well as areas occupied by bushes, at which stands of timber species cannot be developed without special forest improvement.. 0.1 hectare is adopted as a minimal accounting unit of area. (2006)",Belarus,Land use,True
+Belgium Flemmish,Use,0.05,20,,25,,Belgium Flemmish,Land use,False
+Belgium Walloon,Use,0.01,10,5,9,,Belgium Walloon,Land use,False
+Belgium UNFCCC,Cover,0.5,20,5,,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Belgium,Land cover,True
+Belize,Unknown,,,,,"""Tree"" includes shrubs- bushes- palms- bamboos- creepers- canes- stumps- seedlings- saplings and coppice shoots",Belize,Unknown,False
+Belize UNFCCC,,0.3,30,5,,,Belize,,True
+Benin,Cover,,,,,,Benin,Land cover,False
+Bhutan,Declared,,,,,,Bhutan,Declared,False
+Bolivia,Use,,,,,,Bolivia,Land use,False
+Bolivia UNFCCC,,0.5,30,4,,,Bolivia,,True
+Bosnia and Herzegovina,Cover,0.1,,,,,Bosnia and Herzegovina,Land cover,False
+Botswana,Declared,,,,,"""Tree"" includes palms- shrubs- bushes- climbers- seedlings- saplings and regrowth of all ages and of all kinds- and any part thereof.",Botswana,Declared,False
+Brazil UNFCCC,Cover,1,30,5,,,Brazil,Land cover,True
+Brazil FREL,Cover,0.5,10,5,,,Brazil,Land cover,False
+British Virgin Islands,Unknown,,,,,,British Virgin Islands,Unknown,False
+Brunei Darussalam,Unknown,,,,,,Brunei Darussalam,Unknown,False
+Bulgaria,Admin,0.1,,3,10,,Bulgaria,Declared,False
+Bulgaria UNFCCC,Cover,0.1,10,5,,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Bulgaria,Land cover,True
+Burkina Faso,Use,,,,,,Burkina Faso,Land use,False
+Burundi,Use,,,,,,Burundi,Land use,False
+Cambodia,Cover,,30,5,,,Cambodia,Land cover,False
+Cambodia UNFCCC,,0.5,10,5,,,Cambodia,,True
+Cameroon,Cover,,,,,,Cameroon,Land cover,False
+Canada,Use,0.5,20,5,,,Canada,Land use,False
+Canada UNFCCC,,1,25,5,,,Canada,,True
+Cape Verde,Use,,,,,,Cape Verde,Land use,False
+Cayman Islands,Unknown,,,,,,Cayman Islands,Unknown,False
+Central African Republic,Declared,,10,5,,,Central African Republic,Declared,False
+Chad,Unknown,,,,,,Chad,Unknown,False
+Chile,Cover,5,10,,,"Excludes degraded areas- and areas used for agriculture- fruit trees and intense grazing. . http://www.cbd.int/doc/world/us/us-nr-vfe-en.pdf lists min.area as 0.5 ha, Crown cover as 25% and min height as 2 m and USFS 2004.",Chile,Land cover,False
+Chile (2008),Cover,5,10/25,,40,,Chile,Land cover,False
 China,Cover,0.067,20,5,10,"Includes bamboo and trees. Updated by Zhang Xiaoquan – (23 Jan 02). Trees > 2 cm dia. http://www.fao.org/forestry/fo/country/index.jsp?lang_id=1&geo_id=102. http://www.cbd.int/doc/world/us/us-nr-vfe-en.pdf list minimum area as 0.5 ha, crown cover as 20% and tree height as 2 m. (2003) and USFS 2004",China,Land cover,False
-China UNFCCC,nan,0.67,20,2,nan,nan,China,nan,True
-Colombia,nan,nan,nan,nan,nan,Reportedly has no national or legal definition,Colombia,nan,False
-Columbia 2014 FREL & UNFCCC,Use,1.0,30,5,nan,nan,Columbia &,Land use,True
-Comoros,Use,nan,nan,nan,nan,nan,Comoros,Land use,False
-Congo (Zaire),Cover,nan,10,nan,nan,nan,Congo Zaire,Land cover,False
-Congo- Republic of (2014),Cover,0.5,30,3,nan,nan,Congo- Republic of,Land cover,False
-Costa Rica,Cover,2,70,nan,nan,Includes lands with more than 70 trees per ha and with dbh 15 cm.,Costa Rica,Land cover,False
-Costa Rica UNFCCC,Cover,30,5,1.0,nan,nan,Costa Rica,Land cover,True
-Côte d'Ivoire,Cover,nan,nan,nan,nan,nan,Côte d'Ivoire,Land cover,False
-Côte d'Ivoire UNFCCC,nan,0.1,30,5,nan,Excludes palms and bamboos,Côte d'Ivoire,nan,True
-Croatia,Cover,nan,nan,nan,nan,nan,Croatia,Land cover,False
-Croatia UNFCCC,Declared,0.1,10,2,nan,nan,Croatia,Declared,True
-Cuba,Use,nan,nan,5,nan,nan,Cuba,Land use,False
-Cyprus,Use,nan,nan,nan,nan,nan,Cyprus,Land use,False
-Czech Republic,Use,0.01,20,nan,20,Min area also 400 sq m,Czech Republic,Land use,False
+China UNFCCC,,0.67,20,2,,,China,,True
+Colombia,None,,,,,Reportedly has no national or legal definition,Colombia,None,False
+Columbia 2014 FREL & UNFCCC,Use,1.0,30,5,,,Columbia &,Land use,True
+Comoros,Use,,,,,,Comoros,Land use,False
+Congo (Zaire),Cover,,10,,,,Congo Zaire,Land cover,False
+Congo- Republic of (2014),Cover,0.5,30,3,,,Congo- Republic of,Land cover,False
+Costa Rica,Cover,2,70,,,Includes lands with more than 70 trees per ha and with dbh 15 cm.,Costa Rica,Land cover,False
+Costa Rica UNFCCC,Cover,30,5,1.0,,,Costa Rica,Land cover,True
+Côte d'Ivoire,Cover,,,,,,Côte d'Ivoire,Land cover,False
+Côte d'Ivoire UNFCCC,,0.1,30,5,,Excludes palms and bamboos,Côte d'Ivoire,,True
+Croatia,Cover,,,,,,Croatia,Land cover,False
+Croatia UNFCCC,Declared,0.1,10,2,,,Croatia,Declared,True
+Cuba,Use,,,5,,,Cuba,Land use,False
+Cyprus,Use,,,,,,Cyprus,Land use,False
+Czech Republic,Use,0.01,20,,20,Min area also 400 sq m,Czech Republic,Land use,False
 Czech Republic UNFCCC,Cover,0.05,30,2,20,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Czech Republic,Land cover,True
-Democratic Republic Congo UNFCCC,nan,0.5,30,3,nan,nan,Democratic Republic Congo,nan,True
-Denmark,Use,0.5,30-50,6,20-30,nan,Denmark,Land use,False
+Democratic Republic Congo UNFCCC,,0.5,30,3,,,Democratic Republic Congo,,True
+Denmark,Use,0.5,30-50,6,20-30,,Denmark,Land use,False
 Denmark UNFCCC,Use,0.5,10,5,20,"Forest area includes temporarily unstocked areas, smaller open areas in the forest needed for management purposes and fire breaks. Forests in national parks, reserves, or areas under special protection are included. Windbreaks and groves covering more than 0.5 ha and with a minimum width of 20 m are also considered as forests. Farmlands, orchards, gardens (houses and summer houses) are NOT included in the forest area. http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529",Denmark,Land use,True
-Djibouti,Unknown,nan,nan,nan,nan,nan,Djibouti,Unknown,False
-Dominica,Declared,nan,nan,nan,nan,nan,Dominica,Declared,False
-Dominican Republic,Cover,nan,40,5,nan,nan,Dominican Republic,Land cover,False
-Dominican Republic UNFCCC,nan,0.0629,20,5,nan,nan,Dominican Republic,nan,True
-Ecuador UNFCCC (2013),Cover,1.0,30,5,nan,nan,Ecuador,Land cover,True
-Egypt,Unknown,nan,nan,nan,nan,nan,Egypt,Unknown,False
-El Salvador UNFCCC,nan,0.5,30,5,nan,nan,El Salvador,nan,True
-Equatorial Guinea,Unknown,nan,nan,nan,nan,nan,Equatorial Guinea,Unknown,False
-Eritrea,Cover,nan,10,nan,nan,nan,Eritrea,Land cover,False
-Estonia,Use,0.5,30,1.3,nan,Able to produce 1 m3 of bole timber per ha per year,Estonia,Land use,False
-Estonia UNFCCC,nan,0.5,30,1.3,20,nan,Estonia,nan,True
-Ethiopia,Cover,nan,68,7,nan,nan,Ethiopia,Land cover,False
-Ethiopia UNFCCC,nan,0.05,20,2,nan,nan,Ethiopia,nan,True
-Fiji,Cover,4,15,nan,nan,Includes shrubs and bushes of all kinds- seedlings- saplings and re-shoots of all ages- climbers and creepers and any part of the tree.,Fiji,Land cover,False
-Finland,Potential,0.25,nan,nan,nan,Excludes land capable of producing less than 1m3 and ha stemwood,Finland,Potential,False
+Djibouti,Unknown,,,,,,Djibouti,Unknown,False
+Dominica,Declared,,,,,,Dominica,Declared,False
+Dominican Republic,Cover,,40,5,,,Dominican Republic,Land cover,False
+Dominican Republic UNFCCC,,0.0629,20,5,,,Dominican Republic,,True
+Ecuador UNFCCC (2013),Cover,1.0,30,5,,,Ecuador,Land cover,True
+Egypt,Unknown,,,,,,Egypt,Unknown,False
+El Salvador UNFCCC,,0.5,30,5,,,El Salvador,,True
+Equatorial Guinea,Unknown,,,,,,Equatorial Guinea,Unknown,False
+Eritrea,Cover,,10,,,,Eritrea,Land cover,False
+Estonia,Use,0.5,30,1.3,,Able to produce 1 m3 of bole timber per ha per year,Estonia,Land use,False
+Estonia UNFCCC,,0.5,30,1.3,20,,Estonia,,True
+Ethiopia,Cover,,68,7,,,Ethiopia,Land cover,False
+Ethiopia UNFCCC,,0.05,20,2,,,Ethiopia,,True
+Fiji,Cover,4,15,,,Includes shrubs and bushes of all kinds- seedlings- saplings and re-shoots of all ages- climbers and creepers and any part of the tree.,Fiji,Land cover,False
+Finland,Potential,0.25,,,,Excludes land capable of producing less than 1m3 and ha stemwood,Finland,Potential,False
 Finland UNFCCC,Use,0.5,10,5,20,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Finland,Land use,True
 France,Cover,0.05,10,5-7,25,Updated by Nabila Mamza – nhamza@inf.fr (23 Jan 02). Traub et al. 1998 give the strip width of 15 m. There should be at least 500 trees/ha with dbh <24.5 cm.,France,Land cover,False
 France UNFCCC,Cover,0.5,10,5,20,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,France,Land cover,True
-French Guyana,Unknown,nan,nan,nan,nan,nan,French Guyana,Unknown,False
-French Polynesia,Cover,nan,nan,nan,nan,nan,French Polynesia,Land cover,False
-Gabon,Declared,nan,nan,nan,nan,nan,Gabon,Declared,False
-Gambia,Cover,nan,10,3,nan,nan,Gambia,Land cover,False
-Georgia,Cover,nan,nan,nan,nan,nan,Georgia,Land cover,False
-Germany,Use,0.1,50,nan,10,nan,Germany,Land use,False
-Germany UNFCCC,Cover,0.1,10,5,nan,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Germany,Land cover,True
-Ghana,Cover,nan,nan,nan,nan,nan,Ghana,Land cover,False
-Ghana UNFCCC,Potential,0.1,15,2,nan,nan,Ghana,Potential,True
-Great Britain,Cover,nan,20,nan,nan,nan,Great Britain,Land cover,False
-Greece,Use,0.5,10,nan,30,nan,Greece,Land use,False
-Greece UNFCCC,Civer,0.3,25,2,nan,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Greece,Land cover,True
-Greenland (Denmark),Unknown,nan,nan,nan,nan,nan,Greenland Denmark,Unknown,False
-Grenada,Use,nan,nan,nan,nan,"""Tree"" includes palms- bamboos- stumps- brushwood and canes.",Grenada,Land use,False
-Guadeloupe,Unknown,nan,nan,nan,nan,nan,Guadeloupe,Unknown,False
-Guam,Unknown,nan,nan,nan,nan,nan,Guam,Unknown,False
-Guatemala,Cover,2,nan,nan,nan,nan,Guatemala,Land cover,False
-Guatemala UNFCCC,nan,0.5,30,2,nan,nan,Guatemala,nan,True
-Guinea,Unknown,nan,nan,nan,nan,nan,Guinea,Unknown,False
-Guinea Bissau,Cover,nan,10,nan,nan,nan,Guinea Bissau,Land cover,False
-Guyana,Declared,nan,nan,nan,nan,nan,Guyana,Declared,False
-Guyana (2015),Cover,1.0,30,5,nan,nan,Guyana,Land cover,False
-Haiti,Declared,nan,nan,nan,nan,nan,Haiti,Declared,False
-Honduras,Cover,nan,nan,nan,nan,nan,Honduras,Land cover,False
-Honduras UNFCCC,nan,1.0,30,5,nan,nan,Honduras,nan,True
-Hungary,Use,0.15,15/30,nan,nan,nan,Hungary,Land use,False
+French Guyana,Unknown,,,,,,French Guyana,Unknown,False
+French Polynesia,Cover,,,,,,French Polynesia,Land cover,False
+Gabon,Declared,,,,,,Gabon,Declared,False
+Gambia,Cover,,10,3,,,Gambia,Land cover,False
+Georgia,Cover,,,,,,Georgia,Land cover,False
+Germany,Use,0.1,50,,10,,Germany,Land use,False
+Germany UNFCCC,Cover,0.1,10,5,,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Germany,Land cover,True
+Ghana,Cover,,,,,,Ghana,Land cover,False
+Ghana UNFCCC,Potential,0.1,15,2,,,Ghana,Potential,True
+Great Britain,Cover,,20,,,,Great Britain,Land cover,False
+Greece,Use,0.5,10,,30,,Greece,Land use,False
+Greece UNFCCC,Civer,0.3,25,2,,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Greece,Land cover,True
+Greenland (Denmark),Unknown,,,,,,Greenland Denmark,Unknown,False
+Grenada,Use,,,,,"""Tree"" includes palms- bamboos- stumps- brushwood and canes.",Grenada,Land use,False
+Guadeloupe,Unknown,,,,,,Guadeloupe,Unknown,False
+Guam,Unknown,,,,,,Guam,Unknown,False
+Guatemala,Cover,2,,,,,Guatemala,Land cover,False
+Guatemala UNFCCC,,0.5,30,2,,,Guatemala,,True
+Guinea,Unknown,,,,,,Guinea,Unknown,False
+Guinea Bissau,Cover,,10,,,,Guinea Bissau,Land cover,False
+Guyana,Declared,,,,,,Guyana,Declared,False
+Guyana (2015),Cover,1.0,30,5,,,Guyana,Land cover,False
+Haiti,Declared,,,,,,Haiti,Declared,False
+Honduras,Cover,,,,,,Honduras,Land cover,False
+Honduras UNFCCC,,1.0,30,5,,,Honduras,,True
+Hungary,Use,0.15,15/30,,,,Hungary,Land use,False
 Hungary UNFCCC,Cover,0.5,30,5,10,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Hungary,Land cover,True
-Iceland,Use,0.25,nan,nan,nan,nan,Iceland,Land use,False
-Iceland UNFCCC,nan,0.5,10,2,nan,nan,Iceland,nan,True
-India,Cover,nan,10,nan,nan,nan,India,Land cover,False
-India UNFCCC,nan,0.05,15,2,nan,nan,India,nan,True
-Indonesia,Use,nan,nan,nan,nan,nan,Indonesia,Land use,False
-Indonesia (2004),Cover,0.25,30,5,nan,nan,Indonesia,Land cover,False
-Iran,Cover,nan,1,nan,nan,nan,Iran,Land cover,False
-Iraq,Unknown,nan,nan,nan,nan,nan,Iraq,Unknown,False
-Ireland,Use,0.5,20,nan,40,Excludes areas producing less than 4 m3/ha/yr,Ireland,Land use,False
-Ireland UNFCCC,Use,0.1,20,5,nan,"Young natural stands and all plantations that have yet to reach a crown density of 20 percent or a tree height of 5 metres are included under forest. Areas normally forming part of the forest area that are temporarily un-stocked as a result of human intervention, such as harvesting or natural causes such as wind-throw, but which are expected to revert to forest are also included. http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529",Ireland,Land use,True
-Isle of Man,nan,nan,nan,nan,nan,"""Forest"" usually interpreted as woodland. ""Tree"" includes shrubs.",Isle of Man,nan,False
-Israel,Cover,nan,10,4,nan,nan,Israel,Land cover,False
-Italy,Use,0.2,20,nan,20,nan,Italy,Land use,False
-Italy UNFCCC,Cover,0.5,10,5,nan,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Italy,Land cover,True
-Jamaica,Cover,4,75,5,nan,Excludes tree crops,Jamaica,Land cover,False
-Japan,Cover,0.3,30,5,nan,nan,Japan,Land cover,False
-Japan UNFCCC,Use,0.3,30,5,20,nan,Japan,Land use,True
-Jordan,Unknown,nan,nan,nan,nan,nan,Jordan,Unknown,False
-Kazakhstan,Unknown,nan,nan,nan,nan,nan,Kazakhstan,Unknown,False
-Kenya,Cover,nan,40,2,nan,nan,Kenya,Land cover,False
-Kenya UNFCCC,nan,0.1,30,2,nan,nan,Kenya,nan,True
-Korea- Dem.People's Rep.,Unknown,nan,nan,nan,nan,nan,Korea- Dem People's Rep,Unknown,False
-Korea- Republic of,Use,nan,nan,nan,nan,Excludes orchards,Korea- Republic of,Land use,False
-Korea- Republic of UNFCCC,nan,0.5,10,5,nan,nan,Korea- Republic of,nan,True
-Kuwait,Unknown,nan,nan,nan,nan,nan,Kuwait,Unknown,False
-Kyrgyzstan,Use,nan,20,2,25,nan,Kyrgyzstan,Land use,False
-Kyrgyzstan UNFCCC,nan,0.5,20,3,nan,nan,Kyrgyzstan,nan,True
-Lao,Cover,nan,20,nan,nan,nan,Lao,Land cover,False
-Lao UNFCCC,nan,0.5,20,5,nan,nan,Lao,nan,True
-Latvia,Use,0.1,20,7,nan,nan,Latvia,Land use,False
-Latvia UNFCCC,Cover,0.1,20,5,nan,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Latvia,Land cover,True
-Lebanon,Use,nan,nan,5,nan,nan,Lebanon,Land use,False
-Lesotho,Use,nan,nan,nan,nan,Tree includes any seedlings- sapling- transplant or coppice shoot of any age.,Lesotho,Land use,False
-Liberia,Unknown,nan,nan,nan,nan,nan,Liberia,Unknown,False
-Libya Arab Jamahiriy,Unknown,nan,nan,nan,nan,nan,Libya Arab Jamahiriy,Unknown,False
-Liechtenstein,Cover,nan,20,nan,25-50,nan,Liechtenstein,Land cover,False
+Iceland,Use,0.25,,,,,Iceland,Land use,False
+Iceland UNFCCC,,0.5,10,2,,,Iceland,,True
+India,Cover,,10,,,,India,Land cover,False
+India UNFCCC,,0.05,15,2,,,India,,True
+Indonesia,Use,,,,,,Indonesia,Land use,False
+Indonesia (2004),Cover,0.25,30,5,,,Indonesia,Land cover,False
+Iran,Cover,,1,,,,Iran,Land cover,False
+Iraq,Unknown,,,,,,Iraq,Unknown,False
+Ireland,Use,0.5,20,,40,Excludes areas producing less than 4 m3/ha/yr,Ireland,Land use,False
+Ireland UNFCCC,Use,0.1,20,5,,"Young natural stands and all plantations that have yet to reach a crown density of 20 percent or a tree height of 5 metres are included under forest. Areas normally forming part of the forest area that are temporarily un-stocked as a result of human intervention, such as harvesting or natural causes such as wind-throw, but which are expected to revert to forest are also included. http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529",Ireland,Land use,True
+Isle of Man,None,,,,,"""Forest"" usually interpreted as woodland. ""Tree"" includes shrubs.",Isle of Man,None,False
+Israel,Cover,,10,4,,,Israel,Land cover,False
+Italy,Use,0.2,20,,20,,Italy,Land use,False
+Italy UNFCCC,Cover,0.5,10,5,,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Italy,Land cover,True
+Jamaica,Cover,4,75,5,,Excludes tree crops,Jamaica,Land cover,False
+Japan,Cover,0.3,30,5,,,Japan,Land cover,False
+Japan UNFCCC,Use,0.3,30,5,20,,Japan,Land use,True
+Jordan,Unknown,,,,,,Jordan,Unknown,False
+Kazakhstan,Unknown,,,,,,Kazakhstan,Unknown,False
+Kenya,Cover,,40,2,,,Kenya,Land cover,False
+Kenya UNFCCC,,0.1,30,2,,,Kenya,,True
+Korea- Dem.People's Rep.,Unknown,,,,,,Korea- Dem People's Rep,Unknown,False
+Korea- Republic of,Use,,,,,Excludes orchards,Korea- Republic of,Land use,False
+Korea- Republic of UNFCCC,,0.5,10,5,,,Korea- Republic of,,True
+Kuwait,Unknown,,,,,,Kuwait,Unknown,False
+Kyrgyzstan,Use,,20,2,25,,Kyrgyzstan,Land use,False
+Kyrgyzstan UNFCCC,,0.5,20,3,,,Kyrgyzstan,,True
+Lao,Cover,,20,,,,Lao,Land cover,False
+Lao UNFCCC,,0.5,20,5,,,Lao,,True
+Latvia,Use,0.1,20,7,,,Latvia,Land use,False
+Latvia UNFCCC,Cover,0.1,20,5,,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Latvia,Land cover,True
+Lebanon,Use,,,5,,,Lebanon,Land use,False
+Lesotho,Use,,,,,Tree includes any seedlings- sapling- transplant or coppice shoot of any age.,Lesotho,Land use,False
+Liberia,Unknown,,,,,,Liberia,Unknown,False
+Libya Arab Jamahiriy,Unknown,,,,,,Libya Arab Jamahiriy,Unknown,False
+Liechtenstein,Cover,,20,,25-50,,Liechtenstein,Land cover,False
 Liechtenstein UNFCCC,Use,0.0625- 0.25,20-60,3,25-50,"The following forest areas are not subject to the criterion of minimum stand height: shrub forest consisting of dwarf pine (Pinus mugo prostrata) and alpine alder (Alnus viridis). The following forest areas are not subject of the criteria of minimum stand height and minimum crown cover, but must have the potential to achieve both criteria: a) afforested area on land not under forest cover for 50 years (afforestations); b) regenerated forest, as well as burned, cut or damaged areas situated on land classified as forest. Although orchards, parks, camping grounds, open tree formations in settlements, gardens, cemeteries, sports and parking fields may fulfil the (quantitative) forest definition, they are not considered as forests.",Liechtenstein,Land use,True
-Lithuania,Cover,0.1,20,nan,10,Includes trees with a minimum dbh 14 cm or greater.,Lithuania,Land cover,False
+Lithuania,Cover,0.1,20,,10,Includes trees with a minimum dbh 14 cm or greater.,Lithuania,Land cover,False
 Lithuania UNFCCC,Use,0.1,10,5,10,Temporarily unstocked areas (forest regeneration areas) are included.,Lithuania,Land use,True
-Luxembourg,Use,0.5,10,5,nan,nan,Luxembourg,Land use,False
-Luxembourg UNFCCC,Cover,0.5,10,5,nan,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Luxembourg,Land cover,True
-Macedonia,Cover,nan,nan,nan,nan,nan,Macedonia,Land cover,False
-Madagascar,Use,nan,nan,nan,nan,nan,Madagascar,Land use,False
-Madagascar UNFCCC,nan,1.0,30,5,nan,nan,Madagascar,nan,True
-Malawi,Cover,100,80,nan,nan,nan,Malawi,Land cover,False
-Malaysia,Cover,nan,10,5,nan,nan,Malaysia,Land cover,False
-Malaysia UNFCCC,Cover,0.5,30,5,nan,nan,Malaysia,Land cover,True
-Maldives,nan,nan,nan,nan,nan,nan,Maldives,nan,False
-Mali,Use,nan,20,nan,nan,nan,Mali,Land use,False
-Mali UNFCCC,nan,1.0,30,2,nan,nan,Mali,nan,True
-Malta,Unknown,nan,nan,nan,nan,nan,Malta,Unknown,False
-Martinique,Unknown,nan,nan,nan,nan,nan,Martinique,Unknown,False
-Mauritania,Cover,nan,nan,nan,nan,nan,Mauritania,Land cover,False
-Mauritius,Use,nan,nan,nan,nan,nan,Mauritius,Land use,False
-Mexico,Use,0.15,10,3,nan,nan,Mexico,Land use,False
-Mexico UNFCCC,Use,1.0,30,4,nan,nan,Mexico,Land use,True
-Mexico (2014),Use,50,10,4,nan,nan,Mexico,Land use,False
-Moldova- Republic of,Unknown,nan,nan,nan,nan,nan,Moldova- Republic of,Unknown,False
-Moldova- Republic of UNFCCC,nan,0.25,30,5,nan,nan,Moldova- Republic of,nan,True
-Monaco,nan,nan,nan,nan,nan,nan,Monaco,nan,False
-Monaco UNFCCC,nan,0.5,10,5,nan,nan,Monaco,nan,True
-Mongolia,Unknown,nan,nan,nan,nan,nan,Mongolia,Unknown,False
-Mongolia UNFCCC,nan,1,10,1,nan,nan,Mongolia,nan,True
-Montserrat,Declared,nan,nan,nan,nan,nan,Montserrat,Declared,False
-Morocco,Cover,3,30,7,nan,nan,Morocco,Land cover,False
-Morocco UNFCCC,nan,1.0,25,2,nan,nan,Morocco,nan,True
-Mozambique,Cover,nan,25,7,nan,nan,Mozambique,Land cover,False
-Myanmar,Declared,nan,nan,nan,nan,"""Tree"" includes root- stump- stem- branch- bush- creeper- bamboo- cane- orchid and seedling.",Myanmar,Declared,False
-Myanmar UNFCCC,nan,1,20,2,nan,nan,Myanmar,nan,True
-Namibia,Cover,nan,20,5,nan,nan,Namibia,Land cover,False
-Nepal,Use,nan,10,nan,nan,Wallace (1988) also indicates a 50% threshold for crown cover.,Nepal,Land use,False
-Netherlands,Use,0.5,20,6,30,nan,Netherlands,Land use,False
+Luxembourg,Use,0.5,10,5,,,Luxembourg,Land use,False
+Luxembourg UNFCCC,Cover,0.5,10,5,,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Luxembourg,Land cover,True
+Macedonia,Cover,,,,,,Macedonia,Land cover,False
+Madagascar,Use,,,,,,Madagascar,Land use,False
+Madagascar UNFCCC,,1.0,30,5,,,Madagascar,,True
+Malawi,Cover,100,80,,,,Malawi,Land cover,False
+Malaysia,Cover,,10,5,,,Malaysia,Land cover,False
+Malaysia UNFCCC,Cover,0.5,30,5,,,Malaysia,Land cover,True
+Maldives,,,,,,,Maldives,,False
+Mali,Use,,20,,,,Mali,Land use,False
+Mali UNFCCC,,1.0,30,2,,,Mali,,True
+Malta,Unknown,,,,,,Malta,Unknown,False
+Martinique,Unknown,,,,,,Martinique,Unknown,False
+Mauritania,Cover,,,,,,Mauritania,Land cover,False
+Mauritius,Use,,,,,,Mauritius,Land use,False
+Mexico,Use,0.15,10,3,,,Mexico,Land use,False
+Mexico UNFCCC,Use,1.0,30,4,,,Mexico,Land use,True
+Mexico (2014),Use,50,10,4,,,Mexico,Land use,False
+Moldova- Republic of,Unknown,,,,,,Moldova- Republic of,Unknown,False
+Moldova- Republic of UNFCCC,,0.25,30,5,,,Moldova- Republic of,,True
+Monaco,None,,,,,,Monaco,None,False
+Monaco UNFCCC,,0.5,10,5,,,Monaco,,True
+Mongolia,Unknown,,,,,,Mongolia,Unknown,False
+Mongolia UNFCCC,,1,10,1,,,Mongolia,,True
+Montserrat,Declared,,,,,,Montserrat,Declared,False
+Morocco,Cover,3,30,7,,,Morocco,Land cover,False
+Morocco UNFCCC,,1.0,25,2,,,Morocco,,True
+Mozambique,Cover,,25,7,,,Mozambique,Land cover,False
+Myanmar,Declared,,,,,"""Tree"" includes root- stump- stem- branch- bush- creeper- bamboo- cane- orchid and seedling.",Myanmar,Declared,False
+Myanmar UNFCCC,,1,20,2,,,Myanmar,,True
+Namibia,Cover,,20,5,,,Namibia,Land cover,False
+Nepal,Use,,10,,,Wallace (1988) also indicates a 50% threshold for crown cover.,Nepal,Land use,False
+Netherlands,Use,0.5,20,6,30,,Netherlands,Land use,False
 Netherlands UNFCCC,Use,0.5,20,5,30,"May consist either of closed forest formations where trees of various storeys and undergrowth cover a high proportion of the ground; or of open forest formations with a continuous vegetation cover in which tree crown cover exceeds 20 per cent. Young natural stands and all plantations established for forestry purposes which have yet to reach a crown density of 20 per cent or tree height of 5 m are included under forest, as areas normally forming part of the forestarea which are temporally unstocked as a result of human intervention or natural causes butwhich are expected to revert to forest. Forest Land also includes: • forest nurseries and seed orchards that constitute an integral part of the forest; • forest road, cleared tracts, firebreaks and other small open areas, all smaller than 6 m. within the forest; • forest in national parks, nature reserves and other protected areas such as those of special environmental, scientific, historical, cultural or spiritual interest, with an area of more than 0,5 ha and a width of more than 30m; • windbreaks and shelterbelts of trees with an area of more than 0,5 ha and a width of more than 30m. This excludes tree stands in agricultural production systems for example in fruit plantations and agro forestry systems. http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529",Netherlands,Land use,True
-New Caledonia,Unknown,nan,nan,nan,nan,nan,New Caledonia,Unknown,False
-New Zealand,Use,5,20,6,nan,"""Tree"" includes not only timber trees- but also all other kinds of trees- shrubs- and bushes- seedlings- saplings- cuttings- suckers- and shoots of every description. http://www.cbd.int/doc/world/us/us-nr-vfe-en.pdf lists the minimum area of 0.5 ha. (2003) and USFS 2004. “Forests planted in exotic tree species predominately grown for wood or wood fibre greater than 1 ha in extent. All forest in this class will exceed 30 percent canopy cover and 5 metres in height before 10 years of age.” “Indigenous forest is defined as forest dominated by tall indigenous forest canopy species greater than 1 hectare in size. All forests mapped into this class exceed 30 percent canopy cover and 5 metres in height,",New Zealand,Land use,False
-New Zealand UNFCCC,nan,1,30,5,nan,nan,New Zealand,nan,True
-Nicaragua,Cover,nan,25,nan,nan,nan,Nicaragua,Land cover,False
-Nicaragua UNFCCC,nan,1.0,20,4,nan,nan,Nicaragua,nan,True
-Niger,Use,nan,nan,nan,nan,nan,Niger,Land use,False
-Niger UNFCCC,nan,1.0,30,4,nan,nan,Niger,nan,True
-Nigeria,Unknown,nan,nan,nan,nan,nan,Nigeria,Unknown,False
-Northern Mariana Islands,Cover,0.01,nan,nan,nan,nan,Northern Mariana Islands,Land cover,False
-Norway,Potential,0.1,nan,nan,nan,Includes land with an average potential production equal to or higher than 1 m3 (including bark) per ha and year,Norway,Potential,False
-Norway UNFCCC,nan,0.5,10,5,nan,nan,Norway,nan,True
-Oman,Unknown,nan,nan,nan,nan,nan,Oman,Unknown,False
-Pakistan,Use,nan,nan,nan,nan,"""Tree"" includes palms- bamboos- stumps- brush-wood and canes.",Pakistan,Land use,False
-Pakistan UNFCCC,nan,0.05,30,3,nan,http://cdm.unfccc.int/DNA/index.html,Pakistan,nan,True
-Palestine,Unknown,nan,nan,nan,nan,nan,Palestine,Unknown,False
-Panama,Cover,nan,45,nan,nan,nan,Panama,Land cover,False
-Panama UNFCCC,nan,1.0,30,5,nan,nan,Panama,nan,True
-Papua New Guinea,Cover,100,10,5,nan,nan,Papua New Guinea,Land cover,False
-Paraguay,Potential,nan,nan,nan,nan,nan,Paraguay,Potential,False
-Paraguay UNFCCC,nan,0.5,25,5,nan,nan,Paraguay,nan,True
-Paraguay (2015),Use,1.0,10/30,3/5,nan,nan,Paraguay,Land use,False
-Peru,Cover,nan,nan,nan,nan,nan,Peru,Land cover,False
-Peru UNFCCC,Cover,0.5,30,5,nan,nan,Peru,Land cover,True
-Peru Amazon,Cover,0.5,10,5,20,nan,Peru Amazon,Land cover,False
-Peru FREL,Cover,0.09,nan,5,nan,nan,Peru,Land cover,False
-Philippines,Topography and cover,1,10,nan,60,Generally excludes areas with slopes < 18%,Philippines,Land cover,False
-Philippines UNFCCC,nan,0.5,10,5,nan,nan,Philippines,nan,True
-Poland,Use,0.1,nan,nan,nan,nan,Poland,Land use,False
+New Caledonia,Unknown,,,,,,New Caledonia,Unknown,False
+New Zealand,Use,5,20,6,,"""Tree"" includes not only timber trees- but also all other kinds of trees- shrubs- and bushes- seedlings- saplings- cuttings- suckers- and shoots of every description. http://www.cbd.int/doc/world/us/us-nr-vfe-en.pdf lists the minimum area of 0.5 ha. (2003) and USFS 2004. “Forests planted in exotic tree species predominately grown for wood or wood fibre greater than 1 ha in extent. All forest in this class will exceed 30 percent canopy cover and 5 metres in height before 10 years of age.” “Indigenous forest is defined as forest dominated by tall indigenous forest canopy species greater than 1 hectare in size. All forests mapped into this class exceed 30 percent canopy cover and 5 metres in height,",New Zealand,Land use,False
+New Zealand UNFCCC,,1,30,5,,,New Zealand,,True
+Nicaragua,Cover,,25,,,,Nicaragua,Land cover,False
+Nicaragua UNFCCC,,1.0,20,4,,,Nicaragua,,True
+Niger,Use,,,,,,Niger,Land use,False
+Niger UNFCCC,,1.0,30,4,,,Niger,,True
+Nigeria,Unknown,,,,,,Nigeria,Unknown,False
+Northern Mariana Islands,Cover,0.01,,,,,Northern Mariana Islands,Land cover,False
+Norway,Potential,0.1,,,,Includes land with an average potential production equal to or higher than 1 m3 (including bark) per ha and year,Norway,Potential,False
+Norway UNFCCC,,0.5,10,5,,,Norway,,True
+Oman,Unknown,,,,,,Oman,Unknown,False
+Pakistan,Use,,,,,"""Tree"" includes palms- bamboos- stumps- brush-wood and canes.",Pakistan,Land use,False
+Pakistan UNFCCC,,0.05,30,3,,http://cdm.unfccc.int/DNA/index.html,Pakistan,,True
+Palestine,Unknown,,,,,,Palestine,Unknown,False
+Panama,Cover,,45,,,,Panama,Land cover,False
+Panama UNFCCC,,1.0,30,5,,,Panama,,True
+Papua New Guinea,Cover,100,10,5,,,Papua New Guinea,Land cover,False
+Paraguay,Potential,,,,,,Paraguay,Potential,False
+Paraguay UNFCCC,,0.5,25,5,,,Paraguay,,True
+Paraguay (2015),Use,1.0,10/30,3/5,,,Paraguay,Land use,False
+Peru,Cover,,,,,,Peru,Land cover,False
+Peru UNFCCC,Cover,0.5,30,5,,,Peru,Land cover,True
+Peru Amazon,Cover,0.5,10,5,20,,Peru Amazon,Land cover,False
+Peru FREL,Cover,0.09,,5,,,Peru,Land cover,False
+Philippines,Topography and cover,1,10,,60,Generally excludes areas with slopes < 18%,Philippines,Land cover,False
+Philippines UNFCCC,,0.5,10,5,,,Philippines,,True
+Poland,Use,0.1,,,,,Poland,Land use,False
 Poland UNFCCC,Use,0.1,10,2,10,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Poland,Land use,True
-Portugal,Use,0.2,10-15,1.5,15,nan,Portugal,Land use,False
+Portugal,Use,0.2,10-15,1.5,15,,Portugal,Land use,False
 Portugal UNFCCC,Cover,1,10,5,20,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Portugal,Land cover,True
-Puerto Rico,Declared,nan,nan,nan,nan,nan,Puerto Rico,Declared,False
-Reunion,Unknown,nan,nan,nan,nan,nan,Reunion,Unknown,False
-Romania,Use,0.25,nan,7,nan,nan,Romania,Land use,False
-Romania UNFCCC,Use,0.25,10,5,nan,"Includes also: forest nurseries, trees genetic trials within the forest land, forest pathways and roads, meadows, glades and other forest gaps, forest ecosystems within the national and natural parks, natural protected areas and other protected forest areas, protection forest belts with an area larger than 0.5 ha and a minimum width of 20 m, as well as Pinus mugo shrubs in alpine areas. http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529",Romania,Land use,True
-Russian Federation,Cover,nan,30,nan,nan,http://www.cbd.int/doc/world/us/us-nr-vfe-en.pdf lists minimum area as 0.5 ha and minimum tree height varies. (2003) and USFS 2004,Russian Federation,Land cover,False
-Russian Federation UNFCCC,Cover,0.5,30,5,nan,nan,Russian Federation,Land cover,True
-Rwanda,Cover,0.5,10,7,nan,"Thresholds vary area 0.25-0.5 ha, cover 10-20, tree ht 5-7m",Rwanda,Land cover,False
-Rwanda UNFCCC,nan,0.05,10,3,nan,nan,Rwanda,nan,True
-Saint Lucia,Use,nan,nan,nan,nan,nan,Saint Lucia,Land use,False
-Saudi Arabia,Unknown,nan,nan,nan,nan,nan,Saudi Arabia,Unknown,False
-Senegal,Unknown,nan,nan,nan,nan,nan,Senegal,Unknown,False
-Senegal UNFCCC,nan,0.5,30,2,nan,nan,Senegal,nan,True
-Serbia and Montenegro,Use,0.5,nan,nan,nan,nan,Serbia and Montenegro,Land use,False
-Seychelles,Use,nan,nan,5,nan,nan,Seychelles,Land use,False
-Sierra Leone,Declared,nan,nan,nan,nan,"""Tree"" includes any woody vegetation.",Sierra Leone,Declared,False
-Singapore,Unknown,nan,nan,nan,nan,nan,Singapore,Unknown,False
-Slovakia,Use,0.01,nan,nan,nan,nan,Slovakia,Land use,False
+Puerto Rico,Declared,,,,,,Puerto Rico,Declared,False
+Reunion,Unknown,,,,,,Reunion,Unknown,False
+Romania,Use,0.25,,7,,,Romania,Land use,False
+Romania UNFCCC,Use,0.25,10,5,,"Includes also: forest nurseries, trees genetic trials within the forest land, forest pathways and roads, meadows, glades and other forest gaps, forest ecosystems within the national and natural parks, natural protected areas and other protected forest areas, protection forest belts with an area larger than 0.5 ha and a minimum width of 20 m, as well as Pinus mugo shrubs in alpine areas. http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529",Romania,Land use,True
+Russian Federation,Cover,,30,,,http://www.cbd.int/doc/world/us/us-nr-vfe-en.pdf lists minimum area as 0.5 ha and minimum tree height varies. (2003) and USFS 2004,Russian Federation,Land cover,False
+Russian Federation UNFCCC,Cover,0.5,30,5,,,Russian Federation,Land cover,True
+Rwanda,Cover,0.5,10,7,,"Thresholds vary area 0.25-0.5 ha, cover 10-20, tree ht 5-7m",Rwanda,Land cover,False
+Rwanda UNFCCC,,0.05,10,3,,,Rwanda,,True
+Saint Lucia,Use,,,,,,Saint Lucia,Land use,False
+Saudi Arabia,Unknown,,,,,,Saudi Arabia,Unknown,False
+Senegal,Unknown,,,,,,Senegal,Unknown,False
+Senegal UNFCCC,,0.5,30,2,,,Senegal,,True
+Serbia and Montenegro,Use,0.5,,,,,Serbia and Montenegro,Land use,False
+Seychelles,Use,,,5,,,Seychelles,Land use,False
+Sierra Leone,Declared,,,,,"""Tree"" includes any woody vegetation.",Sierra Leone,Declared,False
+Singapore,Unknown,,,,,,Singapore,Unknown,False
+Slovakia,Use,0.01,,,,,Slovakia,Land use,False
 Slovakia UNFCCC,Use,0.3,20,5,20,Temporarily unstocked areas are included (forest regeneration areas). http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Slovakia,Land use,True
-Slovenia,Cover,0.05,nan,nan,nan,Excludes individual trees- riverine and windbelt trees- plantations- etc. Slovenian Forest act (1994) -Forest means land overgrown with forest trees in the form of stands or other forest plants which provides any of the functions of a forest. Forest according to this Act also includes overgrown plots of land defined as forest in the spatial element of the forest management plan.,Slovenia,Land cover,False
-Slovenia UNFCCC,nan,0.05,30,2,nan,nan,Slovenia,nan,True
-Solomon Islands,Unknown,nan,nan,nan,nan,Excludes agricultural lands. Tree includes any root- stump- stem- branch- brushwood- ung (?) tree or sapling.,Solomon Islands,Unknown,False
-Somalia,Cover,nan,20,5,nan,nan,Somalia,Land cover,False
-South Africa,Cover,nan,75,3,nan,nan,South Africa,Land cover,False
-South Africa UNFCCC,nan,0.05,30,2,nan,nan,South Africa,nan,True
-South Sudan,Cover,nan,15,nan,nan,"“Tree” means forest trees including bushes, palms, bamboos, shrubs, brushwood, creepers and climbers at all stages of their growth;",South Sudan,Land cover,False
-South Sudan,Use,nan,nan,5,nan,nan,South Sudan,Land use,False
-Spain,Use,0.2,5-10,nan,20,Excludes lands capable of producing less that 1 m3/ha/yr,Spain,Land use,False
-Spain UNFCCC,Cover,1,10,5,nan,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Spain,Land cover,True
-Sri Lanka,Cover,nan,45,nan,nan,nan,Sri Lanka,Land cover,False
-Sri Lanka UNFCCC,nan,0.05,30,3,nan,nan,Sri Lanka,nan,True
-St. Helena,Unknown,nan,nan,nan,nan,nan,St Helena,Unknown,False
-St. Kitts & Nevis,Unknown,nan,nan,nan,nan,nan,St Kitts & Nevis,Unknown,False
-St.Vincent & Grenadine,Unknown,nan,nan,nan,nan,nan,St Vincent & Grenadine,Unknown,False
-Sudan,Cover,nan,40,10,nan,nan,Sudan,Land cover,False
-Suriname,Unknown,nan,nan,nan,nan,nan,Suriname,Unknown,False
-Swaziland,Unknown,nan,nan,nan,nan,"""Tree"" means the whole or any part of any tree as ordinarily understood or of shrub- bush- seedling- transplant- sapling- reshoot- underbrush or regrowth.",Swaziland,Unknown,False
-Sweden,Potential,0.25,20,5,nan,Excludes land capable of producing less than 1m3 /ha/yr,Sweden,Potential,False
+Slovenia,Cover,0.05,,,,Excludes individual trees- riverine and windbelt trees- plantations- etc. Slovenian Forest act (1994) -Forest means land overgrown with forest trees in the form of stands or other forest plants which provides any of the functions of a forest. Forest according to this Act also includes overgrown plots of land defined as forest in the spatial element of the forest management plan.,Slovenia,Land cover,False
+Slovenia UNFCCC,,0.05,30,2,,,Slovenia,,True
+Solomon Islands,Unknown,,,,,Excludes agricultural lands. Tree includes any root- stump- stem- branch- brushwood- ung (?) tree or sapling.,Solomon Islands,Unknown,False
+Somalia,Cover,,20,5,,,Somalia,Land cover,False
+South Africa,Cover,,75,3,,,South Africa,Land cover,False
+South Africa UNFCCC,,0.05,30,2,,,South Africa,,True
+South Sudan,Cover,,15,,,"“Tree” means forest trees including bushes, palms, bamboos, shrubs, brushwood, creepers and climbers at all stages of their growth;",South Sudan,Land cover,False
+South Sudan,Use,,,5,,,South Sudan,Land use,False
+Spain,Use,0.2,5-10,,20,Excludes lands capable of producing less that 1 m3/ha/yr,Spain,Land use,False
+Spain UNFCCC,Cover,1,10,5,,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Spain,Land cover,True
+Sri Lanka,Cover,,45,,,,Sri Lanka,Land cover,False
+Sri Lanka UNFCCC,,0.05,30,3,,,Sri Lanka,,True
+St. Helena,Unknown,,,,,,St Helena,Unknown,False
+St. Kitts & Nevis,Unknown,,,,,,St Kitts & Nevis,Unknown,False
+St.Vincent & Grenadine,Unknown,,,,,,St Vincent & Grenadine,Unknown,False
+Sudan,Cover,,40,10,,,Sudan,Land cover,False
+Suriname,Unknown,,,,,,Suriname,Unknown,False
+Swaziland,Unknown,,,,,"""Tree"" means the whole or any part of any tree as ordinarily understood or of shrub- bush- seedling- transplant- sapling- reshoot- underbrush or regrowth.",Swaziland,Unknown,False
+Sweden,Potential,0.25,20,5,,Excludes land capable of producing less than 1m3 /ha/yr,Sweden,Potential,False
 Sweden UNFCCC,Cover,0.5,10,5,10,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,Sweden,Land cover,True
-Switzerland,Cover,nan,20-100,3,25-50,nan,Switzerland,Land cover,False
+Switzerland,Cover,,20-100,3,25-50,,Switzerland,Land cover,False
 Switzerland UNFCCC,Use,0.0625-0.25,20-60,3,25-50,"The following forest areas are not subject to the criterion of minimum stand height: shrub forest consisting of dwarf pine (Pinus mugo prostrata) and alpine alder (Alnus viridis). The following forest areas are not subject of the criteria of minimum stand height and minimum crown cover, but must have the potential to achieve it: afforested, regenerated, as well as burned, cut or damaged areas. Although orchards, parks, camping grounds, open tree formations in settlements, gardens, cemeteries, sports and parking fields may fulfil the (quantitative) forest definition, they are not considered as forests.",Switzerland,Land use,True
-Syrian Arab Rep.,Unknown,nan,nan,nan,nan,nan,Syrian Arab Rep,Unknown,False
-Taiwan (R.O.C.),Use,0.5,nan,10,50,Trees include bamboo. Min. d.b.h. for tree is 10 cm,Taiwan R O C,Land use,False
-Tajikistan,Cover,nan,nan,nan,nan,nan,Tajikistan,Land cover,False
-Tanzania,Cover,nan,60,8,nan,"""Tree"" includes palms- bamboos- canes- shrubs- bushes -plants- poles- climbers- seedlings- saplings and regrowth thereof- all ages and all kinds and part.",Tanzania,Land cover,False
-Thailand,Use,nan,nan,nan,nan,nan,Thailand,Land use,False
-Thailand UNFCCC,nan,0.16,30,3,nan,nan,Thailand,nan,True
-Togo,Use,nan,nan,nan,nan,nan,Togo,Land use,False
-Togo UNFCCC,nan,0.5,10,5,nan,Includes palms and bamboo,Togo,nan,True
-Tonga,Declared,nan,nan,nan,nan,Tree includes palms- shrubs- bushes- climbers- seedlings- saplings- and re-shoots of all ages and of all kinds- and any part thereof.,Tonga,Declared,False
-Trinidad & Tobago,Cover,nan,nan,nan,nan,"""Tree"" includes bamboo- palms and brushwood found growing on state lands",Trinidad & Tobago,Land cover,False
-Trinidad & Tobago UNFCCC,nan,0.4,10,3,nan,nan,Trinidad & Tobago,nan,True
-Tunisia,Cover,nan,nan,nan,nan,nan,Tunisia,Land cover,False
-Turkey,Use,3,10,8,nan,nan,Turkey,Land use,False
-Turkmenistan,Unknown,nan,nan,nan,nan,nan,Turkmenistan,Unknown,False
-Uganda,Declared,nan,nan,4,nan,"""Tree"" includes palms- bamboo- canes shrubs bushes- climbers- seedlings- and re-growth of all ages and of all kinds- and any part thereof.",Uganda,Declared,False
-Uganda UNFCCC,nan,1.0,30,5,nan,nan,Uganda,nan,True
-Ukraine,Cover,nan,60,nan,nan,nan,Ukraine,Land cover,False
-"Ukraine UNFCCC,",nan,0.1,30,5,20,nan,Ukraine,nan,True
-United Arab Emirates,Unknown,nan,nan,nan,nan,nan,United Arab Emirates,Unknown,False
-United Kingdom,Use,0.25-1,20,nan,20-50,Traub et al. 1998 list minimum area as 2 ha.,United Kingdom,Land use,False
+Syrian Arab Rep.,Unknown,,,,,,Syrian Arab Rep,Unknown,False
+Taiwan (R.O.C.),Use,0.5,,10,50,Trees include bamboo. Min. d.b.h. for tree is 10 cm,Taiwan R O C,Land use,False
+Tajikistan,Cover,,,,,,Tajikistan,Land cover,False
+Tanzania,Cover,,60,8,,"""Tree"" includes palms- bamboos- canes- shrubs- bushes -plants- poles- climbers- seedlings- saplings and regrowth thereof- all ages and all kinds and part.",Tanzania,Land cover,False
+Thailand,Use,,,,,,Thailand,Land use,False
+Thailand UNFCCC,,0.16,30,3,,,Thailand,,True
+Togo,Use,,,,,,Togo,Land use,False
+Togo UNFCCC,,0.5,10,5,,Includes palms and bamboo,Togo,,True
+Tonga,Declared,,,,,Tree includes palms- shrubs- bushes- climbers- seedlings- saplings- and re-shoots of all ages and of all kinds- and any part thereof.,Tonga,Declared,False
+Trinidad & Tobago,Cover,,,,,"""Tree"" includes bamboo- palms and brushwood found growing on state lands",Trinidad & Tobago,Land cover,False
+Trinidad & Tobago UNFCCC,,0.4,10,3,,,Trinidad & Tobago,,True
+Tunisia,Cover,,,,,,Tunisia,Land cover,False
+Turkey,Use,3,10,8,,,Turkey,Land use,False
+Turkmenistan,Unknown,,,,,,Turkmenistan,Unknown,False
+Uganda,Declared,,,4,,"""Tree"" includes palms- bamboo- canes shrubs bushes- climbers- seedlings- and re-growth of all ages and of all kinds- and any part thereof.",Uganda,Declared,False
+Uganda UNFCCC,,1.0,30,5,,,Uganda,,True
+Ukraine,Cover,,60,,,,Ukraine,Land cover,False
+"Ukraine UNFCCC,",,0.1,30,5,20,,Ukraine,,True
+United Arab Emirates,Unknown,,,,,,United Arab Emirates,Unknown,False
+United Kingdom,Use,0.25-1,20,,20-50,Traub et al. 1998 list minimum area as 2 ha.,United Kingdom,Land use,False
 United Kingdom UNFCCC,Cover,0.1,20,2,20,http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32013D0529,United Kingdom,Land cover,True
 United States,Use,0.4,10,4,36,"http://www.cbd.int/doc/world/us/us-nr-vfe-en.pdf gives a minimum area of 0.5 ha (1 acre), cover of 20 percent and minimum tree height of 5 m (16.4 ft.) (2003) and USFS 2004",United States,Land use,False
-Uruguay,Cover,0.25,nan,nan,nan,nan,Uruguay,Land cover,False
-Uruguay UNFCCC,nan,0.25,30,3,nan,nan,Uruguay,nan,True
-Uzbekistan,Unknown,nan,nan,nan,nan,nan,Uzbekistan,Unknown,False
-Vanuatu,Cover,nan,nan,10,nan,Crowns touching or overlapping,Vanuatu,Land cover,False
-Venezuela,Use,nan,nan,5,nan,nan,Venezuela,Land use,False
-Viet Nam,Use,nan,30,nan,nan,Includes bamboo,Viet Nam,Land use,False
-Viet Nam UNFCCC,nan,0.5,30,3,nan,nan,Viet Nam,nan,True
-Viet Nam FREL,Use,0.5,10,5,20,nan,Viet Nam,Land use,False
-Virgin Islands,Cover,nan,50,5,nan,nan,Virgin Islands,Land cover,False
-Western Sahara,Unknown,nan,nan,nan,nan,nan,Western Sahara,Unknown,False
-Western Samoa,Unknown,nan,nan,nan,nan,nan,Western Samoa,Unknown,False
-Yemen,Cover,3,10,5,nan,nan,Yemen,Land cover,False
-Yemen UNFCCC,nan,0.5,30,3,nan,nan,Yemen,nan,True
-Yugoslavia,Use,nan,nan,nan,nan,nan,Yugoslavia,Land use,False
-Zambia,Declared,nan,nan,nan,nan,nan,Zambia,Declared,False
-Zambia 2015,Cover,0.5,10,5,nan,nan,Zambia,Land cover,False
-Zimbabwe,Cover,nan,80,15,nan,"""Tree"" includes bushes- climbers- coppice- palms- reshoots- saplings- seedlings and shrubs of all ages and of all kinds and nay part thereof.",Zimbabwe,Land cover,False
-EU,Cover,nan,10,5,nan,Includes bamboos,EU,Land cover,False
-EU UNFCCC,nan,nan,nan,nan,nan,nan,EU,nan,True
-IIASA,Cover,nan,40,6,nan,nan,IIASA,Land cover,False
-SADC,Cover,nan,70,5,nan,Excludes planted forests,SADC,Land cover,False
-UN CCD,Cover,nan,nan,nan,nan,nan,UN CCD,Land cover,False
-UN ESCO,Cover,nan,40,5,nan,Later definition specifies a 10 m height.,UN ESCO,Land cover,False
-UN Land Use,Use,nan,nan,nan,nan,Excludes woodland or forest used only for recreation purposes. Stands of permanent crops such as rubber- fruit trees- nut trees- are classed as permanent crops under agricultural lands,UN Land Use,Land use,False
-UN LCCS,Cover,nan,nan,3,nan,nan,UN LCCS,Land cover,False
-UN FRA 2000,Use,0.5,10,5,20,nan,UN FRA,Land use,False
-UN FCCC,Use,0.05-1,10-30,2-5,nan,nan,UN FCCC,Land use,False
+Uruguay,Cover,0.25,,,,,Uruguay,Land cover,False
+Uruguay UNFCCC,,0.25,30,3,,,Uruguay,,True
+Uzbekistan,Unknown,,,,,,Uzbekistan,Unknown,False
+Vanuatu,Cover,,,10,,Crowns touching or overlapping,Vanuatu,Land cover,False
+Venezuela,Use,,,5,,,Venezuela,Land use,False
+Viet Nam,Use,,30,,,Includes bamboo,Viet Nam,Land use,False
+Viet Nam UNFCCC,,0.5,30,3,,,Viet Nam,,True
+Viet Nam FREL,Use,0.5,10,5,20,,Viet Nam,Land use,False
+Virgin Islands,Cover,,50,5,,,Virgin Islands,Land cover,False
+Western Sahara,Unknown,,,,,,Western Sahara,Unknown,False
+Western Samoa,Unknown,,,,,,Western Samoa,Unknown,False
+Yemen,Cover,3,10,5,,,Yemen,Land cover,False
+Yemen UNFCCC,,0.5,30,3,,,Yemen,,True
+Yugoslavia,Use,,,,,,Yugoslavia,Land use,False
+Zambia,Declared,,,,,,Zambia,Declared,False
+Zambia 2015,Cover,0.5,10,5,,,Zambia,Land cover,False
+Zimbabwe,Cover,,80,15,,"""Tree"" includes bushes- climbers- coppice- palms- reshoots- saplings- seedlings and shrubs of all ages and of all kinds and nay part thereof.",Zimbabwe,Land cover,False
+EU,Cover,,10,5,,Includes bamboos,EU,Land cover,False
+EU UNFCCC,,,,,,,EU,,True
+IIASA,Cover,,40,6,,,IIASA,Land cover,False
+SADC,Cover,,70,5,,Excludes planted forests,SADC,Land cover,False
+UN CCD,Cover,,,,,,UN CCD,Land cover,False
+UN ESCO,Cover,,40,5,,Later definition specifies a 10 m height.,UN ESCO,Land cover,False
+UN Land Use,Use,,,,,Excludes woodland or forest used only for recreation purposes. Stands of permanent crops such as rubber- fruit trees- nut trees- are classed as permanent crops under agricultural lands,UN Land Use,Land use,False
+UN LCCS,Cover,,,3,,,UN LCCS,Land cover,False
+UN FRA 2000,Use,0.5,10,5,20,,UN FRA,Land use,False
+UN FCCC,Use,0.05-1,10-30,2-5,,,UN FCCC,Land use,False
