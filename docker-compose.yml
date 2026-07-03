@@ -15,7 +15,6 @@ services:
     environment:
       - TTL_PATH=/app/data/forest_kg.ttl
       - TABLE3_PATH=/app/data/table3.csv
-      - CRITERIA_PATH=/app/data/criteria.csv
       - CHROMA_PATH=/app/chroma_db
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]

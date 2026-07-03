@@ -91,12 +91,21 @@ class ThresholdStore:
     # Recherche principale
 
     def get_by_country(self, country: str, unfccc_only: bool = False) -> list[dict]:
-        """Retourne toutes les entrées pour un pays donné (matching partiel)."""
+        """Retourne toutes les entrées pour un pays donné.
+
+        Exact d'abord : un matching partiel bidirectionnel confondait
+        "Guinea" avec "Equatorial Guinea"/"Guinea Bissau"/"Papua New Guinea"
+        (toutes les combinaisons se contiennent l'une l'autre). Le partiel
+        reste un filet de secours si le nom donné n'est pas exact.
+        """
         key = _normalise(country)
         results = []
-        for stored_key, rows in self._index.items():
-            if key in stored_key or stored_key in key:
-                results.extend(rows)
+        if key in self._index:
+            results.extend(self._index[key])
+        else:
+            for stored_key, rows in self._index.items():
+                if key in stored_key or stored_key in key:
+                    results.extend(rows)
         if unfccc_only:
             results = [r for r in results if r["is_unfccc"]]
         seen = set()
@@ -126,13 +135,21 @@ class ThresholdStore:
                         found.append(c)
                 break
 
-        # Ensuite chercher des pays specifiques
+        # Ensuite chercher des pays specifiques. On garde seulement les
+        # matches les plus specifiques : "guinea" est un mot entier dans
+        # "papua new guinea" aussi, donc sans ce filtre une question sur la
+        # Papua New Guinea declenchait aussi la Guinea toute seule.
         if not found:
+            candidates: list[tuple[str, str]] = []
             for key, rows in self._index.items():
-                if key and key in q:
-                    country = rows[0]["country"]
-                    if country not in found:
-                        found.append(country)
+                if key and re.search(rf'\b{re.escape(key)}\b', q):
+                    candidates.append((key, rows[0]["country"]))
+            keys = [k for k, _ in candidates]
+            for key, country in candidates:
+                if any(key != other and key in other for other in keys):
+                    continue
+                if country not in found:
+                    found.append(country)
 
         return found
 

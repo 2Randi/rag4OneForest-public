@@ -47,7 +47,6 @@ class Settings(BaseSettings):
     # Graphe RDF
     ttl_path:    Path = Path("../data/forest_kg.ttl")
     table3_path: Path = Path("../data/table3.csv")
-    criteria_path: Path = Path("../data/criteria.csv")
 
     # Vector Store
     chroma_path:       str  = "./chroma_db"

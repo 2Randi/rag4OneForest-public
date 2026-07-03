@@ -22,7 +22,6 @@ from app.services.retriever import HybridRetriever, VectorRetriever
 from app.services.rag_chain import RAGChain, RAGEvaluator
 from app.services.agent_rag import AgentRAG
 from app.services.threshold_store import get_threshold_store
-from app.services.criteria_store import get_criteria_store
 
 log = structlog.get_logger()
 
@@ -49,10 +48,6 @@ async def lifespan(app: FastAPI):
     # Chargement des seuils nationaux (Table 3 Lund 2018)
     ts = get_threshold_store()
     log.info("ThresholdStore chargé", entries=len(ts))
-
-    # Chargement des critères extraits du texte des définitions
-    cs = get_criteria_store()
-    log.info("CriteriaStore chargé", entries=len(cs))
 
     yield
     log.info("Arrêt RAG4OneForest API")
@@ -81,14 +76,12 @@ app.add_middleware(
 def health():
     vs = get_vector_store()
     ts = get_threshold_store()
-    cs = get_criteria_store()
     return {
         "status":             "ok",
         "graph_loaded":       True,
         "index_ready":        vs.is_indexed(),
         "index_size":         vs.count(),
         "threshold_entries":  len(ts),
-        "criteria_entries":   len(cs),
         "llm_provider":       settings.llm_provider,
     }
 

@@ -8,7 +8,6 @@ from app.core.settings import settings
 from app.services.graph_store import GraphStore, get_graph_store
 from app.services.vector_store import VectorStore, get_vector_store
 from app.services.threshold_store import ThresholdStore, get_threshold_store
-from app.services.criteria_store import CriteriaStore, get_criteria_store
 
 _RRF_K = 60
 
@@ -16,31 +15,82 @@ _RRF_K = 60
 def _normalise_country(s: str) -> str:
     return re.sub(r"[^a-z0-9]", "-", s.lower()).strip("-")
 
+# champs numeriques qu'on peut filtrer, avec le mot-cle et l'unite qui va avec
+_THRESHOLD_FIELDS: list[tuple[str, str, str]] = [
+    ("minCrown",  r'crown\s*cover|canopy\s*cover', r'%'),
+    ("minArea",   r'\barea\b|hectares?|\bha\b',    r'ha\b|hectares?'),
+    ("minHeight", r'tree\s*height|\bheight\b',     r'm\b|meters?|metres?'),
+    ("minWidth",  r'strip\s*width|\bwidth\b',      r'm\b|meters?|metres?'),
+]
+# "minimum"/"maximum" pas dedans expres: dans ce domaine c'est juste le nom
+# du champ ("Minimum Area"), pas forcement une direction de comparaison
+_LE_WORDS = re.compile(
+    r'or\s+less|or\s+lower|or\s+below|no\s+more\s+than|at\s+most|under|below|less\s+than|up\s+to',
+    re.IGNORECASE)
+_GE_WORDS = re.compile(
+    r'or\s+more|or\s+higher|or\s+above|no\s+less\s+than|at\s+least|over|above|more\s+than',
+    re.IGNORECASE)
+
+
+def _filter_by_threshold(docs: list[dict], query: str) -> list[dict]:
+    """
+    coupe la liste de pays si la question donne un seuil numerique (crown
+    cover, area, height), peu importe comment c'est formule ("or less",
+    "at most", "under", "or more", "at least"...). sans ca le LLM doit
+    compter/filtrer lui meme sur 40+ docs bruts et se trompe a chaque fois
+    """
+    for field, field_kw, unit in _THRESHOLD_FIELDS:
+        if not re.search(field_kw, query, re.IGNORECASE):
+            continue
+        num_match = re.search(rf'(\d+(?:\.\d+)?)\s*(?:{unit})', query, re.IGNORECASE)
+        if not num_match:
+            continue
+        value = float(num_match.group(1))
+        if _LE_WORDS.search(query):
+            return [d for d in docs if d.get(field) and float(d[field]) <= value]
+        if _GE_WORDS.search(query):
+            return [d for d in docs if d.get(field) and float(d[field]) >= value]
+    return docs
+
 # Détection de concept
 
-# Ordre important : les plus spécifiques d'abord
+# ordre important : les plus specifiques d'abord. alignee sur les 15
+# top-concepts reels du graphe (ex:ForestScheme), sinon la moitie d'entre
+# eux (NaturalForest, LandUse, Regeneration...) ne matchent jamais
 _CONCEPT_PATTERNS: list[tuple[str, str]] = [
-    (r'\bdeforestat\w+\b',        'deforestation'),
-    (r'\bafforestat\w+\b',        'afforestation'),
-    (r'\breforestat\w+\b',        'reforestation'),
-    (r'\bwoodland\w*\b',          'woodland'),
-    (r'\btree\s+cover\b',         'tree'),
-    (r'\bplantation\w*\b',        'plantation'),
-    (r'\bdegradation\w*\b',       'degradation'),
-    (r'\bforest\w*\b',            'forest'),
+    (r'\bdeforestat\w+\b',                     'deforestation'),
+    (r'\bafforestat\w+\b',                     'afforestation'),
+    (r'\breforestat\w+\b',                     'reforestation'),
+    (r'\bregenerat\w+\b',                      'regeneration'),
+    (r'\bsemi[\s\-]?natural\s+forest\w*\b',    'seminaturalforest'),
+    (r'\bnative\s+forest\w*\b',                'nativeforest'),
+    (r'\bnatural\s+forest\w*\b',               'naturalforest'),
+    (r'\bnon[\s\-]?forest\w*\b',               'nonforest'),
+    (r'\bwoodland\w*\b',                       'woodland'),
+    (r'\btree\s+cover\b',                      'tree'),
+    (r'\bplantation\w*\b',                     'plantation'),
+    (r'\bdegradation\w*\b',                    'degradation'),
+    (r'\bland\s*cover\w*\b',                   'landcover'),
+    (r'\bland\s*use\w*\b',                     'landuse'),
+    (r'\bforest\w*\b',                         'forest'),
 ]
 
+# les valeurs renvoyees doivent matcher exactement skos:scopeNote dans le
+# graphe (General/International/National/State), pas des synonymes a nous
 _SCOPE_PATTERNS: list[tuple[str, str]] = [
-    (r'\b(?:international|global|worldwide)\b', 'International'),
-    (r'\b(?:national|country|countries|federal|domestic)\b', 'National'),
-    (r'\b(?:local|municipal|regional|sub.?national|state)\b', 'Local'),
+    (r'\b(?:international|global|worldwide)\b',                    'International'),
+    (r'\b(?:local|municipal|regional|sub.?national|province\w*)\b', 'State'),
+    (r'\b(?:state|provincial)\b',                                  'State'),
+    (r'\b(?:national|country|countries|federal|domestic)\b',       'National'),
+    (r'\b(?:general|generic|broad)\b',                             'General'),
 ]
 
 # Organisations spécifiques — filtrées via dct:creator, pas dct:spatial
 _THRESHOLD_PATTERNS = re.compile(
-    r'\b(threshold|criteria|criterion|minimum|crown\s*cover|canopy\s*cover|'
-    r'tree\s*height|minimum\s*area|hectare|ha\b|crown\s*density|'
-    r'seuil|superficie|couverture|hauteur|crit[eè]re)\b',
+    r'\b(threshold|criteria|criterion|minimum|maximum|crown\s*cover|canopy\s*cover|'
+    r'tree\s*height|\barea\b|hectares?|\bha\b|crown\s*density|strip\s*width|'
+    r'\bwidth\b|\btall\b|meters?|metres?|'
+    r'seuil|superficie|couverture|hauteur|largeur|crit[eè]re)\b',
     re.IGNORECASE,
 )
 
@@ -67,14 +117,28 @@ def _detect_continent(query: str) -> str | None:
     return None
 
 
+# alignee sur ORG_COLLECTIONS dans kg-builder/builder/skos_builder.py, sinon
+# une orga qui existe bien dans le graphe (ex: WWF, IUCN, ITTO) ne matche
+# jamais parce qu'on l'a pas mise ici
 _ORG_PATTERNS: list[tuple[str, str]] = [
-    (r'\bunfccc\b',                  'UNFCCC'),
-    (r'\bfao\b',                     'FAO'),
-    (r'\bipcc\b',                    'IPCC'),
-    (r'\bipbes\b',                   'IPBES'),
-    (r'\b(?:eu|european\s+union)\b', 'EU'),
-    (r'\bworld\s*bank\b',            'World Bank'),
-    (r'\bunep\b',                    'UNEP'),
+    (r'\bkp[l]?\b|\bkyoto\s+protocol\b',           'KP'),
+    (r'\bun-?fa[o0]\b|\bun-?fra\b|\bgfra\b|\btbfra\b|\bfao\b', 'FAO'),
+    (r'\bipcc\b',                                  'IPCC'),
+    (r'\beu\b|\beuropean\s+(union|community|environment|commission)\b|\beurostat\b|\beea\b', 'EU'),
+    (r'\bworld\s*bank\b',                          'WorldBank'),
+    (r'\bsaf\b|\bsociety\s+of\s+american\s+foresters\b', 'SAF'),
+    (r'\bun-?ep\b|\bunep\b',                       'UNEP'),
+    (r'\bnir\b|\bnational\s+inventory\s+reports?\b', 'NIR'),
+    (r'\bnfi\b|\bnational\s+forest\s+inventor',    'NFI'),
+    (r'\bun-?fccc\b|\bunfccc\b',                   'UNFCCC'),
+    (r'\busa-fed\b|\busda\b',                      'USDAFS'),
+    (r'\biucn\b',                                  'IUCN'),
+    (r'\bitto\b',                                  'ITTO'),
+    (r'\biufro\b',                                 'IUFRO'),
+    (r'\bwwf\b',                                   'WWF'),
+    (r'\bwri\b|\bworld\s+resources\s+institute\b', 'WRI'),
+    (r'\bwcmc\b|\bunep-wcmc\b',                    'WCMC'),
+    (r'\bipbes\b',                                 'IPBES'),
 ]
 
 
@@ -132,12 +196,10 @@ class HybridRetriever:
         graph_store:     GraphStore     | None = None,
         vector_store:    VectorStore    | None = None,
         threshold_store: ThresholdStore | None = None,
-        criteria_store:  CriteriaStore  | None = None,
     ):
         self._gs = graph_store     or get_graph_store()
         self._vs = vector_store    or get_vector_store()
         self._ts = threshold_store or get_threshold_store()
-        self._cs = criteria_store  or get_criteria_store()
 
     def retrieve(self, query: str, top_k: int | None = None) -> list[dict[str, Any]]:
         k       = top_k or settings.retrieval_top_k
@@ -225,17 +287,10 @@ class HybridRetriever:
         # Enrichissement seuils via le graphe
         continent = _detect_continent(query)
         if _is_threshold_query(query) or continent:
-            orgs_explicit = self._cs.extract_orgs(query)
-
             # Recherche par continent via SPARQL sur le graphe
             if continent:
                 continent_docs = self._gs.search_continent_thresholds(continent)
-                # Filtrer par seuil si demande (ex: "crown cover 30%")
-                crown_match = re.search(r'crown\s*cover.*?(\d+)\s*%', query, re.IGNORECASE)
-                if crown_match:
-                    min_crown = float(crown_match.group(1))
-                    continent_docs = [d for d in continent_docs
-                                      if d.get("minCrown") and float(d["minCrown"]) >= min_crown]
+                continent_docs = _filter_by_threshold(continent_docs, query)
                 # dict.fromkeys dédupe sans perdre l'ordre (un set() mélange tout)
                 countries_ctx = list(dict.fromkeys(d["country"] for d in continent_docs))
             else:
@@ -304,32 +359,8 @@ class HybridRetriever:
                         "graph_context": ts_context,
                     })
 
-            # Org détectée sans pays explicite → critères extraits du texte
-            for org_name in orgs_explicit[:2]:
-                cr_ctx = self._cs.format_as_context(org=org_name, max_entries=5)
-                if cr_ctx:
-                    threshold_docs.append({
-                        "text": cr_ctx,
-                        "metadata": {
-                            "uri":     f"criteria://{org_name.lower()}",
-                            "label":   f"Forest criteria: {org_name}",
-                            "def":     cr_ctx,
-                            "country": "",
-                            "year":    "",
-                            "scope":   "International",
-                            "org":     org_name,
-                        },
-                        "sources":       ["sparql", "threshold"],
-                        "vec_rank":      None,
-                        "sparql_rank":   None,
-                        "rrf_score":     0.04,
-                        "vector_score":  0,
-                        "sparql_score":  0,
-                        "graph_context": cr_ctx,
-                    })
-
             # Insertion en position 1 (après le meilleur doc naturel)
-            if threshold_docs and (countries_ctx or orgs_explicit):
+            if threshold_docs and countries_ctx:
                 insert_pos = min(1, len(merged))
                 for s in reversed(threshold_docs):
                     merged.insert(insert_pos, s)

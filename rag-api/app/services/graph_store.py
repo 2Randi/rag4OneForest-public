@@ -104,10 +104,29 @@ class GraphStore:
                 f'    FILTER(!BOUND(?tc) || CONTAINS(LCASE(STR(?tc)), "{_sparql_escape(concept.lower())}"))'
             )
 
-        # avant ça testait ?country au lieu de ?scope, donc ça filtrait rien du tout
+        # skos:scopeNote sert à DEUX choses dans le graphe : le scope
+        # géographique (National/International/General/State) ET le type de
+        # définition (Land use/Land cover/Declared/Ecological), donc filtrer
+        # sur le texte de scopeNote est pollué par les valeurs de type. Le
+        # vrai signal fiable c'est l'appartenance aux collections ex:Scope_X
+        # (même principe que ex:Org_X pour les organisations, construites
+        # ensemble dans skos_builder.py). Un concept classé dans un AUTRE
+        # scope est exclu, un concept jamais classé (pas dans une collection
+        # Scope_*) passe quand même : on ne le pénalise pas pour une absence
+        # de classification.
         scope_filter = ""
+        scope_membership = ""
         if scope:
-            scope_filter = f'FILTER(!BOUND(?scope) || CONTAINS(LCASE(STR(?scope)), "{_sparql_escape(scope.lower())}"))'
+            scope_key = re.sub(r"[^A-Za-z]", "", scope)
+            scope_membership = (
+                f'OPTIONAL {{ ex:Scope_{scope_key} skos:member ?uri . BIND(true AS ?scopeMember) }}\n'
+                '    OPTIONAL { { ex:Scope_General skos:member ?uri } '
+                'UNION { ex:Scope_International skos:member ?uri } '
+                'UNION { ex:Scope_National skos:member ?uri } '
+                'UNION { ex:Scope_State skos:member ?uri } '
+                'BIND(true AS ?hasAnyScope) }'
+            )
+            scope_filter = 'FILTER(BOUND(?scopeMember) || !BOUND(?hasAnyScope))'
 
         # dct:creator est plein de résidus de parsing bruités et pas fiable
         # (ex: concepts UNFCCC ont dct:creator="KP", pas "UNFCCC"). On filtre
@@ -134,6 +153,7 @@ SELECT DISTINCT ?uri ?label ?def ?country ?year ?scope ?org ?orgMember WHERE {{
     OPTIONAL {{ ?uri skos:scopeNote ?scope   . }}
     OPTIONAL {{ ?uri dct:creator    ?org     . }}
     {org_membership}
+    {scope_membership}
     {concept_filter}
     FILTER ({kw_filter})
     {scope_filter}
@@ -251,7 +271,7 @@ SELECT ?pred ?obj WHERE {
         # Seuils numériques
         thresholds = []
         for prop in ["minAreaHa", "maxAreaHa", "minCrownCoverPct", "maxCrownCoverPct",
-                     "minTreeHeightM", "maxTreeHeightM"]:
+                     "minTreeHeightM", "maxTreeHeightM", "minStripWidthM", "maxStripWidthM"]:
             for val in self._g.objects(u, EX[prop]):
                 thresholds.append(f"{prop}: {val}")
         if thresholds:
@@ -280,9 +300,25 @@ SELECT ?pred ?obj WHERE {
         # tout faire en une seule requête est correct mais super lent (90s
         # mesuré, rdflib galère avec le CONTAINS + jointure). Du coup on
         # résout le pays d'abord (petit ensemble), puis on joint sur l'URI
-        c = country.lower().replace('"', "").replace("'", "")
+        # avant ça virait carrément l'apostrophe au lieu de l'échapper, donc
+        # "Côte d'Ivoire" cherchait "côte divoire" qui match jamais le label
+        c = _sparql_escape(country.lower())
+
+        # exact d'abord : un CONTAINS direct confond "Guinea" avec "Guinea
+        # Bissau"/"Equatorial Guinea"/"Papua New Guinea" (le dct:spatial du
+        # graphe est deja precis via l'ISO3 cote kg-builder, pas la peine de
+        # refaire une resolution approximative ici). CONTAINS reste un
+        # filet de secours si jamais l'appelant donne un nom pas exact.
         country_rows = self.query_sparql(f"""
-SELECT ?countryUri WHERE {{
+SELECT ?countryUri ?countryLabel WHERE {{
+    ex:Countries skos:member ?countryUri .
+    ?countryUri skos:prefLabel ?countryLabel .
+    FILTER(LCASE(STR(?countryLabel)) = "{c}")
+}} LIMIT 5
+""")
+        if not country_rows:
+            country_rows = self.query_sparql(f"""
+SELECT ?countryUri ?countryLabel WHERE {{
     ex:Countries skos:member ?countryUri .
     ?countryUri skos:prefLabel ?countryLabel .
     FILTER(CONTAINS(LCASE(STR(?countryLabel)), "{c}"))
@@ -293,9 +329,10 @@ SELECT ?countryUri WHERE {{
 
         rows: list[dict] = []
         for cr in country_rows:
-            rows.extend(self.query_sparql(f"""
+            concept_rows = self.query_sparql(f"""
 SELECT DISTINCT ?uri ?label ?def ?year ?org
-               ?minArea ?minCrown ?minHeight ?maxCrown WHERE {{
+               ?minArea ?maxArea ?minCrown ?maxCrown
+               ?minHeight ?maxHeight ?minWidth ?maxWidth WHERE {{
     ?uri a skos:Concept ;
          dct:spatial <{cr['countryUri']}> ;
          skos:definition ?def .
@@ -303,15 +340,25 @@ SELECT DISTINCT ?uri ?label ?def ?year ?org
                FILTER(LANG(?label) IN ('en', 'fr', '')) }}
     OPTIONAL {{ ?uri dct:date       ?year    . }}
     OPTIONAL {{ ?uri dct:creator    ?org     . }}
-    OPTIONAL {{ ?uri ex:minAreaHa       ?minArea  . }}
-    OPTIONAL {{ ?uri ex:minCrownCoverPct ?minCrown . }}
-    OPTIONAL {{ ?uri ex:maxCrownCoverPct ?maxCrown . }}
+    OPTIONAL {{ ?uri ex:minAreaHa        ?minArea   . }}
+    OPTIONAL {{ ?uri ex:maxAreaHa        ?maxArea   . }}
+    OPTIONAL {{ ?uri ex:minCrownCoverPct ?minCrown  . }}
+    OPTIONAL {{ ?uri ex:maxCrownCoverPct ?maxCrown  . }}
     OPTIONAL {{ ?uri ex:minTreeHeightM   ?minHeight . }}
+    OPTIONAL {{ ?uri ex:maxTreeHeightM   ?maxHeight . }}
+    OPTIONAL {{ ?uri ex:minStripWidthM   ?minWidth  . }}
+    OPTIONAL {{ ?uri ex:maxStripWidthM   ?maxWidth  . }}
 }} LIMIT {max(top_k * 30, 200)}
-"""))
+""")
+            # le pays affiché doit être celui vraiment résolu par dct:spatial,
+            # pas le texte de recherche brut (sinon un concept de Papua New
+            # Guinea remonté par erreur s'affichait quand même "Guinea")
+            for row in concept_rows:
+                row["countryLabel"] = cr.get("countryLabel", country)
+            rows.extend(concept_rows)
 
         def _richness(r: dict) -> int:
-            return sum(1 for k in ("minCrown", "minArea", "minHeight")
+            return sum(1 for k in ("minCrown", "minArea", "minHeight", "minWidth")
                        if r.get(k))
 
         rows.sort(key=_richness, reverse=True)
@@ -327,9 +374,13 @@ SELECT DISTINCT ?uri ?label ?def ?year ?org
             # Texte enrichi : définition + valeurs structurées
             threshold_parts: list[str] = []
             if r.get("minArea"):   threshold_parts.append(f"min area {r['minArea']} ha")
+            if r.get("maxArea"):   threshold_parts.append(f"(max {r['maxArea']} ha)")
             if r.get("minCrown"):  threshold_parts.append(f"crown cover {r['minCrown']}%")
             if r.get("maxCrown"):  threshold_parts.append(f"(max {r['maxCrown']}%)")
             if r.get("minHeight"): threshold_parts.append(f"tree height {r['minHeight']} m")
+            if r.get("maxHeight"): threshold_parts.append(f"(max {r['maxHeight']} m)")
+            if r.get("minWidth"):  threshold_parts.append(f"strip width {r['minWidth']} m")
+            if r.get("maxWidth"):  threshold_parts.append(f"(max {r['maxWidth']} m)")
 
             def_text = r.get("def", "")
             text = def_text
@@ -341,11 +392,15 @@ SELECT DISTINCT ?uri ?label ?def ?year ?org
                 "label":        r.get("label", ""),
                 "def":          def_text,
                 "text":         text,
-                "country":      country,
+                "country":      r.get("countryLabel", country),
                 "year":         r.get("year", ""),
                 "scope":        "National",
                 "org":          r.get("org", ""),
-                "sparql_score": min(_richness(r) / 3.0, 1.0),
+                "sparql_score": min(_richness(r) / 4.0, 1.0),
+                "minArea":      r.get("minArea"),
+                "minCrown":     r.get("minCrown"),
+                "minHeight":    r.get("minHeight"),
+                "minWidth":     r.get("minWidth"),
             })
 
             if len(results) >= top_k:
@@ -381,7 +436,7 @@ SELECT ?label WHERE {{
         continent_key = re.sub(r"[^A-Za-z]", "", continent)  # que des lettres pour l'URI
         sparql = f"""
 SELECT DISTINCT ?uri ?label ?def ?countryName ?year
-               ?minArea ?minCrown ?minHeight WHERE {{
+               ?minArea ?minCrown ?minHeight ?minWidth WHERE {{
     ex:Continent_{continent_key} skos:member ?country .
     ?country skos:prefLabel ?countryName .
     ?uri a skos:Concept ;
@@ -393,12 +448,13 @@ SELECT DISTINCT ?uri ?label ?def ?countryName ?year
     OPTIONAL {{ ?uri ex:minAreaHa ?minArea . }}
     OPTIONAL {{ ?uri ex:minCrownCoverPct ?minCrown . }}
     OPTIONAL {{ ?uri ex:minTreeHeightM ?minHeight . }}
+    OPTIONAL {{ ?uri ex:minStripWidthM ?minWidth . }}
 }} LIMIT {top_k * 8}
 """
         rows = self.query_sparql(sparql)
 
         def _richness(r: dict) -> int:
-            return sum(1 for k in ("minArea", "minCrown", "minHeight") if r.get(k))
+            return sum(1 for k in ("minArea", "minCrown", "minHeight", "minWidth") if r.get(k))
 
         # Un seul concept par pays : le plus riche en seuils numériques.
         best_by_country: dict[str, dict] = {}
@@ -424,6 +480,7 @@ SELECT DISTINCT ?uri ?label ?def ?countryName ?year
                 "minArea":  r.get("minArea"),
                 "minCrown": r.get("minCrown"),
                 "minHeight": r.get("minHeight"),
+                "minWidth": r.get("minWidth"),
             })
             if len(results) >= top_k:
                 break

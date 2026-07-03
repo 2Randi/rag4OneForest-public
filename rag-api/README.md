@@ -69,10 +69,11 @@ curl -X POST http://localhost:8000/api/query \
      -H "Content-Type: application/json" \
      -d '{"query": "What are the UNFCCC threshold criteria for forest definition?", "top_k": 5}'
 
-# SPARQL direct
+# SPARQL direct (dct:spatial pointe vers un concept pays, pas un texte
+# libre : il faut joindre son skos:prefLabel pour avoir un nom lisible)
 curl -X POST http://localhost:8000/api/graph/sparql \
      -H "Content-Type: application/json" \
-     -d '{"query": "SELECT ?label ?country WHERE { ?c skos:prefLabel ?label ; dct:spatial ?country . } LIMIT 10"}'
+     -d '{"query": "SELECT ?label ?countryName WHERE { ?c skos:prefLabel ?label ; dct:spatial ?country . ?country skos:prefLabel ?countryName . } LIMIT 10"}'
 ```
 
 ## Documentation interactive

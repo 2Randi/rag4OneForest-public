@@ -36,19 +36,22 @@ Forest, Deforestation, Afforestation and Reforestation."
 
 OUTPUT FORMAT — follow this exactly:
 
-**1. <Organisation / Country> (<Year>)**
+**1. <Organisation / Country> (<Year>)** [<N>]
 <Definition text.>
 > Source: <source_title> | <organisation> | <year>
 
-**2. ...**  (repeat for each distinct definition)
+**2. ...** [<N>]  (repeat for each distinct definition)
 
 **Summary**
-2-3 sentences comparing or synthesising the definitions above.
+2-3 sentences comparing or synthesising the definitions above, citing [<N>]
+for each definition mentioned.
 
 RULES:
 - Base your answer ONLY on the provided context passages.
 - One numbered item per distinct definition — do NOT merge definitions.
-- Cite sources with the [N] notation matching the numbered passages.
+- [<N>] is MANDATORY on every header line and in the summary: it is the
+  passage number from the context below (the "[N]" prefix on each passage),
+  NOT the position in your own list. Never omit it.
 - Preserve technical terms and numerical thresholds exactly as in the source.
 - If context is insufficient, clearly state what is missing — do NOT invent.
 - Non-English definitions may be quoted as-is with a language note.

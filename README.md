@@ -31,7 +31,7 @@ Le système intègre trois composants principaux :
 ```
 rag4oneforest/
 ├── data/                          Données sources et graphe RDF
-│   ├── forest_kg.ttl              Knowledge Graph SKOS (34 480 triplets)
+│   ├── forest_kg.ttl              Knowledge Graph SKOS (35 322 triplets)
 │   ├── definitions.docx           Corpus source — Lund (2018)
 │   ├── definitions_clean.csv      Définitions extraites (nettoyées)
 │   └── definitions_raw.csv        Extraction brute
@@ -278,7 +278,7 @@ python tasks.py index
 
 | Fichier | Format | Contenu |
 |---------|--------|---------|
-| `data/forest_kg.ttl` | RDF/Turtle | Knowledge Graph SKOS — 34 480 triplets, 2 972 concepts |
+| `data/forest_kg.ttl` | RDF/Turtle | Knowledge Graph SKOS — 35 322 triplets, 3 432 concepts |
 | `data/definitions.docx` | Word | Corpus source — Lund (2018), 800+ définitions |
 | `data/definitions_clean.csv` | CSV | Définitions structurées extraites |
 
