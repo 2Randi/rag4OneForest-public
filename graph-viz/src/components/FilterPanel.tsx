@@ -53,7 +53,7 @@ export function FilterPanel({
         <div className="fp-field">
           <label className="fp-label">Catégorie</label>
           <select className="fp-select" value={category} onChange={e => setCategory(e.target.value)}>
-            <option value="">Toutes ({stats.totalConcepts})</option>
+            <option value="">Concepts ({stats.totalConcepts})</option>
             {stats.byCategory.map(cat => (
               <option key={cat.uri} value={cat.uri}>{cat.label} ({cat.count})</option>
             ))}
@@ -64,7 +64,7 @@ export function FilterPanel({
         <div className="fp-field">
           <label className="fp-label">Pays</label>
           <select className="fp-select" value={country} onChange={e => setCountry(e.target.value)}>
-            <option value="">Tous ({countries.length})</option>
+            <option value="">Pays ({countries.length})</option>
             {countries.map(c => <option key={c} value={c}>{c}</option>)}
           </select>
         </div>
@@ -82,7 +82,7 @@ export function FilterPanel({
         <div className="fp-field">
           <label className="fp-label">Organisation</label>
           <select className="fp-select" value={orgUri} onChange={e => setOrgUri(e.target.value)}>
-            <option value="">Toutes ({orgs.length})</option>
+            <option value="">Orgs ({orgs.length})</option>
             {orgs.map(o => (
               <option key={o.uri} value={o.uri}>
                 {o.label}{o.count > 0 ? ` (${o.count})` : ''}
@@ -93,9 +93,9 @@ export function FilterPanel({
 
         {/* Portée / Type (Scope_ et Type_) */}
         <div className="fp-field">
-          <label className="fp-label">Portée / Type</label>
+          <label className="fp-label">Portée</label>
           <select className="fp-select" value={scopeUri} onChange={e => setScopeUri(e.target.value)}>
-            <option value="">Toutes les portées ({scopes.length})</option>
+            <option value="">Portées ({scopes.length})</option>
             {scopes.map(s => (
               <option key={s.uri} value={s.uri}>
                 {s.label}{s.count > 0 ? ` (${s.count})` : ''}
@@ -130,7 +130,7 @@ export function FilterPanel({
       {results.length > 0 && (
         <div className="fp-results">
           <div className="fp-results-title">
-            {results.length} résultat{results.length > 1 ? 's' : ''} — affichés dans le graphe
+            {results.length} résultat{results.length > 1 ? 's' : ''} - affichés dans le graphe
           </div>
           <ul className="fp-results-list">
             {results.map(c => {
