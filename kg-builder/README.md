@@ -32,15 +32,24 @@ ex:ForestDefinitionsScheme  (skos:ConceptScheme)
         └── ex:<ConceptHash>  (skos:Concept)
               ├── skos:broader        → ex:Forest
               ├── skos:prefLabel      "Forest"@en
-              ├── skos:definition     "..."@fr
+              ├── skos:definition     "..."@en
               ├── skos:scopeNote      "National"@en
-              ├── dct:spatial         "France"
+              ├── dct:spatial         → ex:Country_FRA
               ├── dct:date            "1997"^^xsd:gYear
               ├── ex:minAreaHa        "0.5"^^xsd:decimal
               ├── ex:maxAreaHa        "1.0"^^xsd:decimal
               ├── ex:minCrownCoverPct "10"^^xsd:decimal
               └── ex:minTreeHeightM   "2"^^xsd:decimal
+
+ex:Country_FRA  (skos:Concept)
+  ├── skos:prefLabel  "France"@en
+  ├── skos:notation   "FRA"
+  └── (membre de ex:Continent_Europe et ex:Countries)
 ```
+
+`dct:spatial` pointe vers un concept pays plutôt que de porter le nom en
+texte libre — permet des requêtes exactes par pays/continent au lieu
+d'un `CONTAINS` sur du texte.
 
 ## Usage
 
