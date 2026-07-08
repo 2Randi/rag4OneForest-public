@@ -9,6 +9,7 @@ from typing import Any
 
 from app.core.settings import settings
 from app.services.graph_store import GraphStore, get_graph_store
+from app.services.inventory import CONTINENT_PATTERNS
 
 
 def _normalise(s: str) -> str:
@@ -17,21 +18,6 @@ def _normalise(s: str) -> str:
     s = unicodedata.normalize("NFD", s)
     s = "".join(c for c in s if unicodedata.category(c) != "Mn")
     return re.sub(r"[^a-z0-9]", " ", s.lower()).strip()
-
-
-# clé = nom de collection ex:Continent_<clé> dans le graphe. La liste des
-# pays par continent n'est plus codée en dur ici, on va la chercher dans le
-# graphe direct (avant ça divergeait: 52 pays "Afrique" ici vs 46 dans le graphe)
-CONTINENT_PATTERNS: list[tuple[str, str]] = [
-    (r'\bafrica\w*\b', 'Africa'),
-    (r'\beurope\w*\b', 'Europe'),
-    (r'\basia\w*\b', 'Asia'),
-    (r'\bsouth\s*america\w*\b', 'SouthAmerica'),
-    (r'\bnorth\s*america\w*\b', 'NorthAmerica'),
-    (r'\boceania\w*\b', 'Oceania'),
-    (r'\blatin\s*america\w*\b', 'SouthAmerica'),
-    (r'\bamericas?\b', 'SouthAmerica'),
-]
 
 
 class ThresholdStore:

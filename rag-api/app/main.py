@@ -22,6 +22,7 @@ from app.services.retriever import HybridRetriever, VectorRetriever
 from app.services.rag_chain import RAGChain, RAGEvaluator
 from app.services.agent_rag import AgentRAG
 from app.services.threshold_store import get_threshold_store
+from app.services.inventory import get_inventory, validate_patterns
 
 log = structlog.get_logger()
 
@@ -48,6 +49,19 @@ async def lifespan(app: FastAPI):
     # Chargement des seuils nationaux (Table 3 Lund 2018)
     ts = get_threshold_store()
     log.info("ThresholdStore chargé", entries=len(ts))
+
+    # Inventaire dynamique (orgs/continents/scopes/concepts) + verification
+    # de coherence avec les tables de regex de retriever.py. On logue les
+    # ecarts sans jamais bloquer le demarrage.
+    try:
+        inventory = get_inventory()
+        for msg in validate_patterns(inventory):
+            log.warning("inventory_pattern_mismatch", detail=msg)
+        log.info("GraphInventory chargé", orgs=len(inventory.orgs),
+                 continents=len(inventory.continents), scopes=len(inventory.scopes),
+                 concepts=len(inventory.concepts))
+    except Exception as e:
+        log.warning(f"GraphInventory non disponible : {e}")
 
     yield
     log.info("Arrêt RAG4OneForest API")

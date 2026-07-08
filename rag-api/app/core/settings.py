@@ -1,5 +1,6 @@
 # Configuration de l'application
 from pathlib import Path
+from typing import Literal
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -56,6 +57,11 @@ class Settings(BaseSettings):
     # Retrieval
     retrieval_top_k: int   = 12
     retrieval_alpha: float = 0.6
+
+    # Extraction de filtres (concept/org/scope/continent/seuil) par LLM :
+    # "auto" = seulement si les regex n'ont rien trouve (defaut, cout minimal),
+    # "always" = a chaque requete, "off" = jamais (regex uniquement).
+    llm_extraction_mode: Literal["auto", "always", "off"] = "auto"
 
     # API
     api_host:  str = "0.0.0.0"

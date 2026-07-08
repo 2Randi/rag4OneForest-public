@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import re
+from functools import lru_cache
 from typing import Any, Generator
 
 import structlog
@@ -217,6 +218,17 @@ def _make_backends() -> list[tuple[str, Any]]:
 def _is_retryable(error: Exception) -> bool:
     msg = str(error).lower()
     return any(kw in msg for kw in _RETRYABLE)
+
+
+@lru_cache(maxsize=1)
+def get_llm_backends() -> list[tuple[str, Any]]:
+    """
+    Liste (nom, llm) partagee, construite une seule fois pour toute
+    l'application. Utilisee par filter_extractor.py pour l'extraction de
+    filtres (chantier 2) sans reconstruire un second jeu de clients LLM en
+    plus de ceux de RAGChain.
+    """
+    return _make_backends()
 
 
 # Chaîne RAG principale
