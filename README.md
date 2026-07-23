@@ -20,9 +20,6 @@
 
 RAG4OneForest est un système **GraphRAG** (Retrieval-Augmented Generation sur graphe de connaissances) dédié à l'exploration et à l'interrogation des **définitions forestières internationales**. Il s'appuie sur le corpus de Lund (2018) qui recense plus de centaine de définitions issues de plusieurs pays et organisations.
 
-Le système intègre trois composants principaux :
-
-<img width="1536" height="1024" alt="graphrag" src="https://github.com/user-attachments/assets/381bd803-c8c2-4228-81f1-cb3c19b521a6" />
 
 ---
 
@@ -291,32 +288,6 @@ python tasks.py index
 
 ## Architecture technique
 
-### Pipeline RAG
-
-```
-Question utilisateur
-        │
-        ├─→ Détection concept + portée (regex)
-        │
-        ├─→ [Bras 1] Recherche SPARQL (rdflib)
-        │   Requête structurée sur le graphe RDF
-        │   Filtre concept / portée géographique
-        │
-        ├─→ [Bras 2] Recherche vectorielle (ChromaDB)
-        │   Embedding all-MiniLM-L6-v2 (384 dims)
-        │   Similarité cosinus
-        │
-        ├─→ Fusion RRF (Reciprocal Rank Fusion, k=60)
-        │   Déduplique + classe les résultats hybrides
-        │
-        ├─→ Enrichissement contextuel (graphe)
-        │   Concept parent, frères, relations, seuils
-        │
-        └─→ Génération LLM (chaîne de fallback)
-            Gemini → Groq
-            Prompt structuré + citations [N]
-            Température 0.1 (réponses déterministes)
-```
 
 ### Qualité des réponses (évaluation RAGAS)
 
