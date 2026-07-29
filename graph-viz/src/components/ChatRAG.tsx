@@ -31,11 +31,31 @@ const MODE_DESC: Record<Mode, string> = {
   agent_rag:  'Le LLM choisit lui-meme quels outils utiliser',
 }
 
+// 'auto' = chaine de fallback normale (pas de champ "provider" envoye).
+// Les autres valeurs forcent un LLM precis - utile pour comparer plusieurs
+// LLM sur la meme question/mode (cf. protocole d'evaluation multi-LLM).
+type Provider = 'auto' | 'gemini' | 'groq' | 'mistral'
+
+const PROVIDER_LABELS: Record<Provider, string> = {
+  auto:    'Auto',
+  gemini:  'Gemini',
+  groq:    'Llama',
+  mistral: 'Mistral',
+}
+
+const PROVIDER_DESC: Record<Provider, string> = {
+  auto:    'Chaine de fallback normale (Gemini en priorite)',
+  gemini:  'Force Gemini - erreur si non configure',
+  groq:    'Force Llama via Groq - erreur si non configure',
+  mistral: 'Force Mistral - erreur si non configure',
+}
+
 interface Message {
   id:       number
   role:     'user' | 'assistant' | 'error'
   content:  string
   mode?:    Mode
+  model?:   string
   sources?: Source[]
   latency?: number
   eval?:    { context_utilization: number; answer_coverage: number; n_docs_retrieved: number }
@@ -149,6 +169,11 @@ function MessageBubble({ msg, onOpenConcept }: { msg: Message; onOpenConcept: (u
               {MODE_LABELS[msg.mode]}
             </span>
           )}
+          {msg.model && (
+            <span className="cr-mode-badge" title="LLM ayant genere cette reponse">
+              {msg.model}
+            </span>
+          )}
           {(msg.sources?.length ?? 0) > 0 && (
             <button className="cr-sources-toggle"
               onClick={() => setShowSources(s => !s)}>
@@ -179,7 +204,9 @@ function MessageBubble({ msg, onOpenConcept }: { msg: Message; onOpenConcept: (u
   )
 }
 
-// Suggestions de départ
+// Suggestions de questions au départ
+// (pour aider l'utilisateur à formuler une question pertinente)
+// Questions un peu plus complexes, pour tester le retrieval et le graphRAG
 const SUGGESTIONS = [
   'Which countries in Africa define forest with a minimum crown cover of 30%?',
   'How many African countries use a minimum forest area of 0.5 hectares or less?',
@@ -200,6 +227,7 @@ export function ChatRAG({ onOpenConcept }: ChatRAGProps) {
   const [loading, setLoading]   = useState(false)
   const [apiOk, setApiOk]       = useState<boolean | null>(null)
   const [mode, setMode]         = useState<Mode>('graph_rag')
+  const [provider, setProvider] = useState<Provider>('auto')
   const nextId                  = useRef(0)
   const bottomRef               = useRef<HTMLDivElement>(null)
   const inputRef                = useRef<HTMLTextAreaElement>(null)
@@ -239,7 +267,13 @@ export function ChatRAG({ onOpenConcept }: ChatRAGProps) {
       const res = await fetch(`${API}/api/query`, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ query: query.trim(), top_k: 6, mode }),
+        body:    JSON.stringify({
+          query: query.trim(),
+          top_k: 6,
+          mode,
+          // 'auto' = pas de champ envoye, chaine de fallback normale cote API
+          ...(provider !== 'auto' ? { provider } : {}),
+        }),
         signal:  AbortSignal.timeout(120_000),
       })
 
@@ -254,6 +288,7 @@ export function ChatRAG({ onOpenConcept }: ChatRAGProps) {
         loading:  false,
         content:  data.answer,
         mode:     data.mode ?? mode,
+        model:    data.model,
         sources:  data.sources,
         latency:  data.latency_ms,
         eval:     data.evaluation,
@@ -294,7 +329,7 @@ export function ChatRAG({ onOpenConcept }: ChatRAGProps) {
         <div className="cr-header-right">
           {/* Sélecteur de mode */}
           <div className="cr-mode-selector" title="Mode de retrieval pour la prochaine question">
-            {(['llm_only', 'vector_rag', 'graph_rag', 'agent_rag'] as Mode[]).map(m => (
+            {(['vector_rag', 'graph_rag'] as Mode[]).map(m => (
               <button
                 key={m}
                 className={`cr-mode-btn ${mode === m ? 'cr-mode-btn--active' : ''}`}
@@ -302,6 +337,19 @@ export function ChatRAG({ onOpenConcept }: ChatRAGProps) {
                 title={MODE_DESC[m]}
               >
                 {MODE_LABELS[m]}
+              </button>
+            ))}
+          </div>
+          {/* Sélecteur de LLM - force un provider precis au lieu du fallback normal */}
+          <div className="cr-mode-selector" title="LLM a utiliser pour la prochaine question">
+            {(['auto', 'gemini', 'groq', 'mistral'] as Provider[]).map(p => (
+              <button
+                key={p}
+                className={`cr-mode-btn ${provider === p ? 'cr-mode-btn--active' : ''}`}
+                onClick={() => setProvider(p)}
+                title={PROVIDER_DESC[p]}
+              >
+                {PROVIDER_LABELS[p]}
               </button>
             ))}
           </div>
