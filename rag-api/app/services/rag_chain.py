@@ -212,6 +212,19 @@ def _make_backends() -> list[tuple[str, Any]]:
         except Exception as e:
             log.warning("groq_init_failed", error=str(e))
 
+    # 7. Mistral
+    if settings.mistral_api_key:
+        try:
+            from langchain_mistralai import ChatMistralAI
+            backends.append(("mistral", ChatMistralAI(
+                model=settings.mistral_model,
+                mistral_api_key=settings.mistral_api_key,
+                temperature=0.1,
+                max_tokens=4096,
+            )))
+        except Exception as e:
+            log.warning("mistral_init_failed", error=str(e))
+
     return backends
 
 
@@ -245,33 +258,53 @@ class RAGChain:
         if not self._backends:
             log.warning("no_llm_backend", msg="Aucun provider LLM configuré dans .env")
 
-    def generate_llm_only(self, query: str) -> dict[str, Any]:
+    def _select_backends(self, force_provider: str | None) -> list[tuple[str, Any]]:
+        """
+        Sans force_provider : chaîne de fallback complète (comportement normal).
+        Avec force_provider (ex: comparaison multi-LLM pour l'évaluation) : un
+        seul backend, pas de repli silencieux vers un autre provider - sinon
+        on ne saurait plus quel LLM a vraiment répondu pendant un test comparatif.
+        """
+        if not force_provider:
+            return self._backends
+        matches = [b for b in self._backends if b[0] == force_provider]
+        if not matches:
+            available = [name for name, _ in self._backends]
+            raise ValueError(
+                f"Provider '{force_provider}' non disponible (clé API manquante ?). "
+                f"Providers actifs : {available}"
+            )
+        return matches
+
+    def generate_llm_only(self, query: str, force_provider: str | None = None) -> dict[str, Any]:
         """Mode A — génération sans contexte RAG."""
         from langchain_core.messages import SystemMessage, HumanMessage
         system_prompt, user_prompt = build_prompt_llm_only(query)
         messages = [SystemMessage(content=system_prompt),
                     HumanMessage(content=user_prompt)]
+        backends = self._select_backends(force_provider)
         last_error: Exception | None = None
-        for name, llm in self._backends:
+        for name, llm in backends:
             try:
                 response = llm.invoke(messages)
                 return {"answer": response.content, "model": name,
                         "usage": getattr(response, "usage_metadata", {})}
             except Exception as e:
                 last_error = e
-                if not _is_retryable(e):
+                if force_provider or not _is_retryable(e):
                     raise
         raise RuntimeError(f"Tous les backends LLM ont échoué. Dernier: {last_error}")
 
-    def generate(self, query: str, docs: list[dict]) -> dict[str, Any]:
+    def generate(self, query: str, docs: list[dict], force_provider: str | None = None) -> dict[str, Any]:
         from langchain_core.messages import SystemMessage, HumanMessage
 
         system_prompt, user_prompt = build_prompt(query, docs)
         messages = [SystemMessage(content=system_prompt),
                     HumanMessage(content=user_prompt)]
 
+        backends = self._select_backends(force_provider)
         last_error: Exception | None = None
-        for name, llm in self._backends:
+        for name, llm in backends:
             try:
                 log.info("llm_attempt", backend=name)
                 response = llm.invoke(messages)
@@ -284,27 +317,28 @@ class RAGChain:
             except Exception as e:
                 log.warning("llm_error", backend=name, error=str(e)[:120])
                 last_error = e
-                if not _is_retryable(e):
+                if force_provider or not _is_retryable(e):
                     raise
 
         raise RuntimeError(
             f"Tous les backends LLM ont échoué. Dernier: {last_error}"
         )
 
-    def generate_stream(self, query: str, docs: list[dict]) -> Generator[str, None, None]:
+    def generate_stream(self, query: str, docs: list[dict], force_provider: str | None = None) -> Generator[str, None, None]:
         from langchain_core.messages import SystemMessage, HumanMessage
 
         system_prompt, user_prompt = build_prompt(query, docs)
         messages = [SystemMessage(content=system_prompt),
                     HumanMessage(content=user_prompt)]
 
-        for name, llm in self._backends:
+        backends = self._select_backends(force_provider)
+        for name, llm in backends:
             try:
                 for chunk in llm.stream(messages):
                     yield chunk.content
                 return
             except Exception as e:
-                if not _is_retryable(e):
+                if force_provider or not _is_retryable(e):
                     raise
                 log.warning("llm_stream_fallback", backend=name, error=str(e)[:80])
 
