@@ -172,7 +172,7 @@ def query_rag(req: QueryRequest):
 
         # Mode A : LLM seul
         if req.mode == "llm_only":
-            result   = chain.generate_llm_only(req.query)
+            result   = chain.generate_llm_only(req.query, force_provider=req.provider)
             answer   = result["answer"]
             latency  = (time.perf_counter() - t0) * 1000
             log.info("query_llm_only", query=req.query[:60], latency_ms=round(latency))
@@ -198,7 +198,7 @@ def query_rag(req: QueryRequest):
         if not docs:
             raise HTTPException(status_code=404, detail="Aucun document pertinent trouvé.")
 
-        result   = chain.generate(req.query, docs)
+        result   = chain.generate(req.query, docs, force_provider=req.provider)
         answer   = result["answer"]
         eval_res = evaluator.evaluate(req.query, answer, docs)
 
