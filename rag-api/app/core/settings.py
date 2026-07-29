@@ -63,7 +63,7 @@ class Settings(BaseSettings):
 
     # Extraction de filtres (concept/org/scope/continent/seuil) par LLM :
     # "auto" = seulement si les regex n'ont rien trouve (defaut, cout minimal),
-    # "always" = a chaque requete, "off" = jamais (regex uniquement).
+    # "always" = a chaque requete, "off" = jamais (regex uniquement)
     llm_extraction_mode: Literal["auto", "always", "off"] = "auto"
 
     # API
