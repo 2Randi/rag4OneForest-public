@@ -16,7 +16,7 @@ sentence-transformers==3.0.1
 
 # ── LangChain (orchestration LLM) ────────────────────────────────────────────
 langchain==1.3.8
-langchain-core==1.4.6
+langchain-core==1.5.2            # >=1.5 requis par langchain-mistralai 1.1.6
 langchain-community==0.4.2
 langchain-text-splitters==1.1.2
 
@@ -25,6 +25,7 @@ langchain-google-genai==4.2.5    # Gemini (recommandé, gratuit)
 langchain-anthropic==1.4.5       # Claude
 langchain-openai==1.3.0          # OpenAI GPT + DeepSeek
 langchain-groq==1.1.3            # Llama via Groq (gratuit)
+langchain-mistralai==1.1.6       # Mistral
 
 # ── Utilitaires ───────────────────────────────────────────────────────────────
 pandas==2.2.2
