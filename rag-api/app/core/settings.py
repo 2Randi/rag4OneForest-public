@@ -26,6 +26,9 @@ class Settings(BaseSettings):
     groq_api_key:       str = ""
     groq_model:         str = "llama-3.3-70b-versatile"
 
+    mistral_api_key:    str = ""
+    mistral_model:      str = "mistral-large-latest"
+
     # Compatibilité avec l'ancien champ llm_provider/llm_model
     @property
     def llm_provider(self) -> str:
@@ -91,6 +94,7 @@ PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
         if self.anthropic_api_key: out.append("anthropic")
         if self.openai_api_key:    out.append("openai")
         if self.groq_api_key:      out.append("groq")
+        if self.mistral_api_key:   out.append("mistral")
         return out
 
 
