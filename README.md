@@ -194,18 +194,18 @@ newgrp docker
 Toute la configuration se fait via `rag-api/.env` :
 
 ```bash
-# ── LLM (priorité : Gemini → DeepSeek → Claude → GPT → Groq) ──
-GEMINI_API_KEY=AIza...           # recommandé (gratuit)
+# LLM
+GEMINI_API_KEY=AIza...           
 # DEEPSEEK_API_KEY=sk-...
 # ANTHROPIC_API_KEY=sk-ant-...
 # OPENAI_API_KEY=sk-...
 # GROQ_API_KEY=gsk_...
 
-# ── Vector Store ──────────────────────────────────────────────────
+# Vector Store 
 CHROMA_PATH=./chroma_db
-EMBED_MODEL=all-MiniLM-L6-v2    # modèle d'embeddings (local, ~90 Mo)
+EMBED_MODEL=all-MiniLM-L6-v2    # modèle d'embeddings, local 
 
-# ── Retrieval ─────────────────────────────────────────────────────
+# Retrieval 
 RETRIEVAL_TOP_K=8               # nombre de documents récupérés
 ```
 
