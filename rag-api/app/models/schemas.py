@@ -20,6 +20,15 @@ class QueryRequest(BaseModel):
             "agent_rag: agent IA qui choisit ses outils"
         ),
     )
+    provider: Optional[str] = Field(
+        None,
+        description=(
+            "Force un backend LLM precis (ex: 'gemini', 'mistral', 'groq') "
+            "au lieu de la chaine de fallback normale - pour comparer plusieurs "
+            "LLM sur le meme mode de retrieval. Erreur si le provider demande "
+            "n'est pas configure (pas de repli silencieux vers un autre)."
+        ),
+    )
 
 
 class SourceDocument(BaseModel):
