@@ -235,12 +235,7 @@ def _is_retryable(error: Exception) -> bool:
 
 @lru_cache(maxsize=1)
 def get_llm_backends() -> list[tuple[str, Any]]:
-    """
-    Liste (nom, llm) partagee, construite une seule fois pour toute
-    l'application. Utilisee par filter_extractor.py pour l'extraction de
-    filtres (chantier 2) sans reconstruire un second jeu de clients LLM en
-    plus de ceux de RAGChain.
-    """
+    
     return _make_backends()
 
 
@@ -248,9 +243,7 @@ def get_llm_backends() -> list[tuple[str, Any]]:
 
 class RAGChain:
     """
-    Chaîne RAG avec multi-LLM fallback.
-    Premier backend disponible qui réussit est utilisé.
-    Si quota/rate-limit → backend suivant automatiquement.
+    Chaîne RAG avec multi-LLM fallback
     """
 
     def __init__(self):
@@ -263,7 +256,7 @@ class RAGChain:
         Sans force_provider : chaîne de fallback complète (comportement normal).
         Avec force_provider (ex: comparaison multi-LLM pour l'évaluation) : un
         seul backend, pas de repli silencieux vers un autre provider - sinon
-        on ne saurait plus quel LLM a vraiment répondu pendant un test comparatif.
+        on ne saurait plus quel LLM a vraiment répondu pendant un test comparatif
         """
         if not force_provider:
             return self._backends
@@ -271,13 +264,13 @@ class RAGChain:
         if not matches:
             available = [name for name, _ in self._backends]
             raise ValueError(
-                f"Provider '{force_provider}' non disponible (clé API manquante ?). "
+                f"Provider '{force_provider}' non disponible (clé API manquante ?) "
                 f"Providers actifs : {available}"
             )
         return matches
 
     def generate_llm_only(self, query: str, force_provider: str | None = None) -> dict[str, Any]:
-        """Mode A — génération sans contexte RAG."""
+        """Mode A - génération sans contexte RAG"""
         from langchain_core.messages import SystemMessage, HumanMessage
         system_prompt, user_prompt = build_prompt_llm_only(query)
         messages = [SystemMessage(content=system_prompt),
