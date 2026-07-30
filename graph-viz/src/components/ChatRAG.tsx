@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react'
+import { useState, useRef, useEffect, useCallback, type ReactNode } from 'react'
 import type { Concept } from '../lib/graphStore'
 
 const API = (import.meta.env.VITE_API_URL ?? 'http://localhost:8000') as string
@@ -64,21 +64,29 @@ interface Message {
 
 // Helpers
 
-// Transforme [1][2] en badges cliquables et retourne du texte formaté
-function AnswerText({ text, sources }: { text: string; sources: Source[] }) {
-  // Remplace [N] par un badge
-  const parts = text.split(/(\[\d+\])/g)
+// Transforme [1] et [1, 2, 3] en badges cliquables et retourne du texte formaté
+function AnswerText({ text, sources, onOpen }: { text: string; sources: Source[]; onOpen: (uri: string) => void }) {
+  // groupe type [40, 48, 52, 53], pas juste [40] tout seul
+  const parts = text.split(/(\[[\d,\s]+\])/g)
   return (
     <p className="cr-answer-text">
       {parts.map((part, i) => {
-        const m = part.match(/^\[(\d+)\]$/)
+        const m = part.match(/^\[([\d,\s]+)\]$/)
         if (m) {
-          const idx = Number(m[1]) - 1
-          const src = sources[idx]
+          const nums = m[1].split(',').map(s => s.trim()).filter(Boolean)
           return (
-            <sup key={i} className="cr-cite" title={src?.label ?? ''}>
-              {part}
-            </sup>
+            <span key={i}>
+              [{nums.map((numStr, j) => {
+                const idx = Number(numStr) - 1
+                const src = sources[idx]
+                return (
+                  <sup key={j} className="cr-cite" title={src?.label ?? ''}
+                       onClick={() => src && onOpen(src.uri)}>
+                    {numStr}
+                  </sup>
+                )
+              }).reduce((acc, el) => acc.length ? [...acc, ', ', el] : [el], [] as ReactNode[])}]
+            </span>
           )
         }
         return <span key={i}>{part}</span>
@@ -159,7 +167,7 @@ function MessageBubble({ msg, onOpenConcept }: { msg: Message; onOpenConcept: (u
           </div>
         )}
 
-        <AnswerText text={msg.content} sources={msg.sources ?? []} />
+        <AnswerText text={msg.content} sources={msg.sources ?? []} onOpen={onOpenConcept} />
 
         {/* Footer : mode + sources + métriques */}
         <div className="cr-msg-footer">
