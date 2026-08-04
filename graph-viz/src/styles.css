@@ -1182,10 +1182,11 @@ html, body, #root {
   padding: 0 4px;
   border-radius: 4px;
   margin: 0 1px;
-  cursor: default;
+  cursor: pointer;
   vertical-align: super;
   line-height: 1.5;
 }
+.cr-cite:hover { background: #14532d; }
 
 /* Footer message */
 .cr-msg-footer {

@@ -277,7 +277,6 @@ export function ChatRAG({ onOpenConcept }: ChatRAGProps) {
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({
           query: query.trim(),
-          top_k: 6,
           mode,
           // 'auto' = pas de champ envoye, chaine de fallback normale cote API
           ...(provider !== 'auto' ? { provider } : {}),
