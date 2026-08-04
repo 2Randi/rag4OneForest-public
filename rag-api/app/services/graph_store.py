@@ -292,9 +292,10 @@ SELECT ?pred ?obj WHERE {
     ) -> list[dict]:
         """
         Requête SPARQL dédiée aux seuils nationaux.
-        Filtre par dct:spatial (pays), retourne les concepts SKOS qui ont
+        Filtre par dct:spatial (pays), retourne tous les concepts SKOS qui ont
         des propriétés de seuil (minAreaHa, minCrownCoverPct, minTreeHeightM)
-        ou une définition textuelle des critères nationaux.
+        ou une définition textuelle des critères nationaux - jointure exacte,
+        pas de troncature arbitraire du nombre de résultats.
         Priorité : concepts avec le plus de propriétés numériques en premier.
         """
         # tout faire en une seule requête est correct mais super lent (90s
@@ -402,9 +403,6 @@ SELECT DISTINCT ?uri ?label ?def ?year ?org
                 "minHeight":    r.get("minHeight"),
                 "minWidth":     r.get("minWidth"),
             })
-
-            if len(results) >= top_k:
-                break
 
         return results
 

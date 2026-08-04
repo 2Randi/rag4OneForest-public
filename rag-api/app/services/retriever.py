@@ -12,6 +12,8 @@ from app.services.query_patterns import _THRESHOLD_FIELDS, _LE_WORDS, _GE_WORDS,
 from app.services.filter_extractor import QueryFilters, extract_filters
 
 _RRF_K = 60
+# au dessus du meilleur score RRF possible (2/61 ~= 0.033) donc un match exact bat toujours le vectoriel seul
+_FILTER_MATCH_BOOST = 0.05
 
 
 def _normalise_country(s: str) -> str:
@@ -55,7 +57,9 @@ class VectorRetriever:
     def __init__(self, vector_store: VectorStore | None = None):
         self._vs = vector_store or get_vector_store()
 
-    def retrieve(self, query: str, top_k: int | None = None) -> list[dict[str, Any]]:
+    def retrieve(self, query: str, top_k: int | None = None,
+                 force_provider: str | None = None) -> list[dict[str, Any]]:
+        # force_provider ignore ici, pas de LLM dans ce mode
         k = top_k or settings.retrieval_top_k
         if not self._vs.is_indexed():
             return []
@@ -66,6 +70,23 @@ class VectorRetriever:
 
 def _rrf_score(ranks: list[int]) -> float:
     return sum(1.0 / (_RRF_K + r) for r in ranks)
+
+
+def _boost_filter_matches(docs: list[dict], filters: QueryFilters) -> list[dict]:
+    """Fait remonter les docs qui matchent un filtre detecte (org/scope/concept/continent/pays)."""
+    values = [v for v in
+              (filters.concept, filters.org, filters.scope, filters.continent,
+               *filters.countries) if v]
+    if not values:
+        return docs
+    for doc in docs:
+        m = doc["metadata"]
+        text = " ".join(str(m.get(f, "")) for f in
+                         ("label", "def", "country", "org", "scope")).lower()
+        matched = sum(1 for v in values if v.lower() in text)
+        if matched:
+            doc["rrf_score"] = round(doc.get("rrf_score", 0) + matched * _FILTER_MATCH_BOOST, 6)
+    return sorted(docs, key=lambda d: -d["rrf_score"])
 
 
 # Retriever hybride
@@ -86,8 +107,8 @@ class HybridRetriever:
     # pour que le mode agent beneficie du meme filtrage/enrichissement que le
     # mode graph_rag, au lieu de re-implementer cette logique une 2e fois)
 
-    def detect_filters(self, query: str) -> QueryFilters:
-        return extract_filters(query, threshold_store=self._ts)
+    def detect_filters(self, query: str, force_provider: str | None = None) -> QueryFilters:
+        return extract_filters(query, threshold_store=self._ts, force_provider=force_provider)
 
     def vector_search(self, query: str, top_k: int) -> list[dict]:
         return self._vs.search(query, top_k=top_k) if self._vs.is_indexed() else []
@@ -170,8 +191,8 @@ class HybridRetriever:
         if not (_is_threshold_query(query) or continent):
             return docs
 
-        # Recherche par continent via SPARQL sur le graphe
-        if continent:
+        # Recherche par continent via SPARQL sur le graphe, seulement si aucun pays precis n'est deja nomme
+        if continent and not filters.countries:
             continent_docs = self._gs.search_continent_thresholds(continent)
             if filters.threshold_field and filters.threshold_op:
                 continent_docs = _apply_threshold(
@@ -194,9 +215,9 @@ class HybridRetriever:
         threshold_docs: list[dict] = []
 
         # pas de limite à 10 si continent (l'Afrique a 46 pays à couvrir)
-        country_limit = len(countries_ctx) if continent else 10
+        country_limit = len(countries_ctx) if (continent and not filters.countries) else 10
         for country in countries_ctx[:country_limit]:
-            kg_docs = self._gs.search_country_thresholds(country, top_k=3)
+            kg_docs = self._gs.search_country_thresholds(country)
             for td in kg_docs:
                 if td["uri"] in already_uris:
                     continue
@@ -257,14 +278,17 @@ class HybridRetriever:
 
         return docs
 
-    def retrieve(self, query: str, top_k: int | None = None) -> list[dict[str, Any]]:
+    def retrieve(self, query: str, top_k: int | None = None,
+                 force_provider: str | None = None) -> list[dict[str, Any]]:
         k       = top_k or settings.retrieval_top_k
         fetch_k = k * 3
 
-        filters     = self.detect_filters(query)
+        filters     = self.detect_filters(query, force_provider=force_provider)
         vec_docs    = self.vector_search(query, fetch_k)
         sparql_docs = self.sparql_search(query, filters, fetch_k)
-        merged      = self.rrf_merge(vec_docs, sparql_docs, k)
+        # merge sur fetch_k pour laisser le boost repecher un match exact hors du top k vectoriel
+        merged      = self.rrf_merge(vec_docs, sparql_docs, fetch_k)
+        merged      = _boost_filter_matches(merged, filters)[:k]
         merged      = self.enrich_graph_context(merged)
         merged      = self.enrich_thresholds(query, merged, filters)
         return merged

@@ -194,7 +194,7 @@ def query_rag(req: QueryRequest):
             gs = get_graph_store()
             retriever = HybridRetriever(graph_store=gs, vector_store=vs)
 
-        docs = retriever.retrieve(req.query, top_k=req.top_k)
+        docs = retriever.retrieve(req.query, top_k=req.top_k, force_provider=req.provider)
         if not docs:
             raise HTTPException(status_code=404, detail="Aucun document pertinent trouvé.")
 

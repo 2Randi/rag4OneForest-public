@@ -232,7 +232,8 @@ def _merge(base: QueryFilters, enhancement: QueryFilters) -> QueryFilters:
 def extract_filters(query: str,
                      threshold_store: ThresholdStore | None = None,
                      backends: list[tuple[str, Any]] | None = None,
-                     force_llm: bool = False) -> QueryFilters:
+                     force_llm: bool = False,
+                     force_provider: str | None = None) -> QueryFilters:
     """
     Point d'entree unique, reutilise par HybridRetriever et AgentRAG.
     1. regex_extract() d'abord (rapide, pas d'appel LLM).
@@ -241,6 +242,8 @@ def extract_filters(query: str,
        dans l'inventaire reel du graphe (chantier 1).
     3. Valide/filtre les valeurs LLM contre le graphe et la liste des pays
        connus avant de les fusionner avec le resultat regex.
+
+    force_provider : utilise ce LLM au lieu de Gemini par defaut.
     """
     ts = threshold_store or get_threshold_store()
     base = regex_extract(query)
@@ -254,6 +257,11 @@ def extract_filters(query: str,
 
     inventory = get_inventory()
     llm_backends = backends if backends is not None else get_llm_backends()
+    if force_provider:
+        llm_backends = [b for b in llm_backends if b[0] == force_provider]
+        if not llm_backends:
+            log.warning("filter_extraction_provider_unavailable", provider=force_provider)
+            return base
     enhancement = llm_extract(query, inventory, llm_backends)
     if enhancement is None:
         return base
