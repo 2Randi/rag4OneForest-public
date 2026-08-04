@@ -107,43 +107,7 @@ rag4oneforest/
 
 ## Démarrage rapide
 
-### Option A — Sans Docker (développement local)
-
-> Prérequis : Python 3.12+, Node.js 20+
-
-**1. Cloner et installer**
-
-```bash
-git clone <url-du-depot>
-cd rag4oneforest-public
-python tasks.py install
-```
-
-`python tasks.py install` fait tout automatiquement : environnement Python, dépendances frontend, index vectoriel (~2 min, télécharge le modèle d'embeddings).
-
-**2. Ajouter votre clé API LLM**
-
-Ouvrir `rag-api/.env` et renseigner au moins une clé :
-
-```bash
-# Gemini — gratuit sur https://aistudio.google.com (recommandé)
-GEMINI_API_KEY=AIza...
-
-# Ou Groq — gratuit sur https://console.groq.com
-# GROQ_API_KEY=gsk_...
-```
-
-**3. Lancer**
-
-```bash
-python tasks.py dev
-```
-
-Ouvrir **http://localhost:5173** dans le navigateur.
-
----
-
-### Option B — Docker
+### Docker
 
 > Prérequis : Docker + Docker Compose
 
@@ -158,7 +122,15 @@ cd rag4oneforest-public
 
 ```bash
 cp rag-api/.env.example rag-api/.env
-# Ouvrir rag-api/.env et renseigner GEMINI_API_KEY ou GROQ_API_KEY
+# Ouvrir rag-api/.env et renseigner les API_KEY 
+```
+
+```bash
+# Gemini - gratuit sur https://aistudio.google.com 
+GEMINI_API_KEY=AIza...
+
+# Ou Groq - gratuit sur https://console.groq.com
+# GROQ_API_KEY=gsk_...
 ```
 
 **3. Lancer**
@@ -169,7 +141,7 @@ docker compose up --build
 
 Ouvrir **http://localhost:5173** dans le navigateur.
 
-> Au premier lancement, l'index vectoriel se construit automatiquement (~2 min). Aucune commande supplémentaire n'est nécessaire. Les lancements suivants sont immédiats (index persisté dans un volume Docker).
+> Au premier lancement, l'index vectoriel se construit automatiquement (~2 min). Aucune commande supplémentaire n'est nécessaire. Les lancements suivants sont immédiats (index persisté dans un volume Docker)
 
 **Installer Docker sur Ubuntu :**
 
@@ -193,21 +165,8 @@ newgrp docker
 
 Toute la configuration se fait via `rag-api/.env` :
 
-```bash
-# LLM
-GEMINI_API_KEY=AIza...           
-# DEEPSEEK_API_KEY=sk-...
-# ANTHROPIC_API_KEY=sk-ant-...
-# OPENAI_API_KEY=sk-...
-# GROQ_API_KEY=gsk_...
+Copier .env.example dans .env
 
-# Vector Store 
-CHROMA_PATH=./chroma_db
-EMBED_MODEL=all-MiniLM-L6-v2    # modèle d'embeddings, local 
-
-# Retrieval 
-RETRIEVAL_TOP_K=8               # nombre de documents récupérés
-```
 
 > Le système sélectionne automatiquement le premier LLM dont la clé est configurée. En cas d'erreur de quota, il bascule sur le suivant.
 
@@ -312,12 +271,6 @@ curl http://localhost:8000/health
 
 # Re-indexer (après modification du TTL)
 python tasks.py index
-```
-
-Toutes les commandes disponibles :
-
-```bash
-python tasks.py help
 ```
 
 ---
