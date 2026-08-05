@@ -97,11 +97,10 @@ rag4oneforest/
 | Docker | 24+ | Déploiement (optionnel) |
 
 **Clé API LLM requise** (au moins une) :
-- [Google AI Studio](https://aistudio.google.com) — Gemini (gratuit, recommandé)
-- [Anthropic](https://console.anthropic.com) — Claude
-- [OpenAI](https://platform.openai.com) — GPT-4o
-- [DeepSeek](https://platform.deepseek.com) — DeepSeek
-- [Groq](https://console.groq.com) — Llama (gratuit)
+- [Google AI Studio](https://aistudio.google.com) - Gemini 
+- [OpenAI](https://platform.openai.com) - GPT-4o
+- [DeepSeek](https://platform.deepseek.com) - DeepSeek
+- [Groq](https://console.groq.com) - Llama 
 
 ---
 
@@ -126,10 +125,10 @@ cp rag-api/.env.example rag-api/.env
 ```
 
 ```bash
-# Gemini - gratuit sur https://aistudio.google.com 
+# https://aistudio.google.com 
 GEMINI_API_KEY=AIza...
 
-# Ou Groq - gratuit sur https://console.groq.com
+# https://console.groq.com
 # GROQ_API_KEY=gsk_...
 ```
 
@@ -166,7 +165,9 @@ newgrp docker
 Toute la configuration se fait via `rag-api/.env` :
 
 Copier .env.example dans .env
-
+```bash
+cp .env.example .env
+```
 
 > Le système sélectionne automatiquement le premier LLM dont la clé est configurée. En cas d'erreur de quota, il bascule sur le suivant.
 
@@ -234,7 +235,7 @@ python tasks.py index
 
 | Fichier | Format | Contenu |
 |---------|--------|---------|
-| `data/forest_kg.ttl` | RDF/Turtle | Knowledge Graph SKOS — 35 322 triplets, 3 432 concepts |
+| `data/forest_kg2.ttl` | RDF/Turtle | Knowledge Graph SKOS - ~35 000 triplets, ~3 000 concepts |
 | `data/definitions.docx` | Word | Corpus source — Lund (2018), 800+ définitions |
 | `data/definitions_clean.csv` | CSV | Définitions structurées extraites |
 
