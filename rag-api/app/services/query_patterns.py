@@ -1,8 +1,4 @@
-# Detection texte -> cle canonique (concept/org/scope/continent/seuil).
-# Isole des autres modules de retrieval pour eviter un cycle d'import :
-# filter_extractor.py (LLM, chantier 2) et retriever.py (chantier 3) ont tous
-# les deux besoin de ces detecteurs regex, mais ne doivent pas s'importer l'un
-# l'autre.
+# Detection texte -> cle canonique (concept/org/scope/continent/seuil), isole a part pour eviter un cycle d'import entre filter_extractor.py et retriever.py
 from __future__ import annotations
 
 import re

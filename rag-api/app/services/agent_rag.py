@@ -51,11 +51,7 @@ class AgentRAG:
         self._gs = graph_store or get_graph_store()
         self._vs = vector_store or get_vector_store()
         self._chain = RAGChain()
-        # Reutilise la meme detection de filtres (concept/org/scope/continent/
-        # seuil) et le meme enrichissement pays/continent/seuil que le mode
-        # graph_rag, au lieu de re-implementer cette logique une 2e fois ici -
-        # avant ce changement, le mode agent n'appliquait aucun filtre a
-        # sparql_search et n'enrichissait jamais avec les seuils nationaux.
+        # reutilise la meme detection de filtres et le meme enrichissement que graph_rag, pas de doublon de logique
         self._retriever = HybridRetriever(graph_store=self._gs, vector_store=self._vs)
 
     def _execute_tool(self, tool_name: str, query: str, top_k: int = 8,
@@ -115,10 +111,7 @@ class AgentRAG:
         tool_calls = self._parse_tool_calls(plan_result.content)
         log.info("agent_plan", tools=tool_calls, query=query[:60])
 
-        # Detection des filtres une seule fois sur la requete utilisateur
-        # originale (pas les sous-requetes de chaque outil) - reutilisee pour
-        # tous les appels sparql_search de cette execution et pour
-        # l'enrichissement seuils/pays/continent en etape 3bis.
+        # filtres detectes une fois sur la requete originale, reutilises pour tous les appels sparql_search + etape 3bis
         filters = self._retriever.detect_filters(query)
 
         # Etape 3 : executer les outils
@@ -157,10 +150,7 @@ class AgentRAG:
 
         docs_final = unique_docs[:top_k]
 
-        # Etape 3bis : meme enrichissement seuils/pays/continent que graph_rag
-        # (national/UNFCCC thresholds, docs par continent...) - sans ca le
-        # mode agent restait toujours plus pauvre que graph_rag sur ce type
-        # de question, meme quand l'agent choisissait bien sparql_search.
+        # etape 3bis : meme enrichissement seuils/pays/continent que graph_rag
         docs_final = self._retriever.enrich_thresholds(query, docs_final, filters)
 
         # Etape 4 : generer la reponse finale avec le contexte

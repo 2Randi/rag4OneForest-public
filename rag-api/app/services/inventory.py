@@ -1,9 +1,4 @@
-# Inventaire dynamique du graphe : orgs, continents, scopes, concepts.
-# Remplace les listes codees en dur qui devaient etre resynchronisees a la
-# main avec kg-builder/builder/skos_builder.py (source de verite reelle) et
-# qui avaient fini par diverger (ex: CONTINENT_PATTERNS duplique a l'identique
-# entre retriever.py et threshold_store.py -> 52 pays "Afrique" d'un cote,
-# 46 dans le graphe de l'autre).
+# Inventaire dynamique du graphe (orgs/continents/scopes/concepts), remplace les listes codees en dur qui divergeaient du vrai graphe
 from __future__ import annotations
 
 from dataclasses import dataclass, field

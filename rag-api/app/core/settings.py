@@ -49,7 +49,7 @@ class Settings(BaseSettings):
         return "none"
 
     # Graphe RDF
-    ttl_path:    Path = Path("../data/forest_kg.ttl")
+    ttl_path:    Path = Path("../data/forest_kg2.ttl")
     table3_path: Path = Path("../data/table3.csv")
 
     # Vector Store

@@ -11,10 +11,7 @@ from app.core.settings import settings
 
 log = structlog.get_logger()
 
-# Erreurs qui déclenchent le passage au backend suivant.
-# On est délibérément larges : quota, surcharge, modèle introuvable, réseau…
-# La seule raison de NE PAS passer au suivant serait une erreur de
-# format de requête (mais ça arriverait sur tous les backends de toute façon).
+# erreurs qui font passer au backend suivant, volontairement large (quota/surcharge/reseau)
 _RETRYABLE = (
     "quota", "429", "resource_exhausted", "rate limit",
     "overloaded", "too many requests", "capacity",

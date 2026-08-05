@@ -121,10 +121,7 @@ class ThresholdStore:
                         found.append(c)
                 break
 
-        # Ensuite chercher des pays specifiques. On garde seulement les
-        # matches les plus specifiques : "guinea" est un mot entier dans
-        # "papua new guinea" aussi, donc sans ce filtre une question sur la
-        # Papua New Guinea declenchait aussi la Guinea toute seule.
+        # garde le match le plus specifique, sinon "guinea" matche aussi dans "papua new guinea"
         if not found:
             candidates: list[tuple[str, str]] = []
             for key, rows in self._index.items():

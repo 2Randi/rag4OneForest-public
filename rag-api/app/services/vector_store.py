@@ -94,7 +94,7 @@ def extract_documents(graph_store: GraphStore) -> list[dict]:
             "metadata": {k: str(v) for k, v in data.items()},
         })
 
-    print(f"[VectorStore] {len(docs)} documents préparés pour l'indexation")
+    # print(f"[VectorStore] {len(docs)} documents préparés pour l'indexation")
     return docs
 
 
@@ -156,7 +156,7 @@ class VectorStore:
             coll.add(documents=texts, embeddings=embeddings,
                      ids=ids, metadatas=metadatas)
 
-        print(f"[VectorStore] [OK] {len(docs)} documents indexés")
+        # print(f"[VectorStore] [OK] {len(docs)} documents indexés")
         return len(docs)
 
     def search(self, query: str, top_k: int | None = None) -> list[dict]:

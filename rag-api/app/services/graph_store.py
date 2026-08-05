@@ -44,7 +44,7 @@ class GraphStore:
             raise FileNotFoundError(f"TTL introuvable : {path}")
         self._g = Graph()
         self._g.parse(str(path), format="turtle")
-        print(f"[GraphStore] {len(self._g)} triplets chargés depuis {path}")
+        # print(f"[GraphStore] {len(self._g)} triplets chargés depuis {path}")
 
     # SPARQL générique
 
@@ -104,16 +104,7 @@ class GraphStore:
                 f'    FILTER(!BOUND(?tc) || CONTAINS(LCASE(STR(?tc)), "{_sparql_escape(concept.lower())}"))'
             )
 
-        # skos:scopeNote sert à DEUX choses dans le graphe : le scope
-        # géographique (National/International/General/State) ET le type de
-        # définition (Land use/Land cover/Declared/Ecological), donc filtrer
-        # sur le texte de scopeNote est pollué par les valeurs de type. Le
-        # vrai signal fiable c'est l'appartenance aux collections ex:Scope_X
-        # (même principe que ex:Org_X pour les organisations, construites
-        # ensemble dans skos_builder.py). Un concept classé dans un AUTRE
-        # scope est exclu, un concept jamais classé (pas dans une collection
-        # Scope_*) passe quand même : on ne le pénalise pas pour une absence
-        # de classification.
+        # scopeNote sert a scope ET type, donc on filtre via les collections ex:Scope_X, plus fiable que le texte
         scope_filter = ""
         scope_membership = ""
         if scope:
@@ -298,18 +289,10 @@ SELECT ?pred ?obj WHERE {
         pas de troncature arbitraire du nombre de résultats.
         Priorité : concepts avec le plus de propriétés numériques en premier.
         """
-        # tout faire en une seule requête est correct mais super lent (90s
-        # mesuré, rdflib galère avec le CONTAINS + jointure). Du coup on
-        # résout le pays d'abord (petit ensemble), puis on joint sur l'URI
-        # avant ça virait carrément l'apostrophe au lieu de l'échapper, donc
-        # "Côte d'Ivoire" cherchait "côte divoire" qui match jamais le label
+        # requete en un bloc = 90s (rdflib galere sur CONTAINS+jointure), donc pays resolu a part puis jointure par URI
         c = _sparql_escape(country.lower())
 
-        # exact d'abord : un CONTAINS direct confond "Guinea" avec "Guinea
-        # Bissau"/"Equatorial Guinea"/"Papua New Guinea" (le dct:spatial du
-        # graphe est deja precis via l'ISO3 cote kg-builder, pas la peine de
-        # refaire une resolution approximative ici). CONTAINS reste un
-        # filet de secours si jamais l'appelant donne un nom pas exact.
+        # exact d'abord, CONTAINS confondrait "Guinea" avec "Guinea Bissau"/"Papua New Guinea" ; CONTAINS reste en filet de secours
         country_rows = self.query_sparql(f"""
 SELECT ?countryUri ?countryLabel WHERE {{
     ex:Countries skos:member ?countryUri .
@@ -496,7 +479,7 @@ SELECT DISTINCT ?uri ?label ?def ?countryName ?year
             "with_thresholds":  "SELECT (COUNT(DISTINCT ?c) AS ?n) WHERE { ?c ex:minAreaHa ?v . }",
             "agrovoc_aligned":  "SELECT (COUNT(?c) AS ?n) WHERE { ?c skos:exactMatch ?a . FILTER(STRSTARTS(STR(?a),'http://aims.fao.org')) }",
             "countries_count":  "SELECT (COUNT(DISTINCT ?p) AS ?n) WHERE { ?c dct:spatial ?p . }",
-            "unfccc_concepts":  "SELECT (COUNT(?c) AS ?n) WHERE { ex:Org_UNFCCC skos:member ?c . }",
+            "unfccc_concepts":  "SELECT (COUNT(?c) AS ?n) WHERE { ?c skos:broadMatch ex:Forest_500 . }",
         }
         for key, q in queries.items():
             try:

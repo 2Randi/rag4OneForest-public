@@ -1,8 +1,4 @@
-# Extraction des filtres de requete (concept/org/scope/continent/pays/seuil).
-# Priorite aux detecteurs regex de query_patterns.py (rapides, pas d'appel
-# reseau) ; le LLM n'est sollicite qu'en repli, quand la regex ne trouve rien
-# (mode "auto", par defaut) - pour ne pas doubler la latence/cout de chaque
-# requete avec un aller-retour LLM systematique.
+# Extraction des filtres de requete, priorite aux regex de query_patterns.py, LLM seulement en repli (mode "auto")
 from __future__ import annotations
 
 import json
