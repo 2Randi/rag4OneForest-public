@@ -382,8 +382,7 @@ ex:Afforestation_44 a skos:Concept ;
     dct:creator "UNFCCC" ;
     dct:date "2001"^^xsd:gYear ;
     dct:source "http://www.unfccc.int/resource/docs/cop6secpart/l11r01.pdf"^^xsd:anyURI ;
-    skos:broadMatch ex:Afforestation,
-        ex:Forest_500 ;
+    skos:broadMatch ex:Forest_500 ;
     skos:definition "“Afforestation” is the direct human-induced conversion of land that has not been forested for a period of at least 50 years to forested land through planting, seeding and/or the human-induced promotion of natural seed sources"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "UNFCCC 2001" ;
@@ -848,68 +847,62 @@ ex:Concept_1 a skos:Concept ;
     skos:note "Convention to Combat Desertification" .
 
 ex:Concept_10 a skos:Concept ;
-    skos:definition "The amount of live trees on a given area in relation to what is considered the optimum. [Source: USDA Forest Service General Technical Report WO-44. Forest Stand Density and Stocking: concepts, terms, and use of the stocking guides. 8 p.]"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
+    skos:definition "Devegetated - having removed the vegetation from an area"@en ;
+    skos:inScheme ex:ForestScheme .
 
 ex:Concept_11 a skos:Concept ;
-    dct:creator "breast-height" ;
-    skos:definition "The sum of areas of cross-cuts of all trees of a tree stand at height of 1.3 meters on 1 ha' is basal area. [From: \"Maksym Polyakov\" <mpoliak@pcomp.usau.kiev.ua Date: Wed, 17 Jun 1998 11:20:37 +0300 (MSD)]"@en ;
+    dct:creator "by fire, human impact" ;
+    dct:source "http://www.nature.nps.gov/nrbib/HTML%20files/33.htm#3259"^^xsd:anyURI ;
+    skos:definition "Devegetation - destruction of vegetation"@en ;
     skos:inScheme ex:ForestScheme ;
-    skos:note "breast-height" ;
-    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
+    skos:note "by fire, human impact" .
 
 ex:Concept_12 a skos:Concept ;
-    dct:source "http://www.crcd.org/voloak.html"^^xsd:anyURI ;
-    skos:definition "Tree Stocking: An expression of the number and size of trees per acre"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
+    dct:source "http://www.christiantech.com/cgi-bin/webster.exe?search_for_cgi-bin/texts/web1828=disafforest"^^xsd:anyURI ;
+    skos:definition "Disafforest, v.t. [dis and afforest.] To reduce from the privileges of a forest to the state of common ground; to strip of forest laws and their oppressive privileges"@en ;
+    skos:inScheme ex:ForestScheme .
 
 ex:Concept_13 a skos:Concept ;
-    dct:source "http://www.ncfcnfr.net/glossary.html"^^xsd:anyURI ;
-    skos:definition "Forest Management - The practical application of scientific, economic and social principles to the administration and working of a forest for specified objectives. Particularly, that branch of forestry concerned with the overall administrative, economic, legal and social aspects and with the essentially scientific and technical aspects, especially silviculture, protection and forest regulation"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "2" ;
-    skos:prefLabel "FORESTRY"@en .
+    dct:source "http://www.christiantech.com/cgi-bin/webster.exe?search_for_cgi-bin/texts/web1828=afforestation"^^xsd:anyURI,
+        "http://www.hants.org.uk/newforest/bibliog.html"^^xsd:anyURI ;
+    skos:definition "Disafforested - Stripped of forest privileges . To remove land from the authority of the Verderers"@en ;
+    skos:inScheme ex:ForestScheme .
 
 ex:Concept_14 a skos:Concept ;
-    dct:source "http://www.forestinfo.org/Discover/glossary.htm"^^xsd:anyURI ;
-    skos:definition "The art, science, and practice of managing forest landscapes to provide a sustained production of a variety of goods and services for society"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "FORESTRY"@en .
+    dct:source "http://nrcan.gc.ca/cfs/proj/iepb/nfdp/regen/regen_e/s18.htm"^^xsd:anyURI ;
+    skos:definition "Disturbance - Any removal of tree cover sufficient to create a site for an even-aged crop of regeneration. Even-aged Of a forest, stand, or forest type in which relatively small age differences exist between individual trees. The differences in age permitted are usually 10 to 20 years"@en ;
+    skos:inScheme ex:ForestScheme .
 
 ex:Concept_15 a skos:Concept ;
-    dct:creator "WWWebster" ;
-    skos:definition "The science of developing, caring for, or cultivating forest. The management of growing timber"@en ;
+    dct:creator "the Forest Act" ;
+    skos:definition "Established forest stand – The reaching such a state of forest stand where intensive protection is no longer required after afforestation and the number of individual trees and their distribution throughout the forested area, as well as the composition of the forest tree species, create all the prerequisites required for the establishment of a site suitable forest stand. [Source: Act on Forests and Amendments to Some Acts dated 3 November 1995. Ministry of Agriculture of the Czech Republic. Prague, 1996. 58 pp. From: \"Maksym Polyakov\" <mpoliak@pcomp.usau.kiev.ua Date: Mon, 15 Jun 1998 11:32:47 +0300 (MSD)]"@en ;
     skos:inScheme ex:ForestScheme ;
-    skos:note "WWWebster" ;
-    skos:prefLabel "FORESTRY"@en .
+    skos:note "the Forest Act" .
 
 ex:Concept_16 a skos:Concept ;
-    dct:source "http://ifdn.com/teacher/glossary.htm#d"^^xsd:anyURI ;
-    skos:definition "The science of planting, managing and protecting forest"@en ;
+    dct:creator "MSD" ;
+    skos:definition "Forest cultures - Artificially created or planted forest stands. [From: \"Maksym Polyakov\" mpoliak@pcomp.usau.kiev.ua Date: Thu, 11 Jun 1998 12:06:37 +0300 ]"@en ;
     skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "FORESTRY"@en .
+    skos:note "MSD" .
 
 ex:Concept_17 a skos:Concept ;
-    dct:source "http://nhd.heinle.com/nhd-bin/searchNHD.pl"^^xsd:anyURI ;
-    skos:definition "The scientific field of forest management"@en ;
+    dct:creator "tree and shrubs" ;
+    skos:definition "Forest fund - All the lands given to state forestry enterprises plus all the forests under responsibility of other bodies. Or, all the forest lands plus non-forest lands of state forestry enterprises. forest [lands]: covered by forest vegetation; not covered by forest vegetation but required to be afforested (cuttings [places after fellings], burnings, [loose forests], [empty places] etc., forest roads, cuttings [narrow straight road dividing quarters in forest], fire breaks; non-forest [lands]: under buildings connected with forest management, power lines, pipelines, other underground communications, etc.; agricultural lands (arable lands, hayfields, pastures, given for the purposes of forestry [forest management]; wetlands and waters within the parcels of forest fund given for the purposes of forestry.'' [From: ``The Forest Code of Ukraine'' Kiev, 1994, 56p. \"Maksym Polyakov\" mpoliak@pcomp.usau.kiev.ua Date: Thu, 11 Jun 1998 12:06:37 +0300 (MSD)]"@en ;
     skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "FORESTRY"@en .
+    skos:note "tree and shrubs" .
 
 ex:Concept_18 a skos:Concept ;
-    dct:creator "NASDA" ;
-    dct:source "http://www.nasda-hq.org/NASDA_NASS/docs/EDUCATIO/REFERENC/TERMS___/TERMSDEF.PDF"^^xsd:anyURI ;
-    skos:definition "An orchard; a small stand of trees"@en ;
+    dct:creator "the Forest Act" ;
+    skos:definition "Forest management – The regeneration, protection, tending and felling of forest stands and other activities securing the fulfillment of forest functions, [Source: Act on Forests and Amendments to Some Acts dated 3 November 1995. Ministry of Agriculture of the Czech Republic. Prague, 1996. 58 pp. From: \"Maksym Polyakov\" <mpoliak@pcomp.usau.kiev.ua Date: Mon, 15 Jun 1998 11:32:47 +0300 (MSD)]"@en ;
     skos:inScheme ex:ForestScheme ;
-    skos:note "NASDA" ;
-    skos:prefLabel "GROVE, THICKET"@en .
+    skos:note "the Forest Act" .
 
 ex:Concept_19 a skos:Concept ;
-    dct:source "http://www.tnw.org.uk/Note17.html"^^xsd:anyURI ;
-    skos:definition "A forestry plantation"@en ;
+    dct:creator "Ria" ;
+    dct:spatial ex:Country_OMN ;
+    skos:definition "Natural regeneration - -The act of installation, through natural methods, of the forest vegetation. Sorin Sfirlogea <sorinsf@rosilva.ro National Forests Administration"@en ;
     skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "GROVE, THICKET"@en .
+    skos:note "Romania" .
 
 ex:Concept_2 a skos:Concept ;
     dct:creator "Kalensky et al" ;
@@ -919,461 +912,25 @@ ex:Concept_2 a skos:Concept ;
     skos:note "Kalensky et al. 2002" .
 
 ex:Concept_20 a skos:Concept ;
-    dct:source "http://www.newberry.org/k12maps/glossary/index.html"^^xsd:anyURI ;
-    skos:definition "A group of similar trees growing in a confined area"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "GROVE, THICKET"@en .
-
-ex:Concept_21 a skos:Concept ;
-    dct:source "http://dictionary.cambridge.org/define.asp?key=grove*1+0"^^xsd:anyURI ;
-    skos:definition "A group of trees planted close together"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "GROVE, THICKET"@en .
-
-ex:Concept_22 a skos:Concept ;
-    dct:source "http://www.lovett-pinetum.org/2whatis.htm"^^xsd:anyURI ;
-    skos:definition "A pinetum is a grove or plantation where pine trees are cultivated, particularly for scientific, educational &/or esthetic purposes. It is a specialized type of arboretum --- a place where many kinds of trees are grown for the same purposes"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "GROVE, THICKET"@en .
-
-ex:Concept_23 a skos:Concept ;
-    dct:source "http://www.notredame.ac.jp/cgi-bin/wn?grove"^^xsd:anyURI ;
-    skos:definition "A small cultivated wood without undergrowth"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "GROVE, THICKET"@en .
-
-ex:Concept_24 a skos:Concept ;
-    dct:source "http://www.notredame.ac.jp/cgi-bin/wn?grove"^^xsd:anyURI ;
-    skos:definition "A small growth of trees without underbrush"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "GROVE, THICKET"@en .
-
-ex:Concept_25 a skos:Concept ;
-    dct:source "http://www.wordsmyth.net/cgi-bin/simplesearch.cgi?matchent=grove&matchtype=exact&matchid=-1&retall=1"^^xsd:anyURI ;
-    skos:definition "A small stand of fruit or nut trees; orchard"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "GROVE, THICKET"@en .
-
-ex:Concept_26 a skos:Concept ;
-    dct:source "http://www.wordsmyth.net/cgi-bin/simplesearch.cgi?matchent=grove&matchtype=exact&matchid=-1&retall=1"^^xsd:anyURI ;
-    skos:definition "A small wooded area, esp. one with little ground cover"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "GROVE, THICKET"@en .
-
-ex:Concept_27 a skos:Concept ;
-    dct:source "http://www.graylab.ac.uk/cgi-bin/omd?grove"^^xsd:anyURI ;
-    skos:definition "A smaller group of trees than a forest, and without underwood, planted, or growing naturally as if arranged by art; a wood of small extent"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "GROVE, THICKET"@en .
-
-ex:Concept_28 a skos:Concept ;
-    dct:source "http://www.fgdc.gov/standards/documents/standards/vegetation/vegclass.pdf"^^xsd:anyURI ;
-    skos:definition "Areas dominated by fruit or nut trees planted on a regular and generally consistent row and plant spacing. Stands are planted for the purpose of producing a fruit or nut crop. Examples include areas used for the production of apples, peaches, oranges, pecans, walnuts, cherries, and bananas"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "GROVE, THICKET"@en .
-
-ex:Concept_29 a skos:Concept ;
-    dct:source "http://www.copper-beech.com/glossary.html"^^xsd:anyURI ;
-    skos:definition "Sacred grove - a place apart, consecrated to a spirit or divinity, or to the memory of a hero; with trees, rocks and water, surrounding a shrine or an altar, in a temple or within a grotto or cave. This religious or spiritual quality separates, though not sharply, the 'sacred grove' from the gardens of Flora"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "GROVE, THICKET"@en .
-
-ex:Concept_3 a skos:Concept ;
-    skos:broadMatch ex:Plantation ;
-    skos:definition "See: Lund, H. Gyde. 2016 revised. Definitions of old growth, pristine, climax, ancient forests, degradation, desertification, forest fragmentation, and similar terms. [Online publication], Gainesville, VA: Forest Information Services. Misc. pagination. DOI: 10.13140/RG.2.1.2963.7361"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "PLANTATION (Forest Cultures)"@en .
-
-ex:Concept_30 a skos:Concept ;
-    dct:source "http://nfdp.ccfm.org/silviterm/silvi_e/silvitermqtote.htm#T"^^xsd:anyURI ;
-    skos:definition "Thicket - A dense growth of small trees or bushes"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "GROVE, THICKET"@en .
-
-ex:Concept_31 a skos:Concept ;
-    dct:creator "–NSW" ;
-    dct:source "http://www.forest.nsw.gov.au/education/glossary/default.asp#Ltr_W"^^xsd:anyURI ;
-    dct:spatial ex:Country_AUS ;
-    skos:definition "A group (or cluster) of upright trees"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "Australia–NSW" ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_32 a skos:Concept ;
-    dct:creator "Czech Republic" ;
-    dct:date "1995"^^xsd:gYear ;
-    dct:source "http://www.uhul.cz/images/ke_stazeni/legislativa_jazyky/Lesni_zakon_en.pdf"^^xsd:anyURI ;
-    skos:definition "stand shall mean the basic unit of spatial arrangement of the forest identifiable in the terrain and shown on a forestry map"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "Czech Republic 1995" ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_33 a skos:Concept ;
-    dct:creator "USA-State-Oregon" ;
-    dct:source "http://www.odf.state.or.us/DIVISIONS/management/state_forests/sfplan/eorfmp95-final/A_gloss.pdf"^^xsd:anyURI ;
-    dct:spatial ex:Country_USA ;
-    skos:definition "A term used in this plan to designate a contiguous area of land in the same vegetative series and having the same management history"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "USA-State-Oregon" ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_34 a skos:Concept ;
-    dct:source "http://www.bib.fsagx.ac.be/coste21/glossary.html#d"^^xsd:anyURI ;
-    skos:definition "A community of trees, including aboveground and belowground biomass and soils, sufficiently uniform in species composition, age, arrangement, and condition to be managed as a unit"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_35 a skos:Concept ;
-    dct:source "http://www.epa.gov/OWOW/NPS/MMGI/Chapter3/ch3-3.html"^^xsd:anyURI,
-        "http://www.for.gov.bc.ca/hfp/pubs/stand_density_mgt/sdm-73.htm#s"^^xsd:anyURI,
-        "http://www.fs.fed.us/r4/wcnf/projects/decisions/bear_hodges2/glossary,.pdf"^^xsd:anyURI ;
-    skos:definition "A contiguous group of trees sufficiently uniform in species composition, arrangement of age classes, and condition to be a homogeneous and distinguishable unit. , and"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_36 a skos:Concept ;
-    dct:source "http://www.maf.govt.nz/statistics/primaryindustries/forestry/forest-resources/national-exotic-forest-2000/nappendix1.htm"^^xsd:anyURI ;
-    skos:definition "A defined area of standing trees or forest, usually of one species, age and tending regime"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_37 a skos:Concept ;
-    dct:source "http://www.fnr.purdue.edu/inwood/glossary.html"^^xsd:anyURI ;
-    skos:definition "A geographically contiguous parcel of land containing one or more stand types and is usually constructed for administrative reasons"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_38 a skos:Concept ;
-    dct:source "http://www.privateforestry.org.au/glos_o-z.htm"^^xsd:anyURI ;
-    skos:definition "A group of forest trees of sufficiently uniform species composition, age, and condition to be considered a homogeneous unit for management purposes"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_39 a skos:Concept ;
-    dct:source "http://www.harcourt.com/dictionary/def/4/1/0/8/4108500.html"^^xsd:anyURI ;
-    skos:definition "A group of trees in a given area that consist of one species, size, or grade; used as the basic unit in forest mapping"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_4 a skos:Concept ;
-    dct:source "http://www.nrcan.gc.ca/cfs/proj/ppiab/ci/gloss_e.html"^^xsd:anyURI ;
-    dct:spatial ex:Country_CAN ;
-    skos:definition "A qualitative expression of the adequacy of tree cover on an area in terms of crown closure, number of trees, basal area or volume in relation to a pre-established norm. [Source: Criteria and Indicators of sustainable forest management in Canada: Glossary From: \"Maksym Polyakov\" <mpoliak@pcomp.usau.kiev.ua Date: Wed, 17 Jun 1998 11:20:37 +0300 (MSD)]"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "Canada" ;
-    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
-
-ex:Concept_40 a skos:Concept ;
-    dct:creator "Hunter" ;
-    dct:date "1990"^^xsd:gYear ;
-    dct:source "http://depts.clemson.edu/extfor/publications/fortp19/definitions.htm"^^xsd:anyURI ;
-    skos:definition "A group of trees reasonably similar in age structure and species composition, usually occupying at least 5 acres"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "Hunter 1990" ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_41 a skos:Concept ;
-    dct:source "http://www.tnw.org.uk/Note17.html"^^xsd:anyURI ;
-    skos:definition "A group or area of trees"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_42 a skos:Concept ;
-    dct:source "http://ashland.or.us/Files/Fire%20city%20Plan%202002.htm"^^xsd:anyURI ;
-    skos:definition "A grouping of trees in a forest of similar conditions that separate it from trees in other adjacent areas"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_43 a skos:Concept ;
-    dct:source "http://fwie.fw.vt.edu/rhgiles/appendices/glosss.htm"^^xsd:anyURI ;
-    skos:definition "A plant and animal community"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_44 a skos:Concept ;
-    dct:source "http://www.ifdn.com/teacher/glossary.htm"^^xsd:anyURI ;
-    skos:definition "A standing growth of trees or plants"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_45 a skos:Concept ;
-    dct:creator "e.g., 80-year aspen stand" ;
-    dct:source "http://www.borealcentre.ca/glossary.html"^^xsd:anyURI ;
-    skos:definition "A unit of forest classification generally based on the type and age of the dominant tree vegetation . Most stands are initiated through disturbance events such as fire"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "e.g., 80-year aspen stand" ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_46 a skos:Concept ;
-    dct:source "http://www.eresourcesystems.com/Help/Glossary/glossary.html"^^xsd:anyURI ;
-    skos:definition "An aggregation of trees or other growth occupying a specific area and sufficiently uniform in composition to be distinguishable from the adjoining forest or other growth"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_47 a skos:Concept ;
-    dct:creator "species" ;
-    dct:source "http://fwie.fw.vt.edu/rhgiles/appendices/glosss.htm"^^xsd:anyURI ;
-    skos:definition "An aggregation of trees or other growth occupying a specific area and sufficiently uniform in composition , age arrangement, and condition as to be distinguishable from the forest or other growth on adjoining areas (a minimum of 1 acre of forest land that is at least 10 percent stocked by forest trees of any size). A forest stand is said to be \" pure\" if 80 percent or more of the trees present are of the same species. If less than 80 percent of all trees present are of the same species. the stand is said to be \" mixed.\""@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "species" ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_48 a skos:Concept ;
-    dct:source "http://www.dnr.state.mi.us/wildlife/Landowners_Guide/Introduction/Glossary.htm"^^xsd:anyURI ;
-    skos:definition "An area composed of trees that are similar in type, or age, or size"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_49 a skos:Concept ;
-    dct:source "http://www.forestenterprises.co.nz/cfi/investmentstructure.htm"^^xsd:anyURI ;
-    skos:definition "An area of trees with similar characteristics"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_5 a skos:Concept ;
-    dct:creator "BC" ;
-    dct:source "http://www.for.gov.bc.ca/pab/publctns/glossary/glossary.htm"^^xsd:anyURI ;
-    dct:spatial ex:Country_CAN ;
-    skos:definition "A measure of the area occupied by trees, usually measured in terms of well- spaced trees per hectare, or basal area per hectare, relative to an optimum or desired level. [Source: Glossary of Forestry Terms, Province of British Columbia, Ministry of Forests, From: \"Maksym Polyakov\" <mpoliak@pcomp.usau.kiev.ua Date: Wed, 17 Jun 1998 11:20:37 +0300 (MSD)]"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "Canada-BC" ;
-    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
-
-ex:Concept_50 a skos:Concept ;
-    dct:source "http://www.timbervest.net/faqs_and_glossary/glossary.htm"^^xsd:anyURI ;
-    skos:definition "An easily defined area of the forest that is relatively uniform in species composition or age and can be managed as a single unit"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_51 a skos:Concept ;
-    dct:creator "2 ha" ;
-    dct:source "http://fscus.org/html/standards_policies/us_regional_standards/archives/ozark_ouachita4.html"^^xsd:anyURI ;
-    skos:definition "An ecologically homogeneous area within an ecosystem or landscape, a minimum of 5 acres in size"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "2 ha" ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_52 a skos:Concept ;
-    dct:source "http://www.woodlands.co.uk/book/appendices.pdf"^^xsd:anyURI ;
-    skos:definition "Community of trees with similar characteristics and managed as one unit"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_53 a skos:Concept ;
-    dct:source "http://media.payson.tulane.edu:8083/html/env/enven/vol205.htm#Annex"^^xsd:anyURI ;
-    skos:definition "Group of trees which exhibit similar features, occupy an unbroken minimum area and all require similar silvicultural treatment. : Glossary of selected terms"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_54 a skos:Concept ;
-    dct:creator "of trees" ;
-    dct:source "http://bioenergy.ornl.gov/faqs/glossary.html#T"^^xsd:anyURI ;
-    skos:definition "Stand: A tree community that possesses sufficient uniformity in composition, constitution, age, spatial arrangement, or condition to be distinguishable from adjacent communities"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "of trees" ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_55 a skos:Concept ;
-    dct:creator "s" ;
-    dct:source "http://www.eman-rese.ca/eman/ecotools/protocols/terrestrial/vegetation/glossary.html"^^xsd:anyURI ;
-    skos:definition "Standing growth of plants; a particular example of a plant community, e.g. forest or grassland in which monitoring plot are established"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "s" ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_56 a skos:Concept ;
-    dct:creator "the Forest Act" ;
-    skos:definition "The basic unit of spatial arrangement of the forest identifiable in the terrain and shown on a forestry map. [Source: Act on Forests and Amendments to Some Acts dated 3 November 1995. Ministry of Agriculture of the Czech Republic. Prague, 1996. 58 pp. From: \"Maksym Polyakov\" mpoliak@pcomp.usau.kiev.ua Date: Mon, 15 Jun 1998 11:32:47 +0300 (MSD)]"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "the Forest Act" ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_57 a skos:Concept ;
-    dct:source "http://www.forestry.sa.gov.au/pdf/glossary.pdf"^^xsd:anyURI ;
-    skos:definition "The crop of trees in a forest"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_58 a skos:Concept ;
-    dct:source "http://www.angelfire.com/on3/wildberks/Glossary.htm"^^xsd:anyURI,
-        "http://www.woodlandowner.org.uk/glossary.htm#W"^^xsd:anyURI ;
-    skos:definition "Trees of one type or species [e.g. coppice, alder] grouped together within a woodland. and"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_59 a skos:Concept ;
-    dct:source "http://www.unb.ca/web/forestry/centers/cwru/soe/gloss.htm"^^xsd:anyURI ;
-    skos:definition "Unit of vegetation that is essentially homogeneous in all layers and differs from adjacent types qualitatively and quantitatively"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STAND"@en .
-
-ex:Concept_6 a skos:Concept ;
-    dct:creator "Of growing stock trees" ;
-    dct:source "http://ifdc.nres.uiuc.edu/publications/pdf/forestresources02/pg81-86.pdf"^^xsd:anyURI ;
-    skos:definition "The degree of occupancy of land by growing stock trees, measured by basal area and/or the number of trees in a stand by size or age and spacing, compared to the basal area and/or number of trees required to fully utilize the growth potential of the land; that is, the stocking standard. A stocking percentage of 100 indicates full utilization of the site and is equivalent to 80 square feet of basal area per acre in trees 5.0 inches d.b.h. and larger. In a stand of trees less than 5 inches d.b.h., a stocking percentage of 100 would indicate that the present number of trees is sufficient to produce 80 square feet of basal area per acre when the trees reach 5 inches d.b.h"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "Of growing stock trees" ;
-    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
-
-ex:Concept_60 a skos:Concept ;
-    dct:creator "deforested, afforested, and reforested" ;
-    dct:source "http://www.carbonpositive.net/viewarticle.aspx?articleID=44"^^xsd:anyURI ;
-    skos:definition "Afforestation, Deforestation, and Reforestation are actions or acts. There are probably fewer disagreements over these terms than on what to call the lands once the action is completed and how long the lands remain in those historical categories. A/R - Afforestation and reforestation. Term given to the class of projects devoted to the planting of trees on unforested land for carbon emissions reduction and other environmental benefits"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "deforested, afforested, and reforested" .
-
-ex:Concept_61 a skos:Concept ;
-    skos:definition "\"Forestation,\" \"degradation,\" and \"regeneration\" are action terms which are not included in the Kyoto Protocol but which we appear to need to include in the discussions of changes in carbon emissions and sinks. All of these are descriptors of actions ending in changes in either land cover, land use or both"@en ;
-    skos:inScheme ex:ForestScheme .
-
-ex:Concept_62 a skos:Concept ;
-    dct:spatial ex:Country_CHL ;
-    skos:definition "La acción de poblar con especies arbóreas o arbustivas terrenos que carezcan de ellas o que estando cubiertos de vegetación, ésta no sea susceptible de explotación económica, ni mejoramiento mediante manejo (Cerda 1998"@es ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "Chile" ;
-    skos:prefLabel "FORESTATION"@en .
-
-ex:Concept_63 a skos:Concept ;
-    dct:creator "North Amer" ;
-    skos:definition "Afforestation, Reforestation) The establishment of forest, naturally or artificially, on an area, whether previously carrying forest or not (Ford-Robertson 1971"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "North Amer." ;
-    skos:prefLabel "FORESTATION"@en .
-
-ex:Concept_64 a skos:Concept ;
-    dct:source "http://www.state.in.us/dnr/forestry/bmp/glossary.htm"^^xsd:anyURI ;
-    skos:definition "All types of tree planting, whether conversion of open land or after a harvest"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "FORESTATION"@en .
-
-ex:Concept_65 a skos:Concept ;
-    dct:source "http://nfdp.ccfm.org/silviterm/silvi_e/silvitermetohe.htm#F"^^xsd:anyURI ;
-    skos:definition "The establishment of forest, naturally or artificially, on an area, whether previously carrying forest or not. cf. afforestation, deforestation, reforestation"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "3" ;
-    skos:prefLabel "FORESTATION"@en .
-
-ex:Concept_66 a skos:Concept ;
-    skos:definition "There are other terms that one may need to understand. These are some that the RAD team members have offered"@en ;
-    skos:inScheme ex:ForestScheme .
-
-ex:Concept_67 a skos:Concept ;
-    dct:source "http://orb.rhodes.edu/Medieval_Terms.html"^^xsd:anyURI ;
-    skos:definition "Assart: To turn woodlands into pasture or cropland. To assart lands within a forest without license is a grave offence"@en ;
-    skos:inScheme ex:ForestScheme .
-
-ex:Concept_68 a skos:Concept ;
-    dct:source "http://www.christiantech.com/cgi-bin/webster.exe?search_for_cgi-bin/texts/web1828=coafforest"^^xsd:anyURI ;
-    skos:definition "Coafforest, v.t. To convert ground into a forest"@en ;
-    skos:inScheme ex:ForestScheme .
-
-ex:Concept_69 a skos:Concept ;
-    dct:creator "Institute of Forestry, July" ;
-    dct:date "1998"^^xsd:gYear ;
-    dct:spatial ex:Country_NZL ;
-    skos:definition "Coupe – An area within a forest which is harvested and regenerated. It is usually less than half a hectare where management is based on ecosystem sustainability. From: Indigenous Forest Policy"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "New Zealand Institute of Forestry, July 1998" .
-
-ex:Concept_7 a skos:Concept ;
-    dct:spatial ex:Country_RUS ;
-    skos:definition "Degree of a denseness of growing of trees in a tree stand describing a share of use by them of taken space. Usually under definition of stocking (polnota) understands a relative polnota of a tree stand - ratio of the sum of areas of cross-cuts of all trees of a tree stand at height of 1.3 meters (breast-height) on 1 ha to the sum of areas of cross-cuts of a normal tree stand (with a polnota 1,0), i.e. tree stand with optimum for the given species and types of forest growing conditions the sum of areas of cross-cuts, which undertakes from the tables of growth. . [From: \" Russian Forest Encyclopedia\" \"Igor Yakovlev\" yakovlev@mari-el.ru Date: Sat, 6 Jun 1998 21:16:59 +0400]"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "Russian Federation" ;
-    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
-
-ex:Concept_70 a skos:Concept ;
-    dct:creator "MSD" ;
-    skos:definition "Damaged forest - Forest which is prevented by negative influences from natural development of the ecosystem or prevented from providing the functions of a forest. Damaged forest is forest for reclamation and is a threat to the environment under the terms of regulations on the protection of the environment. [From: Slovenian LAW ON FORESTS - Milan SINKO milan.sinko@UNI-LJ.SI via \"Maksym Polyakov\" <mpoliak@pcomp.usau.kiev.ua Date: Fri, 12 Jun 1998 16:11:17 +0300 ]"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "MSD" .
-
-ex:Concept_71 a skos:Concept ;
-    skos:definition "Devegetated - having removed the vegetation from an area"@en ;
-    skos:inScheme ex:ForestScheme .
-
-ex:Concept_72 a skos:Concept ;
-    dct:creator "by fire, human impact" ;
-    dct:source "http://www.nature.nps.gov/nrbib/HTML%20files/33.htm#3259"^^xsd:anyURI ;
-    skos:definition "Devegetation - destruction of vegetation"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "by fire, human impact" .
-
-ex:Concept_73 a skos:Concept ;
-    dct:source "http://www.christiantech.com/cgi-bin/webster.exe?search_for_cgi-bin/texts/web1828=disafforest"^^xsd:anyURI ;
-    skos:definition "Disafforest, v.t. [dis and afforest.] To reduce from the privileges of a forest to the state of common ground; to strip of forest laws and their oppressive privileges"@en ;
-    skos:inScheme ex:ForestScheme .
-
-ex:Concept_74 a skos:Concept ;
-    dct:source "http://www.christiantech.com/cgi-bin/webster.exe?search_for_cgi-bin/texts/web1828=afforestation"^^xsd:anyURI,
-        "http://www.hants.org.uk/newforest/bibliog.html"^^xsd:anyURI ;
-    skos:definition "Disafforested - Stripped of forest privileges . To remove land from the authority of the Verderers"@en ;
-    skos:inScheme ex:ForestScheme .
-
-ex:Concept_75 a skos:Concept ;
-    dct:source "http://nrcan.gc.ca/cfs/proj/iepb/nfdp/regen/regen_e/s18.htm"^^xsd:anyURI ;
-    skos:definition "Disturbance - Any removal of tree cover sufficient to create a site for an even-aged crop of regeneration. Even-aged Of a forest, stand, or forest type in which relatively small age differences exist between individual trees. The differences in age permitted are usually 10 to 20 years"@en ;
-    skos:inScheme ex:ForestScheme .
-
-ex:Concept_76 a skos:Concept ;
-    dct:creator "the Forest Act" ;
-    skos:definition "Established forest stand – The reaching such a state of forest stand where intensive protection is no longer required after afforestation and the number of individual trees and their distribution throughout the forested area, as well as the composition of the forest tree species, create all the prerequisites required for the establishment of a site suitable forest stand. [Source: Act on Forests and Amendments to Some Acts dated 3 November 1995. Ministry of Agriculture of the Czech Republic. Prague, 1996. 58 pp. From: \"Maksym Polyakov\" <mpoliak@pcomp.usau.kiev.ua Date: Mon, 15 Jun 1998 11:32:47 +0300 (MSD)]"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "the Forest Act" .
-
-ex:Concept_77 a skos:Concept ;
-    dct:creator "MSD" ;
-    skos:definition "Forest cultures - Artificially created or planted forest stands. [From: \"Maksym Polyakov\" mpoliak@pcomp.usau.kiev.ua Date: Thu, 11 Jun 1998 12:06:37 +0300 ]"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "MSD" .
-
-ex:Concept_78 a skos:Concept ;
-    dct:creator "tree and shrubs" ;
-    skos:definition "Forest fund - All the lands given to state forestry enterprises plus all the forests under responsibility of other bodies. Or, all the forest lands plus non-forest lands of state forestry enterprises. forest [lands]: covered by forest vegetation; not covered by forest vegetation but required to be afforested (cuttings [places after fellings], burnings, [loose forests], [empty places] etc., forest roads, cuttings [narrow straight road dividing quarters in forest], fire breaks; non-forest [lands]: under buildings connected with forest management, power lines, pipelines, other underground communications, etc.; agricultural lands (arable lands, hayfields, pastures, given for the purposes of forestry [forest management]; wetlands and waters within the parcels of forest fund given for the purposes of forestry.'' [From: ``The Forest Code of Ukraine'' Kiev, 1994, 56p. \"Maksym Polyakov\" mpoliak@pcomp.usau.kiev.ua Date: Thu, 11 Jun 1998 12:06:37 +0300 (MSD)]"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "tree and shrubs" .
-
-ex:Concept_79 a skos:Concept ;
-    dct:creator "the Forest Act" ;
-    skos:definition "Forest management – The regeneration, protection, tending and felling of forest stands and other activities securing the fulfillment of forest functions, [Source: Act on Forests and Amendments to Some Acts dated 3 November 1995. Ministry of Agriculture of the Czech Republic. Prague, 1996. 58 pp. From: \"Maksym Polyakov\" <mpoliak@pcomp.usau.kiev.ua Date: Mon, 15 Jun 1998 11:32:47 +0300 (MSD)]"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "the Forest Act" .
-
-ex:Concept_8 a skos:Concept ;
-    dct:creator "MSD" ;
-    dct:source "http://ww.ehnr.state.nc.us/EHNR/DFR/fm-22.htm"^^xsd:anyURI ;
-    skos:definition "A relative number of trees or volume per acre. A forest stand is most often described as being well-stocked, poorly stocked or overstocked. [Source: Glossary of Forestry Terms Commonly Used in Forest Management Plans From: \"Maksym Polyakov\" <mpoliak@pcomp.usau.kiev.ua Date: Wed, 17 Jun 1998 11:20:37 +0300 ]"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "MSD" ;
-    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
-
-ex:Concept_80 a skos:Concept ;
-    dct:creator "Ria" ;
-    dct:spatial ex:Country_OMN ;
-    skos:definition "Natural regeneration - -The act of installation, through natural methods, of the forest vegetation. Sorin Sfirlogea <sorinsf@rosilva.ro National Forests Administration"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:note "Romania" .
-
-ex:Concept_81 a skos:Concept ;
     dct:creator "MSD" ;
     skos:definition "Non covered by forest forest lands - Lands designated for forest growing, i.e. felled places, loose forest, `not closed yet young forest cultures'', etc. All these land were potentially needed to be reforested/afforested/reconstructed. [From: ``The Forest Code of Ukraine'' Kiev, 1994, 56p. \"Maksym Polyakov\" mpoliak@pcomp.usau.kiev.ua Date: Thu, 11 Jun 1998 12:06:37 +0300 ]"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "MSD" .
 
-ex:Concept_82 a skos:Concept ;
+ex:Concept_21 a skos:Concept ;
     skos:definition "Productive forest land - Land which has an annual yield capacity of at least 1 m3 wood including bark per hectare under favourable stand conditions. Classification should not be affected if the land is temporarily without trees. More critical factors are the yield capacity and that the land is not utilized for other purposes than wood production. [From: Stein Tomter stein.tomter@tor.nijos.no Date: Mon, 15 Jun 1998 14:50:20 +0200]"@en ;
     skos:inScheme ex:ForestScheme .
 
-ex:Concept_83 a skos:Concept ;
+ex:Concept_22 a skos:Concept ;
     dct:source "http://www.rfa.gov.au/dfa/other_info/glossary.html"^^xsd:anyURI ;
     skos:definition "Regrowth forest - Native forest containing a substantial proportion of trees that are in the younger growth phase and are actively growing in height and diameter. Regrowth forests may contain scattered individuals or small occurrences of ecologically mature, or old growth, trees"@en ;
     skos:inScheme ex:ForestScheme .
 
-ex:Concept_84 a skos:Concept ;
+ex:Concept_23 a skos:Concept ;
     skos:definition "Renewal - The natural or artificial renewal of any forest product and includes reforestation\" [Source: Chapter F-19.1: An Act respecting the management of Forest Resources...aka THE ACT From: Mark Johnston <johnston@larix.derm.gov.sk.ca Date: Tue, 16 Jun 1998 17:44:48 -0600]"@en ;
     skos:inScheme ex:ForestScheme .
 
-ex:Concept_85 a skos:Concept ;
+ex:Concept_24 a skos:Concept ;
     dct:creator "UNFCCC" ;
     dct:date "2001"^^xsd:gYear ;
     dct:source "http://www.unfccc.int/resource/docs/cop6secpart/l11r01.pdf"^^xsd:anyURI ;
@@ -1382,60 +939,93 @@ ex:Concept_85 a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:note "UNFCCC 2001" .
 
-ex:Concept_86 a skos:Concept ;
+ex:Concept_25 a skos:Concept ;
     dct:source "http://www.greenpeace.org/~comms/cbio/forp&g.html#annex"^^xsd:anyURI ;
     skos:definition "Restoration - The recreation of communities of organisms resembling, in structure, function and dynamics, those prior to degradation, and protected from further human degradation"@en ;
     skos:inScheme ex:ForestScheme .
 
-ex:Concept_87 a skos:Concept ;
+ex:Concept_26 a skos:Concept ;
     dct:source "http://www.af.nfr.no/andre-doc/alternativ-agenda/Forests.html"^^xsd:anyURI ;
     skos:definition "Restored forests - Forests planted, seeded, or otherwise restored in such a manner as to emulate the original natural forests of an area"@en ;
     skos:inScheme ex:ForestScheme .
 
-ex:Concept_88 a skos:Concept ;
+ex:Concept_27 a skos:Concept ;
     dct:creator "in contrast to trees-ASH" ;
     skos:definition "Shrubs - Woody perennials which ramify at very soil surface and have not any main stem at maturity. Shrubbery is an ecosystem dominated by shrubs of a maximum potential hight at maturity of approximately 6 m with a minimum projected crown cover of 20%. Anatoly SHVIDENKO <shvidenk@iiasa.ac.at"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "in contrast to trees-ASH" .
 
-ex:Concept_89 a skos:Concept ;
+ex:Concept_28 a skos:Concept ;
     dct:creator "mean annual increment at culmination in fully stocked, natural stands" ;
     skos:definition "Timberland - Forest land capable of growing 20 cubic feet or more per acre per year of industrial wood and not in a reserved status through removal of the area from timber utilization by statute, ordinance, or administrative order; and not in a withdrawn status where it is pending consideration for reserved status. (Waddell and Bassett 1997"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "mean annual increment at culmination in fully stocked, natural stands" .
 
-ex:Concept_9 a skos:Concept ;
-    dct:source "http://216.239.39.100/search?q=cache:iFF2UlzBb4kC:socrates.lv-hrc.nevada.edu/fia/dab/core1-6/appendix7_12_00.doc+%22stand+density%22++definition+glossary&hl=en&ie=UTF-8"^^xsd:anyURI ;
-    skos:definition "Stocking – The relative degree of occupancy land by trees, measured as basal area or the number of trees in a stand by size or age and spacing, compared to the basal area or number of trees required to fully utilize the growth potential of the land; that is, the stocking standard"@en ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
-
-ex:Concept_90 a skos:Concept ;
+ex:Concept_29 a skos:Concept ;
     dct:creator "Powell et al" ;
     dct:date "1993"^^xsd:gYear ;
     skos:definition "Unproductive forest land - Forest land which is incapable of producing annually 0.6 cubic meters of industrial wood/per acre under natural conditions, because of adverse site conditions, such as sterile soils, dry climate, poor drainage, high elevation, steepness, or rockiness. Urban forest land is also included"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "Powell et al. 1993" .
 
-ex:Concept_91 a skos:Concept ;
+ex:Concept_3 a skos:Concept ;
+    dct:creator "deforested, afforested, and reforested" ;
+    dct:source "http://www.carbonpositive.net/viewarticle.aspx?articleID=44"^^xsd:anyURI ;
+    skos:definition "Afforestation, Deforestation, and Reforestation are actions or acts. There are probably fewer disagreements over these terms than on what to call the lands once the action is completed and how long the lands remain in those historical categories. A/R - Afforestation and reforestation. Term given to the class of projects devoted to the planting of trees on unforested land for carbon emissions reduction and other environmental benefits"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "deforested, afforested, and reforested" .
+
+ex:Concept_30 a skos:Concept ;
     dct:creator "Waddell and Bassett" ;
     dct:date "1997"^^xsd:gYear ;
     skos:definition "Withdrawn timberland - Timberland in National Forests that is being considered for permanent reserved status. Although this land has not been removed from timber utilization by statute, ordinance, or administrative order, it is not being actively managed as timberland"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "Waddell and Bassett 1997" .
 
-ex:Concept_92 a skos:Concept ;
+ex:Concept_31 a skos:Concept ;
     dct:source "http://www.polity.org.za/govdocs/green_papers/forest1.html#t1"^^xsd:anyURI ;
     dct:spatial ex:Country_ZAF ;
     skos:definition "Wooded grasslands - As in (South Africa) Woodlands, but 5-40% canopy cover; grasslands typically less than 6m tall"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "South Africa" .
 
-ex:Concept_93 a skos:Concept ;
+ex:Concept_32 a skos:Concept ;
     dct:source "http://www.bioone.org/doi/pdf/10.1659/0276-4741(2002)022"^^xsd:anyURI ;
     skos:definition "Inaccessible forest: A forest area is inaccessible if it is located on a slope of more than 100 per cent or if it is surrounded by steep slopes, landslides, or other physical obstacles. per cent5B0085:IONSFR per cent5D2.0.CO per cent3B2"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "45°" .
+
+ex:Concept_4 a skos:Concept ;
+    skos:definition "\"Forestation,\" \"degradation,\" and \"regeneration\" are action terms which are not included in the Kyoto Protocol but which we appear to need to include in the discussions of changes in carbon emissions and sinks. All of these are descriptors of actions ending in changes in either land cover, land use or both"@en ;
+    skos:inScheme ex:ForestScheme .
+
+ex:Concept_5 a skos:Concept ;
+    skos:definition "There are other terms that one may need to understand. These are some that the RAD team members have offered"@en ;
+    skos:inScheme ex:ForestScheme .
+
+ex:Concept_6 a skos:Concept ;
+    dct:source "http://orb.rhodes.edu/Medieval_Terms.html"^^xsd:anyURI ;
+    skos:definition "Assart: To turn woodlands into pasture or cropland. To assart lands within a forest without license is a grave offence"@en ;
+    skos:inScheme ex:ForestScheme .
+
+ex:Concept_7 a skos:Concept ;
+    dct:source "http://www.christiantech.com/cgi-bin/webster.exe?search_for_cgi-bin/texts/web1828=coafforest"^^xsd:anyURI ;
+    skos:definition "Coafforest, v.t. To convert ground into a forest"@en ;
+    skos:inScheme ex:ForestScheme .
+
+ex:Concept_8 a skos:Concept ;
+    dct:creator "Institute of Forestry, July" ;
+    dct:date "1998"^^xsd:gYear ;
+    dct:spatial ex:Country_NZL ;
+    skos:definition "Coupe – An area within a forest which is harvested and regenerated. It is usually less than half a hectare where management is based on ecosystem sustainability. From: Indigenous Forest Policy"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "New Zealand Institute of Forestry, July 1998" .
+
+ex:Concept_9 a skos:Concept ;
+    dct:creator "MSD" ;
+    skos:definition "Damaged forest - Forest which is prevented by negative influences from natural development of the ecosystem or prevented from providing the functions of a forest. Damaged forest is forest for reclamation and is a threat to the environment under the terms of regulations on the protection of the environment. [From: Slovenian LAW ON FORESTS - Milan SINKO milan.sinko@UNI-LJ.SI via \"Maksym Polyakov\" <mpoliak@pcomp.usau.kiev.ua Date: Fri, 12 Jun 1998 16:11:17 +0300 ]"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "MSD" .
 
 ex:Continent_Africa a skos:Collection ;
     skos:member ex:Country_AGO,
@@ -1596,7 +1186,6 @@ ex:Continent_NorthAmerica a skos:Collection ;
         ex:Country_CYM,
         ex:Country_DMA,
         ex:Country_DOM,
-        ex:Country_GLP,
         ex:Country_GRD,
         ex:Country_GTM,
         ex:Country_HND,
@@ -1606,7 +1195,6 @@ ex:Continent_NorthAmerica a skos:Collection ;
         ex:Country_LCA,
         ex:Country_MEX,
         ex:Country_MSR,
-        ex:Country_MTQ,
         ex:Country_NIC,
         ex:Country_PAN,
         ex:Country_PRI,
@@ -1718,7 +1306,6 @@ ex:Countries a skos:Collection ;
         ex:Country_GEO,
         ex:Country_GHA,
         ex:Country_GIN,
-        ex:Country_GLP,
         ex:Country_GMB,
         ex:Country_GNQ,
         ex:Country_GRC,
@@ -1780,7 +1367,6 @@ ex:Countries a skos:Collection ;
         ex:Country_MOZ,
         ex:Country_MRT,
         ex:Country_MSR,
-        ex:Country_MTQ,
         ex:Country_MUS,
         ex:Country_MWI,
         ex:Country_MYS,
@@ -1920,6 +1506,8 @@ ex:CountryCriteria a skos:Collection ;
         ex:FINCriteria_1,
         ex:FJICriteria_1,
         ex:FRACriteria_1,
+        ex:FRACriteria_2,
+        ex:FRACriteria_3,
         ex:FRENCH_GUYCriteria_1,
         ex:GABCriteria_1,
         ex:GBRCriteria_1,
@@ -1927,7 +1515,6 @@ ex:CountryCriteria a skos:Collection ;
         ex:GEOCriteria_1,
         ex:GHACriteria_1,
         ex:GINCriteria_1,
-        ex:GLPCriteria_1,
         ex:GMBCriteria_1,
         ex:GNQCriteria_1,
         ex:GRCCriteria_1,
@@ -1990,7 +1577,6 @@ ex:CountryCriteria a skos:Collection ;
         ex:MOZCriteria_1,
         ex:MRTCriteria_1,
         ex:MSRCriteria_1,
-        ex:MTQCriteria_1,
         ex:MUSCriteria_1,
         ex:MWICriteria_1,
         ex:MYSCriteria_1,
@@ -2074,12 +1660,14 @@ ex:CountryCriteria a skos:Collection ;
 
 ex:CrownCoverOrCrownClosure_1 a skos:Concept ;
     dct:source "http://www.privateforestry.org.au/glos_a-g.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:Stocking ;
     skos:definition "The percentage of a given area covered by tree crowns"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Crown Cover or Crown Closure"@en .
 
 ex:CrownCover_1 a skos:Concept ;
     dct:source "http://www.deq.state.or.us/wq/TMDLs/Umatilla/UmatillaTMDLAppxA-1.pdf"^^xsd:anyURI ;
+    skos:broadMatch ex:Stocking ;
     skos:definition "The degree to which the crowns of trees are nearing general contact with one another"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Crown cover"@en .
@@ -3015,8 +2603,7 @@ ex:Deforestation_214 a skos:Concept ;
     dct:creator "UN-FCCC" ;
     dct:date "2001"^^xsd:gYear ;
     dct:source "http://unfcccbali.org/unfccc/component/option,com_glossary/Itemid,100/func,display/letter,D/catid,31/page,1/"^^xsd:anyURI ;
-    skos:broadMatch ex:Deforestation,
-        ex:Forest_500 ;
+    skos:broadMatch ex:Forest_500 ;
     skos:definition "The direct human-induced conversion of forested land to non-forested land. (UNFCCC, 2001"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "UN-FCCC 2001" ;
@@ -3025,8 +2612,7 @@ ex:Deforestation_214 a skos:Concept ;
 ex:Deforestation_215 a skos:Concept ;
     dct:creator "UN-FCCC" ;
     dct:source "http://unfcccbali.org/unfccc/component/option,com_glossary/Itemid,100/func,display/letter,D/catid,31/page,1/"^^xsd:anyURI ;
-    skos:broadMatch ex:Deforestation,
-        ex:Forest_500 ;
+    skos:broadMatch ex:Forest_500 ;
     skos:definition "The removal of forest stands by cutting and burning to provide land for agricultural purposes, residential or industrial building sites, roads, etc., or by harvesting the trees for building materials or fuel"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "UN-FCCC" ;
@@ -3680,8 +3266,7 @@ ex:Deforestation_37 a skos:Concept ;
     dct:creator "UN-FCCC" ;
     dct:date "2001"^^xsd:gYear ;
     dct:source "http://www.unfccc.int/resource/docs/cop6secpart/l11r01.pdf"^^xsd:anyURI ;
-    skos:broadMatch ex:Deforestation,
-        ex:Forest_500 ;
+    skos:broadMatch ex:Forest_500 ;
     skos:definition "the direct human-induced conversion of forested land to nonforested land. Decision 11/CP.7 ftp://ftp.fao.org/docrep/fao/009/j9345e/j9345e00.pdf and"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "UN-FCCC 2001" ;
@@ -3691,8 +3276,7 @@ ex:Deforestation_38 a skos:Concept ;
     dct:creator "UN-FCCC" ;
     dct:date "2006"^^xsd:gYear ;
     dct:source "http://www.iop.org/EJ/article/1748-9326/3/2/025011/erl8_2_025011.pdf?request-id=dc893ad1-7028-4e4a-a91d-c44bc540a975"^^xsd:anyURI ;
-    skos:broadMatch ex:Deforestation,
-        ex:Forest_500 ;
+    skos:broadMatch ex:Forest_500 ;
     skos:definition "A ‘measurable sustained decrease in crown cover’ below a 10–30% threshold"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "UN-FCCC 2006" ;
@@ -4283,8 +3867,40 @@ ex:Forest_8 a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Forest"@en .
 
+ex:Forestation_1 a skos:Concept ;
+    dct:spatial ex:Country_CHL ;
+    skos:broadMatch ex:Forestation ;
+    skos:definition "La acción de poblar con especies arbóreas o arbustivas terrenos que carezcan de ellas o que estando cubiertos de vegetación, ésta no sea susceptible de explotación económica, ni mejoramiento mediante manejo (Cerda 1998"@es ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "Chile" ;
+    skos:prefLabel "FORESTATION"@en .
+
+ex:Forestation_2 a skos:Concept ;
+    dct:creator "North Amer" ;
+    skos:broadMatch ex:Forestation ;
+    skos:definition "Afforestation, Reforestation) The establishment of forest, naturally or artificially, on an area, whether previously carrying forest or not (Ford-Robertson 1971"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "North Amer." ;
+    skos:prefLabel "FORESTATION"@en .
+
+ex:Forestation_3 a skos:Concept ;
+    dct:source "http://www.state.in.us/dnr/forestry/bmp/glossary.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:Forestation ;
+    skos:definition "All types of tree planting, whether conversion of open land or after a harvest"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "FORESTATION"@en .
+
+ex:Forestation_4 a skos:Concept ;
+    dct:source "http://nfdp.ccfm.org/silviterm/silvi_e/silvitermetohe.htm#F"^^xsd:anyURI ;
+    skos:broadMatch ex:Forestation ;
+    skos:definition "The establishment of forest, naturally or artificially, on an area, whether previously carrying forest or not. cf. afforestation, deforestation, reforestation"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "3" ;
+    skos:prefLabel "FORESTATION"@en .
+
 ex:ForestryArabic_1 a skos:Concept ;
     dct:spatial ex:Country_MAR ;
+    skos:broadMatch ex:Forestry ;
     skos:definition "Forestry (Arabic : ‘Ilm Al Ghabat, French : Foresterie/Sciences forestière, Spanish : Ciencias de bosques) - Field of all the different discilines related to forestry aspects, such as reproduction, cultivation, caring, protection, development, etc. Mohammed Ellatifi, m.ellatifi@ellatifi.8m.com"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "Morocco" ;
@@ -4292,10 +3908,141 @@ ex:ForestryArabic_1 a skos:Concept ;
 
 ex:ForestryArabic_2 a skos:Concept ;
     dct:spatial ex:Country_YEM ;
+    skos:broadMatch ex:Forestry ;
     skos:definition "Forestry (Arabic : ‘Ilm Al Ghabat, French : Foresterie/Sciences forestière, Spanish : Ciencias de bosques) - Field of all the different discilines related to forestry aspects, such as reproduction, cultivation, caring, protection, development, etc. Mohammed Ellatifi, m.ellatifi@ellatifi.8m.com"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "Yemen" ;
     skos:prefLabel "Forestry Arabic"@en .
+
+ex:Forestry_2 a skos:Concept ;
+    dct:source "http://www.ncfcnfr.net/glossary.html"^^xsd:anyURI ;
+    skos:broadMatch ex:Forestry ;
+    skos:definition "Forest Management - The practical application of scientific, economic and social principles to the administration and working of a forest for specified objectives. Particularly, that branch of forestry concerned with the overall administrative, economic, legal and social aspects and with the essentially scientific and technical aspects, especially silviculture, protection and forest regulation"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "2" ;
+    skos:prefLabel "FORESTRY"@en .
+
+ex:Forestry_3 a skos:Concept ;
+    dct:source "http://www.forestinfo.org/Discover/glossary.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:Forestry ;
+    skos:definition "The art, science, and practice of managing forest landscapes to provide a sustained production of a variety of goods and services for society"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "FORESTRY"@en .
+
+ex:Forestry_4 a skos:Concept ;
+    dct:creator "WWWebster" ;
+    skos:broadMatch ex:Forestry ;
+    skos:definition "The science of developing, caring for, or cultivating forest. The management of growing timber"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "WWWebster" ;
+    skos:prefLabel "FORESTRY"@en .
+
+ex:Forestry_5 a skos:Concept ;
+    dct:source "http://ifdn.com/teacher/glossary.htm#d"^^xsd:anyURI ;
+    skos:broadMatch ex:Forestry ;
+    skos:definition "The science of planting, managing and protecting forest"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "FORESTRY"@en .
+
+ex:Forestry_6 a skos:Concept ;
+    dct:source "http://nhd.heinle.com/nhd-bin/searchNHD.pl"^^xsd:anyURI ;
+    skos:broadMatch ex:Forestry ;
+    skos:definition "The scientific field of forest management"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "FORESTRY"@en .
+
+ex:Grovethicket_1 a skos:Concept ;
+    dct:creator "NASDA" ;
+    dct:source "http://www.nasda-hq.org/NASDA_NASS/docs/EDUCATIO/REFERENC/TERMS___/TERMSDEF.PDF"^^xsd:anyURI ;
+    skos:broadMatch ex:GroveThicket ;
+    skos:definition "An orchard; a small stand of trees"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "NASDA" ;
+    skos:prefLabel "GROVE, THICKET"@en .
+
+ex:Grovethicket_10 a skos:Concept ;
+    dct:source "http://www.graylab.ac.uk/cgi-bin/omd?grove"^^xsd:anyURI ;
+    skos:broadMatch ex:GroveThicket ;
+    skos:definition "A smaller group of trees than a forest, and without underwood, planted, or growing naturally as if arranged by art; a wood of small extent"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "GROVE, THICKET"@en .
+
+ex:Grovethicket_11 a skos:Concept ;
+    dct:source "http://www.fgdc.gov/standards/documents/standards/vegetation/vegclass.pdf"^^xsd:anyURI ;
+    skos:broadMatch ex:GroveThicket ;
+    skos:definition "Areas dominated by fruit or nut trees planted on a regular and generally consistent row and plant spacing. Stands are planted for the purpose of producing a fruit or nut crop. Examples include areas used for the production of apples, peaches, oranges, pecans, walnuts, cherries, and bananas"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "GROVE, THICKET"@en .
+
+ex:Grovethicket_12 a skos:Concept ;
+    dct:source "http://www.copper-beech.com/glossary.html"^^xsd:anyURI ;
+    skos:broadMatch ex:GroveThicket ;
+    skos:definition "Sacred grove - a place apart, consecrated to a spirit or divinity, or to the memory of a hero; with trees, rocks and water, surrounding a shrine or an altar, in a temple or within a grotto or cave. This religious or spiritual quality separates, though not sharply, the 'sacred grove' from the gardens of Flora"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "GROVE, THICKET"@en .
+
+ex:Grovethicket_13 a skos:Concept ;
+    dct:source "http://nfdp.ccfm.org/silviterm/silvi_e/silvitermqtote.htm#T"^^xsd:anyURI ;
+    skos:broadMatch ex:GroveThicket ;
+    skos:definition "Thicket - A dense growth of small trees or bushes"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "GROVE, THICKET"@en .
+
+ex:Grovethicket_2 a skos:Concept ;
+    dct:source "http://www.tnw.org.uk/Note17.html"^^xsd:anyURI ;
+    skos:broadMatch ex:GroveThicket ;
+    skos:definition "A forestry plantation"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "GROVE, THICKET"@en .
+
+ex:Grovethicket_3 a skos:Concept ;
+    dct:source "http://www.newberry.org/k12maps/glossary/index.html"^^xsd:anyURI ;
+    skos:broadMatch ex:GroveThicket ;
+    skos:definition "A group of similar trees growing in a confined area"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "GROVE, THICKET"@en .
+
+ex:Grovethicket_4 a skos:Concept ;
+    dct:source "http://dictionary.cambridge.org/define.asp?key=grove*1+0"^^xsd:anyURI ;
+    skos:broadMatch ex:GroveThicket ;
+    skos:definition "A group of trees planted close together"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "GROVE, THICKET"@en .
+
+ex:Grovethicket_5 a skos:Concept ;
+    dct:source "http://www.lovett-pinetum.org/2whatis.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:GroveThicket ;
+    skos:definition "A pinetum is a grove or plantation where pine trees are cultivated, particularly for scientific, educational &/or esthetic purposes. It is a specialized type of arboretum --- a place where many kinds of trees are grown for the same purposes"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "GROVE, THICKET"@en .
+
+ex:Grovethicket_6 a skos:Concept ;
+    dct:source "http://www.notredame.ac.jp/cgi-bin/wn?grove"^^xsd:anyURI ;
+    skos:broadMatch ex:GroveThicket ;
+    skos:definition "A small cultivated wood without undergrowth"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "GROVE, THICKET"@en .
+
+ex:Grovethicket_7 a skos:Concept ;
+    dct:source "http://www.notredame.ac.jp/cgi-bin/wn?grove"^^xsd:anyURI ;
+    skos:broadMatch ex:GroveThicket ;
+    skos:definition "A small growth of trees without underbrush"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "GROVE, THICKET"@en .
+
+ex:Grovethicket_8 a skos:Concept ;
+    dct:source "http://www.wordsmyth.net/cgi-bin/simplesearch.cgi?matchent=grove&matchtype=exact&matchid=-1&retall=1"^^xsd:anyURI ;
+    skos:broadMatch ex:GroveThicket ;
+    skos:definition "A small stand of fruit or nut trees; orchard"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "GROVE, THICKET"@en .
+
+ex:Grovethicket_9 a skos:Concept ;
+    dct:source "http://www.wordsmyth.net/cgi-bin/simplesearch.cgi?matchent=grove&matchtype=exact&matchid=-1&retall=1"^^xsd:anyURI ;
+    skos:broadMatch ex:GroveThicket ;
+    skos:definition "A small wooded area, esp. one with little ground cover"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "GROVE, THICKET"@en .
 
 ex:LandClassification_1 a skos:Concept ;
     dct:source "http://www-markinfo.slu.se/eng/soildes/ago/agodef.html"^^xsd:anyURI ;
@@ -5620,6 +5367,12 @@ ex:Owl_2 a skos:Concept ;
     skos:note "United Kingdom" ;
     skos:prefLabel "- OWL"@en .
 
+ex:Plantation_1 a skos:Concept ;
+    skos:broadMatch ex:Plantation ;
+    skos:definition "See: Lund, H. Gyde. 2016 revised. Definitions of old growth, pristine, climax, ancient forests, degradation, desertification, forest fragmentation, and similar terms. [Online publication], Gainesville, VA: Forest Information Services. Misc. pagination. DOI: 10.13140/RG.2.1.2963.7361"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "PLANTATION (Forest Cultures)"@en .
+
 ex:ProductionForest_1 a skos:Concept ;
     dct:creator "– BC" ;
     dct:source "http://www.for.gov.bc.ca/PAB/PUBLCTNS/GLOSSARY/P.htm"^^xsd:anyURI ;
@@ -6014,8 +5767,7 @@ ex:Reforestation_41 a skos:Concept ;
     dct:creator "UNFCCC" ;
     dct:date "2001"^^xsd:gYear ;
     dct:source "http://www.unfccc.int/resource/docs/cop6secpart/l11r01.pdf"^^xsd:anyURI ;
-    skos:broadMatch ex:Forest_500,
-        ex:Reforestation ;
+    skos:broadMatch ex:Forest_500 ;
     skos:definition "“Reforestation” is the direct human-induced conversion of non-forested land to forested land through planting, seeding and/or the human-induced promotion of natural seed sources, on land that was forested but that has been converted to non-forested land. For the first commitment period, reforestation activities will be limited to reforestation occurring on those lands that did not contain forest on 31 December 1989"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "UNFCCC 2001" ;
@@ -7246,6 +6998,8 @@ ex:Scope_National a skos:Collection ;
         ex:FINUnfccc_1,
         ex:FJICriteria_1,
         ex:FRACriteria_1,
+        ex:FRACriteria_2,
+        ex:FRACriteria_3,
         ex:FRAUnfccc_1,
         ex:FRENCH_GUYCriteria_1,
         ex:Floresta_1,
@@ -8202,7 +7956,6 @@ ex:Scope_National a skos:Collection ;
         ex:GHACriteria_1,
         ex:GHAUnfccc_1,
         ex:GINCriteria_1,
-        ex:GLPCriteria_1,
         ex:GMBCriteria_1,
         ex:GNQCriteria_1,
         ex:GRCCriteria_1,
@@ -8293,7 +8046,6 @@ ex:Scope_National a skos:Collection ;
         ex:MOZCriteria_1,
         ex:MRTCriteria_1,
         ex:MSRCriteria_1,
-        ex:MTQCriteria_1,
         ex:MUSCriteria_1,
         ex:MWICriteria_1,
         ex:MYSCriteria_1,
@@ -8698,6 +8450,7 @@ ex:Seminaturalforest_1 a skos:Concept ;
 
 ex:StandDensity_1 a skos:Concept ;
     dct:source "http://216.239.39.100/search?q=cache:3wFtRKEEkxEC:www.gfc.state.ga.us/Publications/Educational/glossary.pdf+%22stand+density%22++definition+glossary&hl=en&ie=UTF-8#10"^^xsd:anyURI ;
+    skos:broadMatch ex:Stocking ;
     skos:definition "A measure of the amount of timber growing on a site expressed in number of trees, basal area, or volume"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Stand Density"@en .
@@ -8705,6 +8458,7 @@ ex:StandDensity_1 a skos:Concept ;
 ex:StandDensity_2 a skos:Concept ;
     dct:creator "Wenger" ;
     dct:date "1984"^^xsd:gYear ;
+    skos:broadMatch ex:Stocking ;
     skos:definition "A quantitative measure of tree stocking usually expressed in terms of the absolute number of trees, basal area, volume, or other criteria on a per unit area basis"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "Wenger 1984" ;
@@ -8712,12 +8466,14 @@ ex:StandDensity_2 a skos:Concept ;
 
 ex:StandDensity_3 a skos:Concept ;
     dct:source "http://www.privateforestry.org.au/glos_o-z.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:Stocking ;
     skos:definition "The quantity of trees per unit area, usually evaluated in terms of basal area, crown cover and stocking"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Stand Density"@en .
 
 ex:StandDensity_4 a skos:Concept ;
     dct:source "http://www.dof.state.va.us/mgt/glossary.shtml#S"^^xsd:anyURI ;
+    skos:broadMatch ex:Stocking ;
     skos:definition "The quantity of trees per unit area. Density usually is evaluated in terms of basal area or percent-crown cover. See basal area, crown cover, stocking"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Stand Density"@en .
@@ -8725,42 +8481,350 @@ ex:StandDensity_4 a skos:Concept ;
 ex:StandDensity_5 a skos:Concept ;
     dct:creator "n.f" ;
     dct:source "http://nfdp.ccfm.org/silviterm/silvi_e/silvitermqtote.htm#S"^^xsd:anyURI ;
+    skos:broadMatch ex:Stocking ;
     skos:definition "[densité de peuplement ] - A quantitative measurement of tree stocking, expressed in terms of number of trees, total basal area, or volume, per unit of area. More precisely, a measure of the degree of crowding of trees within a stand, commonly expressed by various growing-space ratios of crown length to tree height; crown diameter to dbh or crown diameter to tree height; or of stem spacing to tree height. (3"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "n.f." ;
     skos:prefLabel "stand density"@en .
 
-ex:Stocking_1 a skos:Concept ;
-    dct:source "http://www.dof.state.va.us/mgt/glossary.shtml#S"^^xsd:anyURI ;
-    skos:definition "An indication of the number of trees in a stand as compared to the desirable number for best growth and management, such as well-stocked, overstocked, partially stocked"@en ;
+ex:Stand_1 a skos:Concept ;
+    dct:creator "–NSW" ;
+    dct:source "http://www.forest.nsw.gov.au/education/glossary/default.asp#Ltr_W"^^xsd:anyURI ;
+    dct:spatial ex:Country_AUS ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "A group (or cluster) of upright trees"@en ;
     skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "Stocking"@en .
+    skos:note "Australia–NSW" ;
+    skos:prefLabel "STAND"@en .
 
-ex:Stocking_2 a skos:Concept ;
+ex:Stand_10 a skos:Concept ;
+    dct:creator "Hunter" ;
+    dct:date "1990"^^xsd:gYear ;
+    dct:source "http://depts.clemson.edu/extfor/publications/fortp19/definitions.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "A group of trees reasonably similar in age structure and species composition, usually occupying at least 5 acres"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "Hunter 1990" ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_11 a skos:Concept ;
+    dct:source "http://www.tnw.org.uk/Note17.html"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "A group or area of trees"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_12 a skos:Concept ;
+    dct:source "http://ashland.or.us/Files/Fire%20city%20Plan%202002.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "A grouping of trees in a forest of similar conditions that separate it from trees in other adjacent areas"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_13 a skos:Concept ;
+    dct:source "http://fwie.fw.vt.edu/rhgiles/appendices/glosss.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "A plant and animal community"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_14 a skos:Concept ;
+    dct:source "http://www.ifdn.com/teacher/glossary.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "A standing growth of trees or plants"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_15 a skos:Concept ;
+    dct:creator "e.g., 80-year aspen stand" ;
+    dct:source "http://www.borealcentre.ca/glossary.html"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "A unit of forest classification generally based on the type and age of the dominant tree vegetation . Most stands are initiated through disturbance events such as fire"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "e.g., 80-year aspen stand" ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_16 a skos:Concept ;
+    dct:source "http://www.eresourcesystems.com/Help/Glossary/glossary.html"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "An aggregation of trees or other growth occupying a specific area and sufficiently uniform in composition to be distinguishable from the adjoining forest or other growth"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_17 a skos:Concept ;
+    dct:creator "species" ;
+    dct:source "http://fwie.fw.vt.edu/rhgiles/appendices/glosss.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "An aggregation of trees or other growth occupying a specific area and sufficiently uniform in composition , age arrangement, and condition as to be distinguishable from the forest or other growth on adjoining areas (a minimum of 1 acre of forest land that is at least 10 percent stocked by forest trees of any size). A forest stand is said to be \" pure\" if 80 percent or more of the trees present are of the same species. If less than 80 percent of all trees present are of the same species. the stand is said to be \" mixed.\""@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "species" ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_18 a skos:Concept ;
+    dct:source "http://www.dnr.state.mi.us/wildlife/Landowners_Guide/Introduction/Glossary.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "An area composed of trees that are similar in type, or age, or size"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_19 a skos:Concept ;
+    dct:source "http://www.forestenterprises.co.nz/cfi/investmentstructure.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "An area of trees with similar characteristics"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_2 a skos:Concept ;
+    dct:creator "Czech Republic" ;
+    dct:date "1995"^^xsd:gYear ;
+    dct:source "http://www.uhul.cz/images/ke_stazeni/legislativa_jazyky/Lesni_zakon_en.pdf"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "stand shall mean the basic unit of spatial arrangement of the forest identifiable in the terrain and shown on a forestry map"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "Czech Republic 1995" ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_20 a skos:Concept ;
+    dct:source "http://www.timbervest.net/faqs_and_glossary/glossary.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "An easily defined area of the forest that is relatively uniform in species composition or age and can be managed as a single unit"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_21 a skos:Concept ;
+    dct:creator "2 ha" ;
+    dct:source "http://fscus.org/html/standards_policies/us_regional_standards/archives/ozark_ouachita4.html"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "An ecologically homogeneous area within an ecosystem or landscape, a minimum of 5 acres in size"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "2 ha" ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_22 a skos:Concept ;
+    dct:source "http://www.woodlands.co.uk/book/appendices.pdf"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "Community of trees with similar characteristics and managed as one unit"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_23 a skos:Concept ;
+    dct:source "http://media.payson.tulane.edu:8083/html/env/enven/vol205.htm#Annex"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "Group of trees which exhibit similar features, occupy an unbroken minimum area and all require similar silvicultural treatment. : Glossary of selected terms"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_24 a skos:Concept ;
+    dct:creator "of trees" ;
+    dct:source "http://bioenergy.ornl.gov/faqs/glossary.html#T"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "Stand: A tree community that possesses sufficient uniformity in composition, constitution, age, spatial arrangement, or condition to be distinguishable from adjacent communities"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "of trees" ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_25 a skos:Concept ;
+    dct:creator "s" ;
+    dct:source "http://www.eman-rese.ca/eman/ecotools/protocols/terrestrial/vegetation/glossary.html"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "Standing growth of plants; a particular example of a plant community, e.g. forest or grassland in which monitoring plot are established"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "s" ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_26 a skos:Concept ;
+    dct:creator "the Forest Act" ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "The basic unit of spatial arrangement of the forest identifiable in the terrain and shown on a forestry map. [Source: Act on Forests and Amendments to Some Acts dated 3 November 1995. Ministry of Agriculture of the Czech Republic. Prague, 1996. 58 pp. From: \"Maksym Polyakov\" mpoliak@pcomp.usau.kiev.ua Date: Mon, 15 Jun 1998 11:32:47 +0300 (MSD)]"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "the Forest Act" ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_27 a skos:Concept ;
+    dct:source "http://www.forestry.sa.gov.au/pdf/glossary.pdf"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "The crop of trees in a forest"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_28 a skos:Concept ;
+    dct:source "http://www.angelfire.com/on3/wildberks/Glossary.htm"^^xsd:anyURI,
+        "http://www.woodlandowner.org.uk/glossary.htm#W"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "Trees of one type or species [e.g. coppice, alder] grouped together within a woodland. and"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_29 a skos:Concept ;
+    dct:source "http://www.unb.ca/web/forestry/centers/cwru/soe/gloss.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "Unit of vegetation that is essentially homogeneous in all layers and differs from adjacent types qualitatively and quantitatively"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_3 a skos:Concept ;
+    dct:creator "USA-State-Oregon" ;
+    dct:source "http://www.odf.state.or.us/DIVISIONS/management/state_forests/sfplan/eorfmp95-final/A_gloss.pdf"^^xsd:anyURI ;
+    dct:spatial ex:Country_USA ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "A term used in this plan to designate a contiguous area of land in the same vegetative series and having the same management history"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "USA-State-Oregon" ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_4 a skos:Concept ;
+    dct:source "http://www.bib.fsagx.ac.be/coste21/glossary.html#d"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "A community of trees, including aboveground and belowground biomass and soils, sufficiently uniform in species composition, age, arrangement, and condition to be managed as a unit"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_5 a skos:Concept ;
+    dct:source "http://www.epa.gov/OWOW/NPS/MMGI/Chapter3/ch3-3.html"^^xsd:anyURI,
+        "http://www.for.gov.bc.ca/hfp/pubs/stand_density_mgt/sdm-73.htm#s"^^xsd:anyURI,
+        "http://www.fs.fed.us/r4/wcnf/projects/decisions/bear_hodges2/glossary,.pdf"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "A contiguous group of trees sufficiently uniform in species composition, arrangement of age classes, and condition to be a homogeneous and distinguishable unit. , and"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_6 a skos:Concept ;
+    dct:source "http://www.maf.govt.nz/statistics/primaryindustries/forestry/forest-resources/national-exotic-forest-2000/nappendix1.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "A defined area of standing trees or forest, usually of one species, age and tending regime"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_7 a skos:Concept ;
+    dct:source "http://www.fnr.purdue.edu/inwood/glossary.html"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "A geographically contiguous parcel of land containing one or more stand types and is usually constructed for administrative reasons"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STAND"@en .
+
+ex:Stand_8 a skos:Concept ;
     dct:source "http://www.privateforestry.org.au/glos_o-z.htm"^^xsd:anyURI ;
-    skos:definition "The number and density of trees in a forest stand. Stands are often classified as understocked, well-stocked or overstocked"@en ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "A group of forest trees of sufficiently uniform species composition, age, and condition to be considered a homogeneous unit for management purposes"@en ;
     skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "Stocking"@en .
+    skos:prefLabel "STAND"@en .
 
-ex:Stocking_3 a skos:Concept ;
-    dct:source "http://216.239.39.100/search?q=cache:3wFtRKEEkxEC:www.gfc.state.ga.us/Publications/Educational/glossary.pdf+%22stand+density%22++definition+glossary&hl=en&ie=UTF-8#10"^^xsd:anyURI ;
-    skos:definition "The number of trees in a forest stand. Often, stocking level is compared to the desirable number of trees for best growth and management, such as partially stocked, well stocked or over-stocked"@en ;
+ex:Stand_9 a skos:Concept ;
+    dct:source "http://www.harcourt.com/dictionary/def/4/1/0/8/4108500.html"^^xsd:anyURI ;
+    skos:broadMatch ex:Stand ;
+    skos:definition "A group of trees in a given area that consist of one species, size, or grade; used as the basic unit in forest mapping"@en ;
     skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "Stocking"@en .
+    skos:prefLabel "STAND"@en .
 
-ex:Stocking_4 a skos:Concept ;
+ex:Stocking_1 a skos:Concept ;
+    dct:source "http://www.nrcan.gc.ca/cfs/proj/ppiab/ci/gloss_e.html"^^xsd:anyURI ;
+    dct:spatial ex:Country_CAN ;
+    skos:broadMatch ex:Stocking ;
+    skos:definition "A qualitative expression of the adequacy of tree cover on an area in terms of crown closure, number of trees, basal area or volume in relation to a pre-established norm. [Source: Criteria and Indicators of sustainable forest management in Canada: Glossary From: \"Maksym Polyakov\" <mpoliak@pcomp.usau.kiev.ua Date: Wed, 17 Jun 1998 11:20:37 +0300 (MSD)]"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "Canada" ;
+    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
+
+ex:Stocking_10 a skos:Concept ;
     dct:creator "n.f" ;
     dct:source "http://nfdp.ccfm.org/silviterm/silvi_e/silvitermqtote.htm#S"^^xsd:anyURI ;
+    skos:broadMatch ex:Stocking ;
     skos:definition "[densité relative ] - A qualitative expression of the adequacy of tree cover on an area, in terms of crown closure, number of trees, basal area, or volume, in relation to a preestablished norm. In this context, \"tree cover\" includes seedlings and saplings; hence, the concept carries no connotation of a particular age. Stocking may be described in regionally or locally developed classes, or as a percentage of regional or local normal standards, which vary according to site-specific conditions. (5"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:note "n.f." ;
     skos:prefLabel "Stocking"@en .
 
-ex:Stocking_5 a skos:Concept ;
+ex:Stocking_11 a skos:Concept ;
     dct:source "http://www.campbellgroup.com/timber_invest/glossary.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:Stocking ;
     skos:definition "Degree of utilization of land by trees. Measured in terms of basal area and/or the number of trees in a stand compared to the basal area and/or number of trees required to fully utilize the growth potential of the land. A stocking percent of 100 indicates full utilization of the site and is equivalent to 80 square feet of basal area per acre in trees 5 inches in dbh and larger. A stocking percent of 100 in a stand of trees less than 5 inches in dbh would indicate that the present number of trees is sufficient to produce 80 square feet of basal area per acre when the trees reach S inches dbh. A stocking percent of over 100 is fully utilizing the site. Stocking classes - Fully stocked stands -Stands in which the stocking of trees is from 100 to 133 percent. Medium stocked stands -Stands in which the stocking of trees is from 60 to 100 percent. Nonstocked areas -Commercial forest land on which the stocking of trees is less than 16.7 percent. Overstocked stands -Stands in which the stocking of trees is 133 percent or more. Poorly stocked stands -Stands in which the stocking of trees is from 16.7 to 60 percent"@en ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Stocking"@en .
+
+ex:Stocking_12 a skos:Concept ;
+    skos:broadMatch ex:Stocking ;
+    skos:definition "The amount of live trees on a given area in relation to what is considered the optimum. [Source: USDA Forest Service General Technical Report WO-44. Forest Stand Density and Stocking: concepts, terms, and use of the stocking guides. 8 p.]"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
+
+ex:Stocking_13 a skos:Concept ;
+    dct:creator "breast-height" ;
+    skos:broadMatch ex:Stocking ;
+    skos:definition "The sum of areas of cross-cuts of all trees of a tree stand at height of 1.3 meters on 1 ha' is basal area. [From: \"Maksym Polyakov\" <mpoliak@pcomp.usau.kiev.ua Date: Wed, 17 Jun 1998 11:20:37 +0300 (MSD)]"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "breast-height" ;
+    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
+
+ex:Stocking_14 a skos:Concept ;
+    dct:source "http://www.crcd.org/voloak.html"^^xsd:anyURI ;
+    skos:broadMatch ex:Stocking ;
+    skos:definition "Tree Stocking: An expression of the number and size of trees per acre"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
+
+ex:Stocking_2 a skos:Concept ;
+    dct:creator "BC" ;
+    dct:source "http://www.for.gov.bc.ca/pab/publctns/glossary/glossary.htm"^^xsd:anyURI ;
+    dct:spatial ex:Country_CAN ;
+    skos:broadMatch ex:Stocking ;
+    skos:definition "A measure of the area occupied by trees, usually measured in terms of well- spaced trees per hectare, or basal area per hectare, relative to an optimum or desired level. [Source: Glossary of Forestry Terms, Province of British Columbia, Ministry of Forests, From: \"Maksym Polyakov\" <mpoliak@pcomp.usau.kiev.ua Date: Wed, 17 Jun 1998 11:20:37 +0300 (MSD)]"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "Canada-BC" ;
+    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
+
+ex:Stocking_3 a skos:Concept ;
+    dct:creator "Of growing stock trees" ;
+    dct:source "http://ifdc.nres.uiuc.edu/publications/pdf/forestresources02/pg81-86.pdf"^^xsd:anyURI ;
+    skos:broadMatch ex:Stocking ;
+    skos:definition "The degree of occupancy of land by growing stock trees, measured by basal area and/or the number of trees in a stand by size or age and spacing, compared to the basal area and/or number of trees required to fully utilize the growth potential of the land; that is, the stocking standard. A stocking percentage of 100 indicates full utilization of the site and is equivalent to 80 square feet of basal area per acre in trees 5.0 inches d.b.h. and larger. In a stand of trees less than 5 inches d.b.h., a stocking percentage of 100 would indicate that the present number of trees is sufficient to produce 80 square feet of basal area per acre when the trees reach 5 inches d.b.h"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "Of growing stock trees" ;
+    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
+
+ex:Stocking_4 a skos:Concept ;
+    dct:spatial ex:Country_RUS ;
+    skos:broadMatch ex:Stocking ;
+    skos:definition "Degree of a denseness of growing of trees in a tree stand describing a share of use by them of taken space. Usually under definition of stocking (polnota) understands a relative polnota of a tree stand - ratio of the sum of areas of cross-cuts of all trees of a tree stand at height of 1.3 meters (breast-height) on 1 ha to the sum of areas of cross-cuts of a normal tree stand (with a polnota 1,0), i.e. tree stand with optimum for the given species and types of forest growing conditions the sum of areas of cross-cuts, which undertakes from the tables of growth. . [From: \" Russian Forest Encyclopedia\" \"Igor Yakovlev\" yakovlev@mari-el.ru Date: Sat, 6 Jun 1998 21:16:59 +0400]"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "Russian Federation" ;
+    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
+
+ex:Stocking_5 a skos:Concept ;
+    dct:creator "MSD" ;
+    dct:source "http://ww.ehnr.state.nc.us/EHNR/DFR/fm-22.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:Stocking ;
+    skos:definition "A relative number of trees or volume per acre. A forest stand is most often described as being well-stocked, poorly stocked or overstocked. [Source: Glossary of Forestry Terms Commonly Used in Forest Management Plans From: \"Maksym Polyakov\" <mpoliak@pcomp.usau.kiev.ua Date: Wed, 17 Jun 1998 11:20:37 +0300 ]"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:note "MSD" ;
+    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
+
+ex:Stocking_6 a skos:Concept ;
+    dct:source "http://www.dof.state.va.us/mgt/glossary.shtml#S"^^xsd:anyURI ;
+    skos:broadMatch ex:Stocking ;
+    skos:definition "An indication of the number of trees in a stand as compared to the desirable number for best growth and management, such as well-stocked, overstocked, partially stocked"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Stocking"@en .
+
+ex:Stocking_7 a skos:Concept ;
+    dct:source "http://www.privateforestry.org.au/glos_o-z.htm"^^xsd:anyURI ;
+    skos:broadMatch ex:Stocking ;
+    skos:definition "The number and density of trees in a forest stand. Stands are often classified as understocked, well-stocked or overstocked"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Stocking"@en .
+
+ex:Stocking_8 a skos:Concept ;
+    dct:source "http://216.239.39.100/search?q=cache:3wFtRKEEkxEC:www.gfc.state.ga.us/Publications/Educational/glossary.pdf+%22stand+density%22++definition+glossary&hl=en&ie=UTF-8#10"^^xsd:anyURI ;
+    skos:broadMatch ex:Stocking ;
+    skos:definition "The number of trees in a forest stand. Often, stocking level is compared to the desirable number of trees for best growth and management, such as partially stocked, well stocked or over-stocked"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Stocking"@en .
+
+ex:Stocking_9 a skos:Concept ;
+    dct:source "http://216.239.39.100/search?q=cache:iFF2UlzBb4kC:socrates.lv-hrc.nevada.edu/fia/dab/core1-6/appendix7_12_00.doc+%22stand+density%22++definition+glossary&hl=en&ie=UTF-8"^^xsd:anyURI ;
+    skos:broadMatch ex:Stocking ;
+    skos:definition "Stocking – The relative degree of occupancy land by trees, measured as basal area or the number of trees in a stand by size or age and spacing, compared to the basal area or number of trees required to fully utilize the growth potential of the land; that is, the stocking standard"@en ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "STOCKING (Stand Density, Crown Cover)"@en .
 
 ex:Timber_1 a skos:Concept ;
     dct:date "1941"^^xsd:gYear ;
@@ -16482,6 +16546,18 @@ ex:FINUnfccc_1 a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Finland UNFCCC"@en ;
     skos:scopeNote "Land use"@en .
+
+ex:FRACriteria_2 a skos:Concept ;
+    dct:spatial ex:Country_FRA ;
+    skos:broadMatch ex:Forest ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Guadeloupe criteria"@en .
+
+ex:FRACriteria_3 a skos:Concept ;
+    dct:spatial ex:Country_FRA ;
+    skos:broadMatch ex:Forest ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Martinique criteria"@en .
 
 ex:FRAUnfccc_1 a skos:Concept ;
     ex:minAreaHa 0.5 ;
@@ -29204,12 +29280,6 @@ ex:GINCriteria_1 a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Guinea criteria"@en .
 
-ex:GLPCriteria_1 a skos:Concept ;
-    dct:spatial ex:Country_GLP ;
-    skos:broadMatch ex:Forest ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "Guadeloupe criteria"@en .
-
 ex:GNQCriteria_1 a skos:Concept ;
     dct:spatial ex:Country_GNQ ;
     skos:broadMatch ex:Forest ;
@@ -29466,12 +29536,6 @@ ex:MNGCriteria_1 a skos:Concept ;
     skos:broadMatch ex:Forest ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "Mongolia criteria"@en .
-
-ex:MTQCriteria_1 a skos:Concept ;
-    dct:spatial ex:Country_MTQ ;
-    skos:broadMatch ex:Forest ;
-    skos:inScheme ex:ForestScheme ;
-    skos:prefLabel "Martinique criteria"@en .
 
 ex:MYSUnfccc_1 a skos:Concept ;
     ex:minAreaHa 0.5 ;
@@ -30296,11 +30360,6 @@ ex:Country_DZA a skos:Concept ;
     skos:notation "DZA" ;
     skos:prefLabel "Algeria"@en .
 
-ex:Country_GLP a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "GLP" ;
-    skos:prefLabel "Guadeloupe"@en .
-
 ex:Country_GNQ a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "GNQ" ;
@@ -30360,11 +30419,6 @@ ex:Country_MKD a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "MKD" ;
     skos:prefLabel "North Macedonia"@en .
-
-ex:Country_MTQ a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "MTQ" ;
-    skos:prefLabel "Martinique"@en .
 
 ex:Country_NCL a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -35373,6 +35427,12 @@ ex:Degradation a skos:Concept ;
         ex:Forest ;
     skos:topConceptOf ex:ForestScheme .
 
+ex:Forestation a skos:Concept ;
+    skos:exactMatch agv:c_10984 ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Forestation"@en ;
+    skos:topConceptOf ex:ForestScheme .
+
 ex:NaturalForest a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:prefLabel "NaturalForest"@en ;
@@ -35568,6 +35628,11 @@ ex:Country_TTO a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "TTO" ;
     skos:prefLabel "Trinidad and Tobago"@en .
+
+ex:Forestry a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Forestry"@en ;
+    skos:topConceptOf ex:ForestScheme .
 
 ex:Country_BRA a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -35776,6 +35841,11 @@ ex:Country_POL a skos:Concept ;
     skos:notation "POL" ;
     skos:prefLabel "Poland"@en .
 
+ex:GroveThicket a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "GroveThicket"@en ;
+    skos:topConceptOf ex:ForestScheme .
+
 ex:Country_CHL a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "CHL" ;
@@ -35836,11 +35906,6 @@ ex:Country_ETH a skos:Concept ;
     skos:notation "ETH" ;
     skos:prefLabel "Ethiopia"@en .
 
-ex:Country_FRA a skos:Concept ;
-    skos:inScheme ex:ForestScheme ;
-    skos:notation "FRA" ;
-    skos:prefLabel "France"@en .
-
 ex:Country_RUS a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "RUS" ;
@@ -35860,6 +35925,11 @@ ex:Country_SVN a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "SVN" ;
     skos:prefLabel "Slovenia"@en .
+
+ex:Country_FRA a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:notation "FRA" ;
+    skos:prefLabel "France"@en .
 
 ex:Country_PAK a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -35900,6 +35970,11 @@ ex:Regeneration a skos:Concept ;
         ex:Reforestation ;
     skos:topConceptOf ex:ForestScheme .
 
+ex:Stocking a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Stocking"@en ;
+    skos:topConceptOf ex:ForestScheme .
+
 ex:Country_ZAF a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "ZAF" ;
@@ -35924,6 +35999,11 @@ ex:Country_MEX a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
     skos:notation "MEX" ;
     skos:prefLabel "Mexico"@en .
+
+ex:Stand a skos:Concept ;
+    skos:inScheme ex:ForestScheme ;
+    skos:prefLabel "Stand"@en ;
+    skos:topConceptOf ex:ForestScheme .
 
 ex:Country_GBR a skos:Concept ;
     skos:inScheme ex:ForestScheme ;
@@ -36059,6 +36139,9 @@ ex:ForestScheme a skos:ConceptScheme ;
         ex:Deforestation,
         ex:Degradation,
         ex:Forest,
+        ex:Forestation,
+        ex:Forestry,
+        ex:GroveThicket,
         ex:LandCover,
         ex:LandUse,
         ex:NativeForest,
@@ -36068,6 +36151,8 @@ ex:ForestScheme a skos:ConceptScheme ;
         ex:Reforestation,
         ex:Regeneration,
         ex:SemiNaturalForest,
+        ex:Stand,
+        ex:Stocking,
         ex:Tree,
         ex:Woodland ;
     skos:prefLabel "Forest Definitions Vocabulary"@en .
