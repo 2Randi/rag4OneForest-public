@@ -39,6 +39,7 @@ class KGBuilderSettings(BaseSettings):
     }
 
     # Labels des top-concepts (title_2 → label canonique)
+    # cles toujours en MAJUSCULES : le lookup se fait sur title_2.upper()
     top_concept_labels: dict[str, str] = {
         "FOREST/FOREST LAND":                         "Forest",
         "DEFORESTATION":                              "Deforestation",
@@ -48,13 +49,18 @@ class KGBuilderSettings(BaseSettings):
         "TREE":                                       "Tree",
         "LAND COVER":                                 "LandCover",
         "LAND USE":                                   "LandUse",
-        "PLANTATION (Forest Cultures)":               "Plantation",
+        "PLANTATION (FOREST CULTURES)":               "Plantation",
         "NATIVE FOREST":                              "NativeForest",
         "NATURAL FOREST":                             "NaturalForest",
         "SEMI-NATURAL FOREST":                        "SemiNaturalForest",
         "NON-FOREST":                                 "NonForest",
         "DEGRADATION":                                "Degradation",
         "REGENERATION":                               "Regeneration",
+        "STAND":                                       "Stand",
+        "STOCKING (STAND DENSITY, CROWN COVER)":      "Stocking",
+        "GROVE, THICKET":                              "GroveThicket",
+        "FORESTRY":                                    "Forestry",
+        "FORESTATION":                                 "Forestation",
     }
 
     # Scopes valides (title_3 normalisé)

@@ -205,11 +205,7 @@ def _year_ext(s: str) -> str:
     return m.group(0) if m else ""
 
 
-# La note se découpe différemment selon la section (scope via title_3) :
-# International/General = juste une organisation, jamais de pays.
-# National = pays + organisation + année, sauf "USA-FED-..." qui reste USA.
-# State/local = "Pays-Région", sauf "USA-STATE-Georgia" (sinon confondu
-# avec le pays Géorgie).
+# decoupage de la note selon le scope (title_3) : National = pays+orga+annee sauf USA-FED, State = "Pays-Region" sauf USA-STATE-Georgia (confondu avec le pays)
 def _find_country_match(s: str) -> tuple[str, int, int] | None:
     """
     Trouve un seul nom de pays dans s, avec sa position dans le texte.

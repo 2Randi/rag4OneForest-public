@@ -14,6 +14,13 @@ ORG_UNFCCC = EX["Org_UNFCCC"]
 FOREST     = EX["Forest"]
 FOREST_500 = EX["Forest_500"]
 
+TOP_CONCEPTS = [EX[l] for l in (
+    "Forest", "Deforestation", "Afforestation", "Reforestation", "Woodland",
+    "Tree", "LandCover", "LandUse", "Plantation", "NativeForest",
+    "NaturalForest", "SemiNaturalForest", "NonForest", "Degradation", "Regeneration",
+    "Stand", "Stocking", "GroveThicket", "Forestry", "Forestation",
+)]
+
 FOREST_DEF = "A forest is an ecosystem characterized by a dense community of trees."
 FOREST_SRC = "https://en.wikipedia.org/wiki/Forest"
 
@@ -33,9 +40,10 @@ def main() -> None:
         if member == FOREST_500:
             continue
 
-        if (member, SKOS.broadMatch, FOREST) in g:
-            g.remove((member, SKOS.broadMatch, FOREST))
-            n_moved += 1
+        for top in TOP_CONCEPTS:
+            if (member, SKOS.broadMatch, top) in g:
+                g.remove((member, SKOS.broadMatch, top))
+                n_moved += 1
 
         if (member, SKOS.broadMatch, FOREST_500) not in g:
             g.add((member, SKOS.broadMatch, FOREST_500))

@@ -339,10 +339,7 @@ class SKOSBuilder:
     }
 
     def _get_continent(self, iso3: str) -> str | None:
-        # avant y avait une liste de ~174 pays codee a la main ici, et une
-        # bonne vingtaine de vrais pays du graphe (dont les USA !) n'y
-        # etaient juste pas, donc jamais rattaches a un continent. Autant
-        # utiliser une vraie source de donnees pays -> continent
+        # pycountry_convert plutot qu'une liste codee en dur, plus fiable pour couvrir tous les pays du graphe
         import pycountry
         import pycountry_convert
         country = pycountry.countries.get(alpha_3=iso3)
@@ -748,10 +745,7 @@ class SKOSBuilder:
                 if vmax is not None:
                     g.add((nat_uri, EX[max_prop], Literal(Decimal(str(vmax)), datatype=XSD.decimal)))
 
-            # sans skos:definition, ce concept est invisible pour toutes les
-            # recherches (search_country_thresholds, search_continent_thresholds,
-            # search_by_keyword l'exigent). C'etait le cas pour tous les
-            # concepts nationaux non-UNFCCC avant ce fix (222 pays, dont les USA)
+            # sans skos:definition ce concept est invisible aux recherches (search_by_keyword etc. l'exigent)
             if def_parts:
                 g.add((nat_uri, SKOS.definition, Literal(" ".join(def_parts), lang="en")))
 
@@ -778,8 +772,8 @@ class SKOSBuilder:
         ]
         self.build_table3_concepts(records)
 
-    # Enrichissement Agrovoc via SPARQL
 
+    # Enrichissement Agrovoc via SPARQL
     def enrich_from_agrovoc(self, timeout: int = 10) -> None:
         """
         Enrichit les top-concepts avec skos:definition depuis Agrovoc via SPARQL.
@@ -789,7 +783,7 @@ class SKOSBuilder:
         try:
             from rdflib.plugins.stores.sparqlstore import SPARQLStore
         except ImportError:
-            print("[SKOSBuilder] rdflib SPARQLStore indisponible — skip enrichissement Agrovoc")
+            # print("[SKOSBuilder] rdflib SPARQLStore indisponible — skip enrichissement Agrovoc")
             return
 
         n_enriched = 0
@@ -824,10 +818,10 @@ class SKOSBuilder:
             except Exception:
                 pass
 
-        print(f"[SKOSBuilder] Agrovoc: {n_enriched} top-concepts enrichis avec skos:definition")
+        # print(f"[SKOSBuilder] Agrovoc: {n_enriched} top-concepts enrichis avec skos:definition")
+
 
     # Statistiques
-
     def stats(self) -> dict:
         g = self.graph
         PREFIXES = """
