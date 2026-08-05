@@ -9,7 +9,7 @@ RUN npm ci
 COPY graph-viz/ .
 
 # TTL dans /data/ (= ../data relatif à /app, comme en dev local)
-COPY data/forest_kg.ttl /data/forest_kg.ttl
+COPY data/forest_kg2.ttl /data/forest_kg2.ttl
 
 RUN npm run build
 

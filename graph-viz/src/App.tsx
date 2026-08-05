@@ -6,7 +6,7 @@ import { StatsView } from './components/StatsView'
 import { ConceptRDFView } from './components/ConceptRDFView'
 import { ChatRAG } from './components/ChatRAG'
 
-const graphPromise = fetch('/forest_kg.ttl').then(r => r.text())
+const graphPromise = fetch('/forest_kg2.ttl').then(r => r.text())
 
 type ViewMode = 'graph' | 'rdf' | 'stats' | 'chat'
 
