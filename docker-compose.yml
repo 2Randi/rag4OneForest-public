@@ -1,6 +1,6 @@
 services:
 
-  # ── API GraphRAG ──────────────────────────────────────────────────────────
+  # API GraphRAG 
   rag-api:
     build:
       context: ./rag-api
@@ -13,7 +13,7 @@ services:
     env_file:
       - ./rag-api/.env
     environment:
-      - TTL_PATH=/app/data/forest_kg.ttl
+      - TTL_PATH=/app/data/forest_kg2.ttl
       - TABLE3_PATH=/app/data/table3.csv
       - CHROMA_PATH=/app/chroma_db
     healthcheck:
@@ -23,7 +23,7 @@ services:
       retries: 5
       start_period: 90s
 
-  # ── Frontend graph-viz ────────────────────────────────────────────────────
+  # Frontend graph-viz 
   graph-viz:
     build:
       context: .
