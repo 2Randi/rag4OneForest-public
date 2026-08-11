@@ -273,6 +273,17 @@ curl http://localhost:8000/health
 # Re-indexer (après modification du TTL)
 python tasks.py index
 ```
+---
+
+### État du projet
+
+- [x] MAJ du graphe
+- [x] Problèmes des sources
+- [ ] Nettoyer les parenthèses et petite soucis dans le definitions SKOS
+- [ ] Métrique de comparaison de réponses pour les LLMs
+- [ ] Questions 5 et 6 (résultats)
+- [x] Documentation
+
 
 ---
 
