@@ -1,6 +1,7 @@
 # Detache UNFCCC de Forest/Agrovoc, Forest_500 remplace Org_UNFCCC comme point de rattachement
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 from rdflib import Graph, Namespace, Literal, XSD
@@ -25,13 +26,44 @@ FOREST_DEF = "A forest is an ecosystem characterized by a dense community of tre
 FOREST_SRC = "https://en.wikipedia.org/wiki/Forest"
 
 
+AND_RE = re.compile(r"(\s+and)+\s*$", re.IGNORECASE)
+
+
+def count_issues(g: Graph) -> dict:
+    defs = [str(d) for _, d in g.subject_objects(SKOS.definition)]
+    return {
+        "parenthese": sum(1 for d in defs if d.count("(") != d.count(")")),
+        "and": sum(1 for d in defs if AND_RE.search(d.rstrip())),
+    }
+
+
+def strip_paren(text: str) -> str:
+    stack = []
+    for i, c in enumerate(text):
+        if c == "(":
+            stack.append(i)
+        elif c == ")" and stack:
+            stack.pop()
+    return text[:min(stack)] if stack else text
+
+
+def clean_defs(g: Graph) -> None:
+    for uri, defn in list(g.subject_objects(SKOS.definition)):
+        text = str(defn)
+        cleaned = strip_paren(text)
+        cleaned = AND_RE.sub("", cleaned.rstrip())
+        cleaned = cleaned.rstrip(" .,;:-")
+        if cleaned and cleaned != text:
+            g.remove((uri, SKOS.definition, defn))
+            g.add((uri, SKOS.definition, Literal(cleaned, lang=defn.language)))
+
+
 def main() -> None:
     g = Graph()
     g.parse(INPUT_TTL, format="turtle")
     # print(f"graphe charge : {len(g)} triplets")
 
     members = list(g.objects(ORG_UNFCCC, SKOS.member))
-    # print(f"{len(members)} membres actuels de Org_UNFCCC")
 
     n_added = 0
     n_moved = 0
@@ -54,7 +86,7 @@ def main() -> None:
     for triple in list(g.triples((None, None, ORG_UNFCCC))):
         g.remove(triple)
 
-    # Forest coupe avec Agrovoc, definition Wikipedia a la place
+    # Forest sarahana @ agrovoc
     for triple in list(g.triples((FOREST, SKOS.definition, None))):
         g.remove(triple)
     for triple in list(g.triples((FOREST, SKOS.exactMatch, None))):
@@ -62,14 +94,9 @@ def main() -> None:
     g.add((FOREST, SKOS.definition, Literal(FOREST_DEF, lang="en")))
     g.add((FOREST, DCTERMS.source, Literal(FOREST_SRC, datatype=XSD.anyURI)))
 
-    # print(f"{n_added} broadMatch -> Forest_500 ajoutes")
-    # print(f"{n_moved} liens directs vers Forest retires")
-    # print("Org_UNFCCC supprime")
-    # print(f"graphe final : {len(g)} triplets")
+    clean_defs(g)
 
     g.serialize(destination=OUTPUT_TTL, format="turtle")
-    # print(f"sauvegarde : {OUTPUT_TTL}")
-
 
 if __name__ == "__main__":
     main()
