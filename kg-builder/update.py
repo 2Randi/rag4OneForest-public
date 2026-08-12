@@ -1,4 +1,4 @@
-# Detache UNFCCC de Forest/Agrovoc, Forest_500 remplace Org_UNFCCC comme point de rattachement
+# MAJ du graphe avec quelque nettoyege du skos:definition 
 from __future__ import annotations
 
 import re
