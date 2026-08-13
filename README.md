@@ -28,15 +28,17 @@ RAG4OneForest est un système **GraphRAG** (Retrieval-Augmented Generation sur g
 ```
 rag4oneforest/
 ├── data/                          Données sources et graphe RDF
-│   ├── forest_kg.ttl              Knowledge Graph SKOS (35 322 triplets)
-│   ├── definitions.docx           Corpus source — Lund (2018)
+│   ├── forest_kg.ttl              Knowledge Graph SKOS (v1)
+│   ├── forest_kg2.ttl             Knowledge Graph SKOS (version nettoyé)
+│   ├── diagramme                  Diagramme de classe
+│   ├── definitions.docx           Corpus source - Lund (2018)
 │   ├── definitions_clean.csv      Définitions extraites (nettoyées)
 │   └── definitions_raw.csv        Extraction brute
 │
 ├── kg-builder/                    Pipeline d'extraction et de construction du KG
 │   ├── extractor/
-│   │   ├── docx_extractor.py      Extraction DOCX → DefinitionRecord
-│   │   └── csv_exporter.py        Export CSV
+│   │   ├── docx_extractor.py      
+│   │   └── csv_exporter.py        
 │   ├── builder/
 │   │   └── skos_builder.py        Construction RDF/SKOS (rdflib)
 │   ├── pipeline.py                Orchestrateur du pipeline complet
@@ -212,7 +214,7 @@ L'interface React propose quatre vues accessibles depuis la barre de navigation 
 Le panneau de gauche permet de filtrer par :
 - Catégorie (Forest, Deforestation, Afforestation…)
 - Pays
-- Organisation (FAO, UNFCCC, IPCC, EU, World Bank…)
+- Organisation (FAO, IPCC, EU, World Bank…)
 - Portée (General, International, National, State)
 
 ---
@@ -279,6 +281,8 @@ python tasks.py index
 
 - [x] MAJ du graphe
 - [x] Problèmes des sources
+- [X] Nettoyage de skos:definition "parentheses" et "and" - à revoir
+- [ ] Diagramme de séquence
 - [ ] Nettoyer les parenthèses et petite soucis dans le definitions SKOS
 - [ ] Métrique de comparaison de réponses pour les LLMs
 - [ ] Questions 5 et 6 (résultats)
