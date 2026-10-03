@@ -10,6 +10,7 @@ import structlog
 
 from app.core.settings import settings
 from app.services.inventory import GraphInventory, get_inventory
+from app.services.llm_text import llm_text
 from app.services.threshold_store import ThresholdStore, get_threshold_store
 from app.services.rag_chain import get_llm_backends
 from app.services.query_patterns import (
@@ -33,17 +34,6 @@ class QueryFilters:
     source:          str = "regex"       # "regex" | "llm"
 
     def is_empty(self) -> bool:
-        """
-        'concept' est exclu expres : le pattern generique \\bforest\\w*\\b
-        (query_patterns.py) matche quasiment toutes les questions du domaine,
-        donc concept='forest' ne veut pas dire qu'on a trouve un filtre
-        specifique - juste que la question parle de foret. Sans cette
-        exclusion, le mode "auto" ne declenchait jamais le LLM des que le mot
-        "forest" apparaissait (ie. presque toujours), meme quand org/scope/
-        continent/seuil n'avaient rien trouve - typiquement une organisation
-        pas encore dans _ORG_PATTERNS (ex: "REDD+" ajoutee au graphe apres
-        coup) passait inapercue indefiniment.
-        """
         return not any([self.org, self.scope, self.continent,
                         self.countries, self.threshold_field])
 
@@ -152,7 +142,7 @@ def llm_extract(query: str, inventory: GraphInventory,
             log.warning("llm_extract_backend_failed", backend=name, error=str(e)[:120])
             continue
 
-        data = _parse_llm_json(response.content)
+        data = _parse_llm_json(llm_text(response.content))
         if data is None:
             log.warning("llm_extract_parse_failed", backend=name)
             continue
