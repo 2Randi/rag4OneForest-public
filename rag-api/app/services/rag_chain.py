@@ -8,6 +8,7 @@ from typing import Any, Generator
 import structlog
 
 from app.core.settings import settings
+from app.services.llm_text import llm_text
 
 log = structlog.get_logger()
 
@@ -277,7 +278,7 @@ class RAGChain:
         for name, llm in backends:
             try:
                 response = llm.invoke(messages)
-                return {"answer": response.content, "model": name,
+                return {"answer": llm_text(response.content), "model": name,
                         "usage": getattr(response, "usage_metadata", {})}
             except Exception as e:
                 last_error = e
@@ -300,7 +301,7 @@ class RAGChain:
                 response = llm.invoke(messages)
                 log.info("llm_success", backend=name)
                 return {
-                    "answer": response.content,
+                    "answer": llm_text(response.content),
                     "model":  name,
                     "usage":  getattr(response, "usage_metadata", {}),
                 }
@@ -325,7 +326,7 @@ class RAGChain:
         for name, llm in backends:
             try:
                 for chunk in llm.stream(messages):
-                    yield chunk.content
+                    yield llm_text(chunk.content)
                 return
             except Exception as e:
                 if force_provider or not _is_retryable(e):
