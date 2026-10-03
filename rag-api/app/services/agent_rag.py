@@ -12,6 +12,7 @@ from app.services.vector_store import VectorStore, get_vector_store
 from app.services.rag_chain import RAGChain, SYSTEM_PROMPT, _format_context
 from app.services.retriever import HybridRetriever
 from app.services.filter_extractor import QueryFilters
+from app.services.llm_text import llm_text
 
 log = structlog.get_logger()
 
@@ -108,7 +109,7 @@ class AgentRAG:
             raise RuntimeError("Aucun LLM disponible pour l'agent")
 
         # Etape 2 : parser les appels d'outils
-        tool_calls = self._parse_tool_calls(plan_result.content)
+        tool_calls = self._parse_tool_calls(llm_text(plan_result.content))
         log.info("agent_plan", tools=tool_calls, query=query[:60])
 
         # filtres detectes une fois sur la requete originale, reutilises pour tous les appels sparql_search + etape 3bis
